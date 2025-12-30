@@ -1,0 +1,202 @@
+---
+interface Props {
+	title: string;
+	subtitle?: string;
+	description?: string;
+	href: string;
+	image?: string;
+	imageAlt?: string;
+	tags?: string[];
+	reverse?: boolean;
+}
+
+const { title, subtitle, description, href, image, imageAlt = '', tags = [], reverse = false } = Astro.props;
+---
+
+<a href={href} class:list={['featured-card', { reverse }]}>
+	<div class="featured-card-content">
+		{subtitle && <span class="featured-card-subtitle">{subtitle}</span>}
+		<h3 class="featured-card-title">{title}</h3>
+		{description && <p class="featured-card-description">{description}</p>}
+		<span class="featured-card-arrow" aria-hidden="true">→</span>
+		{tags.length > 0 && (
+			<div class="featured-card-tags">
+				{tags.map((tag) => (
+					<span class="featured-card-tag">{tag}</span>
+				))}
+			</div>
+		)}
+	</div>
+	<div class="featured-card-image">
+		{image ? (
+			<img src={image} alt={imageAlt} loading="lazy" />
+		) : (
+			<div class="featured-card-placeholder"></div>
+		)}
+	</div>
+</a>
+
+<style>
+	.featured-card {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 2rem;
+		text-decoration: none;
+		color: inherit;
+		padding: 2.5rem 0;
+		position: relative;
+	}
+
+	.featured-card::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--green);
+		transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.featured-card:first-child::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: var(--green);
+		transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.featured-card:hover::after {
+		height: 4px;
+	}
+
+	.featured-card:first-child:hover::before {
+		height: 4px;
+	}
+
+	.featured-card.reverse {
+		direction: rtl;
+	}
+
+	.featured-card.reverse > * {
+		direction: ltr;
+	}
+
+	.featured-card-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 1rem 0;
+	}
+
+	.featured-card-subtitle {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--gray);
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.featured-card-title {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-size: clamp(1.75rem, 4vw, 2.5rem);
+		font-weight: 700;
+		color: var(--black);
+		margin: 0 0 0.75rem 0;
+		line-height: 1.15;
+		letter-spacing: -0.02em;
+		transition: color 0.2s ease;
+	}
+
+	.featured-card:hover .featured-card-title {
+		color: var(--green-dark);
+	}
+
+	.featured-card-description {
+		font-size: 1rem;
+		color: var(--gray);
+		margin: 0 0 1rem 0;
+		line-height: 1.5;
+	}
+
+	.featured-card-arrow {
+		font-size: 1.75rem;
+		color: var(--green);
+		margin-bottom: 1.5rem;
+		transition: transform 0.2s ease;
+	}
+
+	.featured-card:hover .featured-card-arrow {
+		transform: translateX(8px);
+	}
+
+	.featured-card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: auto;
+	}
+
+	.featured-card-tag {
+		background: var(--gray-lighter);
+		color: var(--black);
+		padding: 0.25rem 0.75rem;
+		border-radius: 4px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.03em;
+	}
+
+	.featured-card-image {
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		border-radius: 8px;
+	}
+
+	.featured-card-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.featured-card:hover .featured-card-image img {
+		transform: scale(1.03);
+	}
+
+	.featured-card-placeholder {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, var(--gray-lighter) 0%, var(--gray-light) 100%);
+	}
+
+	@media (max-width: 768px) {
+		.featured-card {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			padding: 2rem 0;
+		}
+
+		.featured-card.reverse {
+			direction: ltr;
+		}
+
+		.featured-card-content {
+			order: 2;
+			padding: 0;
+		}
+
+		.featured-card-image {
+			order: 1;
+		}
+
+		.featured-card-arrow {
+			margin-bottom: 1rem;
+		}
+	}
+</style>

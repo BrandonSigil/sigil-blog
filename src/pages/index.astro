@@ -1,14 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 3);
+	.slice(0, 4);
 ---
 
 <!doctype html>
@@ -22,12 +22,6 @@ const recentPosts = (await getCollection('blog'))
 				flex-direction: column;
 				justify-content: center;
 				padding: 4rem 0;
-			}
-
-			.hero h1 {
-				font-size: clamp(3rem, 10vw, 6rem);
-				margin-bottom: 1rem;
-				line-height: 1;
 			}
 
 			.hero .tagline {
@@ -60,36 +54,13 @@ const recentPosts = (await getCollection('blog'))
 				font-weight: 600;
 			}
 
-			.posts-list {
-				display: grid;
-				gap: 1.5rem;
-			}
-
-			.post-card {
-				display: block;
-				padding: 1.5rem;
-				border: 2px solid var(--gray-light);
-				border-radius: 8px;
-				transition: all 0.2s ease;
-			}
-
-			.post-card:hover {
-				border-color: var(--green);
-				transform: translateX(4px);
-			}
-
-			.post-card h3 {
-				margin: 0 0 0.5rem 0;
-				font-size: 1.5rem;
-			}
-
-			.post-card .date {
-				color: var(--gray);
-				font-size: 0.9rem;
+			.featured-posts {
+				margin-bottom: 2rem;
 			}
 
 			.about-section {
-				background: var(--gray-lighter);
+				background: transparent;
+				border: 2px solid var(--green);
 				border-radius: 8px;
 				padding: 2.5rem;
 			}
@@ -123,7 +94,6 @@ const recentPosts = (await getCollection('blog'))
 		<Header />
 		<main>
 			<section class="hero">
-				<h1>{SITE_TITLE}</h1>
 				<p class="tagline">
 					Developer, designer, and music enthusiast. I write about the sounds that move me and the code that keeps me busy.
 				</p>
@@ -138,12 +108,16 @@ const recentPosts = (await getCollection('blog'))
 					<h2>Recent Posts</h2>
 					<a href="/blog">View all posts →</a>
 				</div>
-				<div class="posts-list">
-					{recentPosts.map((post) => (
-						<a href={`/blog/${post.id}/`} class="post-card">
-							<h3>{post.data.title}</h3>
-							<span class="date"><FormattedDate date={post.data.pubDate} /></span>
-						</a>
+				<div class="featured-posts">
+					{recentPosts.map((post, index) => (
+						<FeaturedCard
+							title={post.data.title}
+							subtitle={post.data.pubDate.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })}
+							href={`/blog/${post.id}/`}
+							image={post.data.heroImage?.src}
+							imageAlt={post.data.title}
+							reverse={index % 2 === 1}
+						/>
 					))}
 				</div>
 			</section>

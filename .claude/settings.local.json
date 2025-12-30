@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git push:*)",
       "Bash(git remote set-url:*)",
-      "Bash(yarn install)"
+      "Bash(yarn install)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []

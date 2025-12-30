@@ -1,13 +1,15 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
+import logoSrc from '../assets/sigil.svg';
 ---
 
 <header>
 	<nav>
-		<a href="/" class="logo">{SITE_TITLE}</a>
+		<a href="/" class="logo">
+			<img src={logoSrc.src} alt={SITE_TITLE} />
+		</a>
 		<div class="nav-links">
-			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/portfolio">Portfolio</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 		</div>
@@ -18,8 +20,9 @@ import HeaderLink from './HeaderLink.astro';
 		position: sticky;
 		top: 0;
 		z-index: 100;
-		background: var(--white);
-		border-bottom: 2px solid var(--gray-light);
+		background: rgba(247, 246, 241, 0.8);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 	}
 
 	nav {
@@ -29,18 +32,18 @@ import HeaderLink from './HeaderLink.astro';
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 1rem 1.5rem;
+		border-bottom: 2px solid var(--green);
 	}
 
 	.logo {
-		font-size: 1.5rem;
-		font-weight: 700;
-		color: var(--green);
+		display: flex;
+		align-items: center;
 		text-decoration: none;
-		letter-spacing: -0.02em;
 	}
 
-	.logo:hover {
-		color: var(--green-dark);
+	.logo img {
+		height: 2.5rem;
+		width: auto;
 	}
 
 	.nav-links {
@@ -53,8 +56,8 @@ import HeaderLink from './HeaderLink.astro';
 			padding: 1rem;
 		}
 
-		.logo {
-			font-size: 1.25rem;
+		.logo img {
+			height: 2rem;
 		}
 
 		.nav-links {

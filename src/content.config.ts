@@ -13,6 +13,12 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			// Music blog fields
+			projectName: z.string().optional(), // Album name or general project name
+			artist: z.string().optional(), // Artist or agency
+			genre: z.string().optional(),
+			releaseDate: z.string().optional(),
+			rating: z.number().min(1).max(10).optional(),
 		}),
 });
 
