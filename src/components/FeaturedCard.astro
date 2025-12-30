@@ -1,10 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
 interface Props {
 	title: string;
 	subtitle?: string;
 	description?: string;
 	href: string;
-	image?: string;
+	image?: ImageMetadata;
 	imageAlt?: string;
 	tags?: string[];
 	reverse?: boolean;
@@ -29,7 +32,7 @@ const { title, subtitle, description, href, image, imageAlt = '', tags = [], rev
 	</div>
 	<div class="featured-card-image">
 		{image ? (
-			<img src={image} alt={imageAlt} loading="lazy" />
+			<Image src={image} alt={imageAlt} width={600} height={450} />
 		) : (
 			<div class="featured-card-placeholder"></div>
 		)}

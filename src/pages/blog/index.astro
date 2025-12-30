@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
+import FeaturedCard from '../../components/FeaturedCard.astro';
 import Footer from '../../components/Footer.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_TITLE } from '../../consts';
 
@@ -16,91 +16,44 @@ const posts = (await getCollection('blog')).sort(
 	<head>
 		<BaseHead title={`Blog | ${SITE_TITLE}`} description="Thoughts on music, albums, and the sounds that move me" />
 		<style>
-			.page-header {
-				text-align: center;
-				margin-bottom: 3rem;
-			}
-
-			.page-header p {
-				color: var(--gray);
-				font-size: 1.25rem;
-				max-width: 600px;
-				margin: 1rem auto 0;
-			}
-
-			.posts-list {
-				display: grid;
-				gap: 1.5rem;
-				max-width: 800px;
-				margin: 0 auto;
-			}
-
-			.post-card {
-				display: grid;
-				grid-template-columns: 1fr auto;
+			.section-header {
+				display: flex;
+				justify-content: space-between;
 				align-items: baseline;
+				margin-bottom: 2rem;
+				flex-wrap: wrap;
 				gap: 1rem;
-				padding: 1.5rem;
-				border: 2px solid var(--gray-light);
-				border-radius: 8px;
-				text-decoration: none;
-				transition: all 0.2s ease;
 			}
 
-			.post-card:hover {
-				border-color: var(--green);
-				transform: translateX(4px);
-			}
-
-			.post-content h2 {
-				margin: 0 0 0.5rem 0;
-				font-size: 1.5rem;
-			}
-
-			.post-content p {
+			.section-header h1 {
 				margin: 0;
-				color: var(--gray);
-				font-size: 1rem;
-				line-height: 1.5;
 			}
 
-			.post-date {
+			.section-header p {
 				color: var(--gray);
-				font-size: 0.9rem;
-				white-space: nowrap;
-			}
-
-			@media (max-width: 768px) {
-				.post-card {
-					grid-template-columns: 1fr;
-					gap: 0.5rem;
-				}
-
-				.post-date {
-					order: -1;
-				}
+				font-size: 1.1rem;
+				margin: 0;
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="page-header">
-				<h1>Blog</h1>
-				<p>Thoughts on music, albums, and the sounds that move me.</p>
+			<div class="section-header">
+				<h1>Music News & Reviews</h1>
 			</div>
 
 			<div class="posts-list">
-				{posts.map((post) => (
-					<a href={`/blog/${post.id}/`} class="post-card">
-						<div class="post-content">
-							<h2>{post.data.title}</h2>
-							{post.data.description && <p>{post.data.description}</p>}
-						</div>
-						<span class="post-date">
-							<FormattedDate date={post.data.pubDate} />
-						</span>
-					</a>
+				{posts.map((post, index) => (
+					<FeaturedCard
+						title={post.data.title}
+						subtitle={post.data.artist}
+						description={post.data.description}
+						href={`/blog/${post.id}/`}
+						image={post.data.heroImage}
+						imageAlt={post.data.title}
+						reverse={index % 2 === 1}
+					/>
 				))}
 			</div>
 		</main>

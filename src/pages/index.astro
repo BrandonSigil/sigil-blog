@@ -1,10 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
+import halftoneImage from '../assets/halftone.png';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -17,24 +19,67 @@ const recentPosts = (await getCollection('blog'))
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.hero {
-				min-height: 60vh;
+				background: var(--green);
+				border-radius: 8px;
+				padding: 6rem 4rem;
+				margin-bottom: 4rem;
+				position: relative;
+				overflow: hidden;
 				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				padding: 4rem 0;
+				justify-content: space-between;
+				align-items: center;
+				gap: 2rem;
+			}
+
+			.hero-image {
+				position: absolute;
+				right: 1.5rem;
+				border-radius: 4px;
+				overflow: hidden;
+				top: 50%;
+				transform: translateY(-50%) rotate(3deg);
+				z-index: 0;
+			}
+
+			.hero-image img {
+				display: block;
+				max-width: 100%;
+				height: auto;
+				opacity: 0.75;
+			}
+
+			/* Noise overlay */
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+				opacity: 0.08;
+				pointer-events: none;
+				mix-blend-mode: overlay;
+			}
+
+			.hero-content {
+				position: relative;
+				z-index: 1;
+			}
+
+			.hero-title {
+				font-size: clamp(2.5rem, 11.5vw, 10rem);
+				font-weight: 700;
+				color: var(--cream);
+				line-height: 0.9;
+				margin: 0;
+				letter-spacing: -0.04em;
 			}
 
 			.hero .tagline {
-				font-size: clamp(1.25rem, 3vw, 1.75rem);
-				color: var(--gray);
-				margin-bottom: 2rem;
-				max-width: 600px;
-			}
-
-			.hero-cta {
-				display: flex;
-				gap: 1rem;
-				flex-wrap: wrap;
+				font-size: clamp(1rem, 2vw, 1.25rem);
+				color: var(--cream);
+				opacity: 0.85;
+				margin-top: 2rem;
+				max-width: 500px;
+				line-height: 1.5;
 			}
 
 			.section-header {
@@ -76,12 +121,14 @@ const recentPosts = (await getCollection('blog'))
 
 			@media (max-width: 768px) {
 				.hero {
-					min-height: 50vh;
-					padding: 3rem 0;
+					padding: 4rem 2rem;
+					margin-bottom: 3rem;
+					flex-direction: column;
+					align-items: flex-start;
 				}
 
-				.post-card {
-					padding: 1.25rem;
+				.hero-image {
+					display: none;
 				}
 
 				.about-section {
@@ -94,12 +141,14 @@ const recentPosts = (await getCollection('blog'))
 		<Header />
 		<main>
 			<section class="hero">
-				<p class="tagline">
-					Developer, designer, and music enthusiast. I write about the sounds that move me and the code that keeps me busy.
-				</p>
-				<div class="hero-cta">
-					<a href="/blog" class="btn">Read the Blog</a>
-					<a href="/portfolio" class="btn btn-outline">View Portfolio</a>
+				<div class="hero-content">
+					<h1 class="hero-title">Welcome<br>to Sigil</h1>
+					<p class="tagline">
+						Developer, designer, and music enthusiast. I write about the sounds that move me and the code that keeps me busy.
+					</p>
+				</div>
+				<div class="hero-image">
+					<Image src={halftoneImage} alt="" width={500} height={500} />
 				</div>
 			</section>
 
@@ -112,9 +161,10 @@ const recentPosts = (await getCollection('blog'))
 					{recentPosts.map((post, index) => (
 						<FeaturedCard
 							title={post.data.title}
-							subtitle={post.data.pubDate.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })}
+							subtitle={post.data.artist}
+							description={post.data.description}
 							href={`/blog/${post.id}/`}
-							image={post.data.heroImage?.src}
+							image={post.data.heroImage}
 							imageAlt={post.data.title}
 							reverse={index % 2 === 1}
 						/>

@@ -100,3 +100,30 @@ Edit `src/consts.ts` to change:
 - `SITE_TITLE`: "Sigil"
 - `SITE_DESCRIPTION`: "A portfolio and music blog by Brandon Wirth"
 - `SITE_AUTHOR`: "Brandon Wirth"
+
+## Image Optimization
+
+**Always use Astro's `<Image>` component** from `astro:assets` instead of plain `<img>` tags for raster images (PNG, JPG, WebP). This automatically:
+- Converts images to WebP format
+- Resizes and optimizes for the web
+- Generates responsive sizes
+
+```astro
+---
+import { Image } from 'astro:assets';
+import myImage from '../assets/image.png';
+---
+<Image src={myImage} alt="Description" width={800} height={600} />
+```
+
+**Exceptions:**
+- SVGs can use plain `<img>` tags (they're already optimized vectors)
+- External URLs require plain `<img>` tags
+
+When passing images as props, use `ImageMetadata` type:
+```typescript
+import type { ImageMetadata } from 'astro';
+interface Props {
+  image?: ImageMetadata;
+}
+```
