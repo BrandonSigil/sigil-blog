@@ -4,7 +4,13 @@
       "Bash(git push:*)",
       "Bash(git remote set-url:*)",
       "Bash(yarn install)",
-      "Bash(npm run build:*)"
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(git -C /Users/brandonwirth/sigil-blog config http.postBuffer 524288000)",
+      "Bash(for:*)",
+      "Bash(do npx sharp-cli --input \"$f\" --output \"$f%.png.webp\" --format webp --quality 85)",
+      "Bash(done)",
+      "Bash(do sed -i '' 's/\\\\.png\"\"/.webp\"\"/g' \"$f\")"
     ],
     "deny": [],
     "ask": []

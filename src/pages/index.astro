@@ -6,7 +6,7 @@ import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
-import halftoneImage from '../assets/halftone.png';
+import halftoneImage from '../assets/halftone.webp';
 
 const recentPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
