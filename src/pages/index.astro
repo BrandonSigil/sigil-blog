@@ -1,48 +1,163 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
+
+const recentPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				min-height: 60vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				padding: 4rem 0;
+			}
+
+			.hero h1 {
+				font-size: clamp(3rem, 10vw, 6rem);
+				margin-bottom: 1rem;
+				line-height: 1;
+			}
+
+			.hero .tagline {
+				font-size: clamp(1.25rem, 3vw, 1.75rem);
+				color: var(--gray);
+				margin-bottom: 2rem;
+				max-width: 600px;
+			}
+
+			.hero-cta {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.section-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				margin-bottom: 2rem;
+				flex-wrap: wrap;
+				gap: 1rem;
+			}
+
+			.section-header h2 {
+				margin: 0;
+			}
+
+			.section-header a {
+				font-weight: 600;
+			}
+
+			.posts-list {
+				display: grid;
+				gap: 1.5rem;
+			}
+
+			.post-card {
+				display: block;
+				padding: 1.5rem;
+				border: 2px solid var(--gray-light);
+				border-radius: 8px;
+				transition: all 0.2s ease;
+			}
+
+			.post-card:hover {
+				border-color: var(--green);
+				transform: translateX(4px);
+			}
+
+			.post-card h3 {
+				margin: 0 0 0.5rem 0;
+				font-size: 1.5rem;
+			}
+
+			.post-card .date {
+				color: var(--gray);
+				font-size: 0.9rem;
+			}
+
+			.about-section {
+				background: var(--gray-lighter);
+				border-radius: 8px;
+				padding: 2.5rem;
+			}
+
+			.about-section p {
+				margin-bottom: 1.5rem;
+				max-width: 700px;
+			}
+
+			.about-section p:last-of-type {
+				margin-bottom: 0;
+			}
+
+			@media (max-width: 768px) {
+				.hero {
+					min-height: 50vh;
+					padding: 3rem 0;
+				}
+
+				.post-card {
+					padding: 1.25rem;
+				}
+
+				.about-section {
+					padding: 1.5rem;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<h1>{SITE_TITLE}</h1>
+				<p class="tagline">
+					Developer, designer, and music enthusiast. I write about the sounds that move me and the code that keeps me busy.
+				</p>
+				<div class="hero-cta">
+					<a href="/blog" class="btn">Read the Blog</a>
+					<a href="/portfolio" class="btn btn-outline">View Portfolio</a>
+				</div>
+			</section>
+
+			<section>
+				<div class="section-header">
+					<h2>Recent Posts</h2>
+					<a href="/blog">View all posts →</a>
+				</div>
+				<div class="posts-list">
+					{recentPosts.map((post) => (
+						<a href={`/blog/${post.id}/`} class="post-card">
+							<h3>{post.data.title}</h3>
+							<span class="date"><FormattedDate date={post.data.pubDate} /></span>
+						</a>
+					))}
+				</div>
+			</section>
+
+			<section class="about-section">
+				<h2>About Me</h2>
+				<p>
+					I'm {SITE_AUTHOR}, a software developer with a passion for clean design and great music.
+					This site is where I share my thoughts on albums, artists, and the creative process.
+				</p>
+				<p>
+					When I'm not coding, you'll find me digging through record stores or discovering new sounds.
+				</p>
+			</section>
 		</main>
 		<Footer />
 	</body>
