@@ -6,6 +6,10 @@ projectName: "New Music Friday"
 heroImage: "../../assets/nmf-04-24/nmf-04-24.jpg"
 ---
 
+## <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1Yzgz0PUVlIXRvYyjxkHNY?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+---
+
 ![Gia Margaret - Singing](../../assets/nmf-04-24/gia-margret.jpg)
 
 ## Gia Margaret - Singing
