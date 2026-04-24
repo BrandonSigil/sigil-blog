@@ -1,7 +1,7 @@
 ---
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
-import logoSrc from '../assets/sigil.svg';
+import logoSrc from '../assets/sigil-main.svg';
 import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
@@ -12,7 +12,6 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
 			<img src={logoSrc.src} alt={SITE_TITLE} />
 		</a>
 		<div class="nav-links">
-			<HeaderLink href="/portfolio">Work</HeaderLink>
 			<HeaderLink href="/blog">Music</HeaderLink>
 		</div>
 	</nav>
