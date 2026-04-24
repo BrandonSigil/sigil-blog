@@ -116,7 +116,7 @@ const recentPosts = (await getCollection('blog'))
 							title={post.data.title}
 							subtitle={post.data.artist}
 							description={post.data.description}
-							href={`/blog/${post.id}/`}
+							href={`/blog/${post.id}`}
 							image={post.data.heroImage}
 							imageAlt={post.data.title}
 							reverse={index % 2 === 1}
