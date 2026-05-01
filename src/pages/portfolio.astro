@@ -1,35 +1,48 @@
 ---
 import type { ImageMetadata } from 'astro';
 import BaseHead from '../components/BaseHead.astro';
-import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import WorkProjectRow from '../components/WorkProjectRow.astro';
 import { SITE_TITLE } from '../consts';
 
-const projects = [
+import nmfPoster from '../assets/nmf-04-24/nmf-04-24.jpg';
+import nmfMatt from '../assets/nmf-04-24/matt-corby.webp';
+import nmfSpotify from '../assets/nmf-04-24/spotify.jpg';
+import nmfQuiet from '../assets/nmf-04-24/quiet-light.jpg';
+
+import aboutCouple from '../assets/about/sigil-couple.jpg';
+import aboutBrandon from '../assets/about/brandon-sigil.jpg';
+import aboutAlex from '../assets/about/alex-sigil.jpg';
+
+const projects: {
+	eyebrow: string;
+	title: string;
+	description: string;
+	images: ImageMetadata[];
+	href?: string;
+}[] = [
 	{
-		title: 'Project One',
-		subtitle: 'Client Name',
-		description: 'A brief description of your first project. What technologies did you use? What problem did it solve?',
-		tags: ['React', 'TypeScript', 'Node.js'],
-		link: '#',
-		image: undefined as ImageMetadata | undefined,
+		eyebrow: 'The Works',
+		title: 'Noise Machine Festival',
+		description:
+			'Campaign site and rollout for a spring showcase—posters, socials, and a lineup page that stayed fast on spotty venue Wi‑Fi. We art-directed the hero and kept typography loud without fighting the photography.',
+		images: [nmfPoster, nmfMatt, nmfSpotify, nmfQuiet],
+		href: '/blog/new-music-friday-june-7',
 	},
 	{
-		title: 'Project Two',
-		subtitle: 'Client Name',
-		description: 'Another amazing project you worked on. Highlight the key features and your role.',
-		tags: ['Python', 'Django', 'PostgreSQL'],
-		link: '#',
-		image: undefined as ImageMetadata | undefined,
+		eyebrow: 'Brand Identity',
+		title: 'Sigil Studio',
+		description:
+			'A mark and photo language for our own practice: simple geometry, warm film grain, and portraits that feel candid rather than corporate. Identity work you can actually live in day to day.',
+		images: [aboutCouple, aboutBrandon, aboutAlex],
 	},
 	{
-		title: 'Project Three',
-		subtitle: 'Client Name',
-		description: 'A third project showcasing your diverse skills and creativity.',
-		tags: ['Astro', 'CSS', 'JavaScript'],
-		link: '#',
-		image: undefined as ImageMetadata | undefined,
+		eyebrow: 'Website',
+		title: 'This very blog',
+		description:
+			'Astro, sharp images, and a layout that reads like a magazine. Built to ship quickly, stay accessible, and leave room for long-form writing without turning into a generic template.',
+		images: [aboutBrandon, aboutAlex, aboutCouple],
 	},
 ];
 ---
@@ -37,46 +50,36 @@ const projects = [
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Portfolio | ${SITE_TITLE}`} description="A collection of my work and projects" />
+		<BaseHead title={`Work | ${SITE_TITLE}`} description="Selected projects from Sigil—websites, identity, and full-stack creative work." />
 		<style>
-			.page-header {
-				text-align: center;
-				margin-bottom: 3rem;
+			.work-page-header {
+				margin-bottom: 0.5rem;
 			}
 
-			.page-header p {
+			.work-page-header h1 {
+				margin-bottom: 0.5rem;
+			}
+
+			.work-lede {
+				margin: 0;
+				max-width: 42ch;
+				font-size: 1.125rem;
 				color: var(--gray);
-				font-size: 1.25rem;
-				max-width: 600px;
-				margin: 1rem auto 0;
-			}
-
-			.projects-list {
-				margin-bottom: 2rem;
+				line-height: 1.55;
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="page-header">
+			<header class="work-page-header">
 				<h1>Work</h1>
-			</div>
+				<p class="work-lede">A few things we have shipped—each block is written to scan like a case study index, with imagery you can flick through.</p>
+			</header>
 
-			<div class="projects-list">
-				{projects.map((project, index) => (
-					<FeaturedCard
-						title={project.title}
-						subtitle={project.subtitle}
-						description={project.description}
-						href={project.link}
-						image={project.image}
-						imageAlt={project.title}
-						tags={project.tags}
-						reverse={index % 2 === 1}
-					/>
-				))}
-			</div>
+			<section class="work-list" aria-label="Selected projects">
+				{projects.map((p) => <WorkProjectRow {...p} />)}
+			</section>
 		</main>
 		<Footer />
 	</body>

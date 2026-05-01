@@ -1,0 +1,400 @@
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+import alexPortrait from '../assets/about/alex-sigil.jpg';
+import brandonPortrait from '../assets/about/brandon-sigil.jpg';
+import couplePhoto from '../assets/about/sigil-couple.jpg';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`About | ${SITE_TITLE}`}
+			description="Sigil Studios is Alex and Brandon Wirth—a husband and wife studio building bespoke web experiences together."
+		/>
+		<style>
+			.about-hero {
+				padding: 7rem 0 3.5rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.eyebrow {
+				display: inline-block;
+				font-size: 0.85rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--green);
+				margin-bottom: 1rem;
+			}
+
+			.about-hero-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.25rem;
+				align-items: start;
+			}
+
+			.about-hero h1 {
+				max-width: 14ch;
+				margin-bottom: 0;
+			}
+
+			.about-hero p {
+				max-width: 60ch;
+				font-size: 1.15rem;
+				margin: 0;
+				padding-top: 0.15em;
+			}
+
+			@media (min-width: 901px) {
+				.about-hero-grid {
+					grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+					gap: clamp(2rem, 5vw, 4rem);
+					column-gap: clamp(2rem, 6vw, 5rem);
+					align-items: end;
+				}
+
+				.about-hero h1 {
+					max-width: none;
+				}
+
+				.about-hero p {
+					max-width: none;
+					padding-top: 0;
+				}
+			}
+
+			.section {
+				padding: 4rem 0;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.manifesto-couple {
+				margin: 0 0 2rem 0;
+				border-radius: 12px;
+				overflow: hidden;
+				border: 2px solid var(--green);
+			}
+
+			.manifesto-couple :global(img) {
+				display: block;
+				width: 100%;
+				height: auto;
+			}
+
+			.manifesto-copy {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+				max-width: 72ch;
+			}
+
+			.manifesto-copy p {
+				margin: 0;
+				font-size: 1.1rem;
+			}
+
+			.duo-grid {
+				display: grid;
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 2rem;
+			}
+
+			.duo-card {
+				border: 2px solid var(--green);
+				border-radius: 12px;
+				padding: 1.25rem;
+				background: var(--white);
+				transition: transform 0.2s ease;
+			}
+
+			.duo-card:hover {
+				transform: translateY(-4px);
+			}
+
+			.duo-image {
+				border-radius: 10px;
+				overflow: hidden;
+				aspect-ratio: 1 / 1;
+				margin-bottom: 1rem;
+				background: var(--gray-lighter);
+			}
+
+			.duo-image :global(img) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.duo-intro {
+				max-width: 65ch;
+				font-size: 1.1rem;
+				margin: 0 0 2rem 0;
+				color: var(--gray);
+			}
+
+			.duo-intro.tight-below {
+				margin-bottom: 1.25rem;
+			}
+
+			.duo-card h3 {
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+				margin: 0;
+				color: var(--green);
+			}
+
+			.process-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1.25rem;
+			}
+
+			.process-step {
+				--process-cream: #f6f5ef;
+				background: #417039;
+				border-radius: 12px;
+				padding: 1.35rem 1.2rem 1.5rem;
+				border: none;
+				transition: transform 0.2s ease;
+			}
+
+			.process-step:hover {
+				transform: translateY(-3px);
+			}
+
+			.step-kicker {
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				margin-bottom: 0.65rem;
+				color: rgba(246, 245, 239, 0.78);
+			}
+
+			.process-step h4 {
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: clamp(1.35rem, 2.4vw, 1.65rem);
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				line-height: 1.1;
+				margin: 0 0 0.65rem 0;
+				color: var(--process-cream);
+			}
+
+			.process-step p {
+				margin: 0;
+				font-size: 0.95rem;
+				line-height: 1.55;
+				font-weight: 500;
+				color: rgba(246, 245, 239, 0.92);
+			}
+
+			.capability-list {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.65rem;
+			}
+
+			.capability {
+				padding: 0.4rem 0.75rem;
+				background: var(--gray-lighter);
+				border-radius: 999px;
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				text-transform: uppercase;
+			}
+
+			.cta-band {
+				--cta-tan: #f6f5ef;
+				margin: 4rem 0 1rem;
+				border-radius: 12px;
+				padding: 2rem;
+				background: #417039;
+				color: var(--cta-tan);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				gap: 1rem;
+			}
+
+			.cta-band h2 {
+				color: var(--cta-tan);
+				margin-bottom: 0.4rem;
+			}
+
+			.cta-band p {
+				margin: 0;
+				max-width: 42ch;
+				color: var(--cta-tan);
+			}
+
+			.cta-band .btn {
+				background: var(--cta-tan);
+				color: var(--green);
+				border-color: var(--cta-tan);
+			}
+
+			.cta-band .btn:hover {
+				background: #eae9e4;
+				border-color: #eae9e4;
+				color: var(--green-dark);
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				.process-step {
+					transition: none;
+				}
+
+				.process-step:hover {
+					transform: none;
+				}
+			}
+
+			@media (max-width: 900px) {
+				.duo-grid,
+				.process-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			@media (max-width: 768px) {
+				.about-hero {
+					padding-top: 5.5rem;
+				}
+
+				.section {
+					padding: 3rem 0;
+				}
+
+				.cta-band {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="about-hero">
+				<span class="eyebrow">Sigil Studios</span>
+				<div class="about-hero-grid">
+					<h1>We design and build digital experiences that feel handcrafted.</h1>
+					<p>
+						We are a husband and wife studio blending product thinking, visual craft, and front-end engineering
+						to help brands ship websites that look sharp and perform in the real world.
+					</p>
+				</div>
+			</section>
+
+			<section class="section manifesto-section">
+				<div class="manifesto-couple">
+					<Image
+						src={couplePhoto}
+						alt="Alex and Brandon Wirth, co-founders of Sigil Studios"
+						width={1200}
+						height={765}
+					/>
+				</div>
+				<div class="manifesto-copy">
+					<h2>Why we exist</h2>
+					<p>
+						Most websites are assembled from templates and compromises. We built Sigil Studios to do the opposite:
+						bespoke design, intentional interaction, and technical quality from first concept to launch.
+					</p>
+					<p>
+						We keep our studio small on purpose. You work directly with both founders, so strategy and execution stay
+						tightly connected throughout every phase.
+					</p>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>Who we are</h2>
+				<p class="duo-intro">
+					We are Alex and Brandon—partners in work and life. Every project gets both of us: strategy, design,
+					and build stay in one room so nothing gets lost between handoffs.
+				</p>
+				<div class="duo-grid">
+					<article class="duo-card">
+						<div class="duo-image">
+							<Image src={alexPortrait} alt="Alex Wirth, co-founder of Sigil Studios" width={800} height={800} />
+						</div>
+						<h3>Alex Wirth</h3>
+					</article>
+					<article class="duo-card">
+						<div class="duo-image">
+							<Image
+								src={brandonPortrait}
+								alt="Brandon Wirth, co-founder of Sigil Studios"
+								width={800}
+								height={800}
+							/>
+						</div>
+						<h3>Brandon Wirth</h3>
+					</article>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>How we work</h2>
+				<div class="process-grid">
+					<article class="process-step">
+						<div class="step-kicker">Step 01</div>
+						<h4>Discover</h4>
+						<p>We align on your audience, goals, and edge before a single pixel is designed.</p>
+					</article>
+					<article class="process-step">
+						<div class="step-kicker">Step 02</div>
+						<h4>Design</h4>
+						<p>We craft an art direction and system that is distinct to your brand.</p>
+					</article>
+					<article class="process-step">
+						<div class="step-kicker">Step 03</div>
+						<h4>Build</h4>
+						<p>We build fast, resilient front ends with thoughtful motion and clean structure.</p>
+					</article>
+					<article class="process-step">
+						<div class="step-kicker">Step 04</div>
+						<h4>Launch</h4>
+						<p>We QA, optimize, and ship with confidence, then support the next iteration.</p>
+					</article>
+				</div>
+			</section>
+
+			<section class="section">
+				<h2>What we do</h2>
+				<p class="duo-intro tight-below">
+					These are the ways we show up as a team on every engagement.
+				</p>
+				<div class="capability-list">
+					<span class="capability">Bespoke web design</span>
+					<span class="capability">Creative development</span>
+					<span class="capability">Brand-led product sites</span>
+					<span class="capability">Performance optimization</span>
+					<span class="capability">Content systems</span>
+					<span class="capability">Design QA</span>
+				</div>
+			</section>
+
+			<section class="cta-band">
+				<div>
+					<h2>Ready to build something memorable?</h2>
+					<p>Tell us what you are launching and we will shape a digital experience that fits your brand.</p>
+				</div>
+				<a href="/portfolio" class="btn">See our work</a>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

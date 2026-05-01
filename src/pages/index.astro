@@ -18,35 +18,36 @@ const recentPosts = (await getCollection('blog'))
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.hero {
-				background: var(--green);
-				border-radius: 8px;
-				padding: 6rem 4rem;
-				margin-bottom: 4rem;
 				position: relative;
-				overflow: hidden;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 30vh;
+				height: 100vh;
+				width: 100%;
+				margin-top: 0;
 			}
 
-			/* Noise overlay */
-			.hero::before {
+			/* Noise layer between scene and logo */
+			.hero::after {
 				content: '';
 				position: absolute;
 				inset: 0;
-				background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-				opacity: 0.08;
+				z-index: 5;
+				background-image: url('/noise-sigil-white.png');
+				background-repeat: repeat;
+				background-size: auto;
+				opacity: 0.3;
 				pointer-events: none;
-				mix-blend-mode: overlay;
+				mix-blend-mode: screen;
 			}
 
 			.hero-logo {
-				position: relative;
-				z-index: 1;
-				width: clamp(280px, 50vw, 500px);
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				z-index: 10;
+				width: clamp(280px, 40vw, 520px);
 				height: auto;
-				filter: brightness(0) saturate(100%) invert(97%) sepia(4%) saturate(200%) hue-rotate(20deg) brightness(103%) contrast(93%);
+				filter: brightness(0) invert(1);
+				pointer-events: none;
 			}
 
 			.section-header {
@@ -87,11 +88,6 @@ const recentPosts = (await getCollection('blog'))
 			}
 
 			@media (max-width: 768px) {
-				.hero {
-					padding: 4rem 2rem;
-					margin-bottom: 3rem;
-				}
-
 				.about-section {
 					padding: 1.5rem;
 				}
@@ -99,12 +95,14 @@ const recentPosts = (await getCollection('blog'))
 		</style>
 	</head>
 	<body>
-		<Header />
-		<main>
-			<section class="hero">
-				<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
-			</section>
+		<Header transparent={true} />
 
+		<section class="hero">
+			<div data-us-project="iIayA4bIeBzePlqd5Bab" style="width: 100%; height: 100vh;"></div>
+			<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
+		</section>
+
+		<main>
 			<section>
 				<div class="section-header">
 					<h2>Music News & Reviews</h2>
@@ -137,5 +135,7 @@ const recentPosts = (await getCollection('blog'))
 			</section>
 		</main>
 		<Footer />
+
+		<script is:inline>!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.11/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();</script>
 	</body>
 </html>

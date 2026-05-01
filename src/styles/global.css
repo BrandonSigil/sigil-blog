@@ -8,8 +8,8 @@
 	--green-light: #4a9447;
 	--green-dark: #326331;
 	--white: #ffffff;
-	--black: #3e7d3c;
-	--gray: #3e7d3c;
+	--black: #111111;
+	--gray: #666666;
 	--gray-light: #e5e5e5;
 	--gray-lighter: #eeede8;
 	--bg: #f7f6f1;
@@ -73,6 +73,10 @@ main {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 2rem 1.5rem;
+}
+
+body:not(.has-hero) main {
+	padding-top: 6rem;
 }
 
 h1, h2 {

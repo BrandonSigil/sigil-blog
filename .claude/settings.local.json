@@ -11,7 +11,9 @@
       "Bash(do npx sharp-cli --input \"$f\" --output \"$f%.png.webp\" --format webp --quality 85)",
       "Bash(done)",
       "Bash(do sed -i '' 's/\\\\.png\"\"/.webp\"\"/g' \"$f\")",
-      "Bash(grep -E 'href=.*\\\\$\\\\{.*\\\\}/')"
+      "Bash(grep -E 'href=.*\\\\$\\\\{.*\\\\}/')",
+      "Bash(grep -E \"\\\\.\\(astro|jsx|tsx|ts|js\\)$\")",
+      "Bash(node -e ' *)"
     ],
     "deny": [],
     "ask": []

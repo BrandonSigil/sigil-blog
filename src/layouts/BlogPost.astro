@@ -149,9 +149,10 @@ const hasMusicMeta = projectName || artist || genre || releaseDate || rating;
 				text-decoration-thickness: 2px;
 			}
 
-			.prose img {
+			:global(.prose img) {
 				border-radius: 8px;
 				margin: 2rem 0;
+				max-width: 55%;
 			}
 
 			.prose ul,
