@@ -16,6 +16,7 @@ const recentPosts = (await getCollection('blog'))
 <!doctype html>
 <html lang="en">
 	<head>
+		<style is:inline>html, body { background-color: #396e3a; }</style>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
 			.hero {
@@ -23,6 +24,7 @@ const recentPosts = (await getCollection('blog'))
 				height: 100vh;
 				width: 100%;
 				margin-top: 0;
+				background-color: #2f7039;
 			}
 
 			/* Noise layer between scene and logo */
@@ -99,7 +101,7 @@ const recentPosts = (await getCollection('blog'))
 		<Header transparent={true} />
 
 		<section class="hero">
-			<div data-us-project="iIayA4bIeBzePlqd5Bab" style="width: 100%; height: 100vh;"></div>
+			<div data-us-project="iIayA4bIeBzePlqd5Bab" style="width: 100%; height: 100vh; background-color: #4f7040;"></div>
 			<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
 			<LogoMarquee />
 		</section>
