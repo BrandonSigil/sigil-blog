@@ -1,0 +1,130 @@
+---
+const rawModules = import.meta.glob('../assets/work/*.svg', {
+  eager: true,
+  query: '?raw',
+  import: 'default',
+});
+
+// Frame N.svg files are Figma exports that duplicate the named logo files.
+// Exception: Frame 19 is a flattened single-path version of Noodletown that
+// renders better than the layered Noodletown.svg, so swap them.
+const SKIP = new Set<string>();
+for (const p of Object.keys(rawModules)) {
+  if (/Frame \d+\.svg$/.test(p) && !p.endsWith('Frame 19.svg')) SKIP.add(p);
+  if (p.endsWith('Noodletown.svg')) SKIP.add(p);
+}
+const paths = Object.keys(rawModules)
+  .filter((p) => !SKIP.has(p))
+  .sort();
+
+const WHITE = /fill="(white|#fff|#ffffff)"/gi;
+const BLACK = /fill="(black|#000|#000000)"/gi;
+
+const seen = new Set<string>();
+const logos: { svg: string }[] = [];
+for (const path of paths) {
+  const content = rawModules[path] as string;
+  if (seen.has(content)) continue;
+  seen.add(content);
+
+  const hasWhiteFill = WHITE.test(content);
+  WHITE.lastIndex = 0;
+
+  let recolored: string;
+  if (hasWhiteFill) {
+    // Panel-style logo: white paths are the actual illustration on top of a
+    // black background shape. Drop the black panel and recolor the illustration.
+    recolored = content
+      .replace(BLACK, 'fill="transparent"')
+      .replace(WHITE, 'fill="currentColor"');
+  } else {
+    recolored = content
+      .replace(/fill="(?!none\b)[^"]*"/g, 'fill="currentColor"')
+      .replace(/stroke="(?!none\b)[^"]*"/g, 'stroke="currentColor"');
+  }
+  logos.push({ svg: recolored });
+}
+
+const mid = Math.ceil(logos.length / 2);
+const row1 = logos.slice(0, mid);
+const row2 = logos.slice(mid);
+---
+
+<div class="marquee-wrapper">
+  <div class="marquee-row">
+    <div class="marquee-track marquee-left">
+      {[...row1, ...row1].map((logo) => (
+        <span class="marquee-logo" aria-hidden="true" set:html={logo.svg}></span>
+      ))}
+    </div>
+  </div>
+  <div class="marquee-row">
+    <div class="marquee-track marquee-right">
+      {[...row2, ...row2].map((logo) => (
+        <span class="marquee-logo" aria-hidden="true" set:html={logo.svg}></span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @keyframes scroll-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+
+  .marquee-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 6;
+    padding-bottom: 2.5rem;
+    pointer-events: none;
+  }
+
+  .marquee-row {
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .marquee-row:last-child {
+    margin-bottom: 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 9rem;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .marquee-track.marquee-left {
+    animation: scroll-left 300s linear infinite;
+  }
+
+  .marquee-track.marquee-right {
+    animation: scroll-right 360s linear infinite;
+  }
+
+  .marquee-logo {
+    display: inline-flex;
+    align-items: center;
+    height: 170px;
+    color: #2d4023;
+    opacity: 0.75;
+    flex-shrink: 0;
+  }
+
+  .marquee-logo :global(svg) {
+    height: 100%;
+    width: auto;
+    display: block;
+  }
+</style>

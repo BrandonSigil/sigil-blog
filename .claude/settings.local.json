@@ -13,7 +13,8 @@
       "Bash(do sed -i '' 's/\\\\.png\"\"/.webp\"\"/g' \"$f\")",
       "Bash(grep -E 'href=.*\\\\$\\\\{.*\\\\}/')",
       "Bash(grep -E \"\\\\.\\(astro|jsx|tsx|ts|js\\)$\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(md5 -r *.svg)"
     ],
     "deny": [],
     "ask": []
