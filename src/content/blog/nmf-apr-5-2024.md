@@ -1,6 +1,6 @@
 ---
 title: "Favorite Albums from April 5th, 2024"
-description: "The I-came-to-work-late edition: The Black Keys nerd out with friends, Vampire Weekend turns 40, Khruangbin goes lava lamp, and J. Cole claps back."
+description: "The Black Keys nerd out with friends, Vampire Weekend turns 40, Khruangbin goes lava lamp, and J. Cole claps back."
 pubDate: "April 5, 2024"
 projectName: "New Music Friday"
 heroImage: "../../assets/nmf-2024-04-05/nmf-2024-04-05.jpg"

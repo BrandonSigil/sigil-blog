@@ -59,10 +59,6 @@ _Tasting Notes: Beastmode Hip Hop, clubbin’, Kendrick Lamar’s HUMBLE._
 I’m gonna let her speak for herself:
 
 > I’m 5150, I run through yo city, I’m strapped with machetes<br>
-> Believe me, I’m petty, I’m rocky, I’m ready<br>
-> Straight to the dome got you dreaming, I’m Freddy<br>
-> You shouldn’t upset me<br>
-> Every day that end in why I call it fright night<br>
-> Couple fangs on a grill, that’s a light bite
+> Believe me, I’m petty, I’m rocky, I’m ready
 
 **_I just woke up and chose violence._**
