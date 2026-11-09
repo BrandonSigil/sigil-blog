@@ -3,10 +3,32 @@ import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import { SITE_DESCRIPTION, SITE_LOCATION, SITE_STUDIO, SITE_TITLE } from '../consts';
 import alexPortrait from '../assets/about/alex-sigil.jpg';
 import brandonPortrait from '../assets/about/brandon-sigil.jpg';
 import couplePhoto from '../assets/about/sigil-couple.jpg';
+
+const siteUrl = Astro.site?.href ?? 'https://sigil.studio';
+const aboutDescription = `${SITE_STUDIO} is Alex and Brandon Wirth—a husband and wife studio based in ${SITE_LOCATION}, building bespoke web experiences together.`;
+const structuredData = {
+	'@context': 'https://schema.org',
+	'@type': 'AboutPage',
+	name: `About | ${SITE_TITLE}`,
+	url: new URL('/about', siteUrl).href,
+	description: aboutDescription,
+	mainEntity: {
+		'@type': 'ProfessionalService',
+		name: SITE_STUDIO,
+		url: siteUrl,
+		description: SITE_DESCRIPTION,
+		address: {
+			'@type': 'PostalAddress',
+			addressLocality: 'Tacoma',
+			addressRegion: 'WA',
+			addressCountry: 'US',
+		},
+	},
+};
 ---
 
 <!doctype html>
@@ -14,7 +36,9 @@ import couplePhoto from '../assets/about/sigil-couple.jpg';
 	<head>
 		<BaseHead
 			title={`About | ${SITE_TITLE}`}
-			description="Sigil Studios is Alex and Brandon Wirth—a husband and wife studio building bespoke web experiences together."
+			description={aboutDescription}
+			image={couplePhoto}
+			structuredData={structuredData}
 		/>
 		<style>
 			.about-hero {
@@ -291,8 +315,9 @@ import couplePhoto from '../assets/about/sigil-couple.jpg';
 				<div class="about-hero-grid">
 					<h1>We design and build digital experiences that feel handcrafted.</h1>
 					<p>
-						We are a husband and wife studio blending product thinking, visual craft, and front-end engineering
-						to help brands ship websites that look sharp and perform in the real world.
+						We are a husband and wife studio based in {SITE_LOCATION}, blending product thinking, visual craft,
+						and front-end engineering to help brands ship websites that look sharp and perform in the real world.
+						We work with clients locally and nationwide.
 					</p>
 				</div>
 			</section>
