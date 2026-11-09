@@ -1,0 +1,266 @@
+---
+// Template: Site. For client websites. Split hero with the desktop build in
+// a browser window and the phone build floating over it, then the story,
+// gallery, and a big "see it live" sign-off.
+import { render, type CollectionEntry } from 'astro:content';
+import Frame from '../Frame.astro';
+import CaseMeta from '../CaseMeta.astro';
+import CaseGallery from '../CaseGallery.astro';
+
+interface Props {
+	entry: CollectionEntry<'work'>;
+	index: number;
+}
+
+const { entry, index } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+
+const phone = d.gallery.find((g) => g.frame === 'phone');
+const rest = d.gallery.filter((g) => g !== phone);
+const host = d.url ? new URL(d.url).host.replace(/^www\./, '') : '';
+---
+
+<header class="s-hero">
+	<div class="case-wrap s-hero-grid">
+		<div class="s-copy">
+			<p class="case-kicker mono">
+				<span class="dot" aria-hidden="true"></span>
+				<span>Case {String(index).padStart(2, '0')}</span>
+				<span>{d.disciplines.join(' / ')}</span>
+				<span>{d.year}</span>
+			</p>
+			<h1 class="case-title s-title" style={`view-transition-name: case-title-${entry.id}`}>{d.title}</h1>
+			<p class="s-summary">{d.summary}</p>
+			{
+				d.stats.length > 0 && (
+					<dl class="s-stats">
+						{d.stats.map((s) => (
+							<div>
+								<dt>{s.label}</dt>
+								<dd data-count={s.value}>{s.value}</dd>
+							</div>
+						))}
+					</dl>
+				)
+			}
+			{d.url && <a class="case-btn" href={d.url} target="_blank" rel="noopener">Visit {host} ↗</a>}
+		</div>
+		<div class="s-stage">
+			<div class="s-desktop">
+				<Frame
+					src={d.cover}
+					alt={d.coverAlt}
+					frame="browser"
+					url={d.url}
+					sizes="(max-width: 900px) 100vw, 760px"
+					eager
+					transitionName={`case-media-${entry.id}`}
+				/>
+			</div>
+			{
+				phone && (
+					<div class="s-phone">
+						<Frame src={phone.src} alt={phone.alt} frame="phone" sizes="220px" eager />
+					</div>
+				)
+			}
+		</div>
+	</div>
+</header>
+
+<section class="case-wrap case-section s-intro">
+	<p class="case-lede reveal">{d.lede}</p>
+	<CaseMeta data={d} include={['client', 'year', 'role', 'services', 'stack']} />
+</section>
+
+<section class="case-wrap s-body">
+	<div class="chapters">
+		<Content />
+	</div>
+</section>
+
+<CaseGallery items={rest} url={d.url} />
+
+{
+	d.url && (
+		<section class="case-wrap case-section">
+			<a class="s-live reveal" href={d.url} target="_blank" rel="noopener">
+				<span class="mono">See it live</span>
+				<span class="s-live-host">
+					{host}
+					<span class="s-arrow" aria-hidden="true">
+						↗
+					</span>
+				</span>
+			</a>
+		</section>
+	)
+}
+
+<style>
+	.s-hero {
+		padding-top: calc(var(--header-h) + clamp(2.5rem, 7vw, 5.5rem));
+		padding-bottom: clamp(2rem, 6vw, 4rem);
+		background: linear-gradient(180deg, var(--c-soft), var(--c-bg) 85%);
+	}
+
+	.s-hero-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		gap: clamp(2rem, 5vw, 4.5rem);
+		align-items: center;
+	}
+
+	.s-copy {
+		display: grid;
+		gap: 1.5rem;
+		justify-items: start;
+	}
+
+	.s-title {
+		font-size: clamp(3rem, 7.2vw, 6.5rem);
+	}
+
+	.s-summary {
+		margin: 0;
+		font-size: 1.15rem;
+		line-height: 1.55;
+		color: var(--c-muted);
+		max-width: 40ch;
+	}
+
+	.s-stats {
+		display: flex;
+		gap: 2rem;
+		margin: 0;
+	}
+
+	.s-stats div {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
+	.s-stats dd {
+		margin: 0;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-size: 2.5rem;
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		line-height: 1;
+		color: var(--c-accent);
+	}
+
+	.s-stats dt {
+		font-size: 0.85rem;
+		color: var(--c-muted);
+		max-width: 14ch;
+	}
+
+	.s-stage {
+		position: relative;
+		padding-bottom: 8%;
+	}
+
+	.s-desktop {
+		color: var(--c-ink);
+	}
+
+	.s-phone {
+		position: absolute;
+		right: -2%;
+		bottom: -6%;
+		width: clamp(120px, 26%, 220px);
+		rotate: 4deg;
+	}
+
+	.s-phone :global(.frame-phone) {
+		padding: 6px;
+		border-radius: 30px;
+	}
+
+	.s-phone :global(.frame-phone img) {
+		border-radius: 24px;
+	}
+
+	.s-phone :global(.notch) {
+		top: 12px;
+		height: 14px;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@supports (animation-timeline: scroll()) {
+			.s-phone {
+				animation: s-float linear both;
+				animation-timeline: scroll(root);
+				animation-range: 0 80vh;
+			}
+		}
+	}
+
+	@keyframes s-float {
+		to {
+			translate: 0 -22%;
+			rotate: -2deg;
+		}
+	}
+
+	.s-intro {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+		gap: clamp(2rem, 6vw, 6rem);
+		align-items: start;
+	}
+
+	.s-intro :global(.case-meta) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.s-body {
+		padding-bottom: clamp(3.5rem, 9vw, 8rem);
+	}
+
+	.s-live {
+		display: grid;
+		gap: 0.75rem;
+		padding-block: clamp(2rem, 5vw, 3.5rem);
+		border-block: 1px solid var(--c-line);
+		text-decoration: none;
+	}
+
+	.s-live .mono {
+		color: var(--c-muted);
+	}
+
+	.s-live-host {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-weight: 700;
+		font-size: clamp(2.25rem, 8vw, 7rem);
+		letter-spacing: -0.05em;
+		line-height: 1;
+		overflow-wrap: anywhere;
+	}
+
+	.s-arrow {
+		color: var(--c-accent);
+		transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.1, 1);
+	}
+
+	.s-live:hover .s-arrow {
+		transform: translate(8px, -8px);
+	}
+
+	@media (max-width: 900px) {
+		.s-hero-grid,
+		.s-intro {
+			grid-template-columns: 1fr;
+		}
+		.s-phone {
+			right: 2%;
+		}
+	}
+</style>

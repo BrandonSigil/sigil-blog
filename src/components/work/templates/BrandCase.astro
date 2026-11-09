@@ -1,0 +1,174 @@
+---
+// Template: Brand. For identity systems. Full-bleed color, giant type,
+// the cover as an immersive hero, then palette and type specimens.
+import { render, type CollectionEntry } from 'astro:content';
+import Frame from '../Frame.astro';
+import CaseMeta from '../CaseMeta.astro';
+import CaseGallery from '../CaseGallery.astro';
+import Palette from '../Palette.astro';
+import Typefaces from '../Typefaces.astro';
+
+interface Props {
+	entry: CollectionEntry<'work'>;
+	index: number;
+}
+
+const { entry, index } = Astro.props;
+const d = entry.data;
+const { Content } = await render(entry);
+---
+
+<header class="b-hero">
+	<div class="case-wrap b-hero-copy">
+		<p class="case-kicker mono">
+			<span class="dot" aria-hidden="true"></span>
+			<span>Case {String(index).padStart(2, '0')}</span>
+			<span>{d.disciplines.join(' / ')}</span>
+			<span>{d.year}</span>
+		</p>
+		<h1 class="case-title b-title" style={`view-transition-name: case-title-${entry.id}`}>{d.title}</h1>
+		<p class="b-client">{d.client}</p>
+	</div>
+	<div class="b-hero-media">
+		<Frame src={d.cover} alt={d.coverAlt} sizes="100vw" eager transitionName={`case-media-${entry.id}`} />
+	</div>
+</header>
+
+<section class="case-wrap case-section b-intro">
+	<p class="case-lede reveal">{d.lede}</p>
+	<CaseMeta data={d} />
+</section>
+
+{
+	d.palette.length > 0 && (
+		<section class="case-wrap b-system reveal" aria-labelledby="palette-label">
+			<div class="section-label">
+				<h2 id="palette-label" class="mono">Color</h2>
+				<span class="mono">Click a swatch to copy</span>
+			</div>
+			<Palette colors={d.palette} />
+		</section>
+	)
+}
+
+{
+	d.typefaces.length > 0 && (
+		<section class="case-wrap b-system reveal" aria-labelledby="type-label">
+			<div class="section-label">
+				<h2 id="type-label" class="mono">Type</h2>
+				<span class="mono">{d.typefaces.length} {d.typefaces.length === 1 ? 'family' : 'families'}</span>
+			</div>
+			<Typefaces faces={d.typefaces} />
+		</section>
+	)
+}
+
+<section class="case-wrap case-section">
+	<div class="chapters">
+		<Content />
+	</div>
+</section>
+
+<CaseGallery items={d.gallery} url={d.url} />
+
+<div class="case-wrap case-section b-outro">
+	{d.url && <a class="case-btn" href={d.url} target="_blank" rel="noopener">See it live ↗</a>}
+	<a class="case-btn ghost" href="/work">All work</a>
+</div>
+
+<style>
+	.b-hero {
+		position: relative;
+		padding-top: calc(var(--header-h) + clamp(2.5rem, 8vw, 6rem));
+		background:
+			radial-gradient(60% 50% at 85% 10%, color-mix(in oklab, var(--c-accent) 45%, transparent), transparent 70%),
+			var(--c-bg);
+	}
+
+	.b-hero-copy {
+		display: grid;
+		gap: 1.25rem;
+		padding-bottom: clamp(2rem, 5vw, 3.5rem);
+	}
+
+	.b-title {
+		font-size: clamp(3.4rem, 12.5vw, 11.5rem);
+	}
+
+	.b-client {
+		margin: 0;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		font-size: clamp(1.1rem, 2vw, 1.5rem);
+		color: var(--c-muted);
+	}
+
+	.b-hero-media {
+		overflow: hidden;
+	}
+
+	.b-hero-media :global(.frame) {
+		aspect-ratio: 16 / 8;
+	}
+
+	.b-hero-media :global(img) {
+		height: 100%;
+		object-fit: cover;
+		transform-origin: 50% 0;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		@supports (animation-timeline: scroll()) {
+			.b-hero-media :global(img) {
+				animation: b-zoom linear both;
+				animation-timeline: scroll(root);
+				animation-range: 0 120vh;
+			}
+		}
+	}
+
+	@keyframes b-zoom {
+		from {
+			scale: 1.12;
+		}
+		to {
+			scale: 1;
+			translate: 0 -6%;
+		}
+	}
+
+	.b-intro {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+		gap: clamp(2rem, 6vw, 6rem);
+		align-items: start;
+	}
+
+	.b-intro :global(.case-meta) {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.b-system {
+		padding-bottom: clamp(3rem, 7vw, 5rem);
+	}
+
+	.b-system h2 {
+		margin: 0;
+		color: inherit;
+		font-size: 0.75rem;
+	}
+
+	.b-outro {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 860px) {
+		.b-intro {
+			grid-template-columns: 1fr;
+		}
+		.b-hero-media :global(.frame) {
+			aspect-ratio: 4 / 3;
+		}
+	}
+</style>

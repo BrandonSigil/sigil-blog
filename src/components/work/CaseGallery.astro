@@ -1,0 +1,213 @@
+---
+// Lays out a case study's gallery: full-bleed, wide, side-by-side halves,
+// and horizontal "rails" (consecutive rail items scroll sideways together).
+import type { CollectionEntry } from 'astro:content';
+import Frame from './Frame.astro';
+
+type Item = CollectionEntry<'work'>['data']['gallery'][number];
+
+interface Props {
+	items: Item[];
+	url?: string;
+}
+
+const { items, url } = Astro.props;
+
+type Block =
+	| { kind: 'single'; item: Item; n: number; col: string; plate: boolean }
+	| { kind: 'rail'; items: { item: Item; n: number }[] };
+
+const blocks: Block[] = [];
+let halfRun = 0;
+items.forEach((item, i) => {
+	const n = i + 1;
+	if (item.size === 'rail') {
+		halfRun = 0;
+		const last = blocks.at(-1);
+		if (last?.kind === 'rail') last.items.push({ item, n });
+		else blocks.push({ kind: 'rail', items: [{ item, n }] });
+		return;
+	}
+	let col = 'wide';
+	if (item.size === 'full') col = 'full';
+	if (item.size === 'half') col = halfRun++ % 2 === 0 ? 'half-a' : 'half-b';
+	else halfRun = 0;
+	const plate = item.size === 'half' && (item.frame === 'phone' || item.src.format === 'png');
+	blocks.push({ kind: 'single', item, n, col, plate });
+});
+
+const fig = (n: number) => `Fig. ${String(n).padStart(2, '0')}`;
+---
+
+<section class="gallery" aria-label="Project images">
+	{
+		blocks.map((b) =>
+			b.kind === 'single' ? (
+				<figure class:list={['g-item', 'reveal', `g-${b.col}`, { plate: b.plate }]}>
+					<div class="g-media">
+						<Frame
+							src={b.item.src}
+							alt={b.item.alt}
+							frame={b.item.frame}
+							url={url}
+							sizes={b.col === 'full' ? '100vw' : b.col.startsWith('half') ? '(max-width: 900px) 100vw, 600px' : '(max-width: 1240px) 100vw, 1200px'}
+						/>
+					</div>
+					{(b.item.caption || b.col !== 'full') && (
+						<figcaption>
+							<span class="mono">{fig(b.n)}</span>
+							{b.item.caption && <span>{b.item.caption}</span>}
+						</figcaption>
+					)}
+				</figure>
+			) : (
+				<div class="g-rail reveal">
+					<div class="rail-track" tabindex="0" role="group" aria-label="Scrollable image set">
+						{b.items.map(({ item, n }) => (
+							<figure class="rail-item">
+								<Frame src={item.src} alt={item.alt} sizes="(max-width: 900px) 80vw, 520px" preload />
+								<figcaption>
+									<span class="mono">{fig(n)}</span>
+									{item.caption && <span>{item.caption}</span>}
+								</figcaption>
+							</figure>
+						))}
+					</div>
+					<p class="rail-hint mono" aria-hidden="true">
+						Scroll <span>→</span>
+					</p>
+				</div>
+			),
+		)
+	}
+</section>
+
+<style>
+	.gallery {
+		--gutter: clamp(1rem, 4vw, 3rem);
+		display: grid;
+		grid-template-columns: minmax(var(--gutter), 1fr) repeat(2, minmax(0, 600px)) minmax(var(--gutter), 1fr);
+		column-gap: clamp(1rem, 2.5vw, 2rem);
+		row-gap: clamp(2.5rem, 7vw, 6rem);
+		margin: 0;
+	}
+
+	.g-item {
+		margin: 0;
+		min-width: 0;
+	}
+
+	.g-full {
+		grid-column: 1 / -1;
+	}
+	.g-wide {
+		grid-column: 2 / 4;
+	}
+	.g-half-a {
+		grid-column: 2;
+	}
+	.g-half-b {
+		grid-column: 3;
+	}
+
+	.g-media {
+		border-radius: 18px;
+		overflow: hidden;
+	}
+
+	.g-full .g-media {
+		border-radius: 0;
+	}
+
+	.plate .g-media {
+		display: grid;
+		place-items: center;
+		height: 100%;
+		min-height: 22rem;
+		padding: clamp(1.5rem, 5vw, 3.5rem);
+		background: color-mix(in oklab, var(--c-ink) 7%, var(--c-bg));
+	}
+
+	.plate {
+		display: grid;
+		grid-template-rows: 1fr auto;
+	}
+
+	figcaption {
+		display: flex;
+		gap: 1rem;
+		align-items: baseline;
+		padding-top: 0.85rem;
+		font-size: 0.9rem;
+		line-height: 1.45;
+		color: color-mix(in oklab, var(--c-ink) 65%, var(--c-bg));
+	}
+
+	.g-full figcaption {
+		padding-inline: var(--gutter);
+	}
+
+	figcaption .mono {
+		flex: none;
+		color: var(--c-accent);
+	}
+
+	.g-rail {
+		grid-column: 1 / -1;
+		min-width: 0;
+	}
+
+	.rail-track {
+		display: flex;
+		gap: clamp(1rem, 2.5vw, 2rem);
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x mandatory;
+		scroll-padding-inline: var(--gutter);
+		padding: 0 var(--gutter) 1rem;
+		scrollbar-width: thin;
+		scrollbar-color: color-mix(in oklab, var(--c-ink) 30%, transparent) transparent;
+		outline: none;
+	}
+
+	.rail-track:focus-visible {
+		outline: 2px solid var(--c-accent);
+		outline-offset: 4px;
+	}
+
+	.rail-item {
+		flex: 0 0 min(78vw, 520px);
+		margin: 0;
+		scroll-snap-align: start;
+	}
+
+	.rail-item :global(.frame) {
+		border-radius: 14px;
+	}
+
+	.rail-hint {
+		margin: 0.25rem 0 0;
+		padding-inline: var(--gutter);
+		color: color-mix(in oklab, var(--c-ink) 55%, var(--c-bg));
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		.rail-hint span {
+			display: inline-block;
+			animation: nudge 1.6s ease-in-out infinite;
+		}
+	}
+
+	@keyframes nudge {
+		50% {
+			transform: translateX(6px);
+		}
+	}
+
+	@media (max-width: 760px) {
+		.g-half-a,
+		.g-half-b {
+			grid-column: 2 / 4;
+		}
+	}
+</style>

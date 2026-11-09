@@ -1,0 +1,38 @@
+---
+interface Props {
+	faces: { family: string; role: string; stack?: string }[];
+}
+
+const { faces } = Astro.props;
+---
+
+<div class="specimens">
+	{
+		faces.map((f) => (
+			<article class="specimen" style={f.stack ? `font-family:${f.stack}` : undefined}>
+				<span class="aa" aria-hidden="true">
+					Aa
+				</span>
+				<p class="glyphs" aria-hidden="true">
+					ABCDEFGHIJKLMNOPQRSTUVWXYZ
+					<br />
+					abcdefghijklmnopqrstuvwxyz 0123456789
+				</p>
+				<footer>
+					<strong>{f.family}</strong>
+					<span class="mono">{f.role}</span>
+				</footer>
+			</article>
+		))
+	}
+</div>
+
+<style>
+	footer strong {
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+	}
+	footer .mono {
+		color: var(--c-muted);
+		text-align: right;
+	}
+</style>
