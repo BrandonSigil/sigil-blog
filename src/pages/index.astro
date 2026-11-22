@@ -1,16 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
-import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR, SITE_STUDIO } from '../consts';
+import NewsletterStrip from '../components/NewsletterStrip.astro';
+import PostCard from '../components/PostCard.astro';
+import UpcomingStrip from '../components/UpcomingStrip.astro';
 import heroLogo from '../assets/sigil-main.svg';
-import LogoMarquee from '../components/LogoMarquee.astro';
+import { SIGIL_PLAYLIST_URL, SITE_AUTHOR, SITE_DESCRIPTION, SITE_STUDIO, SITE_TITLE } from '../consts';
+import { getAllCratePicks, getPublishedPosts, inferCategory, parseNmfPost } from '../lib/music';
 
-const recentPosts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 4);
+const posts = await getPublishedPosts();
+const leadPost = posts[0];
+const recentPosts = posts.slice(1, 7);
+
+const latestNmf = posts.find((p) => inferCategory(p) === 'nmf');
+const latestPicks = latestNmf ? parseNmfPost(latestNmf).albums.slice(0, 4) : [];
+
+const allCratePicks = await getAllCratePicks();
+const uniqueArtists = new Set(allCratePicks.map((p) => p.artist.toLowerCase())).size;
 
 const siteUrl = Astro.site?.href ?? 'https://sigil.studio';
 const structuredData = [
@@ -28,21 +36,11 @@ const structuredData = [
 	},
 	{
 		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		name: SITE_STUDIO,
-		url: siteUrl,
+		'@type': 'Blog',
+		name: `${SITE_TITLE} Music`,
+		url: new URL('/blog', siteUrl).href,
 		description: SITE_DESCRIPTION,
-		areaServed: 'US',
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Tacoma',
-			addressRegion: 'WA',
-			addressCountry: 'US',
-		},
-		founder: [
-			{ '@type': 'Person', name: 'Alex Wirth' },
-			{ '@type': 'Person', name: SITE_AUTHOR },
-		],
+		author: { '@type': 'Person', name: SITE_AUTHOR },
 	},
 ];
 ---
@@ -50,18 +48,34 @@ const structuredData = [
 <!doctype html>
 <html lang="en">
 	<head>
-		<style is:inline>html, body { background-color: #396e3a; }</style>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} structuredData={structuredData} />
+		<style is:inline>html, body { background-color: #2f6130; }</style>
+		<BaseHead title={`${SITE_TITLE} — Music News, Reviews & Weekly Crates`} description={SITE_DESCRIPTION} structuredData={structuredData} />
 		<style>
-			.hero {
-				position: relative;
-				height: 100vh;
-				width: 100%;
-				margin-top: 0;
-				background-color: #2f7039;
+			body {
+				background: var(--bg);
 			}
 
-			/* Noise layer between scene and logo */
+			/* Editorial Masthead Hero */
+			.hero {
+				position: relative;
+				min-height: 500px;
+				height: 62vh;
+				max-height: 640px;
+				width: 100%;
+				background-color: #2f6130;
+				overflow: hidden;
+				display: flex;
+				align-items: flex-end;
+			}
+
+			.hero-scene {
+				position: absolute;
+				inset: 0;
+				width: 100%;
+				height: 100%;
+				background: radial-gradient(circle at 25% 20%, #4d8849 0%, #2d5d2d 55%, #1f4320 100%);
+			}
+
 			.hero::after {
 				content: '';
 				position: absolute;
@@ -69,64 +83,264 @@ const structuredData = [
 				z-index: 5;
 				background-image: url('/noise-sigil-white.png');
 				background-repeat: repeat;
-				background-size: auto;
-				opacity: 0.3;
+				opacity: 0.25;
 				pointer-events: none;
 				mix-blend-mode: screen;
 			}
 
-			.hero-logo {
+			.hero::before {
+				content: '';
 				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				z-index: 10;
-				width: clamp(280px, 40vw, 520px);
-				height: auto;
-				filter: brightness(0) invert(1);
+				inset: 0;
+				z-index: 6;
+				background: linear-gradient(180deg, rgba(20, 42, 21, 0.25) 0%, rgba(20, 42, 21, 0.1) 45%, rgba(18, 38, 19, 0.62) 100%);
 				pointer-events: none;
 			}
 
-			.section-header {
+			.hero-inner {
+				position: relative;
+				z-index: 10;
+				width: 100%;
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 6rem 1.5rem 2.75rem;
 				display: flex;
+				flex-direction: column;
+				gap: 1.35rem;
+			}
+
+			.hero-top-row {
+				display: flex;
+				align-items: flex-end;
 				justify-content: space-between;
-				align-items: baseline;
-				margin-bottom: 2rem;
+				gap: 2rem;
 				flex-wrap: wrap;
-				gap: 1rem;
 			}
 
-			.section-header h2 {
-				margin: 0;
+			.hero-logo {
+				width: clamp(200px, 28vw, 340px);
+				height: auto;
+				filter: brightness(0) invert(1);
 			}
 
-			.section-header a {
+			.hero-tagline {
+				margin: 0.75rem 0 0;
+				color: rgba(247, 246, 241, 0.92);
+				font-family: var(--font-serif);
+				font-size: clamp(1.1rem, 1.8vw, 1.38rem);
+				line-height: 1.4;
+				max-width: 46ch;
+			}
+
+			.hero-actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.65rem;
+				align-items: center;
+			}
+
+			.hero-btn-primary {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.45rem;
+				padding: 0.72rem 1.25rem;
+				background: #f7f6f1;
+				color: #1f4320;
+				font-family: var(--font-display);
+				font-weight: 700;
+				font-size: 0.94rem;
+				border-radius: var(--radius-sm);
+				text-decoration: none;
+				transition: background 0.18s ease, transform 0.18s ease;
+			}
+
+			.hero-btn-primary:hover {
+				background: #ffffff;
+				color: #142f15;
+				transform: translateY(-1px);
+			}
+
+			.hero-btn-secondary {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.4rem;
+				padding: 0.7rem 1.1rem;
+				background: rgba(247, 246, 241, 0.12);
+				color: #f7f6f1;
+				border: 1px solid rgba(247, 246, 241, 0.32);
+				font-family: var(--font-display);
+				font-weight: 600;
+				font-size: 0.9rem;
+				border-radius: var(--radius-sm);
+				text-decoration: none;
+				backdrop-filter: blur(6px);
+				transition: background 0.18s ease, border-color 0.18s ease;
+			}
+
+			.hero-btn-secondary:hover {
+				background: rgba(247, 246, 241, 0.22);
+				border-color: rgba(247, 246, 241, 0.6);
+				color: #ffffff;
+			}
+
+			.hero-ticker {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.65rem 1.5rem;
+				padding-top: 1.1rem;
+				border-top: 1px solid rgba(247, 246, 241, 0.22);
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				color: rgba(247, 246, 241, 0.82);
+				letter-spacing: 0.04em;
+			}
+
+			.hero-ticker strong {
+				color: #ffffff;
 				font-weight: 600;
 			}
 
-			.featured-posts {
-				margin-bottom: 2rem;
+			.hero-ticker a {
+				color: #cde9ca;
+				text-decoration: underline;
+				text-underline-offset: 3px;
 			}
 
-			.about-section {
-				background: transparent;
-				border: 2px solid var(--green);
-				border-radius: 8px;
-				padding: 2.5rem;
+			.hero-ticker a:hover {
+				color: #ffffff;
 			}
 
-			.about-section p {
-				margin-bottom: 1.5rem;
-				max-width: 700px;
+			/* Main Editorial Sections */
+			.section-head {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.65rem;
+				padding-bottom: 1rem;
+				border-bottom: 1.5px solid var(--green);
 			}
 
-			.about-section p:last-of-type {
-				margin-bottom: 0;
+			.section-head h2 {
+				margin: 0.25rem 0 0;
 			}
 
-			@media (max-width: 768px) {
-				.about-section {
-					padding: 1.5rem;
+			.section-head-link {
+				font-family: var(--font-mono);
+				font-size: 0.8rem;
+				font-weight: 600;
+				color: var(--green);
+			}
+
+			/* This Week's Crate shelf */
+			.crate-shelf {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1.25rem;
+			}
+
+			.crate-tile {
+				display: flex;
+				flex-direction: column;
+				text-decoration: none;
+				color: inherit;
+				background: var(--paper-card);
+				border: 1px solid var(--rule);
+				border-radius: var(--radius-md);
+				overflow: hidden;
+				transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.crate-tile:hover {
+				transform: translateY(-3px);
+				border-color: var(--green);
+				box-shadow: 0 10px 24px rgba(20, 20, 19, 0.06);
+			}
+
+			.crate-sleeve {
+				aspect-ratio: 1 / 1;
+				overflow: hidden;
+				background: var(--gray-lighter);
+			}
+
+			.crate-sleeve :global(img) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.3s ease;
+			}
+
+			.crate-tile:hover .crate-sleeve :global(img) {
+				transform: scale(1.04);
+			}
+
+			.crate-info {
+				padding: 0.95rem 1rem 1.05rem;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.crate-artist {
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--green);
+				margin-bottom: 0.2rem;
+			}
+
+			.crate-album {
+				font-family: var(--font-display);
+				font-size: 1.06rem;
+				font-weight: 700;
+				line-height: 1.2;
+				color: var(--ink);
+				margin: 0 0 0.5rem;
+			}
+
+			.crate-tasting {
+				margin: 0;
+				font-family: var(--font-serif);
+				font-style: italic;
+				font-size: 0.9rem;
+				line-height: 1.42;
+				color: var(--ink-soft);
+			}
+
+			/* Recent Desk Grid */
+			.desk-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1.35rem;
+			}
+
+			@media (max-width: 960px) {
+				.crate-shelf {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+
+				.desk-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 640px) {
+				.hero {
+					height: auto;
+					min-height: 440px;
+					max-height: none;
+				}
+
+				.hero-inner {
+					padding: 5.5rem 1rem 2rem;
+				}
+
+				.crate-shelf,
+				.desk-grid {
+					grid-template-columns: 1fr;
 				}
 			}
 		</style>
@@ -135,43 +349,99 @@ const structuredData = [
 		<Header transparent={true} />
 
 		<section class="hero">
-			<div data-us-project="iIayA4bIeBzePlqd5Bab" style="width: 100%; height: 100vh; background-color: #4f7040;"></div>
-			<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
-			<LogoMarquee />
+			<div class="hero-scene" data-us-project="iIayA4bIeBzePlqd5Bab"></div>
+			<div class="hero-inner">
+				<div class="hero-top-row">
+					<div>
+						<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
+						<p class="hero-tagline">
+							Human-curated music discovery, weekly New Music Friday crates, and album reviews out of Tacoma, WA.
+						</p>
+					</div>
+					<div class="hero-actions">
+						{leadPost && (
+							<a href={`/blog/${leadPost.id}`} class="hero-btn-primary">
+								Read Latest Issue →
+							</a>
+						)}
+						<a href="/crate" class="hero-btn-secondary">Dig the Crate</a>
+						<a href="/calendar" class="hero-btn-secondary">Release Radar</a>
+					</div>
+				</div>
+
+				<div class="hero-ticker">
+					<span><strong>{posts.length}</strong> published issues</span>
+					<span><strong>{allCratePicks.length}</strong> albums picked</span>
+					<span><strong>{uniqueArtists}</strong> artists featured</span>
+					<a href={SIGIL_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+				</div>
+			</div>
 		</section>
 
 		<main>
-			<section>
-				<div class="section-header">
-					<h2>Music News & Reviews</h2>
-					<a href="/blog">View all posts →</a>
+			{leadPost && (
+				<section aria-label="Featured issue">
+					<div class="section-head">
+						<div>
+							<span class="kicker">Latest Issue</span>
+							<h2>From the Top of the Stack</h2>
+						</div>
+						<a href="/blog" class="section-head-link">All issues →</a>
+					</div>
+					<PostCard post={leadPost} variant="lead" />
+				</section>
+			)}
+
+			{latestNmf && latestPicks.length > 0 && (
+				<section aria-label="Latest Friday crate picks">
+					<div class="section-head">
+						<div>
+							<span class="kicker">Spinning Now</span>
+							<h2>Inside the Latest Crate</h2>
+						</div>
+						<a href="/crate" class="section-head-link">Browse all {allCratePicks.length} picks →</a>
+					</div>
+					<div class="crate-shelf">
+						{latestPicks.map((pick) => (
+							<a href={`/blog/${latestNmf.id}#pick-${pick.index}`} class="crate-tile">
+								<div class="crate-sleeve">
+									{pick.image && (
+										<Image src={pick.image} alt={`${pick.artist} — ${pick.album}`} width={400} height={400} />
+									)}
+								</div>
+								<div class="crate-info">
+									<span class="crate-artist">{pick.artist}</span>
+									<h3 class="crate-album">{pick.album}</h3>
+									{pick.tastingNote && <p class="crate-tasting">“{pick.tastingNote}”</p>}
+								</div>
+							</a>
+						))}
+					</div>
+				</section>
+			)}
+
+			<section aria-label="Recent music posts">
+				<div class="section-head">
+					<div>
+						<span class="kicker">Music Desk</span>
+						<h2>Recent Crates & Lists</h2>
+					</div>
+					<a href="/blog" class="section-head-link">View full archive →</a>
 				</div>
-				<div class="featured-posts">
-					{recentPosts.map((post, index) => (
-						<FeaturedCard
-							title={post.data.title}
-							subtitle={post.data.artist}
-							description={post.data.description}
-							href={`/blog/${post.id}`}
-							image={post.data.heroImage}
-							imageAlt={post.data.title}
-							reverse={index % 2 === 1}
-						/>
+				<div class="desk-grid">
+					{recentPosts.map((post) => (
+						<PostCard post={post} variant="grid" />
 					))}
 				</div>
 			</section>
 
-			<section class="about-section">
-				<h2>About Me</h2>
-				<p>
-					I'm {SITE_AUTHOR}, a software developer with a passion for clean design and great music.
-					This site is where I share my thoughts on albums, artists, and the creative process.
-				</p>
-				<p>
-					When I'm not coding, you'll find me digging through record stores or discovering new sounds.
-				</p>
+			<UpcomingStrip limit={6} />
+
+			<section aria-label="Newsletter subscription">
+				<NewsletterStrip />
 			</section>
 		</main>
+
 		<Footer />
 
 		<script is:inline>!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.11/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();</script>

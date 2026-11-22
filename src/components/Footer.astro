@@ -1,55 +1,153 @@
 ---
-import { SITE_AUTHOR } from '../consts';
+import logoSrc from '../assets/sigil-main.svg';
+import { SIGIL_PLAYLIST_URL, SITE_LOCATION, SITE_STUDIO, SITE_TITLE } from '../consts';
+
 const today = new Date();
 ---
 
 <footer>
-	<div class="footer-content">
-		<p class="copyright">
-			&copy; {today.getFullYear()} SIGIL STUDIOS. All rights reserved.
-		</p>
+	<div class="footer-inner">
+		<div class="footer-brand">
+			<a href="/" class="footer-logo">
+				<img src={logoSrc.src} alt={SITE_TITLE} />
+			</a>
+			<p class="footer-colophon">
+				Human-curated music discovery, weekly New Music Friday crates, and album reviews out of {SITE_LOCATION}.
+				Custom tooling helps track every Friday’s drops; every pick, tasting note, and review is listened to and written
+				by hand.
+			</p>
+		</div>
+
+		<div class="footer-col">
+			<h4>Publication</h4>
+			<ul>
+				<li><a href="/blog">Music Desk</a></li>
+				<li><a href="/crate">The Crate (All Picks)</a></li>
+				<li><a href="/calendar">Release Calendar</a></li>
+				<li><a href="/releases.ics">Calendar Feed (.ics)</a></li>
+				<li><a href="/rss.xml">RSS Feed</a></li>
+			</ul>
+		</div>
+
+		<div class="footer-col">
+			<h4>Listen & Studio</h4>
+			<ul>
+				<li>
+					<a href={SIGIL_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">Sigil Picks on Spotify ↗</a>
+				</li>
+				<li><a href="/work">Client Work</a></li>
+				<li><a href="/about">About Sigil Studios</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<p>&copy; {today.getFullYear()} {SITE_STUDIO.toUpperCase()}. All rights reserved.</p>
+		<p class="footer-note">No AI-written opinions · Handcrafted in {SITE_LOCATION}</p>
 	</div>
 </footer>
+
 <style>
 	footer {
-		border-top: 2px solid var(--gray-light);
-		padding: 2rem 1.5rem;
-		margin-top: 4rem;
+		border-top: 2px solid var(--green);
+		margin-top: 5rem;
+		padding: 3.5rem 1.5rem 2rem;
+		background: var(--paper-card);
 	}
 
-	.footer-content {
+	.footer-inner {
 		max-width: 1200px;
 		margin: 0 auto;
+		display: grid;
+		grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.85fr) minmax(0, 0.85fr);
+		gap: 3rem;
+		padding-bottom: 2.5rem;
+		border-bottom: 1px solid var(--rule);
+	}
+
+	.footer-logo {
+		display: inline-block;
+		margin-bottom: 1rem;
+	}
+
+	.footer-logo img {
+		height: 2rem;
+		width: auto;
+	}
+
+	.footer-colophon {
+		margin: 0;
+		font-size: 0.94rem;
+		line-height: 1.6;
+		color: var(--ink-soft);
+		max-width: 44ch;
+	}
+
+	.footer-col h4 {
+		font-family: var(--font-mono);
+		font-size: 0.74rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: var(--green);
+		margin: 0 0 1rem;
+	}
+
+	.footer-col ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.55rem;
+	}
+
+	.footer-col li {
+		margin: 0;
+	}
+
+	.footer-col a {
+		color: var(--ink);
+		font-size: 0.95rem;
+		font-weight: 500;
+	}
+
+	.footer-col a:hover {
+		color: var(--green);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+	}
+
+	.footer-bottom {
+		max-width: 1200px;
+		margin: 1.5rem auto 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		flex-wrap: wrap;
-		gap: 1rem;
-	}
-
-	.copyright,
-	.built-with {
-		margin: 0;
+		gap: 0.75rem;
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
 		color: var(--gray);
-		font-size: 0.9rem;
 	}
 
-	.built-with a {
-		color: var(--green);
-	}
-
-	.built-with a:hover {
-		text-decoration: underline;
+	.footer-bottom p {
+		margin: 0;
 	}
 
 	@media (max-width: 768px) {
 		footer {
-			padding: 1.5rem 1rem;
+			padding: 2.5rem 1rem 1.75rem;
 		}
 
-		.footer-content {
+		.footer-inner {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.footer-bottom {
 			flex-direction: column;
-			text-align: center;
+			align-items: flex-start;
 		}
 	}
 </style>

@@ -1,0 +1,470 @@
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import NewsletterStrip from '../components/NewsletterStrip.astro';
+import { SITE_TITLE } from '../consts';
+import { formatShortDate, getAllCratePicks } from '../lib/music';
+
+const picks = await getAllCratePicks();
+const years = [...new Set(picks.map((p) => p.year))].sort((a, b) => b - a);
+const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`The Crate | ${SITE_TITLE}`}
+			description={`Every album picked on Sigil’s New Music Friday — ${picks.length} records across ${uniqueArtists} artists, searchable by artist, album, and tasting note.`}
+		/>
+		<style>
+			.crate-hero {
+				padding-bottom: 2rem;
+				margin-bottom: 2rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.crate-hero-top {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: 1.5rem;
+				flex-wrap: wrap;
+			}
+
+			.crate-hero h1 {
+				margin: 0.3rem 0 0.5rem;
+			}
+
+			.crate-hero p {
+				margin: 0;
+				font-family: var(--font-serif);
+				font-size: 1.2rem;
+				color: var(--ink-soft);
+				max-width: 56ch;
+			}
+
+			/* Random spotlight drawer */
+			.random-spotlight {
+				display: none;
+				margin-bottom: 2rem;
+				padding: 1.35rem 1.5rem;
+				background: var(--green-tint);
+				border: 1.5px solid var(--green);
+				border-radius: var(--radius-md);
+				align-items: center;
+				justify-content: space-between;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+			}
+
+			.random-spotlight.is-open {
+				display: flex;
+			}
+
+			.random-copy {
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
+				max-width: 64ch;
+			}
+
+			.random-copy strong {
+				font-family: var(--font-display);
+				font-size: 1.35rem;
+				color: var(--ink);
+			}
+
+			.random-copy em {
+				font-family: var(--font-serif);
+				font-size: 1.05rem;
+				color: var(--ink-soft);
+			}
+
+			.random-actions {
+				display: flex;
+				gap: 0.6rem;
+				flex-wrap: wrap;
+			}
+
+			/* Toolbar */
+			.crate-toolbar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.75rem;
+			}
+
+			.year-pills {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+			}
+
+			.year-pill {
+				border: 1px solid var(--rule-strong);
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-mono);
+				font-size: 0.76rem;
+				padding: 0.44rem 0.9rem;
+				border-radius: 999px;
+				cursor: pointer;
+				transition: all 0.16s ease;
+			}
+
+			.year-pill:hover {
+				border-color: var(--green);
+				color: var(--green);
+			}
+
+			.year-pill.is-active {
+				background: var(--green);
+				border-color: var(--green);
+				color: var(--white);
+			}
+
+			.crate-search {
+				min-width: 240px;
+				flex: 0 1 320px;
+			}
+
+			.crate-search input {
+				width: 100%;
+				padding: 0.52rem 0.9rem;
+				border: 1px solid var(--rule-strong);
+				border-radius: 999px;
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-sans);
+				font-size: 0.9rem;
+				outline: none;
+			}
+
+			.crate-search input:focus {
+				border-color: var(--green);
+			}
+
+			.crate-count {
+				font-family: var(--font-mono);
+				font-size: 0.76rem;
+				color: var(--gray);
+				margin-bottom: 1.15rem;
+			}
+
+			/* Album Grid */
+			.crate-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1.35rem;
+			}
+
+			.record-card {
+				background: var(--paper-card);
+				border: 1px solid var(--rule);
+				border-radius: var(--radius-md);
+				overflow: hidden;
+				display: flex;
+				flex-direction: column;
+				transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.record-card:hover {
+				transform: translateY(-3px);
+				border-color: var(--green);
+				box-shadow: 0 12px 26px rgba(20, 20, 19, 0.06);
+			}
+
+			.record-main-link {
+				color: inherit;
+				text-decoration: none;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.record-cover {
+				position: relative;
+				aspect-ratio: 1 / 1;
+				overflow: hidden;
+				background: var(--gray-lighter);
+			}
+
+			.record-cover :global(img) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.32s ease;
+			}
+
+			.record-card:hover .record-cover :global(img) {
+				transform: scale(1.04);
+			}
+
+			.record-date-chip {
+				position: absolute;
+				bottom: 0.55rem;
+				left: 0.55rem;
+				background: rgba(20, 20, 19, 0.78);
+				backdrop-filter: blur(4px);
+				color: #f7f6f1;
+				font-family: var(--font-mono);
+				font-size: 0.66rem;
+				padding: 0.2rem 0.48rem;
+				border-radius: 4px;
+			}
+
+			.record-body {
+				padding: 0.9rem 1rem 0.85rem;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.record-artist {
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--green);
+				margin-bottom: 0.2rem;
+			}
+
+			.record-album {
+				font-family: var(--font-display);
+				font-size: 1.05rem;
+				line-height: 1.2;
+				color: var(--ink);
+				margin: 0 0 0.45rem;
+			}
+
+			.record-note {
+				margin: 0;
+				font-family: var(--font-serif);
+				font-style: italic;
+				font-size: 0.88rem;
+				line-height: 1.42;
+				color: var(--ink-soft);
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.record-actions {
+				padding: 0.65rem 1rem 0.8rem;
+				border-top: 1px solid var(--rule);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 0.5rem;
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+			}
+
+			.record-actions a {
+				color: var(--ink-soft);
+			}
+
+			.record-actions a:hover {
+				color: var(--green);
+				text-decoration: underline;
+			}
+
+			.is-hidden {
+				display: none !important;
+			}
+
+			@media (max-width: 1024px) {
+				.crate-grid {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 720px) {
+				.crate-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 0.9rem;
+				}
+
+				.crate-search {
+					width: 100%;
+					flex: 1 1 100%;
+				}
+			}
+
+			@media (max-width: 460px) {
+				.crate-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="crate-hero">
+				<div class="crate-hero-top">
+					<div>
+						<span class="kicker">Every Sigil Pick</span>
+						<h1>The Crate</h1>
+						<p>
+							{picks.length} albums across {uniqueArtists} artists, automatically indexed from every New Music Friday
+							issue.
+						</p>
+					</div>
+					<button type="button" class="btn" data-spin-random>
+						↻ Spin a Random Record
+					</button>
+				</div>
+			</section>
+
+			<div class="random-spotlight" data-random-box aria-live="polite">
+				<div class="random-copy">
+					<span class="kicker">Pulled from the Crate</span>
+					<strong data-random-title></strong>
+					<em data-random-note></em>
+				</div>
+				<div class="random-actions">
+					<a href="#" class="btn" data-random-read>Read Review →</a>
+					<a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-random-spotify>
+						Spotify ↗
+					</a>
+				</div>
+			</div>
+
+			<div class="crate-toolbar">
+				<div class="year-pills" role="tablist" aria-label="Filter crate by year">
+					<button type="button" class="year-pill is-active" data-year-filter="all">
+						All Years ({picks.length})
+					</button>
+					{years.map((y) => (
+						<button type="button" class="year-pill" data-year-filter={String(y)}>
+							{y} ({picks.filter((p) => p.year === y).length})
+						</button>
+					))}
+				</div>
+
+				<div class="crate-search">
+					<label for="crate-search-input" class="sr-only">Search crate</label>
+					<input
+						id="crate-search-input"
+						type="search"
+						placeholder="Filter by artist, album, or tasting note…"
+						data-crate-search
+					/>
+				</div>
+			</div>
+
+			<div class="crate-count" data-crate-count>Showing {picks.length} records</div>
+
+			<div class="crate-grid">
+				{picks.map((pick) => {
+					const pickNum = pick.id.split('-').pop();
+					const reviewHref = `/blog/${pick.postId}#pick-${pickNum}`;
+					return (
+						<article
+							class="record-card"
+							data-record-card
+							data-year={String(pick.year)}
+							data-artist={pick.artist}
+							data-album={pick.album}
+							data-note={pick.tastingNote ?? pick.blurbExcerpt}
+							data-href={reviewHref}
+							data-spotify={pick.spotifyUrl}
+							data-search={`${pick.artist} ${pick.album} ${pick.tastingNote ?? ''} ${pick.blurbExcerpt}`.toLowerCase()}
+						>
+							<a href={reviewHref} class="record-main-link">
+								<div class="record-cover">
+									{pick.image ? (
+										<Image src={pick.image} alt={`${pick.artist} — ${pick.album}`} width={380} height={380} />
+									) : (
+										<div style="width:100%;height:100%;background:var(--gray-lighter);" />
+									)}
+									<span class="record-date-chip">{formatShortDate(pick.date)}</span>
+								</div>
+								<div class="record-body">
+									<span class="record-artist">{pick.artist}</span>
+									<h2 class="record-album">{pick.album}</h2>
+									<p class="record-note">
+										{pick.tastingNote ? `“${pick.tastingNote}”` : pick.blurbExcerpt}
+									</p>
+								</div>
+							</a>
+							<div class="record-actions">
+								<a href={reviewHref}>Read →</a>
+								<div style="display:flex;gap:0.65rem;">
+									<a href={pick.spotifyUrl} target="_blank" rel="noopener noreferrer">Spotify ↗</a>
+									<a href={pick.bandcampUrl} target="_blank" rel="noopener noreferrer">Bandcamp ↗</a>
+								</div>
+							</div>
+						</article>
+					);
+				})}
+			</div>
+
+			<section style="margin-top: 4rem;">
+				<NewsletterStrip compact={true} />
+			</section>
+		</main>
+		<Footer />
+
+		<script>
+			const yearButtons = document.querySelectorAll<HTMLButtonElement>('[data-year-filter]');
+			const searchInput = document.querySelector<HTMLInputElement>('[data-crate-search]');
+			const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-record-card]'));
+			const countEl = document.querySelector<HTMLElement>('[data-crate-count]');
+			const spinBtn = document.querySelector<HTMLButtonElement>('[data-spin-random]');
+			const randomBox = document.querySelector<HTMLElement>('[data-random-box]');
+			const randomTitle = document.querySelector<HTMLElement>('[data-random-title]');
+			const randomNote = document.querySelector<HTMLElement>('[data-random-note]');
+			const randomRead = document.querySelector<HTMLAnchorElement>('[data-random-read]');
+			const randomSpotify = document.querySelector<HTMLAnchorElement>('[data-random-spotify]');
+
+			let activeYear = 'all';
+
+			function filterCrate() {
+				const q = (searchInput?.value ?? '').trim().toLowerCase();
+				let shown = 0;
+				cards.forEach((card) => {
+					const matchesYear = activeYear === 'all' || card.dataset.year === activeYear;
+					const matchesQuery = !q || (card.dataset.search ?? '').includes(q);
+					const show = matchesYear && matchesQuery;
+					card.classList.toggle('is-hidden', !show);
+					if (show) shown++;
+				});
+				if (countEl) {
+					countEl.textContent = `Showing ${shown} ${shown === 1 ? 'record' : 'records'}`;
+				}
+			}
+
+			yearButtons.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					yearButtons.forEach((b) => b.classList.remove('is-active'));
+					btn.classList.add('is-active');
+					activeYear = btn.dataset.yearFilter ?? 'all';
+					filterCrate();
+				});
+			});
+
+			searchInput?.addEventListener('input', filterCrate);
+
+			spinBtn?.addEventListener('click', () => {
+				const visible = cards.filter((c) => !c.classList.contains('is-hidden'));
+				const pool = visible.length > 0 ? visible : cards;
+				if (pool.length === 0) return;
+				const pick = pool[Math.floor(Math.random() * pool.length)];
+				if (randomTitle) randomTitle.textContent = `${pick.dataset.artist} — ${pick.dataset.album}`;
+				if (randomNote) randomNote.textContent = pick.dataset.note ? `“${pick.dataset.note}”` : '';
+				if (randomRead) randomRead.href = pick.dataset.href ?? '/blog';
+				if (randomSpotify) randomSpotify.href = pick.dataset.spotify ?? 'https://open.spotify.com';
+				randomBox?.classList.add('is-open');
+			});
+		</script>
+	</body>
+</html>

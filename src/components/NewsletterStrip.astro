@@ -1,0 +1,220 @@
+---
+import { NEWSLETTER_ACTION_URL, SIGIL_PLAYLIST_URL } from '../consts';
+
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<aside class:list={['dispatch-band', { compact }]} aria-label="Friday Dispatch newsletter">
+	<div class="dispatch-copy">
+		<span class="dispatch-kicker">Friday Dispatch</span>
+		<h3>{compact ? 'Get Friday’s crate in your inbox.' : 'Great records, zero algorithmic noise.'}</h3>
+		<p>
+			One short, human-written note every Friday with the best new albums, tasting notes, and upcoming releases worth
+			bookmarking.
+		</p>
+	</div>
+
+	<div class="dispatch-actions">
+		<form
+			class="dispatch-form"
+			data-newsletter-form
+			action={NEWSLETTER_ACTION_URL || undefined}
+			method={NEWSLETTER_ACTION_URL ? 'post' : undefined}
+		>
+			<label class="sr-only" for={compact ? 'email-compact' : 'email-main'}>Email address</label>
+			<input
+				id={compact ? 'email-compact' : 'email-main'}
+				type="email"
+				name="email"
+				placeholder="you@domain.com"
+				required
+				autocomplete="email"
+			/>
+			<button type="submit">Subscribe</button>
+		</form>
+		<p class="dispatch-status" data-newsletter-status aria-live="polite"></p>
+		<div class="dispatch-alts">
+			<a href="/rss.xml">RSS Feed</a>
+			<span aria-hidden="true">·</span>
+			<a href="/releases.ics">Calendar (.ics)</a>
+			<span aria-hidden="true">·</span>
+			<a href={SIGIL_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">Spotify Playlist ↗</a>
+		</div>
+	</div>
+</aside>
+
+<style>
+	.dispatch-band {
+		background: #2f6130;
+		color: #f7f6f1;
+		border-radius: var(--radius-lg);
+		padding: 2.5rem;
+		display: grid;
+		grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+		gap: 2.25rem;
+		align-items: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.dispatch-band::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url('/noise-sigil-white.png');
+		opacity: 0.14;
+		mix-blend-mode: screen;
+		pointer-events: none;
+	}
+
+	.dispatch-band > * {
+		position: relative;
+		z-index: 1;
+	}
+
+	.dispatch-band.compact {
+		padding: 1.75rem 2rem;
+		border-radius: var(--radius-md);
+	}
+
+	.dispatch-kicker {
+		display: inline-block;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.14em;
+		color: rgba(247, 246, 241, 0.78);
+		margin-bottom: 0.5rem;
+	}
+
+	.dispatch-copy h3 {
+		font-family: var(--font-display);
+		color: #f7f6f1;
+		font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+		margin: 0 0 0.5rem;
+		line-height: 1.12;
+	}
+
+	.dispatch-band.compact .dispatch-copy h3 {
+		font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+	}
+
+	.dispatch-copy p {
+		margin: 0;
+		color: rgba(247, 246, 241, 0.88);
+		font-size: 0.98rem;
+		line-height: 1.55;
+		max-width: 46ch;
+	}
+
+	.dispatch-form {
+		display: flex;
+		gap: 0.5rem;
+		background: rgba(255, 255, 255, 0.1);
+		padding: 0.35rem;
+		border-radius: var(--radius-sm);
+		border: 1px solid rgba(247, 246, 241, 0.28);
+	}
+
+	.dispatch-form input {
+		flex: 1;
+		min-width: 0;
+		border: none;
+		background: transparent;
+		color: #ffffff;
+		padding: 0.65rem 0.85rem;
+		font-family: var(--font-sans);
+		font-size: 0.95rem;
+		outline: none;
+	}
+
+	.dispatch-form input::placeholder {
+		color: rgba(247, 246, 241, 0.65);
+	}
+
+	.dispatch-form button {
+		border: none;
+		background: #f7f6f1;
+		color: #244a23;
+		font-family: var(--font-display);
+		font-weight: 700;
+		font-size: 0.92rem;
+		padding: 0.65rem 1.2rem;
+		border-radius: 4px;
+		cursor: pointer;
+		white-space: nowrap;
+		transition: background 0.18s ease, transform 0.18s ease;
+	}
+
+	.dispatch-form button:hover {
+		background: #ffffff;
+	}
+
+	.dispatch-status {
+		margin: 0.55rem 0 0;
+		min-height: 1.1em;
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: #e2f5dc;
+	}
+
+	.dispatch-alts {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.55rem;
+		align-items: center;
+		margin-top: 0.65rem;
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: rgba(247, 246, 241, 0.65);
+	}
+
+	.dispatch-alts a {
+		color: rgba(247, 246, 241, 0.9);
+		text-decoration: underline;
+		text-underline-offset: 3px;
+		text-decoration-color: rgba(247, 246, 241, 0.35);
+	}
+
+	.dispatch-alts a:hover {
+		color: #ffffff;
+		text-decoration-color: #ffffff;
+	}
+
+	@media (max-width: 820px) {
+		.dispatch-band {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+			padding: 1.75rem 1.35rem;
+		}
+
+		.dispatch-form {
+			flex-direction: column;
+		}
+
+		.dispatch-form button {
+			width: 100%;
+		}
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLFormElement>('[data-newsletter-form]').forEach((form) => {
+		if (form.getAttribute('action')) return;
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+			const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+			const status = form.parentElement?.querySelector<HTMLElement>('[data-newsletter-status]');
+			if (!input || !status) return;
+			const email = input.value.trim();
+			if (!email) return;
+			status.textContent = `Noted (${email}) — newsletter delivery is launching soon. Grab the RSS feed below in the meantime!`;
+			input.value = '';
+		});
+	});
+</script>

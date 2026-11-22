@@ -1,0 +1,402 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import {
+	categoryLabel,
+	estimateReadTime,
+	formatShortDate,
+	getPostCoverMosaic,
+	inferCategory,
+	parseNmfPost,
+} from '../lib/music';
+
+interface Props {
+	post: CollectionEntry<'blog'>;
+	variant?: 'lead' | 'grid' | 'compact';
+}
+
+const { post, variant = 'grid' } = Astro.props;
+const cat = inferCategory(post);
+const label = categoryLabel(post);
+const readMin = estimateReadTime(post.body);
+const mosaic = getPostCoverMosaic(post);
+const parsedNmf = cat === 'nmf' ? parseNmfPost(post) : null;
+const albumCount = parsedNmf?.albums.length ?? 0;
+const firstTasting = parsedNmf?.albums.find((a) => a.tastingNote)?.tastingNote;
+const isSigilPick = post.data.sigilPick || (post.data.rating !== undefined && post.data.rating >= 8.5);
+const href = `/blog/${post.id}`;
+const searchBlob = [
+	post.data.title,
+	post.data.artist,
+	post.data.description,
+	label,
+	...(parsedNmf?.albums.map((a) => `${a.artist} ${a.album} ${a.tastingNote ?? ''}`) ?? []),
+]
+	.filter(Boolean)
+	.join(' ')
+	.toLowerCase();
+---
+
+<article
+	class:list={['post-card', `variant-${variant}`]}
+	data-post-card
+	data-category={cat}
+	data-search={searchBlob}
+>
+	<a href={href} class="card-link">
+		{variant !== 'compact' && (
+			<div class="card-media">
+				{cat === 'nmf' && mosaic.length > 0 ? (
+					<div
+						class:list={[
+							'cover-mosaic',
+							{
+								single: mosaic.length === 1,
+								duo: mosaic.length === 2,
+								trio: mosaic.length === 3,
+							},
+						]}
+					>
+						{mosaic.map((img) => (
+							<Image src={img} alt={post.data.title} width={420} height={420} />
+						))}
+					</div>
+				) : post.data.heroImage && cat !== 'nmf' ? (
+					<Image
+						src={post.data.heroImage}
+						alt={post.data.title}
+						width={variant === 'lead' ? 880 : 640}
+						height={variant === 'lead' ? 620 : 480}
+					/>
+				) : (
+					<div class="media-fallback">
+						<span class="fallback-kicker">{label}</span>
+						<span class="fallback-title">{post.data.title}</span>
+					</div>
+				)}
+
+				{post.data.rating !== undefined && (
+					<div class="score-badge">
+						<span class="score-num">{post.data.rating.toFixed(1)}</span>
+						{isSigilPick && <span class="score-tag">Sigil Pick</span>}
+					</div>
+				)}
+			</div>
+		)}
+
+		<div class="card-body">
+			<div class="card-meta-top">
+				<span class="kicker">{label}</span>
+				<span class="mono-meta">{formatShortDate(post.data.pubDate)}</span>
+			</div>
+
+			{post.data.artist && <div class="card-artist">{post.data.artist}</div>}
+			<h3 class="card-title">{post.data.title}</h3>
+			<p class="card-desc">{post.data.description}</p>
+
+			{variant === 'lead' && firstTasting && (
+				<div class="lead-tasting">
+					<span class="lead-tasting-label">Tasting Note</span>
+					<span class="lead-tasting-quote">“{firstTasting}”</span>
+				</div>
+			)}
+
+			<div class="card-footer">
+				<span class="mono-meta">
+					{cat === 'nmf' && albumCount > 0 ? `${albumCount} ${albumCount === 1 ? 'album' : 'albums'} · ` : ''}
+					{readMin} min read
+				</span>
+				<span class="card-read-cta">Read issue →</span>
+			</div>
+		</div>
+	</a>
+</article>
+
+<style>
+	.post-card {
+		background: var(--paper-card);
+		border: 1px solid var(--rule);
+		border-radius: var(--radius-md);
+		overflow: hidden;
+		transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+	}
+
+	.post-card:hover {
+		border-color: var(--green);
+		transform: translateY(-3px);
+		box-shadow: 0 12px 28px rgba(20, 20, 19, 0.06);
+	}
+
+	.card-link {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	/* Lead editorial spread */
+	.variant-lead .card-link {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		align-items: stretch;
+	}
+
+	.variant-lead .card-media {
+		aspect-ratio: auto;
+		min-height: 360px;
+	}
+
+	.variant-lead .card-body {
+		padding: 2.25rem 2.25rem 1.85rem;
+		justify-content: center;
+	}
+
+	.variant-lead .card-title {
+		font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+		margin-bottom: 0.85rem;
+	}
+
+	.variant-lead .card-desc {
+		font-size: 1.04rem;
+		line-height: 1.62;
+	}
+
+	/* Media container */
+	.card-media {
+		position: relative;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		background: var(--gray-lighter);
+	}
+
+	.card-media > :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		transition: transform 0.35s ease;
+	}
+
+	.post-card:hover .card-media > :global(img),
+	.post-card:hover .cover-mosaic > :global(img) {
+		transform: scale(1.03);
+	}
+
+	.cover-mosaic {
+		width: 100%;
+		height: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr 1fr;
+		gap: 2px;
+		background: #141413;
+	}
+
+	.cover-mosaic.single {
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
+	}
+
+	.cover-mosaic.duo {
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1fr;
+	}
+
+	.cover-mosaic.trio {
+		grid-template-columns: 1.2fr 1fr;
+		grid-template-rows: 1fr 1fr;
+	}
+
+	.cover-mosaic.trio > :global(img:first-child) {
+		grid-row: 1 / -1;
+	}
+
+	.cover-mosaic > :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.35s ease;
+	}
+
+	.media-fallback {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, #2d5d2d 0%, #3e7d3c 100%);
+		color: #f7f6f1;
+		padding: 1.5rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 0.4rem;
+	}
+
+	.fallback-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		opacity: 0.78;
+	}
+
+	.fallback-title {
+		font-family: var(--font-display);
+		font-size: 1.45rem;
+		font-weight: 700;
+		line-height: 1.12;
+	}
+
+	.score-badge {
+		position: absolute;
+		top: 0.85rem;
+		right: 0.85rem;
+		background: #141413;
+		color: #f7f6f1;
+		padding: 0.4rem 0.65rem;
+		border-radius: var(--radius-sm);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		line-height: 1;
+	}
+
+	.score-num {
+		font-family: var(--font-display);
+		font-size: 1.25rem;
+		font-weight: 700;
+	}
+
+	.score-tag {
+		font-family: var(--font-mono);
+		font-size: 0.6rem;
+		text-transform: uppercase;
+		letter-spacing: 0.08em;
+		color: #9ed29c;
+		margin-top: 0.2rem;
+	}
+
+	.count-pill {
+		position: absolute;
+		bottom: 0.75rem;
+		left: 0.75rem;
+		background: rgba(20, 20, 19, 0.78);
+		backdrop-filter: blur(6px);
+		color: #f7f6f1;
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		padding: 0.28rem 0.6rem;
+		border-radius: 999px;
+	}
+
+	/* Card text */
+	.card-body {
+		padding: 1.25rem 1.35rem 1.2rem;
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
+
+	.card-meta-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-bottom: 0.6rem;
+	}
+
+	.card-artist {
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		color: var(--gray);
+		margin-bottom: 0.2rem;
+	}
+
+	.card-title {
+		font-family: var(--font-display);
+		font-size: 1.32rem;
+		line-height: 1.18;
+		color: var(--ink);
+		margin: 0 0 0.55rem;
+		transition: color 0.18s ease;
+	}
+
+	.post-card:hover .card-title {
+		color: var(--green);
+	}
+
+	.card-desc {
+		margin: 0 0 1rem;
+		font-size: 0.94rem;
+		line-height: 1.55;
+		color: var(--ink-soft);
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.lead-tasting {
+		padding: 0.75rem 0.95rem;
+		background: var(--green-tint);
+		border-left: 3px solid var(--green);
+		border-radius: 0 6px 6px 0;
+		margin: 0 0 1.2rem;
+	}
+
+	.lead-tasting-label {
+		display: block;
+		font-family: var(--font-mono);
+		font-size: 0.66rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.11em;
+		color: var(--green);
+		margin-bottom: 0.2rem;
+	}
+
+	.lead-tasting-quote {
+		font-family: var(--font-serif);
+		font-style: italic;
+		font-size: 1rem;
+		color: var(--ink);
+		line-height: 1.4;
+	}
+
+	.card-footer {
+		margin-top: auto;
+		padding-top: 0.75rem;
+		border-top: 1px solid var(--rule);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.card-read-cta {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		font-weight: 600;
+		color: var(--green);
+		transition: transform 0.18s ease;
+	}
+
+	.post-card:hover .card-read-cta {
+		transform: translateX(3px);
+	}
+
+	@media (max-width: 860px) {
+		.variant-lead .card-link {
+			grid-template-columns: 1fr;
+		}
+
+		.variant-lead .card-media {
+			min-height: 240px;
+			aspect-ratio: 16 / 10;
+		}
+
+		.variant-lead .card-body {
+			padding: 1.4rem;
+		}
+	}
+</style>

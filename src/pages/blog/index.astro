@@ -1,62 +1,311 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseHead from '../../components/BaseHead.astro';
-import FeaturedCard from '../../components/FeaturedCard.astro';
 import Footer from '../../components/Footer.astro';
 import Header from '../../components/Header.astro';
+import NewsletterStrip from '../../components/NewsletterStrip.astro';
+import PostCard from '../../components/PostCard.astro';
 import { SITE_TITLE } from '../../consts';
+import {
+	CATEGORY_LABELS,
+	getAllCratePicks,
+	getPublishedPosts,
+	inferCategory,
+	type PostCategory,
+} from '../../lib/music';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const posts = await getPublishedPosts();
+const cratePicks = await getAllCratePicks();
+const leadPost = posts[0];
+const restPosts = posts.slice(1);
+
+const categoryCounts = new Map<PostCategory, number>();
+for (const p of posts) {
+	const c = inferCategory(p);
+	categoryCounts.set(c, (categoryCounts.get(c) ?? 0) + 1);
+}
+const activeCategories = [...categoryCounts.entries()];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Blog | ${SITE_TITLE}`} description="Thoughts on music, albums, and the sounds that move me" />
+		<BaseHead
+			title={`Music Desk | ${SITE_TITLE}`}
+			description="New Music Friday crates, album reviews, year-end lists, and human-curated music discovery from Sigil."
+		/>
 		<style>
-			.section-header {
+			.desk-hero {
+				padding-bottom: 2rem;
+				margin-bottom: 2.25rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.desk-hero-grid {
 				display: flex;
 				justify-content: space-between;
-				align-items: baseline;
-				margin-bottom: 2rem;
+				align-items: flex-end;
+				gap: 2rem;
 				flex-wrap: wrap;
-				gap: 1rem;
 			}
-			
-			.section-header h1 {
+
+			.desk-hero h1 {
+				margin: 0.3rem 0 0.5rem;
+			}
+
+			.desk-hero p {
 				margin: 0;
+				font-family: var(--font-serif);
+				font-size: 1.2rem;
+				color: var(--ink-soft);
+				max-width: 56ch;
 			}
-			
-			.section-header p {
+
+			.desk-stats {
+				display: flex;
+				gap: 1.75rem;
+			}
+
+			.desk-stat strong {
+				display: block;
+				font-family: var(--font-display);
+				font-size: 2.1rem;
+				line-height: 1;
+				color: var(--green);
+			}
+
+			.desk-stat span {
+				font-family: var(--font-mono);
+				font-size: 0.72rem;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
 				color: var(--gray);
-				font-size: 1.1rem;
-				margin: 0;
+			}
+
+			/* Toolbar: Filters + Search */
+			.desk-toolbar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 2rem;
+			}
+
+			.filter-tabs {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+			}
+
+			.filter-tab {
+				border: 1px solid var(--rule-strong);
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-mono);
+				font-size: 0.76rem;
+				font-weight: 500;
+				padding: 0.45rem 0.9rem;
+				border-radius: 999px;
+				cursor: pointer;
+				transition: all 0.16s ease;
+			}
+
+			.filter-tab:hover {
+				border-color: var(--green);
+				color: var(--green);
+			}
+
+			.filter-tab.is-active {
+				background: var(--green);
+				border-color: var(--green);
+				color: var(--white);
+			}
+
+			.desk-search {
+				position: relative;
+				min-width: 240px;
+				flex: 0 1 300px;
+			}
+
+			.desk-search input {
+				width: 100%;
+				padding: 0.52rem 0.9rem;
+				border: 1px solid var(--rule-strong);
+				border-radius: 999px;
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-sans);
+				font-size: 0.9rem;
+				outline: none;
+				transition: border-color 0.16s ease;
+			}
+
+			.desk-search input:focus {
+				border-color: var(--green);
+			}
+
+			.lead-wrap {
+				margin-bottom: 2rem;
+			}
+
+			.archive-grid {
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 1.35rem;
+			}
+
+			.empty-state {
+				display: none;
+				text-align: center;
+				padding: 3rem 1.5rem;
+				border: 1px dashed var(--rule-strong);
+				border-radius: var(--radius-md);
+				color: var(--gray);
+				font-family: var(--font-mono);
+				font-size: 0.9rem;
+			}
+
+			.empty-state.is-visible {
+				display: block;
+			}
+
+			.is-hidden {
+				display: none !important;
+			}
+
+			@media (max-width: 960px) {
+				.archive-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 640px) {
+				.archive-grid {
+					grid-template-columns: 1fr;
+				}
+
+				.desk-search {
+					width: 100%;
+					flex: 1 1 100%;
+				}
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
-			<div class="section-header">
-				<h1>Music News & Reviews</h1>
+			<section class="desk-hero">
+				<div class="desk-hero-grid">
+					<div>
+						<span class="kicker">Sigil Publication</span>
+						<h1>Music Desk</h1>
+						<p>
+							Weekly New Music Friday crates, album reviews, and songs on repeat — searchable across every artist and
+							tasting note.
+						</p>
+					</div>
+					<div class="desk-stats">
+						<div class="desk-stat">
+							<strong>{posts.length}</strong>
+							<span>Issues</span>
+						</div>
+						<div class="desk-stat">
+							<strong>{cratePicks.length}</strong>
+							<span>Albums Picked</span>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<div class="desk-toolbar">
+				<div class="filter-tabs" role="tablist" aria-label="Filter by category">
+					<button type="button" class="filter-tab is-active" data-filter="all">
+						All ({posts.length})
+					</button>
+					{activeCategories.map(([cat, count]) => (
+						<button type="button" class="filter-tab" data-filter={cat}>
+							{CATEGORY_LABELS[cat]} ({count})
+						</button>
+					))}
+				</div>
+
+				<div class="desk-search">
+					<label for="desk-search-input" class="sr-only">Search issues, artists, or albums</label>
+					<input
+						id="desk-search-input"
+						type="search"
+						placeholder="Search artist, album, or tasting note…"
+						data-desk-search
+					/>
+				</div>
 			</div>
 
-			<div class="posts-list">
-				{posts.map((post, index) => (
-					<FeaturedCard
-						title={post.data.title}
-						subtitle={post.data.artist}
-						description={post.data.description}
-						href={`/blog/${post.id}`}
-						image={post.data.heroImage}
-						imageAlt={post.data.title}
-						reverse={index % 2 === 1}
-					/>
+			{leadPost && (
+				<div class="lead-wrap" data-lead-wrap>
+					<PostCard post={leadPost} variant="lead" />
+				</div>
+			)}
+
+			<div class="archive-grid" data-archive-grid>
+				{restPosts.map((post) => (
+					<PostCard post={post} variant="grid" />
 				))}
 			</div>
+
+			<div class="empty-state" data-empty-state>
+				No issues match that filter. Try clearing your search or checking <a href="/crate">The Crate</a>.
+			</div>
+
+			<section style="margin-top: 4rem;">
+				<NewsletterStrip compact={true} />
+			</section>
 		</main>
 		<Footer />
+
+		<script>
+			const tabs = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+			const searchInput = document.querySelector<HTMLInputElement>('[data-desk-search]');
+			const cards = document.querySelectorAll<HTMLElement>('[data-post-card]');
+			const leadWrap = document.querySelector<HTMLElement>('[data-lead-wrap]');
+			const emptyState = document.querySelector<HTMLElement>('[data-empty-state]');
+
+			let activeCat = 'all';
+
+			function applyFilters() {
+				const query = (searchInput?.value ?? '').trim().toLowerCase();
+				let visibleCount = 0;
+
+				cards.forEach((card) => {
+					const cat = card.dataset.category ?? '';
+					const blob = card.dataset.search ?? '';
+					const matchesCat = activeCat === 'all' || cat === activeCat;
+					const matchesQuery = !query || blob.includes(query);
+					const show = matchesCat && matchesQuery;
+					card.classList.toggle('is-hidden', !show);
+					card.hidden = !show;
+					if (show) visibleCount++;
+				});
+
+				if (leadWrap) {
+					const leadCard = leadWrap.querySelector<HTMLElement>('[data-post-card]');
+					const leadHidden = leadCard ? leadCard.classList.contains('is-hidden') : false;
+					leadWrap.classList.toggle('is-hidden', leadHidden);
+					leadWrap.hidden = leadHidden;
+				}
+
+				emptyState?.classList.toggle('is-visible', visibleCount === 0);
+			}
+
+			tabs.forEach((tab) => {
+				tab.addEventListener('click', () => {
+					tabs.forEach((t) => t.classList.remove('is-active'));
+					tab.classList.add('is-active');
+					activeCat = tab.dataset.filter ?? 'all';
+					applyFilters();
+				});
+			});
+
+			searchInput?.addEventListener('input', applyFilters);
+		</script>
 	</body>
 </html>

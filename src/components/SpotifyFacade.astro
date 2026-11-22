@@ -1,0 +1,173 @@
+---
+interface Props {
+	embedUrl: string;
+	title?: string;
+}
+
+const { embedUrl, title = 'Listen to this issue’s Spotify playlist' } = Astro.props;
+const openUrl = embedUrl.replace('/embed/', '/').split('?')[0];
+---
+
+<div class="spotify-facade" data-spotify-facade data-embed-url={embedUrl}>
+	<div class="facade-shell">
+		<div class="facade-left">
+			<button type="button" class="facade-play" data-load-spotify aria-label="Load Spotify player">
+				<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+					<path d="M4 2.5v11l9.5-5.5L4 2.5z" />
+				</svg>
+			</button>
+			<div class="facade-meta">
+				<span class="facade-kicker">Companion Playlist</span>
+				<strong class="facade-title">{title}</strong>
+			</div>
+		</div>
+		<div class="facade-actions">
+			<button type="button" class="facade-btn-load" data-load-spotify>Load Player</button>
+			<a
+				href={openUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="facade-btn-ext"
+				data-umami-event="spotify-playlist-open"
+			>
+				Open Spotify ↗
+			</a>
+		</div>
+	</div>
+</div>
+
+<style>
+	.spotify-facade {
+		margin: 0 0 2.5rem;
+		position: relative;
+		overflow: hidden;
+		border-radius: 12px;
+		isolation: isolate;
+	}
+
+	.facade-shell {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+		padding: 1rem 1.25rem;
+		background: #171a17;
+		color: #f7f6f1;
+		border-radius: var(--radius-md);
+		border: 1px solid rgba(255, 255, 255, 0.08);
+	}
+
+	.facade-left {
+		display: flex;
+		align-items: center;
+		gap: 0.9rem;
+		min-width: 0;
+	}
+
+	.facade-play {
+		width: 44px;
+		height: 44px;
+		border-radius: 50%;
+		border: none;
+		background: #3e7d3c;
+		color: #ffffff;
+		display: grid;
+		place-items: center;
+		cursor: pointer;
+		flex-shrink: 0;
+		transition: transform 0.18s ease, background 0.18s ease;
+	}
+
+	.facade-play:hover {
+		background: #4fa14c;
+		transform: scale(1.05);
+	}
+
+	.facade-meta {
+		display: flex;
+		flex-direction: column;
+		gap: 0.12rem;
+	}
+
+	.facade-kicker {
+		font-family: var(--font-mono);
+		font-size: 0.68rem;
+		text-transform: uppercase;
+		letter-spacing: 0.12em;
+		color: #9ed29c;
+	}
+
+	.facade-title {
+		font-family: var(--font-display);
+		font-size: 1rem;
+		font-weight: 600;
+		color: #f7f6f1;
+		line-height: 1.25;
+	}
+
+	.facade-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+	}
+
+	.facade-btn-load {
+		border: 1px solid rgba(247, 246, 241, 0.25);
+		background: rgba(247, 246, 241, 0.1);
+		color: #f7f6f1;
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		font-weight: 500;
+		padding: 0.45rem 0.85rem;
+		border-radius: 999px;
+		cursor: pointer;
+		transition: background 0.18s ease, border-color 0.18s ease;
+	}
+
+	.facade-btn-load:hover {
+		background: rgba(247, 246, 241, 0.18);
+		border-color: rgba(247, 246, 241, 0.5);
+	}
+
+	.facade-btn-ext {
+		font-family: var(--font-mono);
+		font-size: 0.76rem;
+		color: #9ed29c;
+		padding: 0.45rem 0.75rem;
+		border-radius: 999px;
+		text-decoration: none;
+	}
+
+	.facade-btn-ext:hover {
+		color: #ffffff;
+		background: rgba(255, 255, 255, 0.08);
+	}
+
+	.spotify-facade :global(iframe) {
+		width: 100%;
+		height: 352px;
+		border: 0;
+		border-radius: 12px;
+		display: block;
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-spotify-facade]').forEach((root) => {
+		const url = root.dataset.embedUrl;
+		if (!url) return;
+		root.querySelectorAll('[data-load-spotify]').forEach((btn) => {
+			btn.addEventListener('click', () => {
+				const iframe = document.createElement('iframe');
+				iframe.src = url;
+				iframe.style.cssText = 'width:100%;height:352px;border:0;border-radius:12px;display:block;overflow:hidden;';
+				iframe.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+				iframe.allowFullscreen = true;
+				iframe.loading = 'eager';
+				iframe.title = 'Spotify playlist player';
+				root.replaceChildren(iframe);
+			});
+		});
+	});
+</script>

@@ -1,0 +1,328 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import NewsletterStrip from '../components/NewsletterStrip.astro';
+import { SITE_TITLE } from '../consts';
+import { buildSearchLinks, getUpcomingReleases, groupUpcomingByDate } from '../lib/music';
+
+const releases = getUpcomingReleases();
+const grouped = groupUpcomingByDate(releases);
+const lanes = [...new Set(releases.map((r) => r.lane))].sort();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Release Calendar | ${SITE_TITLE}`}
+			description="Upcoming albums on Sigil’s release radar — grouped by Friday with lane filters and a subscribable .ics calendar feed."
+		/>
+		<style>
+			.cal-hero {
+				padding-bottom: 2rem;
+				margin-bottom: 2rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.cal-hero-row {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: 1.5rem;
+				flex-wrap: wrap;
+			}
+
+			.cal-hero h1 {
+				margin: 0.3rem 0 0.5rem;
+			}
+
+			.cal-hero p {
+				margin: 0;
+				font-family: var(--font-serif);
+				font-size: 1.2rem;
+				color: var(--ink-soft);
+				max-width: 56ch;
+			}
+
+			.cal-hero-actions {
+				display: flex;
+				gap: 0.65rem;
+				flex-wrap: wrap;
+			}
+
+			.lane-bar {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem;
+				margin-bottom: 2.5rem;
+			}
+
+			.lane-pill {
+				border: 1px solid var(--rule-strong);
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				padding: 0.42rem 0.85rem;
+				border-radius: 999px;
+				cursor: pointer;
+				transition: all 0.16s ease;
+			}
+
+			.lane-pill:hover {
+				border-color: var(--green);
+				color: var(--green);
+			}
+
+			.lane-pill.is-active {
+				background: var(--green);
+				border-color: var(--green);
+				color: var(--white);
+			}
+
+			.release-day-group {
+				display: grid;
+				grid-template-columns: 220px minmax(0, 1fr);
+				gap: 2rem;
+				padding: 2rem 0;
+				border-top: 1px solid var(--rule);
+			}
+
+			.release-day-group:first-of-type {
+				border-top: none;
+				padding-top: 0;
+			}
+
+			.day-col {
+				position: sticky;
+				top: 5.5rem;
+				align-self: start;
+			}
+
+			.day-date {
+				font-family: var(--font-display);
+				font-size: 1.4rem;
+				font-weight: 700;
+				color: var(--green);
+				line-height: 1.15;
+				margin: 0 0 0.25rem;
+			}
+
+			.day-count {
+				font-family: var(--font-mono);
+				font-size: 0.74rem;
+				color: var(--gray);
+			}
+
+			.day-items {
+				display: flex;
+				flex-direction: column;
+				gap: 0.9rem;
+			}
+
+			.release-row {
+				background: var(--paper-card);
+				border: 1px solid var(--rule);
+				border-radius: var(--radius-md);
+				padding: 1.1rem 1.25rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-start;
+				gap: 1.25rem;
+				transition: border-color 0.18s ease;
+			}
+
+			.release-row:hover {
+				border-color: var(--green);
+			}
+
+			.release-info {
+				min-width: 0;
+			}
+
+			.release-meta {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 0.45rem;
+				margin-bottom: 0.35rem;
+			}
+
+			.release-lane-tag {
+				font-family: var(--font-mono);
+				font-size: 0.68rem;
+				font-weight: 600;
+				padding: 0.16rem 0.5rem;
+				border-radius: 999px;
+				background: var(--green-tint);
+				color: var(--green);
+			}
+
+			.release-type-tag {
+				font-family: var(--font-mono);
+				font-size: 0.68rem;
+				color: var(--gray);
+			}
+
+			.release-heading {
+				font-family: var(--font-display);
+				font-size: 1.2rem;
+				line-height: 1.2;
+				color: var(--ink);
+				margin: 0 0 0.25rem;
+			}
+
+			.release-artist {
+				font-weight: 600;
+				color: var(--ink-soft);
+				font-size: 0.94rem;
+				margin-bottom: 0.45rem;
+			}
+
+			.release-why {
+				margin: 0;
+				font-size: 0.9rem;
+				line-height: 1.5;
+				color: var(--gray);
+			}
+
+			.release-links {
+				display: flex;
+				flex-direction: column;
+				gap: 0.4rem;
+				flex-shrink: 0;
+			}
+
+			.is-hidden {
+				display: none !important;
+			}
+
+			@media (max-width: 820px) {
+				.release-day-group {
+					grid-template-columns: 1fr;
+					gap: 1rem;
+				}
+
+				.day-col {
+					position: static;
+				}
+
+				.release-row {
+					flex-direction: column;
+				}
+
+				.release-links {
+					flex-direction: row;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="cal-hero">
+				<div class="cal-hero-row">
+					<div>
+						<span class="kicker">Release Radar</span>
+						<h1>Upcoming Releases</h1>
+						<p>
+							{releases.length} forthcoming albums we’re watching across the next few months. Add the live feed directly
+							to Apple Calendar or Google Calendar.
+						</p>
+					</div>
+					<div class="cal-hero-actions">
+						<a href="/releases.ics" class="btn" download>↓ Subscribe (.ics)</a>
+						<a href="/blog" class="btn btn-outline">Latest NMF →</a>
+					</div>
+				</div>
+			</section>
+
+			<div class="lane-bar" role="tablist" aria-label="Filter releases by lane">
+				<button type="button" class="lane-pill is-active" data-lane-filter="all">
+					All Lanes ({releases.length})
+				</button>
+				{lanes.map((lane) => (
+					<button type="button" class="lane-pill" data-lane-filter={lane}>
+						{lane} ({releases.filter((r) => r.lane === lane).length})
+					</button>
+				))}
+			</div>
+
+			<div class="calendar-groups">
+				{grouped.map((group) => (
+					<section class="release-day-group" data-day-group>
+						<div class="day-col">
+							<h2 class="day-date">{group.formattedDate}</h2>
+							<span class="day-count" data-day-count>
+								{group.items.length} {group.items.length === 1 ? 'release' : 'releases'}
+							</span>
+						</div>
+						<div class="day-items">
+							{group.items.map((item) => {
+								const links = buildSearchLinks(item.artist, item.title);
+								return (
+									<article class="release-row" data-release-row data-lane={item.lane}>
+										<div class="release-info">
+											<div class="release-meta">
+												<span class="release-lane-tag">{item.lane}</span>
+												<span class="release-type-tag">
+													{item.type}
+													{item.label ? ` · ${item.label}` : ''}
+												</span>
+											</div>
+											<h3 class="release-heading">{item.title}</h3>
+											<div class="release-artist">{item.artist}</div>
+											<p class="release-why">{item.why}</p>
+										</div>
+										<div class="release-links">
+											<a href={links.spotifyUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost">
+												Spotify ↗
+											</a>
+											<a href={links.bandcampUrl} target="_blank" rel="noopener noreferrer" class="btn-ghost">
+												Bandcamp ↗
+											</a>
+										</div>
+									</article>
+								);
+							})}
+						</div>
+					</section>
+				))}
+			</div>
+
+			<section style="margin-top: 4rem;">
+				<NewsletterStrip compact={true} />
+			</section>
+		</main>
+		<Footer />
+
+		<script>
+			const pills = document.querySelectorAll<HTMLButtonElement>('[data-lane-filter]');
+			const groups = document.querySelectorAll<HTMLElement>('[data-day-group]');
+
+			pills.forEach((pill) => {
+				pill.addEventListener('click', () => {
+					pills.forEach((p) => p.classList.remove('is-active'));
+					pill.classList.add('is-active');
+					const lane = pill.dataset.laneFilter ?? 'all';
+
+					groups.forEach((group) => {
+						const rows = group.querySelectorAll<HTMLElement>('[data-release-row]');
+						let visible = 0;
+						rows.forEach((row) => {
+							const show = lane === 'all' || row.dataset.lane === lane;
+							row.classList.toggle('is-hidden', !show);
+							if (show) visible++;
+						});
+						group.classList.toggle('is-hidden', visible === 0);
+						const counter = group.querySelector<HTMLElement>('[data-day-count]');
+						if (counter) {
+							counter.textContent = `${visible} ${visible === 1 ? 'release' : 'releases'}`;
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+</html>

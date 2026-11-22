@@ -1,9 +1,15 @@
-// Place any global data in this file.
-// You can import this data from anywhere in your site by using the `import` keyword.
+// Global site metadata and editorial config.
 
 export const SITE_TITLE = 'Sigil';
 export const SITE_DESCRIPTION =
-	'Sigil Studios — a husband-and-wife web studio based in Tacoma, WA. Bespoke design, creative development, and a music blog.';
+	'Sigil — human-curated music discovery, weekly New Music Friday crates, album reviews, and release radar from Tacoma, WA.';
 export const SITE_AUTHOR = 'Brandon Wirth';
 export const SITE_STUDIO = 'Sigil Studios';
 export const SITE_LOCATION = 'Tacoma, WA';
+
+// Point this to your rolling "Sigil Picks" Spotify playlist whenever you create one.
+export const SIGIL_PLAYLIST_URL = 'https://open.spotify.com/playlist/1UxGSA2vNRIC4Dtp1ckC6B';
+
+// Optional Buttondown / Kit / custom form action URL for the Friday Dispatch newsletter.
+// When empty, the signup form gracefully displays a confirmation + RSS fallback.
+export const NEWSLETTER_ACTION_URL = '';
