@@ -3739,6 +3739,16 @@
 			]
 		},
 		{
+			"artist": "Atlas Sound",
+			"title": "Thanatos",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "4AD",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
 			"artist": "Desperate Journalist",
 			"title": "Gilding the Lily",
 			"releaseDate": "2026-11-20",
@@ -3829,6 +3839,16 @@
 			]
 		},
 		{
+			"artist": "Ledbyher",
+			"title": "Midwinter",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Island",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
 			"artist": "Lorenzo Senni",
 			"title": "All Ages",
 			"releaseDate": "2026-11-20",
@@ -3837,6 +3857,14 @@
 			"outlets": [
 				"Pitchfork"
 			]
+		},
+		{
+			"artist": "Marvin Sapp",
+			"title": "Restoration",
+			"releaseDate": "2026-11-20",
+			"genre": "Gospel",
+			"label": "Roc Nation",
+			"outlets": []
 		},
 		{
 			"artist": "Mez",
@@ -3892,11 +3920,9 @@
 			"artist": "Take That",
 			"title": "Dreamers",
 			"releaseDate": "2026-11-20",
-			"genre": "",
+			"genre": "Pop",
 			"label": "EMI",
-			"outlets": [
-				"Hot Press"
-			]
+			"outlets": []
 		},
 		{
 			"artist": "Then Comes Silence",
@@ -3932,11 +3958,9 @@
 			"artist": "Trivium",
 			"title": "Crown in the Grave",
 			"releaseDate": "2026-11-20",
-			"genre": "",
+			"genre": "Metalcore, thrash metal, heavy metal",
 			"label": "Roadrunner",
-			"outlets": [
-				"Rock Sound"
-			]
+			"outlets": []
 		},
 		{
 			"artist": "Wolf",
@@ -4910,6 +4934,16 @@
 			]
 		},
 		{
+			"artist": "The The",
+			"title": "The Ensouled Tour – Live at the Sydney Opera House",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Cinéola, earMUSIC",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
 			"artist": "The Twang",
 			"title": "Bring Yourself",
 			"releaseDate": "2027-01-22",
@@ -5250,6 +5284,26 @@
 			]
 		},
 		{
+			"artist": "Impending Doom",
+			"title": "At the Throne of God",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Chaoszine"
+			]
+		},
+		{
+			"artist": "Kula Shaker",
+			"title": "K-Reinkarnate",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Strange F.O.L.K. Records",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
 			"artist": "Luisa Almaguer",
 			"title": "Sin Lázaro",
 			"releaseDate": "2027-02-05",
@@ -5500,6 +5554,16 @@
 			]
 		},
 		{
+			"artist": "Simon Laffy",
+			"title": "Encoda",
+			"releaseDate": "2027-02-17",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
 			"artist": "200 Stab Wounds",
 			"title": "Lowest Form",
 			"releaseDate": "2027-02-19",
@@ -5547,6 +5611,16 @@
 			"label": "BlkIIBlk",
 			"outlets": [
 				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Hans Zimmer",
+			"title": "Hans Zimmer Live – The Next Level",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Sony Classical",
+			"outlets": [
+				"Consequence"
 			]
 		},
 		{

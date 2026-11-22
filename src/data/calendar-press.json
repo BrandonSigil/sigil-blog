@@ -8,6 +8,13 @@
 				"R.E.M."
 			]
 		},
+		"https://consequence.net/2026/11/atlas-sound-new-album-thanatos-stream/": {
+			"date": "2026-11-20",
+			"source": "Consequence",
+			"artists": [
+				"Atlas Sound"
+			]
+		},
 		"https://consequence.net/2026/11/blondie-come-back-home-new-song-stream/": {
 			"date": "2026-11-20",
 			"source": "Consequence",
@@ -15,11 +22,32 @@
 				"Blondie"
 			]
 		},
+		"https://consequence.net/2026/11/hans-zimmer-live-album-the-next-level/": {
+			"date": "2026-11-20",
+			"source": "Consequence",
+			"artists": [
+				"Hans Zimmer"
+			]
+		},
 		"https://pitchfork.com/story/5-new-albums-you-should-listen-to-now-atlas-sound-toro-y-moi-and-more/": {
 			"date": "2026-11-20",
 			"source": "Pitchfork",
 			"artists": [
 				"Toro y Moi"
+			]
+		},
+		"https://pitchfork.com/story/atlas-sound-surprise-releases-first-album-in-15-years/": {
+			"date": "2026-11-20",
+			"source": "Pitchfork",
+			"artists": [
+				"Atlas Sound"
+			]
+		},
+		"https://stereogum.com/2518717/bradford-cox-surprise-releases-thanatos-atlas-sounds-first-new-album-in-15-years/music/": {
+			"date": "2026-11-20",
+			"source": "Stereogum",
+			"artists": [
+				"Atlas Sound"
 			]
 		},
 		"https://stereogum.com/2518801/blondie-come-back-home-feat-lucius/music/": {
@@ -48,6 +76,13 @@
 			"source": "NME",
 			"artists": [
 				"Madra Salach"
+			]
+		},
+		"https://www.rollingstone.com/music/music-news/atlas-sound-bradford-cox-surprise-new-album-thanatos-1235661600/": {
+			"date": "2026-11-20",
+			"source": "Rolling Stone",
+			"artists": [
+				"Atlas Sound"
 			]
 		},
 		"https://www.rollingstone.com/music/music-news/blondie-release-new-song-come-back-home-1235661533/": {
