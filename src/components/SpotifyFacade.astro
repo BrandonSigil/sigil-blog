@@ -52,10 +52,11 @@ const openUrl = embedUrl.replace('/embed/', '/').split('?')[0];
 		gap: 1rem;
 		flex-wrap: wrap;
 		padding: 1rem 1.25rem;
-		background: #171a17;
+		background: var(--green-deep);
 		color: #f7f6f1;
 		border-radius: var(--radius-md);
-		border: 1px solid rgba(255, 255, 255, 0.08);
+		border: 1px solid var(--green);
+		box-shadow: 4px 4px 0 var(--green-shadow);
 	}
 
 	.facade-left {
@@ -70,8 +71,8 @@ const openUrl = embedUrl.replace('/embed/', '/').split('?')[0];
 		height: 44px;
 		border-radius: 50%;
 		border: none;
-		background: #3e7d3c;
-		color: #ffffff;
+		background: #f7f6f1;
+		color: var(--green-deep);
 		display: grid;
 		place-items: center;
 		cursor: pointer;
@@ -80,7 +81,7 @@ const openUrl = embedUrl.replace('/embed/', '/').split('?')[0];
 	}
 
 	.facade-play:hover {
-		background: #4fa14c;
+		background: #ffffff;
 		transform: scale(1.05);
 	}
 

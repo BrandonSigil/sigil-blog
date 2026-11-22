@@ -23,7 +23,7 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 			.crate-hero {
 				padding-bottom: 2rem;
 				margin-bottom: 2rem;
-				border-bottom: 1px solid var(--ink);
+				border-bottom: 1px solid var(--green);
 			}
 
 			.crate-hero-top {
@@ -167,18 +167,18 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 
 			.record-card {
 				background: var(--paper-card);
-				border: 1px solid var(--rule);
+				border: 1px solid var(--rule-strong);
 				border-radius: var(--radius-md);
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+				transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
 			}
 
 			.record-card:hover {
-				transform: translateY(-3px);
+				transform: translate(-2px, -2px);
 				border-color: var(--green);
-				box-shadow: 0 12px 26px rgba(20, 20, 19, 0.06);
+				box-shadow: 4px 4px 0 var(--green);
 			}
 
 			.record-main-link {
@@ -211,7 +211,7 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 				position: absolute;
 				bottom: 0.55rem;
 				left: 0.55rem;
-				background: rgba(20, 20, 19, 0.78);
+				background: rgba(36, 74, 35, 0.88);
 				backdrop-filter: blur(4px);
 				color: #f7f6f1;
 				font-family: var(--font-mono);

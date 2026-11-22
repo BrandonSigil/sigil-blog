@@ -13,20 +13,21 @@
 	--green-tint-strong: rgba(62, 125, 60, 0.14);
 
 	--white: #ffffff;
-	--black: #141413;
-	--ink: #141413;
-	--ink-soft: #4e4e4a;
-	--gray: #63625d;
-	--gray-light: #dfddd5;
-	--gray-lighter: #eeede6;
+	--black: #182618;
+	--ink: #182618;
+	--ink-soft: #435443;
+	--gray: #5b6d5b;
+	--gray-light: #d6dfd4;
+	--gray-lighter: #eaeee7;
 
 	--bg: #f7f6f1;
 	--cream: #f7f6f1;
 	--paper: #f7f6f1;
 	--paper-card: #fcfbf8;
-	--rule: rgba(20, 20, 19, 0.12);
-	--rule-strong: rgba(20, 20, 19, 0.22);
-	--rule-green: rgba(62, 125, 60, 0.32);
+	--rule: rgba(62, 125, 60, 0.2);
+	--rule-strong: rgba(62, 125, 60, 0.42);
+	--rule-green: rgba(62, 125, 60, 0.55);
+	--green-shadow: rgba(44, 91, 43, 0.24);
 
 	--font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -191,7 +192,7 @@ pre {
 	padding: 1.4em;
 	border-radius: var(--radius-md);
 	overflow-x: auto;
-	background: var(--ink);
+	background: var(--green-deep);
 	color: var(--white);
 }
 

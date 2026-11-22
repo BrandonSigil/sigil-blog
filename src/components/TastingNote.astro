@@ -25,9 +25,9 @@ const { note, compact = false, tilt = false } = Astro.props;
 <style>
 	.hype-note {
 		background: var(--paper-card);
-		border: 1px solid var(--ink);
+		border: 1px solid var(--green);
 		border-radius: 4px;
-		box-shadow: 3px 3px 0 var(--green);
+		box-shadow: 3px 3px 0 var(--green-shadow);
 		margin: 0.9rem 0 1.25rem;
 		overflow: hidden;
 		transition: transform 0.16s ease, box-shadow 0.16s ease;
@@ -47,7 +47,7 @@ const { note, compact = false, tilt = false } = Astro.props;
 		align-items: center;
 		justify-content: space-between;
 		padding: 0.28rem 0.75rem;
-		background: var(--ink);
+		background: var(--green);
 		color: #f7f6f1;
 		font-family: var(--font-mono);
 		font-size: 11px;
@@ -60,11 +60,11 @@ const { note, compact = false, tilt = false } = Astro.props;
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		color: #b7e2b5;
+		color: #f7f6f1;
 	}
 
 	.hype-note-dots {
-		opacity: 0.5;
+		opacity: 0.65;
 		letter-spacing: 0.16em;
 	}
 
@@ -81,7 +81,7 @@ const { note, compact = false, tilt = false } = Astro.props;
 
 	.hype-note.compact {
 		margin: 0.55rem 0 0;
-		box-shadow: 3px 3px 0 var(--green);
+		box-shadow: 3px 3px 0 var(--green-shadow);
 	}
 
 	.hype-note.compact .hype-note-bar {

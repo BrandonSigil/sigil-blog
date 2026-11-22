@@ -62,9 +62,9 @@ const { compact = false } = Astro.props;
 <style>
 	.dispatch-window {
 		background: var(--paper-card);
-		border: 1px solid var(--ink);
+		border: 1px solid var(--green);
 		border-radius: 6px;
-		box-shadow: 5px 5px 0 var(--green);
+		box-shadow: 5px 5px 0 var(--green-shadow);
 		overflow: hidden;
 	}
 
@@ -74,7 +74,7 @@ const { compact = false } = Astro.props;
 		gap: 0.6rem;
 		height: 1.9rem;
 		padding: 0 0.65rem;
-		border-bottom: 1px solid var(--ink);
+		border-bottom: 1px solid var(--green);
 		background: var(--paper);
 		font-family: var(--font-mono);
 	}
@@ -82,7 +82,7 @@ const { compact = false } = Astro.props;
 	.dw-box {
 		width: 0.68rem;
 		height: 0.68rem;
-		border: 1px solid var(--ink);
+		border: 1px solid var(--green);
 		background: var(--paper-card);
 		flex: none;
 	}
@@ -90,13 +90,14 @@ const { compact = false } = Astro.props;
 	.dw-stripes {
 		flex: 1;
 		height: 0.68rem;
-		background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 4px);
+		background: repeating-linear-gradient(to bottom, var(--green) 0 1px, transparent 1px 4px);
+		opacity: 0.7;
 	}
 
 	.dw-title {
 		font-size: 11px;
 		font-weight: 500;
-		color: var(--ink);
+		color: var(--green-dark);
 		white-space: nowrap;
 	}
 
@@ -138,7 +139,7 @@ const { compact = false } = Astro.props;
 	.dispatch-form input {
 		flex: 1;
 		min-width: 0;
-		border: 1px solid var(--ink);
+		border: 1px solid var(--rule-strong);
 		border-radius: 5px;
 		background: var(--paper);
 		color: var(--ink);
@@ -154,10 +155,10 @@ const { compact = false } = Astro.props;
 	}
 
 	.dispatch-form button {
-		border: 1px solid var(--ink);
+		border: 1px solid var(--green-dark);
 		background: var(--green);
 		color: #ffffff;
-		box-shadow: 3px 3px 0 var(--ink);
+		box-shadow: 3px 3px 0 var(--green-shadow);
 		font-family: var(--font-mono);
 		font-weight: 500;
 		font-size: 12px;
@@ -170,7 +171,7 @@ const { compact = false } = Astro.props;
 	}
 
 	.dispatch-form button:hover {
-		background: var(--ink);
+		background: var(--green-dark);
 		transform: translate(-1px, -1px);
 		box-shadow: 4px 4px 0 var(--green);
 	}
