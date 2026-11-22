@@ -1,5 +1,5 @@
 {
-	"updatedAt": "2026-11-22T04:24:06.824Z",
+	"updatedAt": "2026-11-22T04:32:52.417Z",
 	"albums": [
 		{
 			"id": "gabriels-blood-on-my-hands",
@@ -9,7 +9,7 @@
 			"genre": "Soul & funk",
 			"type": "EP",
 			"source": "week",
-			"cover": null,
+			"cover": "gabriels-blood-on-my-hands.jpg",
 			"listen": "https://open.spotify.com/search/Gabriels%20Blood%20On%20My%20Hands"
 		},
 		{
@@ -20,7 +20,7 @@
 			"genre": "Jazz & ambient",
 			"type": "LP",
 			"source": "week",
-			"cover": null,
+			"cover": "joshua-redman-if-ever-you-would-leave-us-we-play-for-rollins.jpg",
 			"listen": "https://open.spotify.com/search/Joshua%20Redman%20If%20Ever%20You%20Would%20Leave%20Us%20(We%20Play%20for%20Rollins)"
 		},
 		{
