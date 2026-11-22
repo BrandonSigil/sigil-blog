@@ -489,6 +489,12 @@ const structuredData = [
 				margin-bottom: 4rem;
 			}
 
+			@media (max-width: 600px) {
+				.news-section :global(.news-item:nth-child(n + 4)) {
+					display: none;
+				}
+			}
+
 			.featured-posts {
 				margin-bottom: 2rem;
 			}
