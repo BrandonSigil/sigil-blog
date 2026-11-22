@@ -15,8 +15,8 @@ function nextDay(iso: string): string {
 	return dt.toISOString().slice(0, 10).replace(/-/g, '');
 }
 
-export const GET: APIRoute = () => {
-	const releases = getUpcomingReleases().filter((r) => /^\d{4}-\d{2}-\d{2}$/.test(r.releaseDate));
+export const GET: APIRoute = async () => {
+	const releases = (await getUpcomingReleases()).filter((r) => /^\d{4}-\d{2}-\d{2}$/.test(r.releaseDate));
 	const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
 
 	const lines: string[] = [
@@ -37,7 +37,7 @@ export const GET: APIRoute = () => {
 		const desc = [
 			r.type ? `Format: ${r.type}` : '',
 			r.label ? `Label: ${r.label}` : '',
-			`Genre: ${r.lane}`,
+			r.lane ? `Genre: ${r.lane}` : '',
 			'https://sigil.studio/calendar',
 		]
 			.filter(Boolean)

@@ -7,9 +7,19 @@ import NewsletterStrip from '../components/NewsletterStrip.astro';
 import { SITE_TITLE } from '../consts';
 import { buildSearchLinks, getUpcomingReleases, groupUpcomingByDate } from '../lib/music';
 
-const releases = getUpcomingReleases();
-const grouped = groupUpcomingByDate(releases);
-const lanes = [...new Set(releases.map((r) => r.lane))].sort();
+const allReleases = await getUpcomingReleases({ scope: 'all' });
+const radarReleases = allReleases.filter((r) => r.isRadar);
+const grouped = groupUpcomingByDate(allReleases);
+const lanes = [...new Set(allReleases.map((r) => r.lane).filter(Boolean))].sort();
+
+const seenMonths = new Set<string>();
+const groupedWithAnchors = grouped.map((group) => {
+	const month = group.date.slice(0, 7);
+	const monthAnchor = !seenMonths.has(month) ? `m-${month}` : undefined;
+	seenMonths.add(month);
+	const hasRadar = group.items.some((item) => item.isRadar);
+	return { ...group, monthAnchor, hasRadar };
+});
 ---
 
 <!doctype html>
@@ -17,12 +27,12 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 	<head>
 		<BaseHead
 			title={`Release Calendar | ${SITE_TITLE}`}
-			description="Upcoming albums on Sigil’s release radar — grouped by Friday with lane filters and a subscribable .ics calendar feed."
+			description="Upcoming albums on Sigil’s release calendar — updated daily, grouped by date with lane filters and a subscribable .ics feed."
 		/>
 		<style>
 			.cal-hero {
 				padding-bottom: 2rem;
-				margin-bottom: 2rem;
+				margin-bottom: 1.75rem;
 				border-bottom: 1px solid var(--green);
 			}
 
@@ -45,7 +55,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				letter-spacing: -0.01em;
 				line-height: 1.5;
 				color: var(--ink-soft);
-				max-width: 54ch;
+				max-width: 56ch;
 			}
 
 			.cal-hero-actions {
@@ -54,11 +64,61 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				flex-wrap: wrap;
 			}
 
+			.cal-controls {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem 1.5rem;
+				flex-wrap: wrap;
+				margin-bottom: 2rem;
+			}
+
+			.scope-switch {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.25rem;
+				padding: 0.22rem;
+				border: 1px solid var(--rule-strong);
+				border-radius: 7px;
+				background: var(--paper-card);
+			}
+
+			.scope-btn {
+				border: none;
+				background: transparent;
+				color: var(--ink-soft);
+				font-family: var(--font-mono);
+				font-size: 11.5px;
+				font-weight: 500;
+				padding: 0.36rem 0.78rem;
+				border-radius: 5px;
+				cursor: pointer;
+				font-variant-numeric: tabular-nums;
+				transition:
+					transform var(--dur-press) var(--ease-out),
+					color var(--dur-fast) var(--ease-out),
+					background-color var(--dur-fast) var(--ease-out);
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.scope-btn:hover {
+					color: var(--green-dark);
+				}
+			}
+
+			.scope-btn:active {
+				transform: scale(0.96);
+			}
+
+			.scope-btn.is-active {
+				background: var(--green);
+				color: var(--white);
+			}
+
 			.lane-bar {
 				display: flex;
 				flex-wrap: wrap;
-				gap: 0.45rem;
-				margin-bottom: 2.25rem;
+				gap: 0.4rem;
 			}
 
 			.lane-pill {
@@ -68,7 +128,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				font-family: var(--font-mono);
 				font-size: 11.5px;
 				font-weight: 500;
-				padding: 0.4rem 0.85rem;
+				padding: 0.38rem 0.8rem;
 				border-radius: 5px;
 				cursor: pointer;
 				font-variant-numeric: tabular-nums;
@@ -107,6 +167,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				display: grid;
 				grid-template-columns: 120px minmax(0, 1fr);
 				border-top: 1px solid var(--rule-strong);
+				scroll-margin-top: 5.5rem;
 			}
 
 			.release-day-group:first-child {
@@ -133,6 +194,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				color: var(--green);
 				line-height: 1.2;
 				margin: 0;
+				font-variant-numeric: tabular-nums;
 			}
 
 			.day-items {
@@ -185,13 +247,6 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				margin-left: 0.2rem;
 			}
 
-			.release-why {
-				margin: 0.2rem 0 0;
-				font-size: 14px;
-				line-height: 1.5;
-				color: var(--ink-soft);
-			}
-
 			.release-right {
 				display: flex;
 				align-items: center;
@@ -218,17 +273,10 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 					padding: 0.65rem 1rem;
 					border-right: none;
 					border-bottom: 1px solid var(--rule);
-					display: flex;
-					justify-content: space-between;
-					align-items: baseline;
 				}
 
 				.day-sticky {
 					position: static;
-					display: flex;
-					width: 100%;
-					justify-content: space-between;
-					align-items: baseline;
 				}
 
 				.release-row {
@@ -251,11 +299,11 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 			<section class="cal-hero">
 				<div class="cal-hero-row">
 					<div>
-						<span class="kicker">Release Radar</span>
+						<span class="kicker">Release Calendar</span>
 						<h1>Upcoming releases</h1>
 						<p>
-							{releases.length} forthcoming albums on our radar, bundled by Friday. Subscribe to the live feed in Apple
-							Calendar or Google Calendar.
+							Forthcoming albums tracked daily, bundled by release date. Subscribe to the radar feed in Apple Calendar
+							or Google Calendar.
 						</p>
 					</div>
 					<div class="cal-hero-actions">
@@ -265,20 +313,37 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				</div>
 			</section>
 
-			<div class="lane-bar" role="tablist" aria-label="Filter releases by lane" data-glide-group>
-				<button type="button" class="lane-pill is-active" data-lane-filter="all">
-					All lanes ({releases.length})
-				</button>
-				{lanes.map((lane) => (
-					<button type="button" class="lane-pill" data-lane-filter={lane}>
-						{lane} ({releases.filter((r) => r.lane === lane).length})
+			<div class="cal-controls">
+				<div class="scope-switch" role="group" aria-label="Calendar scope" data-glide-group>
+					<button type="button" class="scope-btn is-active" data-scope-btn="radar" aria-pressed="true">
+						On our radar ({radarReleases.length})
 					</button>
-				))}
+					<button type="button" class="scope-btn" data-scope-btn="all" aria-pressed="false">
+						All releases ({allReleases.length})
+					</button>
+				</div>
+
+				<div class="lane-bar" role="tablist" aria-label="Filter releases by lane" data-glide-group>
+					<button type="button" class="lane-pill is-active" data-lane-filter="all">
+						All lanes
+					</button>
+					{lanes.map((lane) => (
+						<button type="button" class="lane-pill" data-lane-filter={lane}>
+							{lane}
+						</button>
+					))}
+				</div>
 			</div>
 
 			<div class="calendar-ledger" data-glide-list>
-				{grouped.map((group) => (
-					<section class="release-day-group" data-day-group style="margin-bottom:0;">
+				{groupedWithAnchors.map((group) => (
+					<section
+						id={group.monthAnchor}
+						class:list={['release-day-group', { 'is-hidden': !group.hasRadar }]}
+						hidden={!group.hasRadar}
+						data-day-group
+						style="margin-bottom:0;"
+					>
 						<div class="day-col">
 							<div class="day-sticky">
 								<h2 class="day-date">{group.abbrevDate}</h2>
@@ -287,21 +352,26 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 						<div class="day-items">
 							{group.items.map((item) => {
 								const links = buildSearchLinks(item.artist, item.title);
+								const metaParts = [item.type, item.label].filter(Boolean).join(' · ');
 								return (
-									<article class="release-row" data-release-row data-glide-row data-lane={item.lane}>
+									<article
+										class:list={['release-row', { 'is-hidden': !item.isRadar }]}
+										hidden={!item.isRadar}
+										data-release-row
+										data-glide-row
+										data-radar={item.isRadar ? '1' : '0'}
+										data-lane={item.lane}
+									>
 										<div class="release-info">
 											<div class="release-title-line">
 												<strong>{item.artist}</strong>
 												<span class="release-dash">—</span>
 												<span>{item.title}</span>
-												<span class="release-meta-inline">
-													{item.type}
-													{item.label ? ` · ${item.label}` : ''}
-												</span>
+												{metaParts && <span class="release-meta-inline">{metaParts}</span>}
 											</div>
 										</div>
 										<div class="release-right">
-											<span class="release-lane-tag">{item.lane}</span>
+											{item.lane && <span class="release-lane-tag">{item.lane}</span>}
 											<ListenIcons
 												spotifyUrl={links.spotifyUrl}
 												youtubeUrl={links.youtubeUrl}
@@ -326,27 +396,47 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 		<Footer />
 
 		<script>
-			const pills = document.querySelectorAll<HTMLButtonElement>('[data-lane-filter]');
+			const scopeBtns = document.querySelectorAll<HTMLButtonElement>('[data-scope-btn]');
+			const lanePills = document.querySelectorAll<HTMLButtonElement>('[data-lane-filter]');
 			const groups = document.querySelectorAll<HTMLElement>('[data-day-group]');
 
-			pills.forEach((pill) => {
-				pill.addEventListener('click', () => {
-					pills.forEach((p) => p.classList.remove('is-active'));
-					pill.classList.add('is-active');
-					const lane = pill.dataset.laneFilter ?? 'all';
+			let activeScope: 'radar' | 'all' = 'radar';
+			let activeLane = 'all';
 
-					groups.forEach((group) => {
-						const rows = group.querySelectorAll<HTMLElement>('[data-release-row]');
-						let visible = 0;
-						rows.forEach((row) => {
-							const show = lane === 'all' || row.dataset.lane === lane;
-							row.classList.toggle('is-hidden', !show);
-							row.hidden = !show;
-							if (show) visible++;
-						});
-						group.classList.toggle('is-hidden', visible === 0);
-						group.hidden = visible === 0;
+			const applyFilters = () => {
+				groups.forEach((group) => {
+					const rows = group.querySelectorAll<HTMLElement>('[data-release-row]');
+					let visible = 0;
+					rows.forEach((row) => {
+						const matchesScope = activeScope === 'all' || row.dataset.radar === '1';
+						const matchesLane = activeLane === 'all' || row.dataset.lane === activeLane;
+						const show = matchesScope && matchesLane;
+						row.classList.toggle('is-hidden', !show);
+						row.hidden = !show;
+						if (show) visible++;
 					});
+					group.classList.toggle('is-hidden', visible === 0);
+					group.hidden = visible === 0;
+				});
+			};
+
+			scopeBtns.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					activeScope = (btn.dataset.scopeBtn as 'radar' | 'all') ?? 'radar';
+					scopeBtns.forEach((b) => {
+						const isCurrent = b === btn;
+						b.classList.toggle('is-active', isCurrent);
+						b.setAttribute('aria-pressed', String(isCurrent));
+					});
+					applyFilters();
+				});
+			});
+
+			lanePills.forEach((pill) => {
+				pill.addEventListener('click', () => {
+					activeLane = pill.dataset.laneFilter ?? 'all';
+					lanePills.forEach((p) => p.classList.toggle('is-active', p === pill));
+					applyFilters();
 				});
 			});
 		</script>

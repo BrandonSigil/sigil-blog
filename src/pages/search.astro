@@ -37,27 +37,34 @@ const indexJson = JSON.stringify(index).replace(/</g, '\\u003c');
 		<style>
 			.page-header {
 				margin-bottom: 2rem;
+				padding-bottom: 1.75rem;
+				border-bottom: 1px solid var(--green);
 			}
 
 			.page-header h1 {
-				margin: 0 0 1rem;
+				margin: 0.35rem 0 1.25rem;
 			}
 
 			.search-input {
 				width: 100%;
-				max-width: 40rem;
-				padding: 0.8rem 1rem;
-				border: 2px solid var(--green);
+				max-width: 42rem;
+				padding: 0.78rem 1rem;
+				border: 1px solid var(--rule-strong);
 				border-radius: 6px;
-				background: var(--white);
-				color: var(--black);
-				font: inherit;
-				font-size: 1.15rem;
+				background: var(--paper-card);
+				color: var(--ink);
+				font-family: var(--font-sans);
+				font-size: 16px;
+				box-shadow: var(--shadow-card);
+				transition:
+					border-color var(--dur-fast) var(--ease-out),
+					box-shadow var(--dur-fast) var(--ease-out);
 			}
 
 			.search-input:focus-visible {
-				outline: 2px solid var(--green-dark);
-				outline-offset: 2px;
+				outline: none;
+				border-color: var(--green);
+				box-shadow: 0 0 0 3px rgba(62, 125, 60, 0.16);
 			}
 
 			.status:empty {
@@ -65,51 +72,77 @@ const indexJson = JSON.stringify(index).replace(/</g, '\\u003c');
 			}
 
 			.status {
-				margin: 1rem 0 0;
-				font-size: 0.9rem;
+				margin: 0.85rem 0 0;
+				font-family: var(--font-mono);
+				font-size: 12px;
+				letter-spacing: 0.04em;
 				color: var(--gray);
+				font-variant-numeric: tabular-nums;
 			}
 
 			.results {
 				list-style: none;
 				margin: 0;
 				padding: 0;
-				max-width: 46rem;
+				max-width: 48rem;
+				background: var(--paper-card);
+				border-radius: 7px;
+				box-shadow: var(--shadow-card);
+				overflow: hidden;
+			}
+
+			.results:empty {
+				display: none;
 			}
 
 			.results :global(li) {
-				border-bottom: 2px solid var(--green);
+				border-top: 1px solid var(--rule);
 			}
 
 			.results :global(li:first-child) {
-				border-top: 2px solid var(--green);
+				border-top: none;
 			}
 
 			.results :global(a) {
 				display: block;
-				padding: 1.1rem 0;
+				padding: 1rem 1.25rem;
 				color: inherit;
 				text-decoration: none;
+				transition:
+					background-color var(--dur-fast) var(--ease-out),
+					transform var(--dur-press) var(--ease-out);
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.results :global(a:hover) {
+					background: var(--green-tint);
+				}
+			}
+
+			.results :global(a:active) {
+				transform: scale(0.994);
 			}
 
 			.results :global(.result-kind) {
 				display: block;
-				font-size: 0.75rem;
-				font-weight: 700;
-				letter-spacing: 0.06em;
+				font-family: var(--font-mono);
+				font-size: 11px;
+				font-weight: 500;
+				letter-spacing: 0.11em;
 				text-transform: uppercase;
-				color: var(--gray);
+				color: var(--green);
 			}
 
 			.results :global(.result-title) {
 				display: block;
-				margin: 0.15rem 0;
-				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-				font-size: 1.35rem;
-				font-weight: 700;
+				margin: 0.2rem 0 0.15rem;
+				font-family: var(--font-display);
+				font-size: 1.25rem;
+				font-weight: 600;
 				line-height: 1.2;
 				letter-spacing: -0.02em;
-				color: var(--black);
+				color: var(--ink);
+				transition: color var(--dur-fast) var(--ease-out);
 			}
 
 			.results :global(a:hover .result-title) {
@@ -118,8 +151,9 @@ const indexJson = JSON.stringify(index).replace(/</g, '\\u003c');
 
 			.results :global(.result-desc) {
 				display: block;
-				font-size: 0.95rem;
-				color: var(--gray);
+				font-size: 14.5px;
+				line-height: 1.5;
+				color: var(--ink-soft);
 			}
 		</style>
 	</head>
@@ -127,6 +161,7 @@ const indexJson = JSON.stringify(index).replace(/</g, '\\u003c');
 		<Header />
 		<main>
 			<header class="page-header">
+				<span class="kicker">Archive Search</span>
 				<h1>Search</h1>
 				<input
 					class="search-input"

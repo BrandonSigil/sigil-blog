@@ -9,7 +9,7 @@ interface Props {
 
 const { maxGroups = 4, heading = 'On our radar' } = Astro.props;
 
-const allReleases = getUpcomingReleases();
+const allReleases = await getUpcomingReleases();
 const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 ---
 
@@ -42,15 +42,16 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 										<strong>{item.artist}</strong>
 										<span class="ledger-dash">—</span>
 										<span class="ledger-album">{item.title}</span>
-										<span class="ledger-label">
-											{item.type}
-											{item.label ? ` · ${item.label}` : ''}
-										</span>
+										{(item.type || item.label) && (
+											<span class="ledger-label">
+												{[item.type, item.label].filter(Boolean).join(' · ')}
+											</span>
+										)}
 									</div>
 								</div>
 
 								<div class="ledger-right">
-									<span class="ledger-lane">{item.lane}</span>
+									{item.lane && <span class="ledger-lane">{item.lane}</span>}
 									<ListenIcons
 										spotifyUrl={links.spotifyUrl}
 										youtubeUrl={links.youtubeUrl}

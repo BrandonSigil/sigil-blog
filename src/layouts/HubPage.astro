@@ -1,5 +1,5 @@
 ---
-// Shell for the album hub pages (/albums/<year>, /albums/<year>/<month>, /genres, /artists):
+// Shell for the album hub pages (/albums/<year>, /albums/<year>/<month>, /genres, /artists, /news):
 // the page header, the shared "Browse" links, then the page's own content.
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -8,11 +8,11 @@ import HubNav from '../components/HubNav.astro';
 import { SITE_TITLE } from '../consts';
 
 interface Props {
-	title: string; // the <h1>
-	kicker?: string; // small label above it
+	title: string;
+	kicker?: string;
 	description: string;
-	count?: string; // e.g. "12 albums"
-	current?: string; // href for the Browse links
+	count?: string;
+	current?: string;
 }
 
 const { title, kicker, description, count, current } = Astro.props;
@@ -24,50 +24,78 @@ const { title, kicker, description, count, current } = Astro.props;
 		<BaseHead title={`${title} | ${SITE_TITLE}`} description={description} />
 		<style>
 			.page-header {
-				margin-bottom: 2.5rem;
-				padding-bottom: 1.5rem;
-				border-bottom: 2px solid var(--green);
+				margin-bottom: 2.25rem;
+				padding-bottom: 1.75rem;
+				border-bottom: 1px solid var(--green);
 			}
-			.kicker {
-				font-size: 0.8rem;
-				font-weight: 700;
-				letter-spacing: 0.08em;
+
+			.hub-kicker {
+				font-family: var(--font-mono);
+				font-size: 11px;
+				font-weight: 500;
+				letter-spacing: 0.13em;
 				text-transform: uppercase;
-				color: var(--gray);
+				color: var(--green);
 			}
-			.kicker a {
+
+			.hub-kicker :global(a) {
 				color: inherit;
 			}
+
+			.hub-kicker :global(a:hover) {
+				text-decoration: underline;
+				text-underline-offset: 3px;
+			}
+
 			.page-header h1 {
-				margin: 0.25rem 0 0;
+				margin: 0.35rem 0 0;
 			}
+
 			.count {
-				margin: 0.5rem 0 0;
-				font-size: 0.95rem;
+				margin: 0.6rem 0 0;
+				font-family: var(--font-mono);
+				font-size: 12px;
+				letter-spacing: 0.04em;
 				color: var(--gray);
+				font-variant-numeric: tabular-nums;
 			}
+
 			:global(.hub-section) {
 				margin-bottom: 3.5rem;
 			}
+
 			:global(.hub-section-head) {
 				display: flex;
 				justify-content: space-between;
 				align-items: baseline;
 				gap: 1rem;
 				flex-wrap: wrap;
-				margin-bottom: 1.25rem;
+				margin-bottom: 1.35rem;
+				padding-bottom: 0.75rem;
+				border-bottom: 1px solid var(--rule-strong);
 			}
+
 			:global(.hub-section-head h2) {
 				margin: 0;
-				font-size: clamp(1.5rem, 3.5vw, 2rem);
+				font-size: clamp(1.5rem, 3vw, 2.1rem);
 			}
-			:global(.hub-section-head a) {
-				font-size: 0.9rem;
-				font-weight: 600;
+
+			:global(.hub-section-head h2 a) {
+				color: inherit;
 			}
+
+			:global(.hub-section-head > a) {
+				font-family: var(--font-mono);
+				font-size: 12px;
+				font-weight: 500;
+				color: var(--green);
+			}
+
 			:global(.hub-muted) {
 				color: var(--gray);
-				font-size: 0.95rem;
+				font-family: var(--font-mono);
+				font-size: 12px;
+				font-variant-numeric: tabular-nums;
 			}
 		</style>
 	</head>
@@ -75,7 +103,7 @@ const { title, kicker, description, count, current } = Astro.props;
 		<Header />
 		<main>
 			<header class="page-header">
-				{kicker && <div class="kicker" set:html={kicker} />}
+				{kicker && <div class="hub-kicker" set:html={kicker} />}
 				<h1>{title}</h1>
 				{count && <p class="count">{count}</p>}
 				<HubNav current={current} />

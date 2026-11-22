@@ -45,7 +45,7 @@ const crateFolderThumbs = allCratePicks
 	.filter((img): img is NonNullable<typeof img> => Boolean(img))
 	.slice(0, 3);
 
-const upcoming = getUpcomingReleases();
+const upcoming = await getUpcomingReleases();
 const nextDrop = upcoming[0];
 const nextDropParts = nextDrop ? formatAbbrevDate(nextDrop.releaseDate).split(' ') : ['Dec.', '4'];
 const latestNews = (await getNews()).slice(0, 6);

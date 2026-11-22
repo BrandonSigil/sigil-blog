@@ -9,4 +9,7 @@ export default defineConfig({
 	site: 'https://sigil.studio',
 	trailingSlash: 'never',
 	integrations: [mdx(), sitemap()],
+	redirects: {
+		'/releases': '/calendar',
+	},
 });

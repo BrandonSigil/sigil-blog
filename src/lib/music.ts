@@ -1,7 +1,7 @@
 import path from 'node:path';
 import type { ImageMetadata } from 'astro';
 import { type CollectionEntry, getCollection } from 'astro:content';
-import upcomingRaw from '../data/upcoming-releases.json';
+import { getCalendar } from './calendar';
 
 export type PostCategory = 'nmf' | 'review' | 'news' | 'list' | 'essay';
 
@@ -57,13 +57,15 @@ export interface UpcomingRelease {
 	artist: string;
 	title: string;
 	releaseDate: string;
+	month: string;
 	type: string;
 	label: string;
 	lane: string;
 	score: number;
-	why: string;
-	sources?: string[];
-	newArtist?: boolean;
+	inCrate: boolean;
+	onSigil: boolean;
+	reissue: boolean;
+	isRadar: boolean;
 }
 
 const assetFiles = import.meta.glob<{ default: ImageMetadata }>(
@@ -354,12 +356,34 @@ export async function getAllCratePicks(): Promise<CratePick[]> {
 	return picks;
 }
 
-export function getUpcomingReleases(): UpcomingRelease[] {
-	const items = (upcomingRaw as UpcomingRelease[]).slice();
-	return items.sort((a, b) => {
+export async function getUpcomingReleases(options: { scope?: 'radar' | 'all' } = {}): Promise<UpcomingRelease[]> {
+	const { scope = 'radar' } = options;
+	const todayIso = new Date().toISOString().slice(0, 10);
+	const all = await getCalendar();
+
+	const mapped: UpcomingRelease[] = all
+		.filter((a) => a.hasDay && a.releaseDate >= todayIso)
+		.map((a) => ({
+			artist: a.artist,
+			title: a.title,
+			releaseDate: a.releaseDate,
+			month: a.month,
+			type: a.type ?? '',
+			label: a.label ?? '',
+			lane: a.lane ?? '',
+			score: a.score,
+			inCrate: a.inCrate,
+			onSigil: a.onSigil,
+			reissue: a.reissue,
+			isRadar: !a.reissue && (a.inCrate || a.onSigil || a.score >= 65),
+		}));
+
+	const filtered = scope === 'radar' ? mapped.filter((r) => r.isRadar) : mapped.filter((r) => !r.reissue);
+	return filtered.sort((a, b) => {
 		const dateCmp = a.releaseDate.localeCompare(b.releaseDate);
 		if (dateCmp !== 0) return dateCmp;
-		return b.score - a.score;
+		if (a.isRadar !== b.isRadar) return a.isRadar ? -1 : 1;
+		return b.score - a.score || a.artist.localeCompare(b.artist);
 	});
 }
 

@@ -36,18 +36,19 @@ const structuredData = {
 		/>
 		<style>
 			.about-hero {
-				padding: 7rem 0 3.5rem;
-				border-bottom: 2px solid var(--green);
+				padding: 1rem 0 2.5rem;
+				border-bottom: 1px solid var(--green);
 			}
 
 			.eyebrow {
 				display: inline-block;
-				font-size: 0.85rem;
-				font-weight: 700;
-				letter-spacing: 0.08em;
+				font-family: var(--font-mono);
+				font-size: 11px;
+				font-weight: 500;
+				letter-spacing: 0.13em;
 				text-transform: uppercase;
 				color: var(--green);
-				margin-bottom: 1rem;
+				margin-bottom: 0.85rem;
 			}
 
 			.about-hero-grid {
@@ -58,13 +59,17 @@ const structuredData = {
 			}
 
 			.about-hero h1 {
-				max-width: 14ch;
+				max-width: 15ch;
 				margin-bottom: 0;
 			}
 
 			.about-hero p {
-				max-width: 60ch;
-				font-size: 1.15rem;
+				max-width: 58ch;
+				font-family: var(--font-sans);
+				font-size: 20px;
+				letter-spacing: -0.01em;
+				line-height: 1.5;
+				color: var(--ink-soft);
 				margin: 0;
 				padding-top: 0.15em;
 			}
@@ -88,15 +93,15 @@ const structuredData = {
 			}
 
 			.section {
-				padding: 4rem 0;
-				border-bottom: 2px solid var(--green);
+				padding: 3.5rem 0;
+				border-bottom: 1px solid var(--rule-strong);
 			}
 
 			.manifesto-couple {
 				margin: 0 0 2rem 0;
-				border-radius: 12px;
+				border-radius: 8px;
 				overflow: hidden;
-				border: 2px solid var(--green);
+				box-shadow: var(--shadow-card);
 			}
 
 			.manifesto-couple :global(img) {
@@ -108,61 +113,73 @@ const structuredData = {
 			.manifesto-copy {
 				display: grid;
 				grid-template-columns: 1fr;
-				gap: 1.5rem;
-				max-width: 72ch;
+				gap: 1.25rem;
+				max-width: 68ch;
 			}
 
 			.manifesto-copy p {
 				margin: 0;
-				font-size: 1.1rem;
+				font-size: 16px;
+				line-height: 1.68;
+				color: var(--ink-soft);
 			}
 
 			.duo-grid {
 				display: grid;
 				grid-template-columns: repeat(2, minmax(0, 1fr));
-				gap: 2rem;
+				gap: 1.75rem;
 			}
 
 			.duo-card {
-				border: 2px solid var(--green);
-				border-radius: 12px;
-				padding: 1.25rem;
-				background: var(--white);
-				transition: transform 0.2s ease;
+				border-radius: 8px;
+				padding: 1.15rem;
+				background: var(--paper-card);
+				box-shadow: var(--shadow-card);
+				transition:
+					transform var(--dur-base) var(--ease-out),
+					box-shadow var(--dur-base) var(--ease-out);
 			}
 
-			.duo-card:hover {
-				transform: translateY(-4px);
+			@media (hover: hover) and (pointer: fine) {
+				.duo-card:hover {
+					transform: translateY(-2px);
+					box-shadow: var(--shadow-card-hover);
+					transition-duration: var(--dur-fast);
+				}
+
+				.duo-card:hover .duo-image :global(img) {
+					transform: scale(1.025);
+					transition-duration: var(--dur-fast);
+				}
 			}
 
 			.duo-image {
-				border-radius: 10px;
+				border-radius: 6px;
 				overflow: hidden;
 				aspect-ratio: 1 / 1;
-				margin-bottom: 1rem;
+				margin-bottom: 0.9rem;
 				background: var(--gray-lighter);
 			}
 
 			.duo-image :global(img) {
+				display: block;
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				transition: transform var(--dur-base) var(--ease-out);
 			}
 
 			.duo-intro {
-				max-width: 65ch;
-				font-size: 1.1rem;
-				margin: 0 0 2rem 0;
-				color: var(--gray);
-			}
-
-			.duo-intro.tight-below {
-				margin-bottom: 1.25rem;
+				max-width: 62ch;
+				font-size: 17px;
+				line-height: 1.55;
+				margin: 0.5rem 0 2rem 0;
+				color: var(--ink-soft);
 			}
 
 			.duo-card h3 {
-				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-				font-weight: 700;
+				font-family: var(--font-display);
+				font-weight: 600;
 				letter-spacing: -0.02em;
 				line-height: 1.2;
 				margin: 0;
@@ -170,16 +187,17 @@ const structuredData = {
 			}
 
 			.cta-band {
-				--cta-tan: #f6f5ef;
-				margin: 4rem 0 1rem;
-				border-radius: 12px;
-				padding: 2rem;
-				background: #417039;
+				--cta-tan: #f7f6f1;
+				margin: 3.5rem 0 0;
+				border-radius: 8px;
+				padding: 2rem 2.25rem;
+				background: var(--green);
 				color: var(--cta-tan);
+				box-shadow: 0 12px 28px -12px rgba(36, 74, 35, 0.35);
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				gap: 1rem;
+				gap: 1.25rem;
 			}
 
 			.cta-band h2 {
@@ -189,14 +207,17 @@ const structuredData = {
 
 			.cta-band .btn {
 				background: var(--cta-tan);
-				color: var(--green);
+				color: var(--green-dark);
 				border-color: var(--cta-tan);
+				flex-shrink: 0;
 			}
 
-			.cta-band .btn:hover {
-				background: #eae9e4;
-				border-color: #eae9e4;
-				color: var(--green-dark);
+			@media (hover: hover) and (pointer: fine) {
+				.cta-band .btn:hover {
+					background: #ffffff;
+					border-color: #ffffff;
+					color: var(--green-deep);
+				}
 			}
 
 			@media (max-width: 900px) {

@@ -48,6 +48,29 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 				max-width: 54ch;
 			}
 
+			.crate-hub-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.45rem 1.15rem;
+				margin-top: 1.1rem;
+				font-family: var(--font-mono);
+				font-size: 11.5px;
+				font-weight: 500;
+				letter-spacing: 0.04em;
+			}
+
+			.crate-hub-links a {
+				color: var(--green);
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.crate-hub-links a:hover {
+					color: var(--green-dark);
+					text-decoration: underline;
+					text-underline-offset: 3px;
+				}
+			}
+
 			/* Random spotlight drawer — origin-aware scale(0.97) entrance */
 			@keyframes spotlightIn {
 				from {
@@ -354,6 +377,12 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 							{picks.length} albums across {uniqueArtists} artists, automatically indexed from every New Music Friday
 							issue.
 						</p>
+						<nav class="crate-hub-links" aria-label="More ways to browse">
+							<a href="/artists">Artists A–Z →</a>
+							<a href="/genres">By genre →</a>
+							<a href="/albums">Album index →</a>
+							<a href="/calendar">Release calendar →</a>
+						</nav>
 					</div>
 					<button type="button" class="btn" data-spin-random>
 						↻ Spin a Random Record
