@@ -4,11 +4,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import NewsList from '../components/NewsList.astro';
 import NewsletterStrip from '../components/NewsletterStrip.astro';
 import NmfPoster from '../components/NmfPoster.astro';
 import PostCard from '../components/PostCard.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
-import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_STUDIO, SITE_TITLE } from '../consts';
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getNews } from '../lib/news';
 import {
 	categoryLabel,
 	estimateReadTime,
@@ -46,6 +48,7 @@ const crateFolderThumbs = allCratePicks
 const upcoming = getUpcomingReleases();
 const nextDrop = upcoming[0];
 const nextDropParts = nextDrop ? formatAbbrevDate(nextDrop.releaseDate).split(' ') : ['Dec.', '4'];
+const latestNews = (await getNews()).slice(0, 6);
 
 const desktopItems = desktopPosts.map((post) => {
 	const covers = getPostCoverMosaic(post).slice(0, 3);
@@ -66,7 +69,7 @@ const structuredData = [
 		description: SITE_DESCRIPTION,
 		publisher: {
 			'@type': 'Organization',
-			name: SITE_STUDIO,
+			name: SITE_TITLE,
 			url: siteUrl,
 		},
 	},
@@ -1100,6 +1103,19 @@ const structuredData = [
 					))}
 				</div>
 			</section>
+
+			{latestNews.length > 0 && (
+				<section aria-label="In the news">
+					<div class="section-head">
+						<div>
+							<span class="kicker">Around the Web</span>
+							<h2>In the news</h2>
+						</div>
+						<a href="/news" class="section-head-link">All headlines →</a>
+					</div>
+					<NewsList stories={latestNews} />
+				</section>
+			)}
 
 			<UpcomingStrip maxGroups={4} />
 

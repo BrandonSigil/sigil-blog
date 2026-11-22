@@ -1,0 +1,1313 @@
+{
+	"_note": "Written by scripts/crate-calendar.mjs (run by publish-crate.mjs) from the Sigil NMF Crate. Do not edit by hand.",
+	"albums": [
+		{
+			"artist": "Various Artists",
+			"title": "Grand Theft Auto VI: The Album",
+			"releaseDate": "2026-11-19",
+			"score": 62,
+			"lane": "Pop",
+			"type": "Soundtrack",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Stereogum"
+			],
+			"decision": null,
+			"why": "An official 34-track game soundtrack with Tame Impala, SZA, Justice and PinkPantheress among the names, not a Lana and Dua leak; neither is confirmed."
+		},
+		{
+			"artist": "9th Wonder",
+			"title": "Zion XII",
+			"releaseDate": "2026-11-20",
+			"score": 70,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "A producer beat tape in the J Dilla lineage; it won't have a lead rapper."
+		},
+		{
+			"artist": "Alan Vega",
+			"title": "Live at Max's Kansas City",
+			"releaseDate": "2026-11-20",
+			"score": 56,
+			"lane": "Reissues & archives",
+			"type": "Live",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Album of the Year",
+				"Wikipedia"
+			],
+			"decision": "denied",
+			"why": "Suicide's frontman live, from Sacred Bones' archive series."
+		},
+		{
+			"artist": "Anatole Muster",
+			"title": "anatole muster live",
+			"releaseDate": "2026-11-20",
+			"score": 58,
+			"lane": "Jazz & ambient",
+			"type": "Live",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "A live trio set rather than a studio debut; it suits the jazz-adjacent lane."
+		},
+		{
+			"artist": "Anna McClellan",
+			"title": "South of Dodge",
+			"releaseDate": "2026-11-20",
+			"score": 75,
+			"lane": "Indie & folk",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Confessional DIY indie in the Samia and Chastity Belt neighborhood; sources I read don't confirm the piano angle."
+		},
+		{
+			"artist": "Arlo McKinley",
+			"title": "Untitled",
+			"releaseDate": "2026-11-20",
+			"score": 76,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Cincinnati honky-tonk songwriter, a favorite of John Prine's label. Your country wildcard."
+		},
+		{
+			"artist": "bby",
+			"title": "2",
+			"releaseDate": "2026-11-20",
+			"score": 58,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year",
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "A buzzing sophomore album from a guitar-forward London band, so it fits the new-artists lane."
+		},
+		{
+			"artist": "Blanco White",
+			"title": "Green Island Days",
+			"releaseDate": "2026-11-20",
+			"score": 81,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Indie Is Not A Genre"
+			],
+			"decision": "denied",
+			"why": "Warm, rhythmic folk with a Brazilian turn, so the Hermanos Gutiérrez comparison only half fits; think nylon-string warmth plus percussion, nearer Khruangbin's global side."
+		},
+		{
+			"artist": "Blu & Sinopsis",
+			"title": "One More Story",
+			"releaseDate": "2026-11-20",
+			"score": 66,
+			"lane": "Hip-hop",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Blu's laid-back LA storytelling. Short and easy to try."
+		},
+		{
+			"artist": "Bob Weir",
+			"title": "Blue Mountain (10th Anniversary Deluxe Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 60,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Ultimate Classic Rock"
+			],
+			"decision": "denied",
+			"why": "His cowboy-song solo record, expanded."
+		},
+		{
+			"artist": "Bodywash",
+			"title": "Laughing at Noise",
+			"releaseDate": "2026-11-20",
+			"score": 73,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "Montreal dream pop that's buzzing on indie blogs."
+		},
+		{
+			"artist": "Bon Iver",
+			"title": "22, A Million (10th Anniversary Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 82,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Ultimate Classic Rock"
+			],
+			"decision": null,
+			"why": "An anniversary edition of a record your Night Beds and Bon Iver comparisons keep pointing to."
+		},
+		{
+			"artist": "Conway the Machine",
+			"title": "OTIS",
+			"releaseDate": "2026-11-20",
+			"score": 74,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year",
+				"HotNewHipHop"
+			],
+			"decision": null,
+			"why": "Gritty boom-bap with Daringer and Conductor Williams beats, close to the Black Milk and Blockhead lane, with a Goo Goo Dolls cameo as the oddity."
+		},
+		{
+			"artist": "Dermot Henry",
+			"title": "Bad Throw, Good Catch",
+			"releaseDate": "2026-11-20",
+			"score": 63,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "A Wiltshire-born songwriter (not Irish) debuting on Island, recorded live to tape by a Big Thief producer, so squarely in your Dove Ellis and Villagers lane."
+		},
+		{
+			"artist": "Desperate Journalist",
+			"title": "Gilding the Lily",
+			"releaseDate": "2026-11-20",
+			"score": 68,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"No Ripcord",
+				"Album of the Year",
+				"Indie Is Not A Genre",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "London post-punk with big choruses."
+		},
+		{
+			"artist": "Elton John",
+			"title": "Rock of the Westies (50th Anniversary Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 57,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Ultimate Classic Rock"
+			],
+			"decision": "denied",
+			"why": "The 50th-anniversary expanded edition."
+		},
+		{
+			"artist": "Eric Hilton",
+			"title": "The Easy Underground",
+			"releaseDate": "2026-11-20",
+			"score": 70,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Brazilian-tinged vocal grooves, near Khruangbin and Jordan Rakei more than classic Thievery trip-hop."
+		},
+		{
+			"artist": "Fly Anakin & Real Bad Man",
+			"title": "BAD BLADE",
+			"releaseDate": "2026-11-20",
+			"score": 77,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": "denied",
+			"why": "A producer-led underground rap record with Quelle Chris and Boldy James features, squarely in your alt hip-hop lane (Aesop Rock, Black Milk, Blockhead)."
+		},
+		{
+			"artist": "Gabriels",
+			"title": "Blood On My Hands",
+			"releaseDate": "2026-11-20",
+			"score": 86,
+			"lane": "Soul & funk",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": "approved",
+			"why": "Not Jacob Lusk's voice this time. The band is now a duo with guest singers, including Brooklyn disco-soul group Say She She, which still sits near Thee Sacred Souls."
+		},
+		{
+			"artist": "Gracie Abrams",
+			"title": "Daughter From Hell (Deluxe)",
+			"releaseDate": "2026-11-20",
+			"score": 60,
+			"lane": "Pop",
+			"type": "Deluxe",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"InMusic"
+			],
+			"decision": "denied",
+			"why": "Dessner-produced confessional pop; a deluxe, so full list only."
+		},
+		{
+			"artist": "Ian Hawgood & Jason van Wyk",
+			"title": "Surroundings",
+			"releaseDate": "2026-11-20",
+			"score": 57,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Slow, immersive ambient in the Kelly Moran and Quiet Light lane, but built on field recordings and synth swells, with no piano to speak of."
+		},
+		{
+			"artist": "J-Scienide & Morlockko Plus",
+			"title": "Switchblade Ballet",
+			"releaseDate": "2026-11-20",
+			"score": 55,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "DMV boom-bap. The hip-hop deep cut."
+		},
+		{
+			"artist": "Jean-Michel Jarre",
+			"title": "Oxygène (50th Anniversary Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 56,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence"
+			],
+			"decision": "denied",
+			"why": "The synth classic turns 50."
+		},
+		{
+			"artist": "Joe Strummer",
+			"title": "Joe Strummer 003: The 101'ers Years (1974-1976)",
+			"releaseDate": "2026-11-20",
+			"score": 58,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Ultimate Classic Rock"
+			],
+			"decision": "denied",
+			"why": "Pre-Clash pub rock from the archive."
+		},
+		{
+			"artist": "Joshua Redman",
+			"title": "If Ever You Would Leave Us (We Play for Rollins)",
+			"releaseDate": "2026-11-20",
+			"score": 78,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Wikipedia"
+			],
+			"decision": "approved",
+			"why": "A Sonny Rollins tribute on Blue Note. The jazz pick of the week for your Kamasi readers."
+		},
+		{
+			"artist": "Julianna Barwick & Mary Lattimore",
+			"title": "Threshold (Original Motion Picture Score)",
+			"releaseDate": "2026-11-20",
+			"score": 76,
+			"lane": "Jazz & ambient",
+			"type": "Score",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Ambient score work from two artists in your electronic and ambient lane, near Kelly Moran and Quiet Light. Expect instrumental, film-driven pieces."
+		},
+		{
+			"artist": "Kris Bowers",
+			"title": "Steps (Soundtrack from the Netflix Film)",
+			"releaseDate": "2026-11-20",
+			"score": 60,
+			"lane": "Jazz & ambient",
+			"type": "Score",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Bowers is an Oscar-winning composer, but this is a film score with a few pop songs; list it rather than expect a record."
+		},
+		{
+			"artist": "Lael Neale",
+			"title": "As Killers Do",
+			"releaseDate": "2026-11-20",
+			"score": 91,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year",
+				"No Ripcord",
+				"Authority Daily",
+				"Wikipedia"
+			],
+			"decision": "approved",
+			"why": "Lo-fi eight-track home recording with an Omnichord and fuzzy guitar. Leans more garage and dream pop than pure indie folk, so closer to Gia Margaret's homemade side than Big Thief's band sound."
+		},
+		{
+			"artist": "Lambchop",
+			"title": "Demoed",
+			"releaseDate": "2026-11-20",
+			"score": 78,
+			"lane": "Country & roots",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Wikipedia"
+			],
+			"decision": "approved",
+			"why": "Kurt Wagner's songs sung by others, including MJ Lenderman and Alan Sparhawk (who also worked with Trampled by Turtles). Good for the americana and indie-folk side of your taste."
+		},
+		{
+			"artist": "Linda Ronstadt & Ann Savoy",
+			"title": "Adieu False Heart",
+			"releaseDate": "2026-11-20",
+			"score": 52,
+			"lane": "Country & roots",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Ultimate Classic Rock"
+			],
+			"decision": "denied",
+			"why": "Cajun-folk duets back on vinyl."
+		},
+		{
+			"artist": "Lorenzo Senni",
+			"title": "All Ages",
+			"releaseDate": "2026-11-20",
+			"score": 66,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Cerebral electronic left-field, closer to the adventurous end of your Sofia Kourtesis and Quiet Light lane than to club music."
+		},
+		{
+			"artist": "Matthew Barber",
+			"title": "Find The Time",
+			"releaseDate": "2026-11-20",
+			"score": 58,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Billboard Canada"
+			],
+			"decision": null,
+			"why": "A Canadian roots-pop songwriter."
+		},
+		{
+			"artist": "Mez",
+			"title": "Electric Future Gangster",
+			"releaseDate": "2026-11-20",
+			"score": 59,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Genre-blurring rap with soul and R&B leanings, in the lane of Vince Staples and Isaiah Rashad."
+		},
+		{
+			"artist": "Mondo Cozmo",
+			"title": "Sweet Forever",
+			"releaseDate": "2026-11-20",
+			"score": 62,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Warm, home-recorded vintage rock with Americana leanings and a Jim James cameo, a notch rootsier than the arena-size indie line suggests."
+		},
+		{
+			"artist": "Otta",
+			"title": "Astra",
+			"releaseDate": "2026-11-20",
+			"score": 54,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "Left-field art-pop from a new voice, a good fit for the buzzing-new-artist lane, in the neighbourhood of Gia Margaret's quiet experiments."
+		},
+		{
+			"artist": "Pomme",
+			"title": "la forteresse",
+			"releaseDate": "2026-11-20",
+			"score": 67,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "Hushed French folk-pop in the Lucy Rose and Gia Margaret lane, now with a fantasy concept and her own hand on the production."
+		},
+		{
+			"artist": "R.E.M.",
+			"title": "Reveal (25th Anniversary Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 72,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence",
+				"Ultimate Classic Rock"
+			],
+			"decision": "denied",
+			"why": "Their underrated summer record gets the expanded treatment."
+		},
+		{
+			"artist": "Rema",
+			"title": "E-Mortal Boy",
+			"releaseDate": "2026-11-20",
+			"score": 64,
+			"lane": "Pop",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Afrobeats' biggest young star. For the readers who loved Tems and Tyla."
+		},
+		{
+			"artist": "Richard Skelton & Lawrence English",
+			"title": "Noon",
+			"releaseDate": "2026-11-20",
+			"score": 55,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Dark, weather-heavy drone for the ambient lane. Far heavier than Kelly Moran or Quiet Light, so go in expecting slow and bleak."
+		},
+		{
+			"artist": "Sebadoh",
+			"title": "Harmacy (30th Anniversary Expanded Edition)",
+			"releaseDate": "2026-11-20",
+			"score": 64,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Consequence"
+			],
+			"decision": "denied",
+			"why": "Lo-fi indie rock history, expanded."
+		},
+		{
+			"artist": "Sheherazaad",
+			"title": "Khudgarzi",
+			"releaseDate": "2026-11-20",
+			"score": 72,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Album of the Year",
+				"Indie Is Not A Genre"
+			],
+			"decision": null,
+			"why": "A brand-new voice in Arooj Aftab's orbit, since Aftab produced her earlier EP, with Raveena-style genre blending."
+		},
+		{
+			"artist": "Siouxsie and the Banshees",
+			"title": "Downside Up",
+			"releaseDate": "2026-11-20",
+			"score": 50,
+			"lane": "Reissues & archives",
+			"type": "Reissue",
+			"reissue": true,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": "denied",
+			"why": "B-sides box set. Already a 90 critic score on AOTY."
+		},
+		{
+			"artist": "St. Panther",
+			"title": "East Side Love Story",
+			"releaseDate": "2026-11-20",
+			"score": 62,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "An East LA Chicano-soul debut with Motown and G-funk in it, close to Thee Sacred Souls and Raveena."
+		},
+		{
+			"artist": "Take That",
+			"title": "Dreamers",
+			"releaseDate": "2026-11-20",
+			"score": 45,
+			"lane": "Pop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Authority Daily",
+				"Wikipedia",
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Big UK pop release. Probably a skip for Sigil, listed for completeness."
+		},
+		{
+			"artist": "The Cindys",
+			"title": "Love Century",
+			"releaseDate": "2026-11-20",
+			"score": 71,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Norman Records",
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Murmur-era jangle from a band with Naima Bock in it; sits next to Local Natives, Land of Talk and Chastity Belt."
+		},
+		{
+			"artist": "The Comet Is Coming",
+			"title": "Exploding In Slow Motion: The Complete Channel The Spirits Recordings",
+			"releaseDate": "2026-11-20",
+			"score": 61,
+			"lane": "Jazz & ambient",
+			"type": "Compilation",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": null,
+			"why": "Shabaka Hutchings' cosmic jazz trio, collected."
+		},
+		{
+			"artist": "The Mars Volta",
+			"title": "Lucro Sucio; Unfinished Business",
+			"releaseDate": "2026-11-20",
+			"score": 65,
+			"lane": "Reissues & archives",
+			"type": "LP",
+			"reissue": true,
+			"sources": [
+				"Album of the Year",
+				"Consequence"
+			],
+			"decision": "denied",
+			"why": "A live document of the 2025 tour rather than a new record, so it fits the reissues and archives list, not the write-ups."
+		},
+		{
+			"artist": "Toro y Moi",
+			"title": "Unusua",
+			"releaseDate": "2026-11-20",
+			"score": 88,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year",
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": "approved",
+			"why": "Not the psych-pop Crumb and Khruangbin fans expect. This is a quiet, piano-led instrumental record, closer to your ambient lane (Kelly Moran, Quiet Light)."
+		},
+		{
+			"artist": "Trampled By Turtles",
+			"title": "Good Dogs",
+			"releaseDate": "2026-11-20",
+			"score": 80,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Album of the Year"
+			],
+			"decision": "denied",
+			"why": "Minnesota bluegrass-folk: your 'tour van full of banjos' lane."
+		},
+		{
+			"artist": "Jonny Greenwood & Dudu Tassa",
+			"title": "Jalsa",
+			"releaseDate": "2026-12-04",
+			"score": 68,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Radiohead's guitarist with the Israeli songwriter, their second record together."
+		},
+		{
+			"artist": "King Gizzard & the Lizard Wizard",
+			"title": "Entropy",
+			"releaseDate": "2026-12-04",
+			"score": 70,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The Australian psych band that changes style every record. Worth a look for the Geese crowd."
+		},
+		{
+			"artist": "serpentwithfeet",
+			"title": "Sentinel",
+			"releaseDate": "2026-12-04",
+			"score": 70,
+			"lane": "Soul & funk",
+			"type": "EP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "Experimental R&B with a gospel-trained voice. Short and easy to try."
+		},
+		{
+			"artist": "SOAK",
+			"title": "Decembers",
+			"releaseDate": "2026-12-04",
+			"score": 72,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The Derry songwriter's warm, wry indie folk."
+		},
+		{
+			"artist": "Warpaint",
+			"title": "Artifact",
+			"releaseDate": "2026-12-11",
+			"score": 76,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The LA quartet's moody, groove-heavy indie rock. La Luz and Crumb fans take note."
+		},
+		{
+			"artist": "Carissa's Wierd",
+			"title": "Somewhere Further Than Far Away",
+			"releaseDate": "2027-01-08",
+			"score": 74,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The Seattle slowcore band whose members went on to Band of Horses. A Northwest pick."
+		},
+		{
+			"artist": "Hot Chip",
+			"title": "A Long Way from Kansas",
+			"releaseDate": "2027-01-08",
+			"score": 72,
+			"lane": "Pop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "London synth-pop veterans. Near your Sylvan Esso picks."
+		},
+		{
+			"artist": "Mogwai",
+			"title": "Happy Tears",
+			"releaseDate": "2027-01-08",
+			"score": 66,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "Scottish instrumental post-rock. A deep-listening option."
+		},
+		{
+			"artist": "Atmosphere",
+			"title": "Good Bye Make Party",
+			"releaseDate": "2027-01-15",
+			"score": 76,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Minneapolis lyrical rap on Rhymesayers, Aesop Rock's label."
+		},
+		{
+			"artist": "Kacey Musgraves",
+			"title": "Middle of Nowhere Vol. 2: Tex Mex Tapes",
+			"releaseDate": "2027-01-15",
+			"score": 74,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The biggest country release on the calendar so far."
+		},
+		{
+			"artist": "Mei Semones",
+			"title": "Howl",
+			"releaseDate": "2027-01-15",
+			"score": 84,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Jazz guitar, bossa nova and indie pop, sung in English and Japanese. A buzzing newer artist for the discovery slot."
+		},
+		{
+			"artist": "Mia Joy",
+			"title": "Star Echo Heavy Dove",
+			"releaseDate": "2027-01-15",
+			"score": 68,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Chicago dream pop on Fire Talk."
+		},
+		{
+			"artist": "This Is the Kit",
+			"title": "Ghost Coat",
+			"releaseDate": "2027-01-15",
+			"score": 82,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Kate Stables' banjo-led folk band. Close to Bonny Light Horseman and Lucy Rose."
+		},
+		{
+			"artist": "Dom Flemons",
+			"title": "Making American Music: The Smithsonian Sessions",
+			"releaseDate": "2027-01-22",
+			"score": 72,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "A Carolina Chocolate Drops co-founder on banjo. Your roots lane."
+		},
+		{
+			"artist": "Erick the Architect",
+			"title": "AFTERBURNER",
+			"releaseDate": "2027-01-22",
+			"score": 70,
+			"lane": "Hip-hop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "Flatbush Zombies' producer-rapper. Your producer-album lane."
+		},
+		{
+			"artist": "Fionn Regan",
+			"title": "Berlin, Berlin",
+			"releaseDate": "2027-01-22",
+			"score": 72,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Irish folk songwriter Bon Iver has sampled."
+		},
+		{
+			"artist": "Helena Deland",
+			"title": "Eternity Shrugs",
+			"releaseDate": "2027-01-22",
+			"score": 80,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Quiet Montreal folk-pop. The Gia Margaret and Lucy Rose end of your taste."
+		},
+		{
+			"artist": "Bicep",
+			"title": "SLUG",
+			"releaseDate": "2027-01-29",
+			"score": 74,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "The Belfast electronic duo. Your ODESZA and Sofia Kourtesis lane."
+		},
+		{
+			"artist": "Johanna Warren",
+			"title": "Frog in the Belly of a Snake",
+			"releaseDate": "2027-01-29",
+			"score": 68,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Intricate, fingerpicked folk."
+		},
+		{
+			"artist": "Jonah Yano",
+			"title": "Spin",
+			"releaseDate": "2027-01-29",
+			"score": 80,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "A Toronto songwriter who works with BADBADNOTGOOD. Jazz-leaning and soft-spoken."
+		},
+		{
+			"artist": "Runnner",
+			"title": "Love Songs from the Hottest Summer on Record",
+			"releaseDate": "2027-01-29",
+			"score": 76,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Noah Weinman's home-recorded indie folk, banjo included."
+		},
+		{
+			"artist": "The Wood Brothers",
+			"title": "Rollin' On",
+			"releaseDate": "2027-01-29",
+			"score": 72,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "An americana trio built on upright bass and harmonies. Tour-van folk."
+		},
+		{
+			"artist": "Bonny Doon",
+			"title": "Forever Green",
+			"releaseDate": "2027-02-05",
+			"score": 84,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "The Detroit band that backed Waxahatchee on Saint Cloud. Easygoing folk-rock in your core lane."
+		},
+		{
+			"artist": "Palehound",
+			"title": "You Sing Like You're Joking",
+			"releaseDate": "2027-02-05",
+			"score": 78,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "El Kempner's indie rock project. Sharp songwriting in the Samia and Chastity Belt neighborhood."
+		},
+		{
+			"artist": "Indigo Sparke",
+			"title": "There Is a Light on the Horizon Line",
+			"releaseDate": "2027-02-12",
+			"score": 82,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Adrianne Lenker co-produced her debut. Hushed, slow-burning folk."
+		},
+		{
+			"artist": "Julien Baker",
+			"title": "This World or the Next",
+			"releaseDate": "2027-02-12",
+			"score": 88,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "boygenius's Julien Baker, solo again. Sits right beside Big Thief and Waxahatchee in your core lane."
+		},
+		{
+			"artist": "Mamalarky",
+			"title": "Hover",
+			"releaseDate": "2027-02-12",
+			"score": 70,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Woozy, jazzy indie pop. Close to Crumb."
+		},
+		{
+			"artist": "Beabadoobee",
+			"title": "Bananas 4 Cats",
+			"releaseDate": "2027-02-19",
+			"score": 72,
+			"lane": "Pop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Indie pop with a big following. A reader-friendly pick."
+		},
+		{
+			"artist": "Everything But The Girl",
+			"title": "Blue Reservoir",
+			"releaseDate": "2027-02-19",
+			"score": 68,
+			"lane": "Pop",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Tracey Thorn and Ben Watt's understated electronic pop."
+		},
+		{
+			"artist": "Jordan Rakei",
+			"title": "A Safe Place To Be Wild",
+			"releaseDate": "2027-02-19",
+			"score": 88,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "He's named in your taste profile's soul lane."
+		},
+		{
+			"artist": "Lake Street Dive",
+			"title": "What About Flamingos?",
+			"releaseDate": "2027-02-19",
+			"score": 68,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "Soul-pop with a jazz-school rhythm section."
+		},
+		{
+			"artist": "Marika Hackman",
+			"title": "False Dogs",
+			"releaseDate": "2027-02-19",
+			"score": 76,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "English songwriter between folk and darker indie rock."
+		},
+		{
+			"artist": "Amaro Freitas",
+			"title": "Feat'Fòònese",
+			"releaseDate": "2027-02-26",
+			"score": 72,
+			"lane": "Jazz & ambient",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "A Brazilian jazz pianist. For your Kamasi and Arooj Aftab readers."
+		},
+		{
+			"artist": "Ryley Walker",
+			"title": "Darkening the Glass",
+			"releaseDate": "2027-02-26",
+			"score": 72,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Chicago guitarist between folk, jazz and prog."
+		},
+		{
+			"artist": "Sam Amidon",
+			"title": "Willing Brother Knowing",
+			"releaseDate": "2027-02-26",
+			"score": 74,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "He reworks old folk songs with banjo and fiddle. Andrew Bird fans should look."
+		},
+		{
+			"artist": "Sinkane",
+			"title": "He's Gone",
+			"releaseDate": "2027-02-26",
+			"score": 68,
+			"lane": "Soul & funk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Funk, Afrobeat and psych-soul. Khruangbin-adjacent."
+		},
+		{
+			"artist": "Stephen Wilson Jr.",
+			"title": "Impressiøn of a Human // Children of the Cørnerman",
+			"releaseDate": "2027-02-26",
+			"score": 70,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Country songwriting with a grunge streak. The country wildcard."
+		},
+		{
+			"artist": "The Delines",
+			"title": "The Killing of a Motel Maid",
+			"releaseDate": "2027-02-26",
+			"score": 68,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Willy Vlautin's Portland country-soul band. A Northwest pick."
+		},
+		{
+			"artist": "The Dead South",
+			"title": "Silence, Please",
+			"releaseDate": "2027-03-05",
+			"score": 68,
+			"lane": "Country & roots",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence"
+			],
+			"decision": null,
+			"why": "Canadian bluegrass with banjo and cello. Your tour-van folk lane."
+		},
+		{
+			"artist": "Gang of Youths",
+			"title": "Compañero",
+			"releaseDate": "2027-03-12",
+			"score": 74,
+			"lane": "Indie & folk",
+			"type": "LP",
+			"reissue": false,
+			"sources": [
+				"Consequence",
+				"Wikipedia"
+			],
+			"decision": null,
+			"why": "Big-hearted Australian indie rock. Local Natives energy."
+		}
+	]
+}

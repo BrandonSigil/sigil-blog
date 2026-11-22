@@ -15,15 +15,29 @@ const { transparent = false } = Astro.props;
 	<SpeedInsights />
 	<nav aria-label="Primary navigation">
 		<a href="/" class="logo">
-			<img src={logoSrc.src} alt={SITE_TITLE} />
+			<img src={logoSrc.src} alt={SITE_TITLE} width={logoSrc.width} height={logoSrc.height} />
 		</a>
 		<div class="nav-links" data-glide-group>
 			<HeaderLink href="/blog">Music</HeaderLink>
 			<HeaderLink href="/crate">Crate</HeaderLink>
 			<HeaderLink href="/calendar">Calendar</HeaderLink>
-			<span class="nav-divider" aria-hidden="true"></span>
-			<HeaderLink href="/work">Work</HeaderLink>
+			<HeaderLink href="/news">News</HeaderLink>
 			<HeaderLink href="/about">About</HeaderLink>
+			<a href="/search" class="nav-search" aria-label="Search">
+				<svg
+					viewBox="0 0 24 24"
+					width="17"
+					height="17"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					aria-hidden="true"
+				>
+					<circle cx="11" cy="11" r="6.5" />
+					<path d="M16 16l4.5 4.5" />
+				</svg>
+			</a>
 		</div>
 	</nav>
 </header>
@@ -97,16 +111,24 @@ const { transparent = false } = Astro.props;
 		gap: 0.2rem;
 	}
 
-	.nav-divider {
-		width: 1px;
-		height: 1rem;
-		background: var(--rule-strong);
-		margin: 0 0.35rem;
-		transition: background 0.35s ease;
+	.nav-search {
+		display: inline-grid;
+		place-items: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 5px;
+		color: var(--link-color, var(--ink));
+		transition:
+			color var(--dur-fast) var(--ease-out),
+			transform var(--dur-press) var(--ease-out);
 	}
 
-	header.transparent .nav-divider {
-		background: rgba(255, 255, 255, 0.3);
+	.nav-search:hover {
+		color: var(--link-hover-color, var(--green-dark));
+	}
+
+	.nav-search:active {
+		transform: scale(0.94);
 	}
 
 	@media (max-width: 768px) {
@@ -127,9 +149,11 @@ const { transparent = false } = Astro.props;
 		.nav-links::-webkit-scrollbar {
 			display: none;
 		}
+	}
 
-		.nav-divider {
-			margin: 0 0.2rem;
+	@media (max-width: 420px) {
+		.nav-search {
+			display: none;
 		}
 	}
 </style>
@@ -142,7 +166,7 @@ const { transparent = false } = Astro.props;
 		document.body.classList.add('has-hero');
 
 		const update = () => {
-			header.classList.toggle('transparent', hero.getBoundingClientRect().bottom > 64);
+			header.classList.toggle('transparent', hero.getBoundingClientRect().bottom > header.offsetHeight / 2);
 		};
 
 		update();

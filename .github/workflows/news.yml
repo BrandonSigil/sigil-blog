@@ -1,0 +1,37 @@
+# Once a day: scan the music news feeds for stories about Sigil's artists (scripts/fetch-news.mjs)
+# and commit src/data/news.json if anything changed. The push to main makes Vercel rebuild the site.
+name: Fetch news
+
+on:
+  schedule:
+    - cron: '0 14 * * *' # 14:00 UTC, every day
+  workflow_dispatch: {} # "Run workflow" button on the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: site-data # shared with releases.yml, so the two never push at once
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/fetch-news.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- src/data/news.json; then
+            echo "No new stories."
+            exit 0
+          fi
+          git config user.name "sigil-news-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/news.json
+          git commit -m "Update In the news"
+          git pull --rebase
+          git push

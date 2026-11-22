@@ -1,0 +1,139 @@
+{
+	"_note": "Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.",
+	"stories": {
+		"https://www.nme.com/news/music/r-e-m-s-michael-stipe-shares-timeline-for-debut-solo-album-release-and-plans-for-the-future-i-already-have-ideas-about-what-i-want-to-do-next-3976636": {
+			"date": "2026-11-21",
+			"source": "NME",
+			"artists": [
+				"R.E.M."
+			]
+		},
+		"https://consequence.net/2026/11/blondie-come-back-home-new-song-stream/": {
+			"date": "2026-11-20",
+			"source": "Consequence",
+			"artists": [
+				"Blondie"
+			]
+		},
+		"https://pitchfork.com/story/5-new-albums-you-should-listen-to-now-atlas-sound-toro-y-moi-and-more/": {
+			"date": "2026-11-20",
+			"source": "Pitchfork",
+			"artists": [
+				"Toro y Moi"
+			]
+		},
+		"https://stereogum.com/2518801/blondie-come-back-home-feat-lucius/music/": {
+			"date": "2026-11-20",
+			"source": "Stereogum",
+			"artists": [
+				"Blondie"
+			]
+		},
+		"https://stereogum.com/2518819/panchiko-day-one-feat-billy-woods-cotillon/music/": {
+			"date": "2026-11-20",
+			"source": "Stereogum",
+			"artists": [
+				"Panchiko"
+			]
+		},
+		"https://stereogum.com/2518845/madra-salach-searrach/news/": {
+			"date": "2026-11-20",
+			"source": "Stereogum",
+			"artists": [
+				"Madra Salach"
+			]
+		},
+		"https://www.nme.com/news/music/madra-salach-take-on-change-and-betrayal-of-all-kinds-on-dark-towering-new-single-searrach-radar-3976555": {
+			"date": "2026-11-20",
+			"source": "NME",
+			"artists": [
+				"Madra Salach"
+			]
+		},
+		"https://www.rollingstone.com/music/music-news/blondie-release-new-song-come-back-home-1235661533/": {
+			"date": "2026-11-20",
+			"source": "Rolling Stone",
+			"artists": [
+				"Blondie"
+			]
+		},
+		"https://pitchfork.com/story/beabadoobee-goes-bananas-4-cats-on-new-album-and-song/": {
+			"date": "2026-11-19",
+			"source": "Pitchfork",
+			"artists": [
+				"Beabadoobee"
+			]
+		},
+		"https://stereogum.com/2518649/mei-semones-kira-kira/music/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"Mei Semones"
+			]
+		},
+		"https://stereogum.com/2518677/soak-transmitter-park/music/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"SOAK"
+			]
+		},
+		"https://stereogum.com/2518683/end-it-pay-to-cum-bad-brains-cover/music/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"Bad Brains"
+			]
+		},
+		"https://stereogum.com/2518685/jonah-yano-the-door/music/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"Jonah Yano"
+			]
+		},
+		"https://stereogum.com/2518707/twisted-teens-caspian-hollywell-addresses-flyers-accusing-him-of-abuse/news/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"Caspian",
+				"Twisted Teens"
+			]
+		},
+		"https://stereogum.com/2518721/beabadoobee-announces-new-album-bananas-4-cats-hear-no-punctuation/music/": {
+			"date": "2026-11-19",
+			"source": "Stereogum",
+			"artists": [
+				"Beabadoobee"
+			]
+		},
+		"https://pitchfork.com/story/don-toliver-releasing-new-album-nitrous-next-month/": {
+			"date": "2026-11-18",
+			"source": "Pitchfork",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://pitchfork.com/story/big-thief-death-cab-for-cutie-remi-wolf-to-headline-green-river-festival-2027/": {
+			"date": "2026-11-17",
+			"source": "Pitchfork",
+			"artists": [
+				"Remi Wolf"
+			]
+		},
+		"https://pitchfork.com/story/julien-baker-lines-up-new-album-this-world-or-the-next/": {
+			"date": "2026-11-17",
+			"source": "Pitchfork",
+			"artists": [
+				"Julien Baker"
+			]
+		},
+		"https://pitchfork.com/story/ryley-walker-announces-tour-and-first-album-in-six-years/": {
+			"date": "2026-11-17",
+			"source": "Pitchfork",
+			"artists": [
+				"Ryley Walker"
+			]
+		}
+	}
+}

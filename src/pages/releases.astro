@@ -1,0 +1,323 @@
+---
+// /releases: the full release calendar, every known album from last month on, month by month.
+// Rows are in date order; "My taste" reorders each month by fit score in the browser.
+import { Image } from 'astro:assets';
+import HubPage from '../layouts/HubPage.astro';
+import { currentMonths, getCalendar, monthId, monthName } from '../lib/calendar';
+
+const albums = await getCalendar();
+const [thisMonth] = currentMonths();
+const all = [...new Set(albums.map((a) => a.month))].sort().map((month) => ({
+	month,
+	albums: albums.filter((a) => a.month === month),
+}));
+// The page opens on this month; months already over fold into "Earlier" at the bottom.
+const months = all.filter((m) => m.month >= thisMonth);
+const earlier = all.filter((m) => m.month < thisMonth);
+---
+
+<HubPage
+	title="Release calendar"
+	kicker="Album index"
+	description="Every album announced for the coming months, from Wikipedia's album lists and the Sigil crate, scored for Sigil's taste."
+	count={`${months.reduce((n, m) => n + m.albums.length, 0)} albums from ${monthName(thisMonth)} on`}
+	current="/releases"
+>
+	<div class="cal-tools">
+		<nav class="cal-months" aria-label="Months">
+			{months.map((m) => <a href={`#${monthId(m.month)}`}>{monthName(m.month).replace(/ (\d{2})(\d{2})$/, " '$2")}</a>)}
+		</nav>
+		<div class="cal-sort" role="group" aria-label="Order">
+			<span>Order</span>
+			<button type="button" data-sort="date" aria-pressed="true">Date</button>
+			<button type="button" data-sort="taste" aria-pressed="false">My taste</button>
+		</div>
+	</div>
+	<p class="hub-muted cal-key">
+		<span class="cal-score">88</span> crate fit score · <span class="cal-score estimated">~60</span> estimate from genre and
+		history · <span class="cal-flag">Pick</span> on New Music Friday · <span class="cal-flag soft">On Sigil</span> artist covered before.
+		Dates come from Wikipedia and the crate and can move.
+	</p>
+
+	{months.map(({ month, albums: list }) => (
+		<section class="hub-section" id={monthId(month)}>
+			<div class="hub-section-head">
+				<h2>{monthName(month)}</h2>
+				<span class="hub-muted">{list.length} albums</span>
+			</div>
+			<ol class="cal-list" data-cal-list>
+				{list.map((a, i) => (
+					<li data-order={i} data-rank={a.rank} data-buzz={a.buzz}>
+						<a class="cal-row" href={a.listen} target="_blank" rel="noopener">
+							<time class="cal-date" datetime={a.releaseDate}>{a.hasDay ? a.dateLabel : 'TBA'}</time>
+							<span class="cal-thumb" aria-hidden="true">
+								{a.cover ? <Image src={a.cover} alt="" width={88} height={88} loading="lazy" /> : a.artist.trim().charAt(0).toUpperCase()}
+							</span>
+							<span class:list={['cal-score', { estimated: a.estimated }]} title={a.estimated ? 'Estimated fit' : 'Crate fit score'}>
+								{a.estimated ? `~${a.score}` : a.score}
+							</span>
+							<span class="cal-text">
+								<strong>{a.artist}</strong>
+								<span>{a.title}{a.label && <em> · {a.label}</em>}</span>
+							</span>
+							<span class="cal-meta">
+								{a.picked ? <span class="cal-flag">Pick</span> : a.onSigil && <span class="cal-flag soft">On Sigil</span>}
+								{a.reissue && <span class="cal-tag">Archival</span>}
+								{a.lane && <span class="cal-tag">{a.lane}</span>}
+							</span>
+						</a>
+					</li>
+				))}
+			</ol>
+		</section>
+	))}
+	{earlier.length > 0 && (
+		<details class="cal-earlier">
+			<summary>Earlier: {earlier.map((m) => monthName(m.month)).join(', ')}</summary>
+	{earlier.map(({ month, albums: list }) => (
+		<section class="hub-section" id={monthId(month)}>
+			<div class="hub-section-head">
+				<h2>{monthName(month)}</h2>
+				<span class="hub-muted">{list.length} albums</span>
+			</div>
+			<ol class="cal-list" data-cal-list>
+				{list.map((a, i) => (
+					<li data-order={i} data-rank={a.rank} data-buzz={a.buzz}>
+						<a class="cal-row" href={a.listen} target="_blank" rel="noopener">
+							<time class="cal-date" datetime={a.releaseDate}>{a.hasDay ? a.dateLabel : 'TBA'}</time>
+							<span class="cal-thumb" aria-hidden="true">
+								{a.cover ? <Image src={a.cover} alt="" width={88} height={88} loading="lazy" /> : a.artist.trim().charAt(0).toUpperCase()}
+							</span>
+							<span class:list={['cal-score', { estimated: a.estimated }]} title={a.estimated ? 'Estimated fit' : 'Crate fit score'}>
+								{a.estimated ? `~${a.score}` : a.score}
+							</span>
+							<span class="cal-text">
+								<strong>{a.artist}</strong>
+								<span>{a.title}{a.label && <em> · {a.label}</em>}</span>
+							</span>
+							<span class="cal-meta">
+								{a.picked ? <span class="cal-flag">Pick</span> : a.onSigil && <span class="cal-flag soft">On Sigil</span>}
+								{a.reissue && <span class="cal-tag">Archival</span>}
+								{a.lane && <span class="cal-tag">{a.lane}</span>}
+							</span>
+						</a>
+					</li>
+				))}
+			</ol>
+		</section>
+	))}
+		</details>
+	)}
+</HubPage>
+
+<style>
+	.cal-earlier summary {
+		cursor: pointer;
+		margin-bottom: 2rem;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		color: var(--green);
+	}
+	.cal-tools {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 0.75rem;
+	}
+	.cal-months {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 0.9rem;
+		font-size: 0.9rem;
+		font-weight: 600;
+	}
+	.cal-sort {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--gray);
+	}
+	.cal-sort button {
+		padding: 0.25rem 0.7rem;
+		border: 2px solid var(--green);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--green);
+		font: inherit;
+		font-size: 0.85rem;
+		letter-spacing: 0;
+		text-transform: none;
+		font-weight: 600;
+		cursor: pointer;
+	}
+	.cal-sort button[aria-pressed='true'] {
+		background: var(--green);
+		color: var(--cream);
+	}
+	.cal-key {
+		margin: 0 0 2.5rem;
+		font-size: 0.85rem;
+		line-height: 1.9;
+	}
+	.cal-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.cal-row {
+		display: grid;
+		grid-template-columns: 3.4rem 44px 2.6rem minmax(0, 1fr) auto;
+		align-items: center;
+		gap: 0.9rem;
+		padding: 0.55rem 0;
+		border-bottom: 1px solid color-mix(in srgb, var(--green) 25%, transparent);
+		color: inherit;
+		text-decoration: none;
+	}
+	.cal-row:hover strong {
+		color: var(--green-dark);
+		text-decoration: underline;
+	}
+	.cal-date {
+		font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+		font-size: 0.78rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: var(--green);
+	}
+	.cal-thumb {
+		width: 44px;
+		height: 44px;
+		border: 2px solid var(--green);
+		border-radius: 6px;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+		background: #417039;
+		color: #f6f5ef;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		line-height: 1;
+	}
+	.cal-thumb :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.cal-score {
+		display: inline-block;
+		min-width: 2.4rem;
+		padding: 0.1rem 0.35rem;
+		border: 2px solid var(--green);
+		border-radius: 999px;
+		background: var(--green);
+		color: var(--cream);
+		font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+		font-size: 0.75rem;
+		font-weight: 700;
+		text-align: center;
+	}
+	.cal-score.estimated {
+		background: transparent;
+		color: var(--green);
+		border-style: dashed;
+	}
+	.cal-text {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		line-height: 1.3;
+	}
+	.cal-text strong {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+	}
+	.cal-text span {
+		font-size: 0.9rem;
+		color: var(--gray);
+	}
+	.cal-text em {
+		font-style: normal;
+		opacity: 0.8;
+	}
+	.cal-text strong,
+	.cal-text span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	.cal-meta {
+		display: flex;
+		gap: 0.35rem;
+		justify-content: flex-end;
+	}
+	.cal-tag,
+	.cal-flag {
+		padding: 0.1rem 0.5rem;
+		border-radius: 999px;
+		font-size: 0.72rem;
+		font-weight: 600;
+		white-space: nowrap;
+	}
+	.cal-tag {
+		border: 1.5px solid color-mix(in srgb, var(--green) 45%, transparent);
+		color: var(--green);
+	}
+	.cal-flag {
+		background: var(--green);
+		color: var(--cream);
+		border: 1.5px solid var(--green);
+	}
+	.cal-flag.soft {
+		background: transparent;
+		color: var(--green);
+	}
+	@media (max-width: 640px) {
+		.cal-row {
+			grid-template-columns: 2.8rem 44px minmax(0, 1fr) auto;
+			gap: 0.6rem;
+		}
+		.cal-row .cal-score {
+			grid-column: 4;
+			grid-row: 1;
+		}
+		.cal-text {
+			grid-column: 3;
+			grid-row: 1;
+		}
+		.cal-meta {
+			grid-column: 3 / 5;
+			justify-content: flex-start;
+		}
+		.cal-meta:empty {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	// "Date" puts each month back in date order; "My taste" orders it by fit score.
+	const buttons = document.querySelectorAll<HTMLButtonElement>('[data-sort]');
+	buttons.forEach((button) =>
+		button.addEventListener('click', () => {
+			const byTaste = button.dataset.sort === 'taste';
+			buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+			document.querySelectorAll<HTMLElement>('[data-cal-list]').forEach((list) => {
+				const items = [...list.children] as HTMLElement[];
+				const num = (el: HTMLElement, key: string) => Number(el.dataset[key]);
+				items.sort((a, b) =>
+					byTaste ? num(b, 'rank') - num(a, 'rank') || num(b, 'buzz') - num(a, 'buzz') : num(a, 'order') - num(b, 'order'),
+				);
+				list.append(...items);
+			});
+		}),
+	);
+</script>

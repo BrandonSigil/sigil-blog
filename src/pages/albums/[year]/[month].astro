@@ -1,0 +1,63 @@
+---
+// /albums/<year>/<month>: the picks from one month, with the posts they came from.
+import AlbumGrid from '../../../components/AlbumGrid.astro';
+import HubPage from '../../../layouts/HubPage.astro';
+import { getAlbumPicks } from '../../../lib/albums';
+import { groupByYear, monthSlug, type MonthGroup } from '../../../lib/hubs';
+
+export async function getStaticPaths() {
+	const months = groupByYear(await getAlbumPicks())
+		.flatMap((y) => y.months)
+		.sort((a, b) => a.year - b.year || a.month - b.month);
+	return months.map((m, i) => ({
+		params: { year: String(m.year), month: monthSlug(m.month) },
+		props: { m, prev: months[i - 1], next: months[i + 1] },
+	}));
+}
+
+const { m, prev, next } = Astro.props as { m: MonthGroup; prev?: MonthGroup; next?: MonthGroup };
+const posts = [...new Map(m.picks.map((p) => [p.href.split('#')[0], p.postTitle])).entries()];
+const albums = `${m.picks.length} album${m.picks.length === 1 ? '' : 's'}`;
+---
+
+<HubPage
+	title={`${m.name} ${m.year}`}
+	kicker={`<a href="/albums">Album index</a> / <a href="/albums/${m.year}">${m.year}</a>`}
+	description={`The ${albums} picked on New Music Friday in ${m.name} ${m.year}.`}
+	count={`${albums} from ${posts.length} post${posts.length === 1 ? '' : 's'}`}
+	current={`/albums/${m.year}`}
+>
+	<section class="hub-section">
+		<AlbumGrid picks={m.picks} detail="genre" />
+	</section>
+
+	<section class="hub-section">
+		<div class="hub-section-head"><h2>The posts</h2></div>
+		<ul class="month-posts">
+			{posts.map(([href, title]) => <li><a href={href}>{title}</a></li>)}
+		</ul>
+	</section>
+
+	<nav class="month-steps" aria-label="Other months">
+		{prev ? <a href={prev.href}>← {prev.name} {prev.year}</a> : <span />}
+		{next && <a href={next.href}>{next.name} {next.year} →</a>}
+	</nav>
+</HubPage>
+
+<style>
+	.month-posts {
+		margin: 0;
+		padding-left: 1.2rem;
+	}
+	.month-posts li {
+		margin-bottom: 0.4rem;
+	}
+	.month-steps {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--gray-light);
+		font-weight: 600;
+	}
+</style>

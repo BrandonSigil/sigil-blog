@@ -23,7 +23,8 @@ yarn preview    # Preview production build
 - **Gray lighter**: `#f5f5f5` - Subtle backgrounds
 
 ### Typography
-- **Font**: Space Grotesk (variable font from Fontsource CDN)
+- **Headings**: Space Grotesk (variable font from Fontsource CDN, declared in `global.css`)
+- **Body**: Google Sans (Google Fonts stylesheet, linked in `BaseHead.astro`)
 - **Style**: Playful but clean geometric sans-serif
 - **Headings**: Bold (700), tight letter-spacing (-0.02em), green color
 - **Body**: 18px base size, 1.6 line-height
@@ -36,49 +37,143 @@ Inspired by [ouchburger.com](https://ouchburger.com) - white background, green a
 ```
 src/
 ├── components/
-│   ├── BaseHead.astro        # <head> with meta tags, global styles
-│   ├── Footer.astro          # Simple copyright footer
+│   ├── BaseHead.astro        # <head> with meta tags, fonts, global styles
+│   ├── FeaturedCard.astro    # Post card used in lists (optional "Draft" badge)
+│   ├── Footer.astro          # Footer links and copyright
 │   ├── FormattedDate.astro   # Date formatting utility
-│   ├── Header.astro          # Sticky navigation header
-│   └── HeaderLink.astro      # Nav link with active state styling
+│   ├── Header.astro          # Sticky nav; links come from src/lib/sections.ts
+│   ├── HeaderLink.astro      # Nav link with active state styling
+│   ├── ReleaseCalendar.astro # "Out this month" and "Anticipated" lists, reads src/data/releases.json
+│   └── UpcomingAlbums.astro  # "Upcoming albums" block, reads src/data/upcoming.json
 ├── content/
 │   └── blog/                 # Markdown/MDX blog posts
+├── data/
+│   ├── releases.json         # Written by scripts/publish-crate.mjs. Do not edit by hand
+│   └── upcoming.json         # Written by scripts/publish-crate.mjs. Do not edit by hand
 ├── layouts/
-│   └── BlogPost.astro        # Single blog post template
+│   └── BlogPost.astro        # Single post template (prev/next, "More from", review markup)
+├── lib/
+│   ├── sections.ts           # The site's sections (New Music, Reviews, Lists)
+│   ├── posts.ts              # getPosts(): every post the build should show, drafts handled
+│   └── albums.ts             # getAlbumPicks(): album picks parsed out of NMF posts
 ├── pages/
-│   ├── index.astro           # Home/landing page
-│   ├── portfolio.astro       # Portfolio with project cards
+│   ├── index.astro           # Home: hero, upcoming albums, release lists, recent posts, latest playlist
+│   ├── [section].astro       # /new-music and /lists
+│   ├── reviews.astro         # /reviews, cover grid with scores
+│   ├── albums.astro          # /albums, every NMF pick
+│   ├── search.astro          # /search
+│   ├── about.astro           # About page
 │   ├── blog/
-│   │   ├── index.astro       # Blog listing
+│   │   ├── index.astro       # All posts
 │   │   └── [...slug].astro   # Dynamic blog post route
 │   └── rss.xml.js            # RSS feed generator
 ├── styles/
 │   └── global.css            # CSS variables, typography, utilities
 └── consts.ts                 # Site metadata (title, description, author)
+scripts/
+└── publish-crate.mjs         # Turns a crate export into upcoming.json and releases.json (+ a draft NMF post)
 ```
 
 ## Pages Overview
 
 ### Home (`/`)
-- Hero section with large title and tagline
-- Two CTAs: "Read the Blog" and "View Portfolio"
-- Recent posts preview (3 most recent)
-- About section with author info
+- Full-height hero with the Sigil logo; on scroll the newest post opens in a desktop-style window
+- Upcoming albums (from the crate), "Out this month" and "Anticipated" lists (also from the crate),
+  4 recent posts, the latest NMF playlist, About
+- Only published posts appear here, even in `yarn dev`
 
-### Portfolio (`/portfolio`)
-- Grid of project cards
-- Each card has: title, description, tech tags, link
-- Hover effect: green border, slight lift
+### Sections (`/new-music`, `/reviews`, `/lists`)
+- Defined in `src/lib/sections.ts`. A post joins a section through its `projectName`:
+  "New Music Friday", "Album Review" or "Tops"
+- The header and footer only link to sections that have at least one published post
+- To add a section, add it to `SECTIONS`; the nav, section page and post links follow
+
+### Album index (`/albums`) and Search (`/search`)
+- Both are built from the posts. Nothing to maintain by hand
+- The album index reads every pick out of the New Music Friday posts (format below)
+
+### Year in Sigil (`/year/[year]`)
+- A yearly recap: stats, picks month by month, picks by lane, top 10 albums, top 10 songs, and a
+  1080x1350 share card for each part (`/year/2026/summary.png`, `months`, `lanes`, `albums`, `songs`)
+- Picks come from the same reader as the album index (`getAlbumPicks` in `src/lib/albums.ts`), so
+  a new New Music Friday post joins the recap on the next build. Draft posts count in `yarn dev`
+  only, like everywhere else on the site
+- Brandon's parts live in `src/data/year-in-sigil/<year>.json`: `intro`, `lanes` (one per pick;
+  a pick with none shows as "Unsorted") and the ranked `albums` and `songs`. Until those lists
+  have entries, the page shows every pick and the `songCandidates`, unranked
+- `"draft": true` in that file builds the page locally and on Vercel previews only, never in
+  production, and marks it noindex
+- Cards render at build time with Satori and sharp (`src/pages/year/[year]/[card].png.ts`)
+- Don't run `astro build` while `yarn dev` is running: they share the content cache, and the dev
+  server loses the blog collection until it restarts
+
+### Album hubs (`/albums/<year>`, `/albums/<year>/<month>`, `/genres`, `/artists`)
+- Built from the same picks as the album index, so they grow with every published post
+- `/albums/2024` lists that year month by month; `/albums/2024/may` is one month plus its posts
+- `/genres/<genre>`: genres are listed in `src/lib/genres.ts`, and each pick's genre lives in
+  `src/data/album-genres.json`, keyed by its "Artist - Album" heading. `scripts/publish-crate.mjs`
+  adds new picks from their crate lane; existing entries are never overwritten, so fix any by hand.
+  A pick missing from the file simply doesn't appear under a genre
+- `/artists`: A–Z of everyone picked or reviewed. An artist gets their own page
+  (`/artists/<name>`) only once they have two or more picks or reviews, so there are no
+  near-empty pages; until then the index links straight to the album in its post
+- The "Browse" links (`src/components/HubNav.astro`) sit on the album index and every hub page
+
+### Release calendar (`/releases`, the homepage's "Out this month", monthly "hot releases" post)
+- Every album announced from the start of last month on, from two sources merged in
+  `src/lib/calendar-core.mjs` (plain JS, shared by the site and the draft script):
+  - `src/data/calendar-wiki.json`: Wikipedia's "List of <year> albums" (date, artist, album, genre,
+    label, outlets cited), written daily by `scripts/fetch-releases.mjs`
+  - `src/data/crate-scores.json`: every crate album's fit score, lane and sources, written by
+    `scripts/crate-calendar.mjs`, which `publish-crate.mjs` runs on both export folders
+- Taste score: the crate's fit score when the crate has the album (solid badge), otherwise an
+  estimate (dashed badge, "~"): how often Sigil picks that genre, +12 if Sigil has covered the
+  artist, +5 if an indie-minded outlet announced it, capped at 79 so estimates sit below strong
+  crate scores. Archival, live and anniversary records rank 15 points lower
+- Buzz: outlets that announced the album (Wikipedia citations + crate sources) + twice the
+  headlines naming the artist around release (`src/data/calendar-press.json`, also written by
+  `fetch-releases.mjs` from the feeds in `news-sources.json`)
+- Homepage "Out this month" (`ReleaseCalendar.astro`): this month's albums by taste, 12 shown, the
+  rest behind "Show all"; "Anticipated" beside it is unchanged (flagged crate albums)
+- `scripts/draft-hot-releases.mjs` drafts `src/content/blog/hot-releases-<yyyy-mm>.md` (a "Tops"
+  post, `draft: true`) with the month's 10 highest-buzz new albums (at least 2 signals; no
+  archival records or soundtracks). From the 25th it drafts next month's; pass `YYYY-MM` to draft
+  any month. It refreshes the draft daily until the intro or any take is edited, then never again.
+  Write the takes and delete `draft: true` to publish
+- Covers: `src/assets/calendar/<id>.jpg`, small thumbnails. Crate albums use the crate's own cover
+  (saved by `crate-calendar.mjs`); every other album is looked up on Deezer, then iTunes, by
+  `fetch-releases.mjs` (120 lookups a run, this month and next first; `--covers all` for no cap).
+  `src/data/calendar-covers.json` records each result: a miss is retried after a week, and covers
+  of albums that leave the calendar are deleted. Code in `scripts/lib/covers.mjs`
+- `.github/workflows/releases.yml` runs the fetch and the draft daily and commits when they changed
+
+### In the news (`/news`, home page, artist pages)
+- Headlines from other music sites about artists with a published pick or review. Each links out
+  in a new tab. Only the headline, link and source name are stored: never copy their images
+- `scripts/fetch-news.mjs` reads the feeds in `src/data/news-sources.json`, matches artist names
+  in headlines (same spelling and capitals) and writes `src/data/news.json`, keeping 60 days
+- `.github/workflows/news.yml` runs it daily and commits `news.json` when it changed, which
+  redeploys the site. Run by hand with `node scripts/fetch-news.mjs` (`--dry-run` to preview)
+- In `news.json`, a story's `take` is an optional one-line Sigil comment shown under the headline;
+  `"hidden": true` hides a wrong match. Both survive later runs. An artist name that keeps matching
+  the wrong stories goes in `ignore` in `news-sources.json`
+
+### About (`/about`)
+- Who is behind the blog and what gets posted here
+
+### Work content (stashed)
+The site is music-only. The portfolio page, client-logo marquee and studio About page live in
+`stash/work/` (not built or deployed). Do not link to or re-add them unless asked. See
+`stash/work/README.md`.
 
 ### Blog (`/blog`)
-- List of all posts, sorted newest first
-- Cards show title, description, and date
-- Hover effect: green border, slide right
+- Every post, newest first
 
 ### Blog Post (`/blog/[slug]`)
 - Clean reading layout (720px max width)
-- Post meta: date, updated date
-- Back to blog link at bottom
+- Ends with previous / next and "More from <section>", all within the post's own section
+- A review with `artist` and `rating` also outputs Review structured data, so search results
+  can show the score
 
 ## Content
 
@@ -90,15 +185,75 @@ title: "Post Title"
 description: "Brief description for listings and SEO"
 pubDate: 2024-01-15
 updatedDate: 2024-01-16  # optional
-heroImage: "./image.jpg"  # optional
+heroImage: "../../assets/image.jpg"  # optional
+draft: true                  # optional, see Drafts
+projectName: "Album Review"  # the section: "New Music Friday", "Album Review" or "Tops"
+artist: "Geese"              # reviews
+genre: "Indie Rock"          # reviews
+releaseDate: "Oct. 28, 2025" # reviews
+rating: 9                    # reviews, 1 to 10
 ---
 ```
+
+Always load posts with `getPosts()` from `src/lib/posts.ts`, not `getCollection('blog')`, so drafts
+are handled the same way everywhere.
+
+### Drafts
+`draft: true` keeps a post off the built site: no page, not in lists, the feed, search or the
+album index. In `yarn dev` drafts show with a "Draft" badge so they can be previewed. Delete the
+line to publish. The five placeholder reviews (lorem ipsum) are drafts.
+
+### New Music Friday posts
+The first block is the Spotify playlist embed; the homepage picks up the newest one. Each album
+pick is a cover image followed directly by a heading, then an optional tasting-notes line:
+
+```markdown
+![Artist - Album](../../assets/nmf-2026-11-20/cover.jpg)
+
+## Artist - Album
+
+_Tasting Notes: three or four words_
+
+The write-up.
+```
+
+Keep the `Artist - Album` heading format (space, hyphen, space). The album index and search read it.
+
+## Publishing the crate (Upcoming albums, Out this month, Anticipated)
+
+The "Upcoming albums" block shows the albums approved or favorited in the Sigil NMF Crate
+(https://claude.ai/artifact/AetYw2LkEDSJysDL2GpiEm) for one release Friday. The site is static, so
+the picks are copied into the repo. When asked to "publish the crate":
+
+1. Export two collections from the artifact's database with the `ArtifactData` tool
+   (`action: list`, limit 200, each with its own `out_dir` in the scratchpad; every album lands as
+   a `.json` file):
+   - `weeks/<friday>/albums` (friday as `YYYY-MM-DD`): the week being reviewed
+   - `weeks/ahead/albums`: the crate's "Coming up" list, albums announced for later
+2. Run `node scripts/publish-crate.mjs <week folder> --ahead <coming-up folder>`. It rewrites
+   `src/data/upcoming.json` and `src/assets/upcoming/`, and updates `src/data/releases.json` and
+   `src/assets/releases/`. Add `--draft` to also create that Friday's draft post
+   (`src/content/blog/nmf-<friday>.md`) with every pick's cover and heading in place; it never
+   overwrites an existing post. `--ahead <folder>` on its own updates only the release lists.
+3. `yarn build`, then commit and push only when asked.
+
+The block titles itself "Upcoming albums" before the release day and "Out now" from then on, and
+hides itself two weeks after release, so a stale week never lingers.
+
+`src/data/releases.json` is a running list, kept between runs: every week's picks, plus every
+album starred in "Coming up". `ReleaseCalendar.astro` sorts it by today's date in the browser, so
+no rebuild is needed when a date passes:
+- "Anticipated": anything not out yet. Un-starring an album in the crate removes it at the next publish.
+- "Out this month": anything released earlier in the current calendar month.
+- Albums in the current "Upcoming albums" grid stay out of both lists while that grid shows.
+- Albums drop out of the file two months after release. Each list hides when it is empty.
+
 
 ## Site Config
 
 Edit `src/consts.ts` to change:
 - `SITE_TITLE`: "Sigil"
-- `SITE_DESCRIPTION`: "A portfolio and music blog by Brandon Wirth"
+- `SITE_DESCRIPTION`: the music blog description used for SEO and RSS
 - `SITE_AUTHOR`: "Brandon Wirth"
 
 ## Image Optimization

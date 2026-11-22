@@ -1,0 +1,281 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+	images: ImageMetadata[];
+	projectTitle: string;
+}
+
+const { images, projectTitle } = Astro.props;
+---
+
+{
+	images.length > 0 && (
+		<div class="project-slider" data-project-slider>
+			<div class="slider-chrome" aria-hidden="true">
+				<span class="slider-hint">Swipe or use arrows</span>
+			</div>
+			<div class="slider-viewport">
+				<div class="slider-track" tabindex="0" role="group" aria-label={`${projectTitle} image gallery`}>
+					{images.map((img, i) => (
+						<div class="slider-slide" data-slider-slide>
+							<Image
+								src={img}
+								alt={`${projectTitle} — ${i + 1} of ${images.length}`}
+								widths={[480, 720, 960, 1200]}
+								sizes="(max-width: 900px) 100vw, min(52vw, 720px)"
+								loading={i === 0 ? 'eager' : 'lazy'}
+								decoding="async"
+								class="slider-img"
+							/>
+						</div>
+					))}
+				</div>
+			</div>
+			<div class="slider-toolbar">
+				<button type="button" class="slider-btn" data-slider-prev aria-label="Previous image">
+					<span aria-hidden="true">←</span>
+				</button>
+				<div class="slider-dots" data-slider-dots role="tablist" aria-label="Slide indicators">
+					{images.map((_, i) => (
+						<button
+							type="button"
+							class="slider-dot"
+							data-slider-dot
+							data-index={i}
+							role="tab"
+							aria-selected={i === 0 ? 'true' : 'false'}
+							aria-label={`Go to image ${i + 1}`}
+						/>
+					))}
+				</div>
+				<button type="button" class="slider-btn" data-slider-next aria-label="Next image">
+					<span aria-hidden="true">→</span>
+				</button>
+			</div>
+		</div>
+	)
+}
+{
+	images.length === 0 && (
+		<div class="slider-placeholder" aria-hidden="true" />
+	)
+}
+
+<style>
+	.project-slider {
+		position: relative;
+		width: 100%;
+	}
+
+	.slider-chrome {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 0.5rem;
+	}
+
+	.slider-hint {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--gray);
+	}
+
+	.slider-viewport {
+		position: relative;
+		border-radius: 10px;
+		overflow: hidden;
+		background: var(--gray-lighter);
+		box-shadow:
+			0 1px 2px rgba(17, 17, 17, 0.06),
+			0 12px 40px rgba(17, 17, 17, 0.08);
+	}
+
+	.slider-track {
+		display: flex;
+		overflow-x: auto;
+		overflow-y: hidden;
+		scroll-snap-type: x mandatory;
+		scroll-behavior: smooth;
+		gap: 0;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		touch-action: pan-x;
+		outline: none;
+	}
+
+	.slider-track::-webkit-scrollbar {
+		display: none;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.slider-track {
+			scroll-behavior: auto;
+		}
+	}
+
+	.slider-slide {
+		flex: 0 0 100%;
+		width: 100%;
+		scroll-snap-align: start;
+		scroll-snap-stop: always;
+		aspect-ratio: 4 / 3;
+	}
+
+	.slider-img {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+	}
+
+	.slider-toolbar {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.slider-btn {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 999px;
+		border: 2px solid var(--green);
+		background: var(--white);
+		color: var(--green);
+		font-size: 1.125rem;
+		line-height: 1;
+		cursor: pointer;
+		transition:
+			background 0.2s ease,
+			color 0.2s ease,
+			transform 0.15s ease;
+	}
+
+	.slider-btn:hover {
+		background: var(--green);
+		color: var(--white);
+	}
+
+	.slider-btn:active {
+		transform: scale(0.96);
+	}
+
+	.slider-btn:focus-visible {
+		outline: 2px solid var(--green-dark);
+		outline-offset: 3px;
+	}
+
+	.slider-dots {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.slider-dot {
+		width: 8px;
+		height: 8px;
+		padding: 0;
+		border: none;
+		border-radius: 999px;
+		background: var(--gray-light);
+		cursor: pointer;
+		transition:
+			background 0.2s ease,
+			transform 0.2s ease,
+			width 0.2s ease;
+	}
+
+	.slider-dot[aria-selected='true'] {
+		background: var(--green);
+		width: 22px;
+	}
+
+	.slider-dot:focus-visible {
+		outline: 2px solid var(--green-dark);
+		outline-offset: 2px;
+	}
+
+	.slider-placeholder {
+		width: 100%;
+		aspect-ratio: 4 / 3;
+		border-radius: 10px;
+		background: linear-gradient(135deg, var(--gray-lighter) 0%, var(--gray-light) 100%);
+	}
+</style>
+
+<script>
+	function initSlider(root: HTMLElement) {
+		const track = root.querySelector('.slider-track') as HTMLElement | null;
+		const slides = [...root.querySelectorAll('[data-slider-slide]')] as HTMLElement[];
+		const prev = root.querySelector('[data-slider-prev]') as HTMLButtonElement | null;
+		const next = root.querySelector('[data-slider-next]') as HTMLButtonElement | null;
+		const dots = [...root.querySelectorAll('[data-slider-dot]')] as HTMLButtonElement[];
+
+		if (!track || slides.length === 0) return;
+
+		const getIndex = () => {
+			const w = track.clientWidth || 1;
+			return Math.round(track.scrollLeft / w);
+		};
+
+		const len = slides.length;
+
+		const goTo = (index: number) => {
+			const wrapped = ((index % len) + len) % len;
+			const w = track.clientWidth;
+			track.scrollTo({ left: wrapped * w, behavior: 'smooth' });
+		};
+
+		const syncDots = () => {
+			const i = getIndex();
+			dots.forEach((d, j) => {
+				d.setAttribute('aria-selected', j === i ? 'true' : 'false');
+			});
+		};
+
+		let scrollEndTimer: ReturnType<typeof setTimeout> | undefined;
+		track.addEventListener('scroll', () => {
+			if (scrollEndTimer) clearTimeout(scrollEndTimer);
+			scrollEndTimer = setTimeout(syncDots, 60);
+			syncDots();
+		});
+
+		prev?.addEventListener('click', () => goTo(getIndex() - 1));
+		next?.addEventListener('click', () => goTo(getIndex() + 1));
+
+		dots.forEach((dot) => {
+			dot.addEventListener('click', () => {
+				const idx = Number(dot.dataset.index);
+				if (!Number.isNaN(idx)) goTo(idx);
+			});
+		});
+
+		track.addEventListener('keydown', (e) => {
+			if (e.key === 'ArrowLeft') {
+				e.preventDefault();
+				goTo(getIndex() - 1);
+			} else if (e.key === 'ArrowRight') {
+				e.preventDefault();
+				goTo(getIndex() + 1);
+			}
+		});
+
+		const ro = new ResizeObserver(() => syncDots());
+		ro.observe(track);
+		syncDots();
+	}
+
+	function boot() {
+		document.querySelectorAll<HTMLElement>('[data-project-slider]').forEach(initSlider);
+	}
+
+	boot();
+	document.addEventListener('astro:page-load', boot);
+</script>

@@ -1,6 +1,6 @@
 ---
 import logoSrc from '../assets/sigil-main.svg';
-import { SIGIL_PLAYLIST_URL, SITE_LOCATION, SITE_STUDIO, SITE_TITLE } from '../consts';
+import { SIGIL_PLAYLIST_URL, SITE_LOCATION, SITE_TITLE } from '../consts';
 
 const today = new Date();
 ---
@@ -12,35 +12,40 @@ const today = new Date();
 				<img src={logoSrc.src} alt={SITE_TITLE} />
 			</a>
 			<p class="footer-colophon">
-				Weekly New Music Friday crates, album reviews, and a live release calendar out of {SITE_LOCATION}.
+				Weekly New Music Friday crates, album reviews, artist news, and a live release calendar out of {SITE_LOCATION}.
 			</p>
 		</div>
 
 		<div class="footer-col">
-			<h4>Publication</h4>
+			<h4>Explore</h4>
 			<ul>
 				<li><a href="/blog">Music Desk</a></li>
-				<li><a href="/crate">The Crate (All Picks)</a></li>
-				<li><a href="/calendar">Release Calendar</a></li>
-				<li><a href="/releases.ics">Calendar Feed (.ics)</a></li>
-				<li><a href="/rss.xml">RSS Feed</a></li>
+				<li><a href="/crate">The Crate</a></li>
+				<li><a href="/albums">Album Index</a></li>
+				<li><a href="/artists">Artists</a></li>
+				<li><a href="/genres">Genres</a></li>
+				<li><a href="/news">In the News</a></li>
 			</ul>
 		</div>
 
 		<div class="footer-col">
-			<h4>Listen & Studio</h4>
+			<h4>Calendar & Feeds</h4>
 			<ul>
+				<li><a href="/calendar">Release Radar</a></li>
+				<li><a href="/releases">Full Calendar</a></li>
+				<li><a href="/releases.ics">Calendar Feed (.ics)</a></li>
+				<li><a href="/rss.xml">RSS Feed</a></li>
 				<li>
 					<a href={SIGIL_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">Sigil Picks on Spotify ↗</a>
 				</li>
-				<li><a href="/work">Client Work</a></li>
-				<li><a href="/about">About Sigil Studios</a></li>
+				<li><a href="/search">Search</a></li>
+				<li><a href="/about">About</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="footer-bottom">
-		<p>&copy; {today.getFullYear()} {SITE_STUDIO.toUpperCase()}. All rights reserved.</p>
+		<p>&copy; {today.getFullYear()} {SITE_TITLE.toUpperCase()}. All rights reserved.</p>
 		<p class="footer-note">{SITE_LOCATION}</p>
 	</div>
 </footer>

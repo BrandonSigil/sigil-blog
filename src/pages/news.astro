@@ -1,0 +1,22 @@
+---
+// /news: every "In the news" story about an artist on Sigil, newest first.
+import NewsList from '../components/NewsList.astro';
+import HubPage from '../layouts/HubPage.astro';
+import { getNews } from '../lib/news';
+
+const stories = await getNews();
+---
+
+<HubPage
+	title="In the news"
+	kicker="Album index"
+	description="News from around the music press about artists picked or reviewed on Sigil."
+	count={`${stories.length} ${stories.length === 1 ? 'story' : 'stories'} about artists on Sigil`}
+	current="/news"
+>
+	{stories.length > 0 ? (
+		<NewsList stories={stories} />
+	) : (
+		<p class="hub-muted">No news about Sigil's artists right now. Check back after the next Friday.</p>
+	)}
+</HubPage>

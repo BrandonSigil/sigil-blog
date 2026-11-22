@@ -8,8 +8,5 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	site: 'https://sigil.studio',
 	trailingSlash: 'never',
-	redirects: {
-		'/portfolio': '/work',
-	},
 	integrations: [mdx(), sitemap()],
 });

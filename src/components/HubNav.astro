@@ -1,0 +1,76 @@
+---
+// "Browse" links shared by the album index and every hub page: years, genres, artists A–Z.
+import { getAlbumPicks } from '../lib/albums';
+import { groupByGenre, groupByYear } from '../lib/hubs';
+
+interface Props {
+	/** The href of the page being shown, so its link is marked current. */
+	current?: string;
+}
+
+const { current } = Astro.props;
+const picks = await getAlbumPicks();
+const years = groupByYear(picks);
+const genres = groupByGenre(picks);
+const is = (href: string) => (current === href ? 'page' : undefined);
+---
+
+<nav class="hub-nav" aria-label="Browse albums">
+	<div class="hub-row">
+		<span class="hub-label">Year</span>
+		<a href="/albums" aria-current={is('/albums')}>All</a>
+		{years.map((y) => <a href={y.href} aria-current={is(y.href)}>{y.year}</a>)}
+		<a href="/releases" aria-current={is('/releases')}>Release calendar</a>
+	</div>
+	<div class="hub-row">
+		<span class="hub-label">Genre</span>
+		{genres.map((g) => <a href={g.href} aria-current={is(g.href)}>{g.name}</a>)}
+	</div>
+	<div class="hub-row">
+		<span class="hub-label">Artist</span>
+		<a href="/artists" aria-current={is('/artists')}>A–Z</a>
+		<a href="/news" aria-current={is('/news')}>In the news</a>
+	</div>
+</nav>
+
+<style>
+	.hub-nav {
+		display: grid;
+		gap: 0.6rem;
+		margin-top: 1.5rem;
+	}
+	.hub-row {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.45rem;
+	}
+	.hub-label {
+		width: 3.75rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--gray);
+	}
+	.hub-row a {
+		padding: 0.25rem 0.7rem;
+		border: 2px solid var(--green);
+		border-radius: 999px;
+		color: var(--green);
+		font-size: 0.85rem;
+		font-weight: 600;
+		text-decoration: none;
+		white-space: nowrap;
+	}
+	.hub-row a:hover,
+	.hub-row a[aria-current='page'] {
+		background: var(--green);
+		color: var(--cream);
+	}
+	@media (max-width: 480px) {
+		.hub-label {
+			width: 100%;
+		}
+	}
+</style>

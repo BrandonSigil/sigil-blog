@@ -1,0 +1,24 @@
+---
+// /genres/<genre>: every pick in one genre, newest first.
+import AlbumGrid from '../../components/AlbumGrid.astro';
+import HubPage from '../../layouts/HubPage.astro';
+import { getAlbumPicks } from '../../lib/albums';
+import { groupByGenre, type GenreGroup } from '../../lib/hubs';
+
+export async function getStaticPaths() {
+	return groupByGenre(await getAlbumPicks()).map((g) => ({ params: { genre: g.slug }, props: { g } }));
+}
+
+const { g } = Astro.props as { g: GenreGroup };
+const albums = `${g.picks.length} album${g.picks.length === 1 ? '' : 's'}`;
+---
+
+<HubPage
+	title={g.name}
+	kicker='<a href="/genres">Genres</a>'
+	description={`All ${albums} in ${g.name} picked on New Music Friday.`}
+	count={`${albums} picked on New Music Friday`}
+	current={g.href}
+>
+	<AlbumGrid picks={g.picks} />
+</HubPage>
