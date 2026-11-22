@@ -1,0 +1,391 @@
+---
+// Year in Sigil: the yearly recap. Picks are read from the year's New Music Friday posts;
+// the intro, lanes and ranked lists come from src/data/year-in-sigil/<year>.json.
+import { Image } from 'astro:assets';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+import { SITE_TITLE } from '../../consts';
+import { albumList, allYears, picksFor, songList, stats, type YearData } from '../../lib/year-in-sigil';
+
+export function getStaticPaths() {
+	return allYears().map((data) => ({ params: { year: String(data.year) }, props: { data } }));
+}
+
+const { data } = Astro.props as { data: YearData };
+const picks = await picksFor(data);
+const s = stats(picks);
+const albums = albumList(data, picks);
+const songs = songList(data);
+const card = (name: string) => `/year/${data.year}/${name}.png`;
+const maxLane = Math.max(1, ...s.lanes.map((l) => l.count));
+const description =
+	data.intro ||
+	`${s.picks} albums picked across ${s.fridays} New Music Fridays: the year on Sigil, month by month, plus the top 10 albums and songs.`;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead
+			title={`Year in Sigil ${data.year} | ${SITE_TITLE}`}
+			description={description}
+			ogImageUrl={card('summary')}
+			noindex={data.draft}
+		/>
+		<style>
+			.yis-hero {
+				padding-top: 2rem;
+				margin-bottom: 3rem;
+			}
+			.yis-label {
+				font-size: 0.85rem;
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--green);
+			}
+			.yis-year {
+				font-size: clamp(5rem, 18vw, 12rem);
+				line-height: 0.9;
+				letter-spacing: -0.05em;
+				margin: 0.5rem 0 1.5rem;
+			}
+			.yis-intro {
+				max-width: 640px;
+				font-size: 1.15rem;
+				color: var(--black);
+			}
+			.yis-intro.is-empty {
+				color: var(--gray);
+				font-style: italic;
+			}
+			.yis-stats {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1.5rem;
+				border-top: 3px solid var(--black);
+				padding-top: 1.5rem;
+				margin-top: 2.5rem;
+			}
+			.yis-stat strong {
+				display: block;
+				font-family: 'Space Grotesk', sans-serif;
+				font-size: clamp(2.5rem, 7vw, 4.5rem);
+				line-height: 1;
+				letter-spacing: -0.03em;
+			}
+			.yis-stat span {
+				color: var(--gray);
+				font-size: 0.95rem;
+			}
+			.yis-draft {
+				border: 2px dashed var(--gray);
+				border-radius: 8px;
+				padding: 1rem 1.25rem;
+				margin-bottom: 3rem;
+				color: var(--gray);
+				font-size: 0.95rem;
+			}
+			.yis-draft code {
+				font-size: 0.85em;
+				background: var(--gray-lighter);
+				padding: 0.1em 0.35em;
+				border-radius: 4px;
+			}
+			.yis-section {
+				margin: 0 0 4.5rem;
+			}
+			.yis-section-head {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.5rem;
+			}
+			.yis-section-head h2 {
+				font-size: clamp(1.75rem, 4vw, 2.5rem);
+				margin: 0;
+			}
+			.yis-section-head p {
+				margin: 0.25rem 0 0;
+				color: var(--gray);
+				font-size: 0.95rem;
+			}
+			.yis-share {
+				font-size: 0.9rem;
+				padding: 0.45rem 0.9rem;
+				border: 2px solid var(--black);
+				border-radius: 999px;
+				color: var(--black);
+				text-decoration: none;
+				white-space: nowrap;
+			}
+			.yis-share:hover {
+				background: var(--black);
+				color: var(--white);
+			}
+			.yis-month {
+				display: grid;
+				grid-template-columns: 9rem 1fr;
+				gap: 1.5rem;
+				padding: 1.5rem 0;
+				border-top: 1px solid var(--gray-light);
+			}
+			.yis-month h3 {
+				font-family: 'Space Grotesk', sans-serif;
+				color: var(--green);
+				font-size: 1.4rem;
+				margin: 0;
+			}
+			.yis-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+				gap: 1.25rem;
+			}
+			.yis-pick {
+				color: var(--black);
+				text-decoration: none;
+				font-size: 0.9rem;
+				line-height: 1.35;
+			}
+			.yis-pick img,
+			.yis-cover-blank {
+				width: 100%;
+				aspect-ratio: 1;
+				object-fit: cover;
+				border-radius: 6px;
+				display: block;
+				margin-bottom: 0.5rem;
+				background: var(--gray-light);
+			}
+			.yis-pick strong {
+				display: block;
+			}
+			.yis-pick span {
+				color: var(--gray);
+			}
+			.yis-pick:hover strong {
+				color: var(--green);
+			}
+			.yis-lanes {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				display: grid;
+				gap: 1rem;
+				max-width: 760px;
+			}
+			.yis-lane-row {
+				display: flex;
+				justify-content: space-between;
+				font-weight: 600;
+				margin-bottom: 0.35rem;
+			}
+			.yis-lane-row span {
+				color: var(--gray);
+			}
+			.yis-bar {
+				height: 14px;
+				border-radius: 7px;
+				background: var(--gray-light);
+				overflow: hidden;
+			}
+			.yis-bar div {
+				height: 100%;
+				background: var(--green);
+				border-radius: 7px;
+			}
+			.yis-list {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+				max-width: 820px;
+			}
+			.yis-list li {
+				display: grid;
+				grid-template-columns: 3rem 64px 1fr;
+				gap: 1rem;
+				align-items: center;
+				padding: 0.85rem 0;
+				border-top: 1px solid var(--gray-light);
+			}
+			.yis-list.no-covers li {
+				grid-template-columns: 3rem 1fr;
+			}
+			.yis-rank {
+				font-family: 'Space Grotesk', sans-serif;
+				font-weight: 700;
+				font-size: 1.6rem;
+				color: var(--green);
+			}
+			.yis-list img,
+			.yis-list .yis-cover-blank {
+				width: 64px;
+				height: 64px;
+				margin: 0;
+				border-radius: 4px;
+				object-fit: cover;
+			}
+			.yis-list strong {
+				display: block;
+				line-height: 1.25;
+			}
+			.yis-list .yis-by {
+				color: var(--gray);
+				font-size: 0.95rem;
+			}
+			.yis-list .yis-note {
+				margin: 0.35rem 0 0;
+				font-size: 0.95rem;
+			}
+			@media (max-width: 720px) {
+				.yis-stats {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+				.yis-month {
+					grid-template-columns: 1fr;
+					gap: 0.75rem;
+				}
+				.yis-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="yis-hero">
+				<div class="yis-label">Year in Sigil</div>
+				<h1 class="yis-year">{data.year}</h1>
+				{data.intro ? (
+					<p class="yis-intro">{data.intro}</p>
+				) : (
+					<p class="yis-intro is-empty">Intro goes here: a few lines on the year, in your words.</p>
+				)}
+				<div class="yis-stats">
+					<div class="yis-stat"><strong>{s.picks}</strong><span>albums picked</span></div>
+					<div class="yis-stat"><strong>{s.fridays}</strong><span>New Music Fridays</span></div>
+					<div class="yis-stat"><strong>{s.artists}</strong><span>artists</span></div>
+					<div class="yis-stat"><strong>{s.lanes.length}</strong><span>lanes</span></div>
+				</div>
+			</section>
+
+			{data.draft && (
+				<div class="yis-draft">
+					Draft: this page only builds locally and on preview deploys. Rank the lists, write the intro and
+					check the lanes in <code>src/data/year-in-sigil/{data.year}.json</code>, then set
+					<code>"draft": false</code> to publish.
+				</div>
+			)}
+
+			<section class="yis-section" id="summary">
+				<div class="yis-section-head">
+					<div>
+						<h2>Month by month</h2>
+						<p>Every album picked on New Music Friday this year.</p>
+					</div>
+					<a class="yis-share" href={card('months')} download>Share card</a>
+				</div>
+				{s.byMonth.map((m) => (
+					<div class="yis-month">
+						<h3>{m.name}</h3>
+						<div class="yis-grid">
+							{m.picks.map((p) => (
+								<a class="yis-pick" href={p.href}>
+									{p.cover ? (
+										<Image src={p.cover} alt={`${p.artist} - ${p.album}`} width={320} height={320} />
+									) : (
+										<div class="yis-cover-blank" />
+									)}
+									<strong>{p.album}</strong>
+									<span>{p.artist}</span>
+								</a>
+							))}
+						</div>
+					</div>
+				))}
+			</section>
+
+			<section class="yis-section" id="lanes">
+				<div class="yis-section-head">
+					<div>
+						<h2>Where the picks landed</h2>
+						<p>Picks by lane.</p>
+					</div>
+					<a class="yis-share" href={card('lanes')} download>Share card</a>
+				</div>
+				<ul class="yis-lanes">
+					{s.lanes.map((l) => (
+						<li>
+							<div class="yis-lane-row">{l.name}<span>{l.count}</span></div>
+							<div class="yis-bar"><div style={`width: ${(100 * l.count) / maxLane}%`} /></div>
+						</li>
+					))}
+				</ul>
+			</section>
+
+			<section class="yis-section" id="albums">
+				<div class="yis-section-head">
+					<div>
+						<h2>{albums.ranked ? 'Top 10 albums' : 'Album candidates'}</h2>
+						<p>{albums.ranked ? 'The best of the year.' : 'Every pick, in release order. Not ranked yet.'}</p>
+					</div>
+					<a class="yis-share" href={card('albums')} download>Share card</a>
+				</div>
+				<ol class="yis-list">
+					{albums.items.map((a, i) => (
+						<li>
+							<span class="yis-rank">{albums.ranked ? i + 1 : '·'}</span>
+							{a.pick?.cover ? (
+								<Image src={a.pick.cover} alt={`${a.artist} - ${a.album}`} width={128} height={128} />
+							) : (
+								<div class="yis-cover-blank" />
+							)}
+							<div>
+								<strong>{a.album}</strong>
+								<span class="yis-by">{a.artist}</span>
+								{a.note && <p class="yis-note">{a.note}</p>}
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<section class="yis-section" id="songs">
+				<div class="yis-section-head">
+					<div>
+						<h2>{songs.ranked ? 'Top 10 songs' : 'Song candidates'}</h2>
+						<p>{songs.ranked ? 'The songs on repeat.' : 'Songs named in this year’s posts. Not ranked yet.'}</p>
+					</div>
+					<a class="yis-share" href={card('songs')} download>Share card</a>
+				</div>
+				<ol class="yis-list no-covers">
+					{songs.items.map((song, i) => (
+						<li>
+							<span class="yis-rank">{songs.ranked ? i + 1 : '·'}</span>
+							<div>
+								<strong>{song.title}</strong>
+								<span class="yis-by">{song.artist}</span>
+								{song.note && <p class="yis-note">{song.note}</p>}
+							</div>
+						</li>
+					))}
+				</ol>
+			</section>
+
+			<section class="yis-section">
+				<div class="yis-section-head">
+					<div>
+						<h2>Share the year</h2>
+						<p>One card for the whole year.</p>
+					</div>
+					<a class="yis-share" href={card('summary')} download>Summary card</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

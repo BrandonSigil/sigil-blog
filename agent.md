@@ -92,6 +92,21 @@ scripts/
 - Both are built from the posts. Nothing to maintain by hand
 - The album index reads every pick out of the New Music Friday posts (format below)
 
+### Year in Sigil (`/year/[year]`)
+- A yearly recap: stats, picks month by month, picks by lane, top 10 albums, top 10 songs, and a
+  1080x1350 share card for each part (`/year/2026/summary.png`, `months`, `lanes`, `albums`, `songs`)
+- Picks come from the same reader as the album index (`getAlbumPicks` in `src/lib/albums.ts`), so
+  a new New Music Friday post joins the recap on the next build. Draft posts count in `yarn dev`
+  only, like everywhere else on the site
+- Brandon's parts live in `src/data/year-in-sigil/<year>.json`: `intro`, `lanes` (one per pick;
+  a pick with none shows as "Unsorted") and the ranked `albums` and `songs`. Until those lists
+  have entries, the page shows every pick and the `songCandidates`, unranked
+- `"draft": true` in that file builds the page locally and on Vercel previews only, never in
+  production, and marks it noindex
+- Cards render at build time with Satori and sharp (`src/pages/year/[year]/[card].png.ts`)
+- Don't run `astro build` while `yarn dev` is running: they share the content cache, and the dev
+  server loses the blog collection until it restarts
+
 ### About (`/about`)
 - Who is behind the blog and what gets posted here
 

@@ -1,0 +1,39 @@
+{
+	"year": 2026,
+	"draft": true,
+	"intro": "",
+	"lanes": {
+		"Gia Margaret - Singing": "Indie & folk",
+		"Quiet Light - Blue Angel Sparkling Silver 2": "Electronic",
+		"Loukeman - Sd-3": "Electronic",
+		"Matt Corby - Tragic Magic": "Soul & funk",
+		"Divers - Odd Dog in the Capital": "Indie & folk",
+		"Isaiah Rashad - IT'S BEEN AWFUL": "Hip-hop",
+		"Jordan Rakei - Between Us": "Soul & funk",
+		"Broken Social Scene - Remember the Humans": "Indie & folk",
+		"Basement - WIRED": "Rock",
+		"Black Milk - CEREMONIAL": "Hip-hop",
+		"Lykke Li - The Afterparty": "Pop",
+		"Lael Neale - As Killers Do": "Indie & folk",
+		"Toro y Moi - Unusua": "Jazz & ambient",
+		"Gabriels - Blood On My Hands": "Soul & funk",
+		"Joshua Redman - If Ever You Would Leave Us (We Play for Rollins)": "Jazz & ambient",
+		"Lambchop - Demoed": "Country & roots"
+	},
+	"albums": [],
+	"songs": [],
+	"songCandidates": [
+		{ "title": "Everyone Around Me Dancing", "artist": "Gia Margaret" },
+		{ "title": "Good Friend", "artist": "Gia Margaret" },
+		{ "title": "Cellular Reverse", "artist": "Gia Margaret" },
+		{ "title": "Berlin", "artist": "Quiet Light" },
+		{ "title": "Star100", "artist": "Quiet Light" },
+		{ "title": "To The Sky", "artist": "Loukeman" },
+		{ "title": "U love it", "artist": "Loukeman" },
+		{ "title": "The Great Tree", "artist": "Divers" },
+		{ "title": "BOY IN READ", "artist": "Isaiah Rashad feat. SZA" },
+		{ "title": "Easy to Love", "artist": "Jordan Rakei" },
+		{ "title": "Crash Test Dummy", "artist": "Black Milk" },
+		{ "title": "Lucky Again", "artist": "Lykke Li" }
+	]
+}
