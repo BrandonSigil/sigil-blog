@@ -2,20 +2,24 @@
 // /releases: the full release calendar, every known album from last month on, month by month.
 // Rows are in date order; "My taste" reorders each month by fit score in the browser.
 import HubPage from '../layouts/HubPage.astro';
-import { getCalendar, monthId, monthName } from '../lib/calendar';
+import { currentMonths, getCalendar, monthId, monthName } from '../lib/calendar';
 
 const albums = await getCalendar();
-const months = [...new Set(albums.map((a) => a.month))].sort().map((month) => ({
+const [thisMonth] = currentMonths();
+const all = [...new Set(albums.map((a) => a.month))].sort().map((month) => ({
 	month,
 	albums: albums.filter((a) => a.month === month),
 }));
+// The page opens on this month; months already over fold into "Earlier" at the bottom.
+const months = all.filter((m) => m.month >= thisMonth);
+const earlier = all.filter((m) => m.month < thisMonth);
 ---
 
 <HubPage
 	title="Release calendar"
 	kicker="Album index"
 	description="Every album announced for the coming months, from Wikipedia's album lists and the Sigil crate, scored for Sigil's taste."
-	count={`${albums.length} albums from ${monthName(months[0]?.month ?? '2026-01')} on`}
+	count={`${months.reduce((n, m) => n + m.albums.length, 0)} albums from ${monthName(thisMonth)} on`}
 	current="/releases"
 >
 	<div class="cal-tools">
@@ -63,9 +67,50 @@ const months = [...new Set(albums.map((a) => a.month))].sort().map((month) => ({
 			</ol>
 		</section>
 	))}
+	{earlier.length > 0 && (
+		<details class="cal-earlier">
+			<summary>Earlier: {earlier.map((m) => monthName(m.month)).join(', ')}</summary>
+	{earlier.map(({ month, albums: list }) => (
+		<section class="hub-section" id={monthId(month)}>
+			<div class="hub-section-head">
+				<h2>{monthName(month)}</h2>
+				<span class="hub-muted">{list.length} albums</span>
+			</div>
+			<ol class="cal-list" data-cal-list>
+				{list.map((a, i) => (
+					<li data-order={i} data-rank={a.rank} data-buzz={a.buzz}>
+						<a class="cal-row" href={a.listen} target="_blank" rel="noopener">
+							<time class="cal-date" datetime={a.releaseDate}>{a.hasDay ? a.dateLabel : 'TBA'}</time>
+							<span class:list={['cal-score', { estimated: a.estimated }]} title={a.estimated ? 'Estimated fit' : 'Crate fit score'}>
+								{a.estimated ? `~${a.score}` : a.score}
+							</span>
+							<span class="cal-text">
+								<strong>{a.artist}</strong>
+								<span>{a.title}{a.label && <em> · {a.label}</em>}</span>
+							</span>
+							<span class="cal-meta">
+								{a.picked ? <span class="cal-flag">Pick</span> : a.onSigil && <span class="cal-flag soft">On Sigil</span>}
+								{a.reissue && <span class="cal-tag">Archival</span>}
+								{a.lane && <span class="cal-tag">{a.lane}</span>}
+							</span>
+						</a>
+					</li>
+				))}
+			</ol>
+		</section>
+	))}
+		</details>
+	)}
 </HubPage>
 
 <style>
+	.cal-earlier summary {
+		cursor: pointer;
+		margin-bottom: 2rem;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		color: var(--green);
+	}
 	.cal-tools {
 		display: flex;
 		flex-wrap: wrap;
