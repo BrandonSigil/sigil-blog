@@ -158,6 +158,13 @@ const albums = releases.albums.map((album) => {
 		color: var(--green);
 	}
 
+	/* With "Anticipated" empty, "Out this month" has the full width: two columns of rows. */
+	.calendar:not(:has([data-calendar-col='ahead']:not([hidden]))) [data-out-list] {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+		column-gap: 3rem;
+	}
+
 	.calendar-row.has-score {
 		grid-template-columns: 3.6rem 44px minmax(0, 1fr) auto;
 	}
