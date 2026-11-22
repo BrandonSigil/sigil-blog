@@ -92,11 +92,11 @@ const {
 		place-items: center;
 		width: 30px;
 		height: 30px;
-		border-radius: 5px;
+		border-radius: 4px;
 		border: 1px solid var(--rule-strong);
 		background: var(--paper-card);
 		color: var(--ink-soft);
-		transition: color 0.14s ease, border-color 0.14s ease, background-color 0.14s ease, transform 0.14s ease;
+		transition: color 50ms steps(2), border-color 50ms steps(2), background-color 50ms steps(2);
 	}
 
 	.listen-icons.compact .listen-icon-btn {
@@ -117,9 +117,12 @@ const {
 	}
 
 	.listen-icon-btn:hover {
-		color: var(--green);
+		color: #f7f6f1;
 		border-color: var(--green);
-		background: var(--green-tint);
-		transform: translateY(-1px);
+		background: var(--green);
+	}
+
+	.listen-icon-btn:active {
+		transform: translate(1px, 1px);
 	}
 </style>

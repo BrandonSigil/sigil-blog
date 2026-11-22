@@ -41,7 +41,7 @@ const { compact = false } = Astro.props;
 					required
 					autocomplete="email"
 				/>
-				<button type="submit">Subscribe →</button>
+				<button type="submit" data-tick>Subscribe →</button>
 			</form>
 			<p class="dispatch-status" data-newsletter-status aria-live="polite"></p>
 		</div>
@@ -167,13 +167,17 @@ const { compact = false } = Astro.props;
 		border-radius: 5px;
 		cursor: pointer;
 		white-space: nowrap;
-		transition: transform 0.14s ease, box-shadow 0.14s ease, background 0.14s ease;
+		transition: transform 60ms steps(2), box-shadow 60ms steps(2), background-color 60ms steps(2);
 	}
 
 	.dispatch-form button:hover {
 		background: var(--green-dark);
-		transform: translate(-1px, -1px);
-		box-shadow: 4px 4px 0 var(--green);
+		box-shadow: 3px 3px 0 var(--green);
+	}
+
+	.dispatch-form button:active {
+		transform: translate(2px, 2px);
+		box-shadow: 1px 1px 0 var(--green);
 	}
 
 	.dispatch-status {

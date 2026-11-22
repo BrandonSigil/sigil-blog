@@ -92,8 +92,8 @@ const styleVariant = variant ?? pickVariant(slug);
 		height: 100%;
 		object-fit: cover;
 		object-position: 68% center;
-		filter: contrast(1.08) saturate(1.12);
-		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+		filter: contrast(1.08) saturate(1.1);
+		transition: filter 80ms steps(2);
 	}
 
 	/* Classic: iconic dark left fade + bold warm-cream stacked type */
@@ -192,7 +192,7 @@ const styleVariant = variant ?? pickVariant(slug);
 		);
 	}
 
-	/* Shared analog film grain */
+	/* Shared analog film grain — animates in stepped frames on parent hover */
 	.poster-grain {
 		position: absolute;
 		inset: 0;
@@ -202,6 +202,23 @@ const styleVariant = variant ?? pickVariant(slug);
 		opacity: 0.24;
 		mix-blend-mode: screen;
 		pointer-events: none;
+		transition: opacity 70ms steps(2);
+	}
+
+	:global(a:hover) .poster-grain,
+	:global(.post-card:hover) .poster-grain {
+		opacity: 0.36;
+		animation: sigilGrain 0.32s steps(4) infinite;
+	}
+
+	:global(a:hover) .poster-art-wrap :global(img),
+	:global(.post-card:hover) .poster-art-wrap :global(img) {
+		filter: contrast(1.2) saturate(1.04);
+	}
+
+	:global(a:hover) .poster-words,
+	:global(.post-card:hover) .poster-words {
+		animation: sigilRisoShift 0.26s steps(2) infinite;
 	}
 
 	/* No image fallback (e.g. Quiet Weeks) */

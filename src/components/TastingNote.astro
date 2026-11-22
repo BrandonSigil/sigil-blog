@@ -30,16 +30,25 @@ const { note, compact = false, tilt = false } = Astro.props;
 		box-shadow: 3px 3px 0 var(--green-shadow);
 		margin: 0.9rem 0 1.25rem;
 		overflow: hidden;
-		transition: transform 0.16s ease, box-shadow 0.16s ease;
+		transition: box-shadow 60ms steps(2), transform 60ms steps(2);
 	}
 
 	.hype-note.tilt {
-		transform: rotate(-0.45deg);
+		transform: rotate(-0.4deg);
 	}
 
-	.hype-note.tilt:hover {
-		transform: rotate(0deg) translate(-1px, -1px);
+	.hype-note:hover {
 		box-shadow: 4px 4px 0 var(--green);
+	}
+
+	.hype-note:hover .hype-note-bar {
+		background-image: url('/noise-sigil-white.png');
+		background-blend-mode: soft-light;
+		animation: sigilGrain 0.35s steps(3) infinite;
+	}
+
+	.hype-note:hover .hype-note-dots {
+		animation: sigilBlink 0.55s steps(2) infinite;
 	}
 
 	.hype-note-bar {

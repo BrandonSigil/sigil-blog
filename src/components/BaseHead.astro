@@ -100,3 +100,38 @@ const jsonLd = structuredData
 
 <!-- Analytics -->
 <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="a76fb39b-72b5-4044-9cb3-452e8a4f49d1"></script>
+
+<!-- Subtle 3-frame hardware tick micro-effect for [data-tick] mono labels -->
+<script is:inline>
+	document.addEventListener('DOMContentLoaded', () => {
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		const GLYPHS = '.:/+=-_';
+		document.querySelectorAll('[data-tick]').forEach((el) => {
+			const original = el.textContent || '';
+			let timer = null;
+			const run = () => {
+				if (timer) clearInterval(timer);
+				let frame = 0;
+				const total = 4;
+				timer = setInterval(() => {
+					frame++;
+					if (frame >= total) {
+						clearInterval(timer);
+						timer = null;
+						el.textContent = original;
+						return;
+					}
+					el.textContent = original
+						.split('')
+						.map((ch, idx) => {
+							if (ch === ' ' || ch === '→' || ch === '↗' || ch === '↓' || ch === '↻') return ch;
+							return (idx + frame) % 3 === 0 ? GLYPHS[(idx + frame * 2) % GLYPHS.length] : ch;
+						})
+						.join('');
+				}, 34);
+			};
+			el.addEventListener('mouseenter', run);
+			el.addEventListener('focus', run);
+		});
+	});
+</script>

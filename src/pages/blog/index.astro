@@ -107,14 +107,19 @@ const activeCategories = [...categoryCounts.entries()];
 				font-size: 0.76rem;
 				font-weight: 500;
 				padding: 0.45rem 0.9rem;
-				border-radius: 999px;
+				border-radius: 4px;
 				cursor: pointer;
-				transition: all 0.16s ease;
+				transition: background-color 50ms steps(2), color 50ms steps(2), border-color 50ms steps(2);
 			}
 
 			.filter-tab:hover {
 				border-color: var(--green);
 				color: var(--green);
+				background-image: var(--hatch-green);
+			}
+
+			.filter-tab:active {
+				transform: translate(1px, 1px);
 			}
 
 			.filter-tab.is-active {

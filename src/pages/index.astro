@@ -158,13 +158,25 @@ const structuredData = [
 				border-radius: 0 6px 6px 6px;
 				box-shadow: 10px 10px 0 rgba(22, 60, 22, 0.45);
 				font-family: var(--font-mono);
-				transition: box-shadow 0.18s ease, translate 0.18s ease;
+				transition: box-shadow 70ms steps(2), transform 70ms steps(2);
 			}
 
 			.desk-window:hover,
 			.desk-window:focus-visible {
-				translate: -3px -3px;
-				box-shadow: 14px 14px 0 rgba(22, 60, 22, 0.45);
+				box-shadow: 12px 12px 0 rgba(18, 52, 18, 0.56);
+			}
+
+			.desk-window:active {
+				transform: translate(3px, 3px);
+				box-shadow: 6px 6px 0 rgba(18, 52, 18, 0.5);
+			}
+
+			.desk-window:hover .desk-stripes {
+				background: repeating-linear-gradient(to bottom, var(--green) 0 1px, transparent 1px 3px);
+			}
+
+			.desk-window:hover .desk-box {
+				background: var(--green);
 			}
 
 			.desk-window:focus-visible {
@@ -238,7 +250,7 @@ const structuredData = [
 			}
 
 			.desk-window:hover .desk-art :global(.poster-art-wrap img) {
-				transform: scale(1.03);
+				filter: contrast(1.18) saturate(1.04);
 			}
 
 			.desk-copy {
@@ -392,7 +404,7 @@ const structuredData = [
 				background: var(--d-paper);
 				border: 1.5px solid var(--d-ink);
 				box-shadow: 2px 2px 0 rgba(12, 28, 16, 0.42);
-				transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+				transition: transform 90ms steps(2), box-shadow 90ms steps(2);
 			}
 
 			.img-stack-card :global(img) {
@@ -470,7 +482,7 @@ const structuredData = [
 				overflow: hidden;
 				border: 1.5px solid var(--d-ink);
 				background: #ffffff;
-				transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+				transition: transform 90ms steps(2);
 			}
 
 			.folder-peek :global(img) {
@@ -543,12 +555,18 @@ const structuredData = [
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				transition: transform 0.16s ease, box-shadow 0.16s ease;
+				transition: transform 70ms steps(2), box-shadow 70ms steps(2);
 			}
 
 			.desk-file:hover .cal-tile-icon {
-				transform: translate(-2px, -2px);
-				box-shadow: 5px 5px 0 rgba(12, 28, 16, 0.46);
+				box-shadow: 5px 5px 0 rgba(12, 28, 16, 0.5);
+			}
+
+			.desk-file:active .cal-tile-icon,
+			.desk-file:active .img-stack,
+			.desk-file:active .folder-stack,
+			.desk-file:active .desk-file-svg {
+				transform: translate(2px, 2px);
 			}
 
 			.cal-tile-head {
@@ -608,6 +626,8 @@ const structuredData = [
 			.desk-file:focus-visible .desk-file-name {
 				background: var(--d-ink);
 				color: var(--d-paper);
+				outline: 1px dashed rgba(247, 246, 241, 0.75);
+				outline-offset: 1px;
 			}
 
 			/* Main Editorial Sections — Crisp 1px Hairlines & Swiss Breathing Room */
@@ -651,15 +671,19 @@ const structuredData = [
 				color: inherit;
 				background: var(--paper-card);
 				border: 1px solid var(--rule-strong);
-				border-radius: 6px;
+				border-radius: 5px;
 				overflow: hidden;
-				transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+				transition: border-color 60ms steps(2), box-shadow 60ms steps(2), transform 60ms steps(2);
 			}
 
 			.crate-tile:hover {
 				border-color: var(--green);
-				transform: translate(-2px, -2px);
 				box-shadow: 4px 4px 0 var(--green);
+			}
+
+			.crate-tile:active {
+				transform: translate(2px, 2px);
+				box-shadow: 2px 2px 0 var(--green);
 			}
 
 			.crate-sleeve {
@@ -670,15 +694,41 @@ const structuredData = [
 				background: var(--gray-lighter);
 			}
 
+			.crate-sleeve::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				background-image: url('/noise-sigil-white.png');
+				background-repeat: repeat;
+				opacity: 0;
+				mix-blend-mode: screen;
+				pointer-events: none;
+				transition: opacity 60ms steps(2);
+			}
+
+			.crate-tile:hover .crate-sleeve::after {
+				opacity: 0.34;
+				animation: sigilGrain 0.3s steps(3) infinite;
+			}
+
 			.crate-sleeve :global(img) {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: transform 0.3s ease;
+				transition: filter 70ms steps(2);
 			}
 
 			.crate-tile:hover .crate-sleeve :global(img) {
-				transform: scale(1.04);
+				filter: contrast(1.12);
+			}
+
+			.crate-tile:hover .crate-num-chip {
+				background: var(--green);
+				color: #f7f6f1;
+			}
+
+			.crate-tile:hover .crate-info {
+				background-image: var(--hatch-green);
 			}
 
 			.crate-num-chip {
@@ -833,7 +883,7 @@ const structuredData = [
 								<h1 class="desk-title">{featured.data.title}</h1>
 								<p class="desk-desc">{featured.data.description}</p>
 								<div class="desk-footer-row">
-									<span class="desk-open">Open →</span>
+									<span class="desk-open" data-tick>Open →</span>
 									{featuredPicks.length > 0 && (
 										<div class="desk-mini-covers" aria-hidden="true">
 											{featuredPicks.map(
@@ -938,7 +988,7 @@ const structuredData = [
 							<span class="kicker">Spinning now · {formatShortDate(latestNmf.data.pubDate)}</span>
 							<h2>Inside this week’s crate</h2>
 						</div>
-						<a href="/crate" class="section-head-link">Dig all {allCratePicks.length} picks →</a>
+						<a href="/crate" class="section-head-link" data-tick>Dig all {allCratePicks.length} picks →</a>
 					</div>
 					<div class="crate-shelf">
 						{latestPicks.map((pick) => (
@@ -966,7 +1016,7 @@ const structuredData = [
 						<span class="kicker">Music Desk</span>
 						<h2>Recent crates & lists</h2>
 					</div>
-					<a href="/blog" class="section-head-link">All {posts.length} issues →</a>
+					<a href="/blog" class="section-head-link" data-tick>All {posts.length} issues →</a>
 				</div>
 				<div class="desk-grid">
 					{recentGridPosts.map((post) => (

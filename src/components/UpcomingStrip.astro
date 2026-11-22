@@ -20,8 +20,8 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 			<h2>{heading}</h2>
 		</div>
 		<div class="radar-header-actions">
-			<a href="/releases.ics" class="btn-ghost" download>↓ .ics Feed</a>
-			<a href="/calendar" class="radar-all-link">All {allReleases.length} drops →</a>
+			<a href="/releases.ics" class="btn-ghost" download data-tick>↓ .ics Feed</a>
+			<a href="/calendar" class="radar-all-link" data-tick>All {allReleases.length} drops →</a>
 		</div>
 	</div>
 
@@ -137,13 +137,25 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 	}
 
 	.ledger-row {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
 		padding: 0.8rem 1.15rem;
 		border-top: 1px solid var(--rule);
-		transition: background 0.14s ease;
+		transition: background-color 50ms steps(2);
+	}
+
+	.ledger-row::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: var(--green);
+		opacity: 0;
 	}
 
 	.ledger-row:first-child {
@@ -151,7 +163,12 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 	}
 
 	.ledger-row:hover {
-		background: var(--green-tint);
+		background-color: var(--green-tint);
+		background-image: var(--hatch-green);
+	}
+
+	.ledger-row:hover::before {
+		opacity: 1;
 	}
 
 	.ledger-main {
