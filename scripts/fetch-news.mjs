@@ -69,7 +69,7 @@ const tag = (xml, name) => {
 
 async function readFeed(feed) {
 	const res = await fetch(feed.url, {
-		headers: { 'user-agent': 'Mozilla/5.0 (compatible; SigilNews/1.0; +https://sigil.studio)' },
+		headers: { 'user-agent': 'Mozilla/5.0 (compatible; SigilNews/1.0)' },
 		signal: AbortSignal.timeout(20000),
 	});
 	if (!res.ok) throw new Error(`HTTP ${res.status}`);

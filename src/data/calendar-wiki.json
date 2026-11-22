@@ -1,0 +1,6313 @@
+{
+	"_note": "Written by scripts/fetch-releases.mjs from Wikipedia's \"List of <year> albums\". Do not edit by hand.",
+	"albums": [
+		{
+			"artist": "Pabllo Vittar",
+			"title": "Lost in Lust",
+			"releaseDate": "2026-10-01",
+			"genre": "",
+			"label": "The Orchard",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Quadeca",
+			"title": "Life 1",
+			"releaseDate": "2026-10-01",
+			"genre": "",
+			"label": "X8 Music",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Amon Amarth",
+			"title": "The Allfather Awakens",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Metal Blade",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Blossoms",
+			"title": "Songs from the Wedding Cake",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "ODD SK, Distiller Records",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Brymir",
+			"title": "What We Leave Behind",
+			"releaseDate": "2026-10-02",
+			"genre": "Melodic death metal, symphonic death metal",
+			"label": "Napalm",
+			"outlets": [
+				"Rockum"
+			]
+		},
+		{
+			"artist": "Butcher Babies",
+			"title": "Nightbloom",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Judge & Jury",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Dead Poet Society",
+			"title": "Monarch",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Spinefarm",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Deerhoof",
+			"title": "Divine Schism",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Dexter and the Moonrocks",
+			"title": "Friends That I Don't Like",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Severance Records, Big Loud Rock",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Ella Hooper",
+			"title": "Overnight Success",
+			"releaseDate": "2026-10-02",
+			"genre": "Ella Hooper, MGM",
+			"label": "",
+			"outlets": [
+				"Grateful Web"
+			]
+		},
+		{
+			"artist": "Escape the Fate",
+			"title": "The Last Goodbye",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Big Noise",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Fat Dog",
+			"title": "Cancel Me (I'm Tired)",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Domino",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Gavin Adcock",
+			"title": "The Day I Hang It Up",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Thrivin Here, Warner Nashville",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Ghostkid",
+			"title": "Follow the White Rabbit",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Century Media",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Greg Freeman",
+			"title": "All Set the Bone",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Transgressive, Canvasback",
+			"outlets": [
+				"Glide"
+			]
+		},
+		{
+			"artist": "Imminence",
+			"title": "Axis Mundi",
+			"releaseDate": "2026-10-02",
+			"genre": "Metalcore",
+			"label": "Sumerian",
+			"outlets": []
+		},
+		{
+			"artist": "Johnny Marr",
+			"title": "The Age of Everything",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "New Voodoo, BMG",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Kaitlyn Aurelia Smith",
+			"title": "Ruin: It's Not Just Music",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Someone Special",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Kavus Torabi",
+			"title": "October by Name",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Believers Roast",
+			"outlets": [
+				"Wildfire Music"
+			]
+		},
+		{
+			"artist": "Kodaline",
+			"title": "We Were Only Young",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Concord",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Kyle Gordon",
+			"title": "Kyle Gordon Is Everywhere",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Variety"
+			]
+		},
+		{
+			"artist": "Lee Brice",
+			"title": "Sunriser",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Curb",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Lenny Kaye",
+			"title": "Riot on Oxford Street",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "IN.2 Records",
+			"outlets": [
+				"Louder Than War"
+			]
+		},
+		{
+			"artist": "Logic1000",
+			"title": "Confirmation!",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Therapy, Because Music",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Marguerite",
+			"title": "Guérir",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Music Promo Media"
+			]
+		},
+		{
+			"artist": "Master Peace",
+			"title": "If I Don't Love You, Who Will?",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Meshell Ndegeocello",
+			"title": "Synonym",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Blue Note",
+			"outlets": []
+		},
+		{
+			"artist": "Miranda Lambert",
+			"title": "Crisco",
+			"releaseDate": "2026-10-02",
+			"genre": "Country pop",
+			"label": "Music Corporation of America",
+			"outlets": []
+		},
+		{
+			"artist": "Miss May I",
+			"title": "No Place for Me",
+			"releaseDate": "2026-10-02",
+			"genre": "Metalcore",
+			"label": "Solid State",
+			"outlets": [
+				"Blunt"
+			]
+		},
+		{
+			"artist": "Montell Fish",
+			"title": "Nest",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Of Virtue",
+			"title": "Death of the Altar",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Arising Empire",
+			"outlets": [
+				"Metal Injection"
+			]
+		},
+		{
+			"artist": "Paul Weller",
+			"title": "In the Shadow of the Sun, Paul Weller & Band Live & Very Direct",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Quavo",
+			"title": "Qrömelife",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Quality Control",
+			"outlets": [
+				"Hip-Hop Vibe"
+			]
+		},
+		{
+			"artist": "Soul Wun",
+			"title": "Kaleidoscope",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Gallery Recordings",
+			"outlets": [
+				"Broadway World"
+			]
+		},
+		{
+			"artist": "Spike Fuck",
+			"title": "Evidence",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Sacred Bones",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Sponge",
+			"title": "Recuerda Tu Muerte",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Three One Three Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Stef Chura",
+			"title": "Dancing Alone on the Concrete",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Saddle Creek",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Susanne Sundfør",
+			"title": "Revelations of Divine Love",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Bella Union",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "The Album Leaf",
+			"title": "A Body of Voices",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Under the Radar"
+			]
+		},
+		{
+			"artist": "The Fall",
+			"title": "Post Script",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Cog Sinister",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "The Paradox",
+			"title": "Proceed with Caution",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "To the Grave",
+			"title": "Liberation Front",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "BlkIIBlk",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Twin Atlantic",
+			"title": "Separation from the Animals",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Vacations",
+			"title": "Pursuit of Anything",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"The Music"
+			]
+		},
+		{
+			"artist": "Vanishing Twin",
+			"title": "Archives",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Fire",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Victoria Monét",
+			"title": "Frequency of Love",
+			"releaseDate": "2026-10-02",
+			"genre": "R&B",
+			"label": "Lovett Music, RCA",
+			"outlets": []
+		},
+		{
+			"artist": "Way Dynamic",
+			"title": "Massive Shoe",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Jagjaguwar",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Wishy",
+			"title": "Nature's Pill",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Wynonna Judd",
+			"title": "The Hard Truth",
+			"releaseDate": "2026-10-02",
+			"genre": "",
+			"label": "Anti-",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Joe Hendry",
+			"title": "Beyond Belief",
+			"releaseDate": "2026-10-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Fightful"
+			]
+		},
+		{
+			"artist": "Manchán Magan",
+			"title": "Slí na Samhaíochta (The Way of Imagination)",
+			"releaseDate": "2026-10-05",
+			"genre": "",
+			"label": "Claddagh",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Pitbull",
+			"title": "Pitcoin",
+			"releaseDate": "2026-10-08",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
+			"artist": "Basht.",
+			"title": "Poor Advice",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "LAB",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Bodega",
+			"title": "All Inside Aquarium",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Chrysalis",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Calla",
+			"title": "De Facto",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Nuevo Leon Recordings",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Cameron Winter",
+			"title": "Live at Carnegie Hall",
+			"releaseDate": "2026-10-09",
+			"genre": "Folk",
+			"label": "Partisan, PIAS",
+			"outlets": []
+		},
+		{
+			"artist": "Chase & Status",
+			"title": "Generic Everything",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Warner",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Chloe Slater",
+			"title": "Riot Youth",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Claire Cronin",
+			"title": "The Bruise",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Orindal Records",
+			"outlets": [
+				"Flood Magazine"
+			]
+		},
+		{
+			"artist": "Claire Rousay",
+			"title": "On Holding",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Quality Sounds Ltd",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Dan Croll",
+			"title": "Winning Streak",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Danielle Ponder",
+			"title": "Everything Has Changed",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Dead Oceans",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Dawn Richard",
+			"title": "Creole Culture",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Merge",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Death Valley Girls",
+			"title": "Welcome to Earth",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Suicide Squeeze Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Enuff Z'Nuff",
+			"title": "Live at the Whisky A Go-Go",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Cleopatra",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Fatima Al Qadiri",
+			"title": "3TWI (عتوي)",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Hyperdub",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Fola",
+			"title": "9",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Dangbana Republik Records, Empire",
+			"outlets": [
+				"BellaNaija"
+			]
+		},
+		{
+			"artist": "Gabriella Cilmi",
+			"title": "Pure Love",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Gayance",
+			"title": "Roaming",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Tru Thoughts",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Girl Ultra with Chromeo",
+			"title": "RRRomeo",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Big Dada",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Graveyard",
+			"title": "Fever",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Greta Van Fleet",
+			"title": "Palace for the People",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Republic",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "HAAi",
+			"title": "Digitise",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Mute",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Hatesphere",
+			"title": "Guillotine",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Scarlet",
+			"outlets": [
+				"Metal.de"
+			]
+		},
+		{
+			"artist": "Imperial Teen",
+			"title": "All Over You",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Merge",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Jamie T",
+			"title": "Ghosts (100 Days of Morning)",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Polydor",
+			"outlets": []
+		},
+		{
+			"artist": "Jess Williamson",
+			"title": "A Mile South of Heaven",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "New West",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Joyce Wrice",
+			"title": "Machiko",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Rated R&B"
+			]
+		},
+		{
+			"artist": "Laura Cortese",
+			"title": "Lucky Water",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Compass",
+			"outlets": [
+				"Americana UK"
+			]
+		},
+		{
+			"artist": "Left to Suffer",
+			"title": "Unwelcome Guest",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Hopeless",
+			"outlets": [
+				"July 30, 2026"
+			]
+		},
+		{
+			"artist": "Love Is Noise",
+			"title": "The Space Between Happiness and Heartache",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Bloodblast",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Lucy",
+			"title": "Citizen's Arrest",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Margo Cilker",
+			"title": "Little White Cross",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Fossil Records",
+			"outlets": [
+				"Glide Magazine"
+			]
+		},
+		{
+			"artist": "Marina Herlop",
+			"title": "Dja Dja",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Ovrkast",
+			"title": "Striking",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Three Times Louder",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Pet Shop Boys",
+			"title": "A Man from the Future",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Parlophone",
+			"outlets": [
+				"Classic Pop"
+			]
+		},
+		{
+			"artist": "Queen of Jeans",
+			"title": "Hard/Sweet",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Memory Music",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Remi Wolf",
+			"title": "Mud",
+			"releaseDate": "2026-10-09",
+			"genre": "Pop rock",
+			"label": "Island",
+			"outlets": []
+		},
+		{
+			"artist": "Selfish Things",
+			"title": "Receptivity",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "FLG",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Sheryl Crow",
+			"title": "Pick You Up",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Big Green Barn Productions, Thirty Tigers",
+			"outlets": [
+				"Ultimate Classic Rock"
+			]
+		},
+		{
+			"artist": "Teenage Fanclub",
+			"title": "Do Not Dare to Dream",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "The Pineapple Thief",
+			"title": "Far and Wide",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Inside Out",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "The Tallest Man on Earth",
+			"title": "Just Beyond Endless Mountain",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Anti-",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Todd Snider",
+			"title": "My Second Rodeo",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Aimless, Inc., Thirty Tigers",
+			"outlets": [
+				"Glide Magazine"
+			]
+		},
+		{
+			"artist": "Troye Sivan",
+			"title": "She's the Best",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Interscope",
+			"outlets": []
+		},
+		{
+			"artist": "Tungsten",
+			"title": "Ashes",
+			"releaseDate": "2026-10-09",
+			"genre": "Industrial metal, power metal",
+			"label": "Perception",
+			"outlets": [
+				"Distorted Sound"
+			]
+		},
+		{
+			"artist": "Twin Temple",
+			"title": "Doomed Lovers",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Pentagrammaton Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Wage War",
+			"title": "Landfall",
+			"releaseDate": "2026-10-09",
+			"genre": "",
+			"label": "Fearless",
+			"outlets": []
+		},
+		{
+			"artist": "Chris Gantry",
+			"title": "Worth Every Nail",
+			"releaseDate": "2026-10-11",
+			"genre": "",
+			"label": "Appalachia Record Co.",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "NCT Wish",
+			"title": "I Spy",
+			"releaseDate": "2026-10-12",
+			"genre": "",
+			"label": "SM",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Lords of Acid",
+			"title": "Mundo Bizarro",
+			"releaseDate": "2026-10-15",
+			"genre": "",
+			"label": "Metropolis",
+			"outlets": [
+				"Side-Line"
+			]
+		},
+		{
+			"artist": "@",
+			"title": "Autosmile",
+			"releaseDate": "2026-10-16",
+			"genre": "Psychedelic folk",
+			"label": "4AD",
+			"outlets": []
+		},
+		{
+			"artist": "#1 Dads",
+			"title": "Every Little Fire",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Pieater",
+			"outlets": [
+				"The Note"
+			]
+		},
+		{
+			"artist": "Andy Grammer",
+			"title": "Big Stupid Heart",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "S-Curve, Hollywood",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Angèle",
+			"title": "Instinct",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Angèle VL Records, Sony Music",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Antoni O'Breskey",
+			"title": "A Wild Inhabitation",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hotpress"
+			]
+		},
+		{
+			"artist": "Bibio and Dorian Concept",
+			"title": "Answers",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Warp",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Blind Illusion",
+			"title": "Stage Flight: Live at the UC Theatre",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Hectic Records, Bleeding Priest Records",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Brian Kennedy",
+			"title": "How Can I Keep from Singing",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hotpress"
+			]
+		},
+		{
+			"artist": "Caspian",
+			"title": "Caspian",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Wax Bodega",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Devin Townsend",
+			"title": "Harmonic Dharma",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Mxdwn Music"
+			]
+		},
+		{
+			"artist": "Dummy",
+			"title": "Do You Love the Color of the Sky?",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Polyvinyl",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Eels",
+			"title": "Cookie Happened",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "E Works, PIAS",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Eivør",
+			"title": "Tungl",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Nuclear Blast",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Fish Narc",
+			"title": "Uncle",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "K",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Florrie",
+			"title": "Magic for a While",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "BMG, Xenomania UK",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Fontaines D.C.",
+			"title": "Dopamine Chamber",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "XL",
+			"outlets": []
+		},
+		{
+			"artist": "Geologist",
+			"title": "The Sirens",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Outside Time",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Gothminister",
+			"title": "We Are All Demons",
+			"releaseDate": "2026-10-16",
+			"genre": "Gothic metal, industrial metal",
+			"label": "Elevator Records",
+			"outlets": []
+		},
+		{
+			"artist": "Grace Carter",
+			"title": "When Saturn Returns",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Gucci Mane",
+			"title": "Against All Odds",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"HotNewHipHop"
+			]
+		},
+		{
+			"artist": "Insomnium",
+			"title": "Netherworlds",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Century Media",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Jacques Greene",
+			"title": "JG",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "LuckyMe",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "K. Michelle",
+			"title": "Jesus & Whiskey",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Real Outlawz Records",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Kid Bookie",
+			"title": "Cheaper Than Therapy II",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "FLG",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Lucky Daye",
+			"title": "Aloud!",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Warner",
+			"outlets": [
+				"Rated R&B"
+			]
+		},
+		{
+			"artist": "Matt Carmichael",
+			"title": "Held in the Dark",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Porthole Music",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Max Richter",
+			"title": "While the Flood Rages",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Nao",
+			"title": "Autumn",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Little Tokyo Records",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Nero's Day at Disneyland",
+			"title": "Grand Reopening",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Deathbomb Arc",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Nieve Ella",
+			"title": "How Long Will It Take?",
+			"releaseDate": "2026-10-16",
+			"genre": "Alternative pop",
+			"label": "Artist Theory",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Paerish",
+			"title": "Rita",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "SideOneDummy",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Rachel Chinouriri",
+			"title": "I Think I Spoke Too Soon",
+			"releaseDate": "2026-10-16",
+			"genre": "Synth-pop, pop rock, dance-pop",
+			"label": "Parlophone",
+			"outlets": []
+		},
+		{
+			"artist": "Richard Thompson",
+			"title": "Hippies, Thugs and Heroes",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "New West",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Rick Wakeman",
+			"title": "Return to the Red Planet",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Madfish Records",
+			"outlets": [
+				"The Prog Report"
+			]
+		},
+		{
+			"artist": "Sadurn",
+			"title": "The Underworld",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Run for Cover",
+			"outlets": [
+				"Our Culture"
+			]
+		},
+		{
+			"artist": "Sophia Stel",
+			"title": "The Greatest Album of All Time",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "A24 Music",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Temperance",
+			"title": "Arcani",
+			"releaseDate": "2026-10-16",
+			"genre": "Symphonic metal, power metal",
+			"label": "Napalm",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "The Avalanches",
+			"title": "No Bad Memories",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Modular",
+			"outlets": []
+		},
+		{
+			"artist": "The Number Twelve Looks Like You",
+			"title": "Howls from the Holographic Heart",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Equal Vision",
+			"outlets": [
+				"Revolver"
+			]
+		},
+		{
+			"artist": "The Rubens",
+			"title": "Group Therapy",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rolling Stone Australia"
+			]
+		},
+		{
+			"artist": "They Are Gutting a Body of Water",
+			"title": "Kool Faith / Loosies II",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "ATO, Julia's War",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Tina Arena",
+			"title": "Way of the World",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Positive Dream",
+			"outlets": [
+				"The Music"
+			]
+		},
+		{
+			"artist": "Tinie Tempah",
+			"title": "The Night's Not Dead",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Imhotep Records",
+			"outlets": [
+				"Official Charts"
+			]
+		},
+		{
+			"artist": "Tokio Hotel",
+			"title": "Encore",
+			"releaseDate": "2026-10-16",
+			"genre": "Pop rock",
+			"label": "SPV",
+			"outlets": []
+		},
+		{
+			"artist": "World News",
+			"title": "In Purgatory",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "XO",
+			"title": "Need to Know",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "Polydor",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Ziggy Alberts",
+			"title": "Twin Flames",
+			"releaseDate": "2026-10-16",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rolling Stone Australia"
+			]
+		},
+		{
+			"artist": "Kid Rock",
+			"title": "Halfway 2 Jesus",
+			"releaseDate": "2026-10-17",
+			"genre": "Christian rock",
+			"label": "Top Dog Records",
+			"outlets": []
+		},
+		{
+			"artist": "Ryan Hemsworth",
+			"title": "Numbskull",
+			"releaseDate": "2026-10-21",
+			"genre": "",
+			"label": "Topshelf",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Anderson .Paak and Cordae",
+			"title": "Heavy Is the Crown",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Apeshit, Mass Appeal, Empire",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Art d'Ecco",
+			"title": "Scheele's Green",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Paper Bag",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Baby Lasagna",
+			"title": "End the Party",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Bernie Taupin",
+			"title": "The Sea Has No Mercy",
+			"releaseDate": "2026-10-23",
+			"genre": "Folk",
+			"label": "Vertigo, MCA Nashville",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Brakence",
+			"title": "Marrow",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Columbia",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Brothers Osborne",
+			"title": "Watertown",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "MCA",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Caroline Rose",
+			"title": "Gentling the Horse at the Walt Whitman Mall",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Suck Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Clara Mann",
+			"title": "Wishbone",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "State51",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Claud",
+			"title": "Me and the Music",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Dead Oceans",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Dan Sultan",
+			"title": "Little Miracles",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Mushroom Music",
+			"outlets": [
+				"The Note"
+			]
+		},
+		{
+			"artist": "Dragonland",
+			"title": "Prophecies",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Scarlet",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Dustin Kensrue",
+			"title": "That Spirit of Christmas",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Chorus.fm"
+			]
+		},
+		{
+			"artist": "Entheos",
+			"title": "Empty on the Inside",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Metal Blade",
+			"outlets": [
+				"Metal Injection"
+			]
+		},
+		{
+			"artist": "Fenne Lily",
+			"title": "Win Win",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Our Culture"
+			]
+		},
+		{
+			"artist": "Fine",
+			"title": "Jazz Dreams",
+			"releaseDate": "2026-10-23",
+			"genre": "Jangle pop, jazz",
+			"label": "Escho",
+			"outlets": []
+		},
+		{
+			"artist": "Forbidden",
+			"title": "Forbidden",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "BlkIIBlk",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "GDP",
+			"title": "Cross Off Matthew",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Run for Cover",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Get the Shot",
+			"title": "Crucifixion Depiction",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Ghostemane",
+			"title": "AM:FM",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Blackmage",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Grey DeLisle",
+			"title": "Don't Turn Around",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Hummin'bird Records",
+			"outlets": [
+				"Americana UK"
+			]
+		},
+		{
+			"artist": "Gus Dapperton",
+			"title": "4 Dear Life",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Alter Music",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Hilary Duff",
+			"title": "Holiday Things",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rolling Stone"
+			]
+		},
+		{
+			"artist": "HMLTD",
+			"title": "Fangs",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Lucky Number Records",
+			"outlets": [
+				"DIY"
+			]
+		},
+		{
+			"artist": "James Brandon Lewis",
+			"title": "Calling Antonín",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "TAO Forms",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Jazzy",
+			"title": "Peace & Patience",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "UMG",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "John Legend",
+			"title": "Muse",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Republic",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
+			"artist": "Kendall Street Company",
+			"title": "Yodeling Astroman",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Gitcha Records",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Lisa",
+			"title": "Press Play",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Lloud, RCA",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "LoCash",
+			"title": "Chris & Preston",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Galaxy Label Group",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Loidis",
+			"title": "From the Toolkit of Lovers",
+			"releaseDate": "2026-10-23",
+			"genre": "Minimal house",
+			"label": "Incienso",
+			"outlets": []
+		},
+		{
+			"artist": "Manic Street Preachers",
+			"title": "The Holy Bible Live",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Sony Music",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Mason Hill",
+			"title": "World So Wonderful",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "7Hz Productions",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Matt Lang",
+			"title": "Ain't That Bad",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Qui Fait Quo"
+			]
+		},
+		{
+			"artist": "Mental Cruelty",
+			"title": "Echoes of a Forlorn Land",
+			"releaseDate": "2026-10-23",
+			"genre": "Deathcore, melodic death metal, symphonic black metal",
+			"label": "Century Media",
+			"outlets": []
+		},
+		{
+			"artist": "Michael Kiwanuka",
+			"title": "Fudge",
+			"releaseDate": "2026-10-23",
+			"genre": "Psychedelic soul",
+			"label": "Polydor",
+			"outlets": []
+		},
+		{
+			"artist": "Muireann Bradley",
+			"title": "Blackwood Pew",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Nasty",
+			"title": "Trauma",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Triple B Records",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Nathan Fake",
+			"title": "Caldera",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "InFiné",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Orchestra Baobab",
+			"title": "Made in Senegal",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Strut",
+			"outlets": [
+				"music OMH"
+			]
+		},
+		{
+			"artist": "Polyphia",
+			"title": "Be Not Afraid",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Rise",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Sasha Alex Sloan",
+			"title": "And the Crowd Goes Mild",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Chorus.fm"
+			]
+		},
+		{
+			"artist": "Sen Morimoto",
+			"title": "Time Is on Your Side",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Sooper",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Shabazz Palaces",
+			"title": "It's a Style Sport",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Sub Pop",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Shit and Shine",
+			"title": "0 aa Riot",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Riot Season",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Sour Widows",
+			"title": "Sigil",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Julia's War",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Stand Atlantic",
+			"title": "Godbreath",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Virgin Music",
+			"outlets": [
+				"Alternative Press"
+			]
+		},
+		{
+			"artist": "Strawberry Guy",
+			"title": "Give Me a Dream",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "AWAL",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "The Buoys",
+			"title": "Concrete Cowboy",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Sony Music Australia, Music for Nations",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "The Flower Kings",
+			"title": "Hope",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "InsideOut",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "The Olivia Tremor Control",
+			"title": "The Same Place",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Elephant 6",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "The Snuts",
+			"title": "Joy in Short Moments",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Happy Artist Records, VMG",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Timmy Trumpet",
+			"title": "Revelations",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"EDMNoMad"
+			]
+		},
+		{
+			"artist": "Tommy Lefroy",
+			"title": "The Precariat",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Thirty Tigers",
+			"outlets": [
+				"Entertainment Focus"
+			]
+		},
+		{
+			"artist": "Tony Iommi",
+			"title": "From the Dark",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "William Basinski",
+			"title": "Passing the Cup of Sorrows",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Temporary Residence",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Windwaker",
+			"title": "Smile, You're on Camera",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Fearless",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Winona Oak",
+			"title": "Bloom",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Wolves in the Throne Room",
+			"title": "Estuary",
+			"releaseDate": "2026-10-23",
+			"genre": "",
+			"label": "Relapse",
+			"outlets": [
+				"Revolver"
+			]
+		},
+		{
+			"artist": "Yung Miami",
+			"title": "Watch Dis!",
+			"releaseDate": "2026-10-23",
+			"genre": "Hip-hop",
+			"label": "Uptown",
+			"outlets": [
+				"The Source"
+			]
+		},
+		{
+			"artist": "Jeshi",
+			"title": "Headrush",
+			"releaseDate": "2026-10-26",
+			"genre": "",
+			"label": "Select Discs, Partisan",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Xiaojun",
+			"title": "Hey, Somebody",
+			"releaseDate": "2026-10-26",
+			"genre": "",
+			"label": "SM",
+			"outlets": [
+				"Forbes"
+			]
+		},
+		{
+			"artist": "2nd Grade",
+			"title": "Girls and Boys",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Lame-O",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Against the Current",
+			"title": "Till Death & Back",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Andy Stott",
+			"title": "Late Loop",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Modern Love",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Bad Waitress",
+			"title": "In the Hollow",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Stomp",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Ben Vaughn and Deer Tick",
+			"title": "Magnetic East: The Deer Tick Sessions",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Yep Roc",
+			"outlets": [
+				"Glide Magazine"
+			]
+		},
+		{
+			"artist": "Blind Channel",
+			"title": "Painstream",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Century Media",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Chloe Qisha",
+			"title": "Fantasize",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Clinic",
+			"title": "Wild in the Streets",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Domino",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Daddy Yankee",
+			"title": "La Postal",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "DY Music",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Darkest Hour",
+			"title": "Suffer Divine",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "MNRK Heavy",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Dave Hill",
+			"title": "Dirty Foot Lane",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Jerkin Crocus Promotions",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "David Archuleta",
+			"title": "Warm Me Up",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"People"
+			]
+		},
+		{
+			"artist": "DIIV",
+			"title": "Zirp!",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Fantasy",
+			"outlets": [
+				"Far Out"
+			]
+		},
+		{
+			"artist": "Dominic Fike",
+			"title": "How to Quit Smoking",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Columbia",
+			"outlets": [
+				"Stereogum",
+				"Apple Music"
+			]
+		},
+		{
+			"artist": "Dustin Lynch",
+			"title": "Clean Slate",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "BBR, BMG Nashville",
+			"outlets": [
+				"MusicRow"
+			]
+		},
+		{
+			"artist": "Editors",
+			"title": "Surface, Echo & Sound",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "PIAS",
+			"outlets": []
+		},
+		{
+			"artist": "Enslaved",
+			"title": "Mið",
+			"releaseDate": "2026-10-30",
+			"genre": "Black metal, progressive metal",
+			"label": "Nuclear Blast",
+			"outlets": []
+		},
+		{
+			"artist": "Ex:Re",
+			"title": "Save As",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "4AD",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Fuel",
+			"title": "Pendulum",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Parade"
+			]
+		},
+		{
+			"artist": "Fujiya & Miyagi",
+			"title": "New Shiny Object",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Impossible Objects of Desire",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Gretta Ray",
+			"title": "Heartsong",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "EMI Music Australia",
+			"outlets": [
+				"Noise11"
+			]
+		},
+		{
+			"artist": "Haiden Henderson",
+			"title": "Bleach",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Lava, Republic",
+			"outlets": [
+				"Melodic Magazine"
+			]
+		},
+		{
+			"artist": "HorsegiirL",
+			"title": "Hardcore Healing",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "HorsegiirL, RCA",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Jonah Kagen",
+			"title": "Eternity of Anything",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Arista",
+			"outlets": [
+				"Melodic Magazine"
+			]
+		},
+		{
+			"artist": "Jordan Rakei",
+			"title": "A Safe Place to Be Wild",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Fontana",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Kaitlin Butts",
+			"title": "Hello, Honky Tonk",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Republic",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Kali Malone",
+			"title": "Burning Song",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Ideologic Organ",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Lydia Loveless",
+			"title": "Accolades",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Bloodshot",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Ministry",
+			"title": "Hate to Go – Take Out or Delivery",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Cleopatra",
+			"outlets": [
+				"Loudwire"
+			]
+		},
+		{
+			"artist": "Mollie Elizabeth",
+			"title": "People Pleaser",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Capitol",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Moses Boyd",
+			"title": "Songs for Sinners",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Exodus",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Mylène Farmer",
+			"title": "Égrégore",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Stuffed Monkey",
+			"outlets": [
+				"La Presse"
+			]
+		},
+		{
+			"artist": "Nettspend",
+			"title": "Virginia Creeper",
+			"releaseDate": "2026-10-30",
+			"genre": "Rage, trap",
+			"label": "Grade A, Interscope",
+			"outlets": []
+		},
+		{
+			"artist": "Nickelback",
+			"title": "Everything Under the Sun",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "VMG",
+			"outlets": []
+		},
+		{
+			"artist": "OR",
+			"title": "Music for Empty Stadiums",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "AD 93",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Queens of the Stone Age",
+			"title": "Perfecth",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Matador",
+			"outlets": []
+		},
+		{
+			"artist": "RIP Magic",
+			"title": "1,2,3",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Section1",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Rocketship",
+			"title": "Hurt Feelings",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Darla",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Sampa the Great",
+			"title": "Nu Zamrock",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Sennen",
+			"title": "New Quiet",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Sonic Cathedral",
+			"outlets": [
+				"Under the Radar"
+			]
+		},
+		{
+			"artist": "Thao",
+			"title": "Show Me",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Kill Rock Stars",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "The Big Moon",
+			"title": "Forever",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Why?",
+			"title": "Oh Golly / Yes Lord",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Waterlines Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Yello",
+			"title": "Time Lab",
+			"releaseDate": "2026-10-30",
+			"genre": "",
+			"label": "Universal",
+			"outlets": [
+				"Buzz Magazine"
+			]
+		},
+		{
+			"artist": "Liffey Light Orchestra",
+			"title": "Ana Livia",
+			"releaseDate": "2026-11-01",
+			"genre": "",
+			"label": "Legal Records",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "BOM (Miranda! and Lali)",
+			"title": "Bailar o Morir",
+			"releaseDate": "2026-11-03",
+			"genre": "Italo disco, dance-pop, house",
+			"label": "Sony Argentina",
+			"outlets": []
+		},
+		{
+			"artist": "Yoasobi",
+			"title": "Yoasobi 5th Anniversary Dome Live 2024 \"Chō-genjitsu\" at Tokyo Dome",
+			"releaseDate": "2026-11-04",
+			"genre": "",
+			"label": "Echoes, Sony Japan",
+			"outlets": [
+				"Barks"
+			]
+		},
+		{
+			"artist": "Alanis Morissette",
+			"title": "Good Weather for Immaculate Conception",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Epiphany Records, VMG",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Asia",
+			"title": "Indigo",
+			"releaseDate": "2026-11-06",
+			"genre": "Progressive rock",
+			"label": "Frontiers",
+			"outlets": [
+				"Louder"
+			]
+		},
+		{
+			"artist": "Bad Brains",
+			"title": "Are You Ready: The First Studio Recording (Inner Ear – March 1979)",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Trust Records",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Bassvictim",
+			"title": "Peace + War",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "VOTB, Warner",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Best Ex",
+			"title": "Good Girl",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Iodine",
+			"outlets": [
+				"Melodic Magazine"
+			]
+		},
+		{
+			"artist": "Blu DeTiger",
+			"title": "N.Y. Baby",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Bob Dylan",
+			"title": "The Rolling Thunder Revue: The 1976 Live Recordings",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Columbia, Legacy",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Boys Noize",
+			"title": "7llvsion",
+			"releaseDate": "2026-11-06",
+			"genre": "Electronic",
+			"label": "Ones and Zeros",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Bryan Adams",
+			"title": "How's It Goin",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Bad Records",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Carnifex",
+			"title": "More Than Misery",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Sumerian",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Chastity Belt",
+			"title": "All My Friends",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Suicide Squeeze",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Comeback Kid",
+			"title": "Chosen Hell",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "SharpTone, Dine Alone",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Computerwife",
+			"title": "Born from a Wish",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Danger Collective Records",
+			"outlets": [
+				"Our Culture"
+			]
+		},
+		{
+			"artist": "Cult of Luna",
+			"title": "In the Shadow of Your Shadow",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Red Crk Recordings",
+			"outlets": [
+				"BrooklynVegan"
+			]
+		},
+		{
+			"artist": "Current Joys",
+			"title": "Rosebud",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "They Are Evil",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Daine",
+			"title": "In Endless Awe & Agony",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Pack Records",
+			"outlets": []
+		},
+		{
+			"artist": "Déyyess",
+			"title": "Well I Might Just Die",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Boys Boys Boys Records",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Distant",
+			"title": "Into Despair",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Django Django",
+			"title": "Doveland",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Clouds Hill",
+			"outlets": []
+		},
+		{
+			"artist": "Do Nothing",
+			"title": "Friend World",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Dove Cameron",
+			"title": "Final Girl",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Columbia, Disruptor",
+			"outlets": [
+				"Melodic Magazine"
+			]
+		},
+		{
+			"artist": "Extol",
+			"title": "Aura of Decay",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Solid State",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Florence and the Machine",
+			"title": "Everybody Scream Tour Live",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Gilbert O'Sullivan",
+			"title": "On the Record",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"ATV Today"
+			]
+		},
+		{
+			"artist": "Hatebreed",
+			"title": "Fatal Paradox",
+			"releaseDate": "2026-11-06",
+			"genre": "Metalcore, hardcore punk",
+			"label": "BlkIIBlk",
+			"outlets": []
+		},
+		{
+			"artist": "Hypno5e",
+			"title": "Trame Noire",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Pelagic Records",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Jack Harlow",
+			"title": "Sweet Action II",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "James Blunt",
+			"title": "Airplane Mode",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Atlantic",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Jesse Jo Stark",
+			"title": "Muse",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Deadly Doll",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Jim Jarmusch and Jozef van Wissem",
+			"title": "Bocca di Lupo",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Sacred Bones",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Jim Jarmusch and Jozef van Wissem",
+			"title": "Mouth of the Wolf",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Sacred Bones",
+			"outlets": []
+		},
+		{
+			"artist": "Katie Gregson-MacLeod",
+			"title": "Albatross",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Last Recordings On Earth",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Kings of Leon",
+			"title": "O My Beloved",
+			"releaseDate": "2026-11-06",
+			"genre": "Southern rock, Americana, country rock",
+			"label": "LoveTap Records",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "La Roux",
+			"title": "Old Flames",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Vertigo",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Lil Baby",
+			"title": "Fresh",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Complex"
+			]
+		},
+		{
+			"artist": "Little Angels",
+			"title": "Big Bad & Back EP",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Midnight",
+			"title": "Satanic Attack Live!",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Metal Blade",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Naked Raygun",
+			"title": "Live at Riot Fest",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Loud Pizza Records",
+			"outlets": [
+				"New Noise Magazine"
+			]
+		},
+		{
+			"artist": "Natalie Bergman",
+			"title": "I Killed a North American Songbird",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Third Man",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Odette",
+			"title": "Blink",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Beloved Records",
+			"outlets": [
+				"Remote Control"
+			]
+		},
+		{
+			"artist": "Oso Oso",
+			"title": "An Exchange of Information",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Feral Twin Records",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Party Dozen",
+			"title": "21 Bum Salute",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "City Slang",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Passenger",
+			"title": "Wild Love",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Prong",
+			"title": "Prong",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Resa Saffa Park",
+			"title": "Kendra",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Ja. Group",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Rex Orange County",
+			"title": "Dream Fatigue",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Robert Grace",
+			"title": "My Fathers Son",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Sam Barber",
+			"title": "The Outlier",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Atlantic Outpost",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "SATCHVAI Band",
+			"title": "The Sea of Emotion",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "earMUSIC",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Shygirl",
+			"title": "Swallow!",
+			"releaseDate": "2026-11-06",
+			"genre": "Experimental pop",
+			"label": "Because",
+			"outlets": []
+		},
+		{
+			"artist": "Skepta",
+			"title": "The Fork and Knife",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Spanish Love Songs",
+			"title": "Future Nausea",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Pure Noise",
+			"outlets": [
+				"Chorus.fm"
+			]
+		},
+		{
+			"artist": "Steven Wilson",
+			"title": "Requiem for a Village",
+			"releaseDate": "2026-11-06",
+			"genre": "Progressive rock",
+			"label": "Fiction",
+			"outlets": []
+		},
+		{
+			"artist": "Straw Man Army",
+			"title": "True North",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "La Vida Es Un Mus Discos",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Sufjan Stevens",
+			"title": "Worst Christmas Ever!",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Asthmatic Kitty",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "The Church",
+			"title": "Lacuna",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Cooking Vinyl",
+			"outlets": []
+		},
+		{
+			"artist": "Thrown",
+			"title": "Unwanted",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Arising Empire",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Tove Styrke",
+			"title": "I Thought This Story Wasn't About Me",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Sony Music Sweden",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Trollfest",
+			"title": "Trollywood",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Reaper Entertainment",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "TV Priest",
+			"title": "Cartoons",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rockshot"
+			]
+		},
+		{
+			"artist": "Twisted Teens",
+			"title": "The Holy Cross Tigers",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Sub Pop",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Willi Carlisle",
+			"title": "The Universal Bubba",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rolling Stone"
+			]
+		},
+		{
+			"artist": "Yoo Doo Right",
+			"title": "Build and Rest by the Shepherd's Light",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "Mothland",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Ice Nine Kills",
+			"title": "A Very Vicious Christmas",
+			"releaseDate": "2026-11-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "2hollis",
+			"title": "Pirouette",
+			"releaseDate": "2026-11-11",
+			"genre": "EDM, electropop, rage",
+			"label": "Interscope",
+			"outlets": []
+		},
+		{
+			"artist": "Anberlin",
+			"title": "Currency",
+			"releaseDate": "2026-11-11",
+			"genre": "",
+			"label": "Equal Vision",
+			"outlets": [
+				"New Noise"
+			]
+		},
+		{
+			"artist": "Bruiser Wolf and Conductor Williams",
+			"title": "The Dealer Wins",
+			"releaseDate": "2026-11-11",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"BroadwayWorld"
+			]
+		},
+		{
+			"artist": "Chanmina",
+			"title": "Legend",
+			"releaseDate": "2026-11-11",
+			"genre": "",
+			"label": "No Label",
+			"outlets": [
+				"Oricon News"
+			]
+		},
+		{
+			"artist": "Eliza Rose",
+			"title": "Arcadia: Pleasuredome",
+			"releaseDate": "2026-11-11",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Ecco2k",
+			"title": "Echo",
+			"releaseDate": "2026-11-12",
+			"genre": "",
+			"label": "9th",
+			"outlets": []
+		},
+		{
+			"artist": "Aesop Rock and Blockhead",
+			"title": "Trouble Mountain",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Rhymesayers",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Alana Henderson",
+			"title": "Fine",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Thin Air"
+			]
+		},
+		{
+			"artist": "Amira Elfeky",
+			"title": "It Was Only a Dream",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Atlantic",
+			"outlets": [
+				"Revolver"
+			]
+		},
+		{
+			"artist": "Ateez",
+			"title": "Golden Hour: Part.6",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Sony Music Korea, RCA",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Becky Hill",
+			"title": "Rebecca",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Polydor, Astralwerks",
+			"outlets": [
+				"The Guardian"
+			]
+		},
+		{
+			"artist": "Bell X1",
+			"title": "Good Bones",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Belly Gang Kushington",
+			"title": "Good Dope Sell Itself",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "LVRN",
+			"outlets": [
+				"The Source"
+			]
+		},
+		{
+			"artist": "Blackhaine",
+			"title": "Saints in the Wethouse",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "XL",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Breakkaway",
+			"title": "It All Feels the Same from Afar",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Epitaph",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Cherry Bomb",
+			"title": "The Pursuit of Pleasure",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"CEL"
+			]
+		},
+		{
+			"artist": "David Kushner",
+			"title": "Devotion",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Diamond Rio",
+			"title": "America Works",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Rio Records 2.0, One Riot Records",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "DJ Heartstring",
+			"title": "Sentimental Ultra",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Steel City Dance Discs",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Dropkick Murphys",
+			"title": "20th Century Paddy – The Songs of Shane MacGowan",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Ed Palermo Big Band",
+			"title": "It's an Ed Palermo Christmas! God Bless Us, Everyone!",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Sky Cat Records",
+			"outlets": [
+				"All About Jazz"
+			]
+		},
+		{
+			"artist": "Esme Emerson",
+			"title": "It's All Just Noise",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Communion",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Font",
+			"title": "American Bully XL",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Acrophase",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Fucked Up",
+			"title": "Year of the Rooster",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Tankcrimes",
+			"outlets": [
+				"New Noise Magazine"
+			]
+		},
+		{
+			"artist": "Gwar and John Brennan and the Bigfeet",
+			"title": "Gwar and the Last Drive-In-Stein",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Heaven in Her Arms",
+			"title": "The End of Purification",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Banshies",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Heavens Edge",
+			"title": "Philadelphia",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Frontiers",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Iron Savior",
+			"title": "Deathbringer",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Frontiers",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Jake Bugg",
+			"title": "Alamo",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Thirty Tigers",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Kalia Vandever and Dave Harrington",
+			"title": "Evergreen",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Sudden Quarterly",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Kim Deal",
+			"title": "Live at the Barbican",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "4AD",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Kittie",
+			"title": "Oracle XXV",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Krill",
+			"title": "Secret Language",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Exploding in Sound",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Land of Talk",
+			"title": "Lasts",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Saddle Creek",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Live Skull",
+			"title": "What Could Go Wrong?",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Bronson Recordings",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Los Bitchos",
+			"title": "Los Bitchos & Friends Vol. 1",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "GREAT! Records, !K7",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Offset",
+			"title": "GMFU",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
+			"artist": "Randy Travis",
+			"title": "Same Old Way",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Warner Records Nashville",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Royal Blood",
+			"title": "Dead Company",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Warner",
+			"outlets": []
+		},
+		{
+			"artist": "Rwake",
+			"title": "Built from Stardust - 'The Return of Magik' Live in Little Rock, AR",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Relapse",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Say Now",
+			"title": "Say What You See",
+			"releaseDate": "2026-11-13",
+			"genre": "Electropop",
+			"label": "Atlantic",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Sharon Shannon",
+			"title": "Home",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hotpress"
+			]
+		},
+		{
+			"artist": "Silvertomb",
+			"title": "The Interpretation of Nightmares",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Steamhammer/SPV",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Snoh Aalegra",
+			"title": "Legendary Love",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Stem",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Swansea Sound",
+			"title": "Pre-Post-Truth",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Louder Than War"
+			]
+		},
+		{
+			"artist": "The Body and Cel Genesis",
+			"title": "Whole Wide World",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Thrill Jockey",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "The Datsuns",
+			"title": "Moonstruck Man",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Hellsquad Records",
+			"outlets": [
+				"Vox Rebelle"
+			]
+		},
+		{
+			"artist": "Trentemøller",
+			"title": "Trentemøller",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "In My Room",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "U2",
+			"title": "Carnaval de Luz",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Island",
+			"outlets": []
+		},
+		{
+			"artist": "Walls of Jericho",
+			"title": "System Error: Humanity",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Wavves",
+			"title": "Cherry Soda",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "I Surrender Records, Bose Records",
+			"outlets": [
+				"Exclaim!"
+			]
+		},
+		{
+			"artist": "Waylon Jennings",
+			"title": "Diamonds",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Son of Jessi, Thirty Tigers",
+			"outlets": [
+				"MNPR"
+			]
+		},
+		{
+			"artist": "Westside Gunn",
+			"title": "Heelmatic",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Griselda, Mass Appeal",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Yngwie Malmsteen",
+			"title": "Hell or High Water",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "Music Theories Recordings, Artone Label Group",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Zebra",
+			"title": "Zebra V",
+			"releaseDate": "2026-11-13",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Tomorrow X Together",
+			"title": "Perfect Storm",
+			"releaseDate": "2026-11-16",
+			"genre": "Avant-pop",
+			"label": "Big Hit Music",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Angelus Apatrida",
+			"title": "The Reckoning",
+			"releaseDate": "2026-11-19",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Alan Vega",
+			"title": "Live at Max's Kansas City",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Sacred Bones",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Any Given Sin",
+			"title": "Until We Disappear",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Grande Rock"
+			]
+		},
+		{
+			"artist": "Desperate Journalist",
+			"title": "Gilding the Lily",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Fierce Panda",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Disfear",
+			"title": "The Last Nail",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Relapse",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Down",
+			"title": "Volume V",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Nuclear Blast",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Eidola",
+			"title": "The Will to Power",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "3DOT Recordings",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Girish and the Chronicles",
+			"title": "Disintegrate",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Heavy"
+			]
+		},
+		{
+			"artist": "Joshua Redman",
+			"title": "If Ever You Would Leave Us (We Play for Rollins)",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Blue Note",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Julianna Barwick and Mary Lattimore",
+			"title": "Threshold (Original Motion Picture Score)",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Florid Recordings, Blue Pool Recordings",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Lael Neale",
+			"title": "As Killers Do",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Consensual Sound",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Lambchop",
+			"title": "Demoed",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Lorenzo Senni",
+			"title": "All Ages",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Warp",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Mez",
+			"title": "Electric Future Gangster",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Mass Appeal",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "R.E.M.",
+			"title": "The Black Sessions Revealed",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Craft",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Rammstein",
+			"title": "Live in Mexico City",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Richard Skelton and Lawrence English",
+			"title": "Noon",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Phantom Limb",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Suicide Silence",
+			"title": "Graceless",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"ThePRP"
+			]
+		},
+		{
+			"artist": "Take That",
+			"title": "Dreamers",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "EMI",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Then Comes Silence",
+			"title": "Requiem Ballroom",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Side-Line"
+			]
+		},
+		{
+			"artist": "Thy Catafalque",
+			"title": "XIII: Sárga Erdő",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Season of Mist",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Toro y Moi",
+			"title": "Unusua",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Trivium",
+			"title": "Crown in the Grave",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Roadrunner",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Wolf",
+			"title": "Hour of the Wolf",
+			"releaseDate": "2026-11-20",
+			"genre": "",
+			"label": "Fireflash Records",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Pretty Lights",
+			"title": "A Trip Thru Time Fantastic",
+			"releaseDate": "2026-11-25",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"JamBase"
+			]
+		},
+		{
+			"artist": "Priya Ragu",
+			"title": "Madras",
+			"releaseDate": "2026-11-26",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Björk",
+			"title": "Björk Orkestral with the Hamrahlíð Choir",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "One Little Independent",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Cliff Richard",
+			"title": "Only Number Ones",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Independent"
+			]
+		},
+		{
+			"artist": "Contrarian",
+			"title": "Escaping Depravity",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Willowtip Records",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Factory Floor",
+			"title": "One Trip",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Phantasy Sound",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Jon Bryant",
+			"title": "Harbour",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Nettwerk Music Group",
+			"outlets": [
+				"Atwood Magazine"
+			]
+		},
+		{
+			"artist": "King 810",
+			"title": "La Grande Mort or Silence of God",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Leviathan",
+			"title": "Die to This",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Profound Lore",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Molly Hatchet",
+			"title": "Lost Horizon",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Steamhammer/SPV",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Morten Harket",
+			"title": "Human Grace",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Mya Mehmi",
+			"title": "M1",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Dialled In Records",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Mystic Prophecy",
+			"title": "In Metal",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Perception Records, Reigning Phoenix",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Neal Morse and The Resonance",
+			"title": "River of Light",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Prog Report"
+			]
+		},
+		{
+			"artist": "Northlane",
+			"title": "Anemoia",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Immortal, Believe",
+			"outlets": [
+				"Rock Sound",
+				"Blunt"
+			]
+		},
+		{
+			"artist": "PeelingFlesh",
+			"title": "PeelingFlesh",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Unique Leader",
+			"outlets": [
+				"Revolver"
+			]
+		},
+		{
+			"artist": "Peter Gabriel",
+			"title": "O\\I",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Real World",
+			"outlets": [
+				"Louder"
+			]
+		},
+		{
+			"artist": "Purple Pilgrims",
+			"title": "Given to the Night",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "AD 93",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "The Blue Aeroplanes",
+			"title": "Tales from the Silver Lounge",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Artstar Records",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Whiplash",
+			"title": "Roar",
+			"releaseDate": "2026-11-27",
+			"genre": "",
+			"label": "Time To Kill Records",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Taeyeon",
+			"title": "Unspecial",
+			"releaseDate": "2026-11-30",
+			"genre": "",
+			"label": "SM",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Beans On Toast",
+			"title": "The Great Unravelling",
+			"releaseDate": "2026-12-01",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Americana UK"
+			]
+		},
+		{
+			"artist": "Infant Annihilator",
+			"title": "The Somnial Plunge into Cyclic Ebullition",
+			"releaseDate": "2026-12-01",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Hanabie.",
+			"title": "Umami",
+			"releaseDate": "2026-12-02",
+			"genre": "",
+			"label": "Epic Japan",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "2 Chainz and Statik Selektah",
+			"title": "Playaz Only Live Once",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Source"
+			]
+		},
+		{
+			"artist": "Don Toliver",
+			"title": "Nitrous",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Cactus Jack, Donnway & Co Records, Atlantic",
+			"outlets": [
+				"Variety"
+			]
+		},
+		{
+			"artist": "Eleine",
+			"title": "The Water Taste of Blood",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Algoth Records",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "End of Green",
+			"title": "Ashes & Gold",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Metal.de"
+			]
+		},
+		{
+			"artist": "Forrest Frank",
+			"title": "The Jesus Generation",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "River House Records",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
+			"artist": "Harakiri for the Sky",
+			"title": "Reliving the Trauma – Live at Theater Akzent",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "AOP Records",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Jonny Greenwood and Dudu Tassa",
+			"title": "Jalsa",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Far Out"
+			]
+		},
+		{
+			"artist": "King Gizzard & the Lizard Wizard",
+			"title": "Entropy",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "(p)doom Records",
+			"outlets": [
+				"November 10, 2026"
+			]
+		},
+		{
+			"artist": "Kristin Hersh",
+			"title": "Downers on Blackstone",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Morphine",
+			"title": "Cocoon",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Partisan",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Parkway Drive",
+			"title": "Home – Live at the Sydney Opera House",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Parkway Records, Civilians",
+			"outlets": [
+				"Rolling Stone Australia"
+			]
+		},
+		{
+			"artist": "Self Esteem",
+			"title": "A Complicated Woman - Live from Brixton Academy",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Polydor",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Slayyyter",
+			"title": "Worst Man in America",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "Records, Columbia",
+			"outlets": [
+				"Variety"
+			]
+		},
+		{
+			"artist": "Soak",
+			"title": "Decembers",
+			"releaseDate": "2026-12-04",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Æther Realm",
+			"title": "Season of Bloodshed",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Archon Angel",
+			"title": "Beyond the Grave",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Frontiers",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Doro",
+			"title": "Wild at Heart",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Keaton Henson",
+			"title": "Versions",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "PIAS",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Nightwish",
+			"title": "The Greatest 30 Years on Earth",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Nuclear Blast",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Oklou and Rob",
+			"title": "In Waves",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Because Music",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Panda Bear",
+			"title": "PB Band Live 25 at Power Station",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Domino Documents",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Warpaint",
+			"title": "Artifact",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Rough Trade",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "Whitmer Thomas",
+			"title": "Green Room Blues",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Fire Talk Records",
+			"outlets": [
+				"Paste"
+			]
+		},
+		{
+			"artist": "Robin Carolan",
+			"title": "Werwulf",
+			"releaseDate": "2026-12-18",
+			"genre": "",
+			"label": "Back Lot Music, Sacred Bones",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Vybz Kartel",
+			"title": "The Sun",
+			"releaseDate": "2026-12-18",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"DancehallMAg"
+			]
+		},
+		{
+			"artist": "Man with a Mission",
+			"title": "The Circus",
+			"releaseDate": "2026-12-23",
+			"genre": "",
+			"label": "Sony Music, Century Media",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Carissa's Wierd",
+			"title": "Somewhere Further Than Far Away",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Diamante",
+			"title": "Supernova",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Sumerian",
+			"outlets": [
+				"Revolver"
+			]
+		},
+		{
+			"artist": "Hot Chip",
+			"title": "A Long Way from Kansas",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Domino",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Orden Ogan",
+			"title": "Lords of the Grave",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Reigning Phoenix",
+			"outlets": [
+				"Chaoszine"
+			]
+		},
+		{
+			"artist": "Shed Seven",
+			"title": "Shed Seven",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Cooking Vinyl",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "U.D.O.",
+			"title": "Voodoo Ranger",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Reigning Phoenix",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Atmosphere",
+			"title": "Good Bye Make Party",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Rhymesayers Entertainment",
+			"outlets": [
+				"Flood"
+			]
+		},
+		{
+			"artist": "Brandy Clark",
+			"title": "The Bird",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Reprise",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Dirty Honey",
+			"title": "Catch My Butterfly",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Dirt Records",
+			"outlets": [
+				"Louder"
+			]
+		},
+		{
+			"artist": "Doireann Ní Ghlacáin",
+			"title": "An Tairseach: The Threshold",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hotpress"
+			]
+		},
+		{
+			"artist": "Floor Jansen",
+			"title": "Hytress",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "ReVamp Music, Warner",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Friendly Fires",
+			"title": "Dig Deeper",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Lab",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Grave Digger",
+			"title": "Faces of Pain",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Reaper Entertainment",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "James Marriott",
+			"title": "Warning Signs",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "AWAL",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Kacey Musgraves",
+			"title": "Middle of Nowhere Vol. 2: Tex Mex Tapes",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Lost Highway",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Lambrini Girls",
+			"title": "No Refunds",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "City Slang",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Madra Salach",
+			"title": "Gorta",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Island",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Mei Semones",
+			"title": "Howl",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Verve, Interscope",
+			"outlets": [
+				"Paste"
+			]
+		},
+		{
+			"artist": "Mia Joy",
+			"title": "Star Echo Heavy Dove",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Fire Talk",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Nimino",
+			"title": "Keep Me Awake",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Counter",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Resolve",
+			"title": "Spread My Ashes into Space",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Arising Empire",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Soul Glo",
+			"title": "Na I'm Gon Grab Allat",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Epitaph",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "This Is the Kit",
+			"title": "Ghost Coat",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Rough Trade",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Valley",
+			"title": "Do You Need to Be Entertained?",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "Universal Music Canada, Capitol",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Warhaus",
+			"title": "The Donkey",
+			"releaseDate": "2027-01-15",
+			"genre": "",
+			"label": "PIAS",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Chvrches",
+			"title": "All the King's Men",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Futures Music Group",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Clutch",
+			"title": "Wasted Lands",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Weathermaker Music",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Dom Flemons",
+			"title": "Making American Music: The Smithsonian Sessions",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Smithsonian Folkways",
+			"outlets": [
+				"Americana UK"
+			]
+		},
+		{
+			"artist": "Elderbrook",
+			"title": "Heart on a Wire",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Fionn Regan",
+			"title": "Berlin, Berlin",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Cormorant Bird Records",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Guided By Voices",
+			"title": "Speculation and Gossip",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Guided By Voices Inc",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Helena Deland",
+			"title": "Eternity Shrugs",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Chivi Chivi",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Isak Danielson",
+			"title": "Love, Isak",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Kameron Marlowe",
+			"title": "Kameron Marlowe",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Sony Music Nashville",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Kate Nash",
+			"title": "Cailín",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Knifeplay",
+			"title": "What Is Truth?",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Double Double Whammy",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Lee Aaron",
+			"title": "Re-Vamp",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Metalville",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Little Grandad",
+			"title": "Speak Softly, Son",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Modeselektor",
+			"title": "MDSLKTR",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Palaye Royale",
+			"title": "Amsterdamage",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Sumerian",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Saxon",
+			"title": "Gods of Thunder",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Smush",
+			"title": "I'll Always Wish",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Teddy Swims",
+			"title": "Ugly",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Warner",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "The Academic",
+			"title": "I'm Not Crying You Are",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Hot Press"
+			]
+		},
+		{
+			"artist": "The Flaming Lips",
+			"title": "The Teardrop Throbs",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Third Man",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "The Lemonheads",
+			"title": "Townesville",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Glide Magazine"
+			]
+		},
+		{
+			"artist": "The Twang",
+			"title": "Bring Yourself",
+			"releaseDate": "2027-01-22",
+			"genre": "",
+			"label": "Cooking Vinyl",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
+			"artist": "Amble",
+			"title": "Love and All Its Wares",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Warner",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Andy Burrows",
+			"title": "Map of the World",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Free Pass Records",
+			"outlets": [
+				"XS Noise"
+			]
+		},
+		{
+			"artist": "Avery Cochrane",
+			"title": "Vengeance Through My Omnipresence",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Femmusic.com"
+			]
+		},
+		{
+			"artist": "Bicep",
+			"title": "Slug",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Ninja Tune",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Bill MacKay and Michael Zerang",
+			"title": "Scarlet Hour",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Drag City",
+			"outlets": [
+				"KLOF"
+			]
+		},
+		{
+			"artist": "Blue Bendy",
+			"title": "One Day This Will All Be Lore",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Charlotte Cardin",
+			"title": "Midnight, Mon Amour",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rolling Stone Canada"
+			]
+		},
+		{
+			"artist": "Claire Rousay and Zander Raymond",
+			"title": "Something Good",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Clap Your Hands Say Yeah",
+			"title": "Burned",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Secretly Distribution Records",
+			"outlets": [
+				"Exclaim!"
+			]
+		},
+		{
+			"artist": "Cloud Nothings",
+			"title": "What Kind of Hell Did You Survive?",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Pure Noise",
+			"outlets": [
+				"Chaoszine"
+			]
+		},
+		{
+			"artist": "Death from Above 1979",
+			"title": "Private Lives",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Last Gang, MNRK",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Inspiral Carpets",
+			"title": "Burn Like the Sun",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Scruff of the Neck Records",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
+			"artist": "Jaguar Jonze",
+			"title": "Beast Master",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Backseat Mafia"
+			]
+		},
+		{
+			"artist": "Johanna Warren",
+			"title": "Frog in the Belly of a Snake",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Soul Selects Records",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Jonah Yano",
+			"title": "Spin",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Innovative Leisure",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Lisa LeBlanc",
+			"title": "Patchwork",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Bonsound",
+			"outlets": [
+				"Exclaim!"
+			]
+		},
+		{
+			"artist": "Memoriam",
+			"title": "Endgame",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Reaper Entertainment",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "MxPx",
+			"title": "Living in the Chaos",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Remember Monday",
+			"title": "Can We Press Rewind",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Silva Screen Records, So What? Recordings",
+			"outlets": [
+				"TotalNtertainment"
+			]
+		},
+		{
+			"artist": "Runnner",
+			"title": "Love Songs from the Hottest Summer on Record",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Amuseio AB",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Seven Kingdoms",
+			"title": "Sono Sola",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Reigning Phoenix",
+			"outlets": [
+				"BraveWords"
+			]
+		},
+		{
+			"artist": "Seventh Wonder",
+			"title": "VII",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Frontiers",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Silent Planet",
+			"title": "Infinite Sleep",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Pure Noise",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Simple Minds",
+			"title": "Sacrosanct",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Classic Pop"
+			]
+		},
+		{
+			"artist": "The Interrupters",
+			"title": "Battle Scars",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "The Spook School",
+			"title": "Like a Heartbeat",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Alcopop!, Slumberland",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "ViVii",
+			"title": "I Thought I Would Be Somewhere Else by Now",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "Dumont Dumont",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "A Hawk and a Hacksaw",
+			"title": "Volume 8",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "As I Lay Dying",
+			"title": "As I Lay Dying",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Cage the Elephant",
+			"title": "Dying in Reverse",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Big Loud",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Charlotte Adigéry and Bolis Pupul",
+			"title": "Mainland Madinina",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Deewee, Because Music",
+			"outlets": [
+				"Flood Magazine"
+			]
+		},
+		{
+			"artist": "Extreme",
+			"title": "Paris Rising",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "earMUSIC",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Flower Face",
+			"title": "Kill the Muse",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Luisa Almaguer",
+			"title": "Sin Lázaro",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Mixta Music",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Palehound",
+			"title": "You Sing Like You're Joking",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Polyvinyl",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "The 69 Eyes",
+			"title": "Acustica",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "BlkIIBlk",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Thundermother",
+			"title": "Mothers of Thunder",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Ulrika Spacek",
+			"title": "Field to the Left",
+			"releaseDate": "2027-02-05",
+			"genre": "",
+			"label": "Full Time Hobby",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Anna Meredith",
+			"title": "Darling",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Mercury KX",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Currents",
+			"title": "Our Fates Lie in Tandem",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Rise",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Cyco Miko",
+			"title": "My Personal Revolution",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "George FitzGerald",
+			"title": "Lima Romeo",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Gun Ghaol",
+			"title": "Eadar Bàs Is Bruadaran",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Read Dork"
+			]
+		},
+		{
+			"artist": "Indigo Sparke",
+			"title": "There Is a Light on the Horizon Line",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Everwilde Records",
+			"outlets": [
+				"Our Culture"
+			]
+		},
+		{
+			"artist": "Julien Baker",
+			"title": "This World or the Next",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Matador",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Junior Boys",
+			"title": "The Gore",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "City Slang",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Kerry King",
+			"title": "The End of All Gods",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Reigning Phoenix",
+			"outlets": [
+				"Loudwire"
+			]
+		},
+		{
+			"artist": "Mamalarky",
+			"title": "Hover",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Epitaph",
+			"outlets": [
+				"Our Culture Mag"
+			]
+		},
+		{
+			"artist": "Pins",
+			"title": "If I'm Alive Now, Then I Was Dead",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Haus of Pins",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Pulled Apart by Horses",
+			"title": "Dopamine Hits",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Damage Limited Records",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Robert Cray",
+			"title": "All Over Again",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"SoulTracks"
+			]
+		},
+		{
+			"artist": "Ryan Adams",
+			"title": "Animal",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Pax-AM Records",
+			"outlets": [
+				"Glide"
+			]
+		},
+		{
+			"artist": "Serenity",
+			"title": "Melancholia",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Sex Week",
+			"title": "Ears as an Organ of Touch",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Grand Jury Records",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "She Wants Revenge",
+			"title": "The Loved",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Sleeper",
+			"title": "End of the World",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Gorsky Records",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Sugababes",
+			"title": "Sugababes",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "Sacred Three, The Orchard",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Tusks",
+			"title": "Do I See You There?",
+			"releaseDate": "2027-02-12",
+			"genre": "",
+			"label": "One Little Independent",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "200 Stab Wounds",
+			"title": "Lowest Form",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Metal Blade",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Beabadoobee",
+			"title": "Bananas 4 Cats",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Dirty Hit, Interscope",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "Dutch Uncles",
+			"title": "Polygon Hotel",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Memphis Industries",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Everything but the Girl",
+			"title": "Blue Reservoir",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Virgin Music",
+			"outlets": [
+				"NME"
+			]
+		},
+		{
+			"artist": "Firewind",
+			"title": "Gods, Myths & Titans",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "BlkIIBlk",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Heathen",
+			"title": "Lifetime in Hell",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Chaoszine"
+			]
+		},
+		{
+			"artist": "Mallory Knox",
+			"title": "Afterglow",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Marika Hackman",
+			"title": "False Dogs",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Chrysalis",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Miki Berenyi Trio",
+			"title": "Spoil the Busy Flames",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Bella Union",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "One Step Closer",
+			"title": "Zero",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Tash Sultana",
+			"title": "Sonic Alchemy",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"The Note"
+			]
+		},
+		{
+			"artist": "Tim Reaper",
+			"title": "World's End",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Hyperdub",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Zsela",
+			"title": "The Party",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Nice Life",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Blondie",
+			"title": "High Noon",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Brokeback",
+			"title": "Colder, Milder",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Thrill Jockey",
+			"outlets": [
+				"The Quietus"
+			]
+		},
+		{
+			"artist": "Cody Jinks and the Tonedeaf Hippies",
+			"title": "And, Again",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Late August Records",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Coi Leray",
+			"title": "Multi",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Epic",
+			"outlets": [
+				"Broadway World"
+			]
+		},
+		{
+			"artist": "Jez Williams",
+			"title": "Life of Me and You",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Earth to Echo Records",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
+			"artist": "Noga Erez",
+			"title": "Duck Season",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Neon Gold, Atlantic",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
+			"artist": "Ralphie Choo",
+			"title": "Charmain",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Rusia-IDK Records, Warner Music",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Ryley Walker",
+			"title": "Darkening the Glass",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "AD 93",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Shenandoah",
+			"title": "If That Ain't Country",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "8 Track Entertainment",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Slash featuring Myles Kennedy and the Conspirators",
+			"title": "Flying Blind",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Gibson",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Stephen Wilson Jr.",
+			"title": "Impressiøn of a Human // Children of the Cørnerman",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Big Loud",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Steve Hackett",
+			"title": "Through a Sea of Flames",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Inside Out",
+			"outlets": [
+				"Louder"
+			]
+		},
+		{
+			"artist": "The Delines",
+			"title": "The Killing of a Motel Maid",
+			"releaseDate": "2027-02-26",
+			"genre": "",
+			"label": "Decor Records",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "David Sylvian",
+			"title": "The Distance Between the Killer and the Killing",
+			"releaseDate": "2027-02-27",
+			"genre": "",
+			"label": "Nanoq Records",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Particle Kid and Daniel Lanois",
+			"title": "The Ocean Floor",
+			"releaseDate": "2027-02-27",
+			"genre": "",
+			"label": "Loosegroove",
+			"outlets": [
+				"The Music Universe"
+			]
+		},
+		{
+			"artist": "Sam Amidon",
+			"title": "Willing Brother Knowing",
+			"releaseDate": "2027-02-27",
+			"genre": "",
+			"label": "River Lea Records",
+			"outlets": [
+				"KLOF"
+			]
+		},
+		{
+			"artist": "Sinkane",
+			"title": "He's Gone",
+			"releaseDate": "2027-02-27",
+			"genre": "",
+			"label": "City Slang",
+			"outlets": [
+				"JamBase"
+			]
+		},
+		{
+			"artist": "Bitter:Sweet",
+			"title": "The One",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Mxdwn Music"
+			]
+		},
+		{
+			"artist": "Destroy Boys",
+			"title": "Foie Gras",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "Epitaph",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Dynazty",
+			"title": "Dark Arts",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Eric Slick",
+			"title": "Bounce House",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "Slick Records, Thirty Tigers",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Inferum",
+			"title": "Adversity",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Distorted Sound"
+			]
+		},
+		{
+			"artist": "Liars",
+			"title": "A Ban on Plastic Bag Bans",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Martin Garrix",
+			"title": "Marty",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"DJ Mag"
+			]
+		},
+		{
+			"artist": "Paloma Faith",
+			"title": "In Full Colour!",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"attitude"
+			]
+		},
+		{
+			"artist": "Staind",
+			"title": "The Space Between the Darkness and the Light",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Tesseract",
+			"title": "Arc_One: Obscura",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "Nuclear Blast",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "The Chats",
+			"title": "Half Cut",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "Virgin Music",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "The Nightingales",
+			"title": "Tinsel and Trifle",
+			"releaseDate": "2027-03-05",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Louder Than War"
+			]
+		},
+		{
+			"artist": "Niki & the Dove",
+			"title": "Beauty and Terror",
+			"releaseDate": "2027-03-06",
+			"genre": "",
+			"label": "The Satchi Six",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Bokassa",
+			"title": "Anomalies",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Bruce Dickinson",
+			"title": "PsychoGod",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Rockum"
+			]
+		},
+		{
+			"artist": "Dan Smith and Ralph Pelleymounter",
+			"title": "Misfits Together",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "Best Laid Plans Records, Tequila King Records, Abbey Road Recordings",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Dragged Under",
+			"title": "Social Battery: Low",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "Mascot",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Erasure",
+			"title": "Radio!! Radio!!",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "Mute",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Everything Everything",
+			"title": "Poison Pop",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"Under the Radar"
+			]
+		},
+		{
+			"artist": "Gang of Youths",
+			"title": "Compañero",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "Mosy Recordings, Sony, Arista",
+			"outlets": [
+				"Rolling Stone Australia"
+			]
+		},
+		{
+			"artist": "Tindersticks",
+			"title": "Dog Roses",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Willie J Healey",
+			"title": "Lucky",
+			"releaseDate": "2027-03-12",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Alexisonfire",
+			"title": "Bleed It",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Dine Alone",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Archive",
+			"title": "Not in My Name",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Dangervisit",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
+			"artist": "Bullet for My Valentine",
+			"title": "Social Apocalypse",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Spinefarm",
+			"outlets": [
+				"Louder"
+			]
+		},
+		{
+			"artist": "DragonForce",
+			"title": "DragonForce",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Napalm",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Grand Slam",
+			"title": "Slam!",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Silver Lining Music",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Lanterns on the Lake",
+			"title": "There's a Bird in My Ribcage",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Dust & Matter",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Nelson",
+			"title": "Amazing",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Frontiers Music",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Noahfinnce",
+			"title": "Wonky",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Hopeless",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "Orbital",
+			"title": "Other",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "London",
+			"outlets": [
+				"XS Noize"
+			]
+		},
+		{
+			"artist": "Sum 41 and Deryck Whibley",
+			"title": "Diamonds of the Night: Vol. 1",
+			"releaseDate": "2027-03-19",
+			"genre": "",
+			"label": "Rise",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Mo Pitney",
+			"title": "Outskirts of Town",
+			"releaseDate": "2027-03-26",
+			"genre": "",
+			"label": "Curb",
+			"outlets": [
+				"MusicRow"
+			]
+		},
+		{
+			"artist": "Starcrawler",
+			"title": "Kick Me",
+			"releaseDate": "2027-03-26",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"FemMusic.com"
+			]
+		},
+		{
+			"artist": "Planningtorock",
+			"title": "Gentlethem",
+			"releaseDate": "2027-03-31",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Feet",
+			"title": "Gung-Ho",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "Submarine Cat",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
+			"artist": "Glasvegas",
+			"title": "Airy Fairy",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Hamish Hawk",
+			"title": "Intriguer/Tenderness",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "So Recordings",
+			"outlets": [
+				"God Is in the TV"
+			]
+		},
+		{
+			"artist": "Ider",
+			"title": "Looking Gorgeous, Expecting Everything",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "The Mission",
+			"title": "Songs for Kith and Kin",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "Cooking Vinyl",
+			"outlets": [
+				"Rock News UK"
+			]
+		},
+		{
+			"artist": "Fear Factory",
+			"title": "Roboticist",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "Nuclear Blast",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Kingfishr",
+			"title": "Weight of the Feather",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Clash"
+			]
+		},
+		{
+			"artist": "Panchiko",
+			"title": "Chimera",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "Nettwerk",
+			"outlets": [
+				"Consequence"
+			]
+		},
+		{
+			"artist": "Snotty Nose Rez Kids",
+			"title": "Daddy's Home",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "Savage Mob Records, Sony Music",
+			"outlets": [
+				"Exclaim!"
+			]
+		},
+		{
+			"artist": "The Molotovs",
+			"title": "Welcome to Urbia",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "Marshall",
+			"outlets": [
+				"Stereoboard"
+			]
+		},
+		{
+			"artist": "Wolves at the Gate",
+			"title": "Borderland",
+			"releaseDate": "2027-04-09",
+			"genre": "",
+			"label": "Solid State",
+			"outlets": [
+				"Lambgoat"
+			]
+		},
+		{
+			"artist": "Oh, Sleeper",
+			"title": "Back to the Wild",
+			"releaseDate": "2027-04-16",
+			"genre": "",
+			"label": "Solid State",
+			"outlets": [
+				"AltWire"
+			]
+		},
+		{
+			"artist": "Primal Fear",
+			"title": "Shadow Riders",
+			"releaseDate": "2027-04-23",
+			"genre": "",
+			"label": "Reigning Phoenix",
+			"outlets": [
+				"Blabbermouth.net"
+			]
+		},
+		{
+			"artist": "Foy Vance",
+			"title": "If",
+			"releaseDate": "2027-04-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Americana UK"
+			]
+		},
+		{
+			"artist": "Purple Disco Machine",
+			"title": "Cosmotropia",
+			"releaseDate": "2027-04-30",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Dork"
+			]
+		},
+		{
+			"artist": "John Spillane",
+			"title": "All Round the Island",
+			"releaseDate": "2027-05-14",
+			"genre": "",
+			"label": "Inspired Records",
+			"outlets": [
+				"Hot Press"
+			]
+		}
+	]
+}

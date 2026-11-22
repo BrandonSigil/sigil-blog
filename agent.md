@@ -119,6 +119,29 @@ scripts/
   near-empty pages; until then the index links straight to the album in its post
 - The "Browse" links (`src/components/HubNav.astro`) sit on the album index and every hub page
 
+### Release calendar (`/releases`, the homepage's "Out this month", monthly "hot releases" post)
+- Every album announced from the start of last month on, from two sources merged in
+  `src/lib/calendar-core.mjs` (plain JS, shared by the site and the draft script):
+  - `src/data/calendar-wiki.json`: Wikipedia's "List of <year> albums" (date, artist, album, genre,
+    label, outlets cited), written daily by `scripts/fetch-releases.mjs`
+  - `src/data/crate-scores.json`: every crate album's fit score, lane and sources, written by
+    `scripts/crate-calendar.mjs`, which `publish-crate.mjs` runs on both export folders
+- Taste score: the crate's fit score when the crate has the album (solid badge), otherwise an
+  estimate (dashed badge, "~"): how often Sigil picks that genre, +12 if Sigil has covered the
+  artist, +5 if an indie-minded outlet announced it, capped at 79 so estimates sit below strong
+  crate scores. Archival, live and anniversary records rank 15 points lower
+- Buzz: outlets that announced the album (Wikipedia citations + crate sources) + twice the
+  headlines naming the artist around release (`src/data/calendar-press.json`, also written by
+  `fetch-releases.mjs` from the feeds in `news-sources.json`)
+- Homepage "Out this month" (`ReleaseCalendar.astro`): this month's albums by taste, 12 shown, the
+  rest behind "Show all"; "Anticipated" beside it is unchanged (flagged crate albums)
+- `scripts/draft-hot-releases.mjs` drafts `src/content/blog/hot-releases-<yyyy-mm>.md` (a "Tops"
+  post, `draft: true`) with the month's 10 highest-buzz new albums (at least 2 signals; no
+  archival records or soundtracks). From the 25th it drafts next month's; pass `YYYY-MM` to draft
+  any month. It refreshes the draft daily until the intro or any take is edited, then never again.
+  Write the takes and delete `draft: true` to publish
+- `.github/workflows/releases.yml` runs the fetch and the draft daily and commits when they changed
+
 ### In the news (`/news`, home page, artist pages)
 - Headlines from other music sites about artists with a published pick or review. Each links out
   in a new tab. Only the headline, link and source name are stored: never copy their images

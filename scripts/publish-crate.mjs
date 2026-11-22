@@ -16,6 +16,7 @@
 //                                 homepage's "Out this month" and "Anticipated" lists read this
 //   src/assets/releases/*.jpg     their covers
 //   src/data/album-genres.json    each new pick's crate lane, as its genre on the album hubs
+//   src/data/crate-scores.json    every album's fit score, lane and sources, for the release calendar
 // and with --draft, if that week's post does not exist yet:
 //   src/content/blog/nmf-<friday>.md   a draft New Music Friday post with the picks laid out
 //   src/assets/nmf-<friday>/*.jpg      covers for the post
@@ -186,6 +187,14 @@ if (picks.length > 0) {
 		writeFileSync(genresPath, JSON.stringify(genres, null, '\t') + '\n');
 		console.log(`Genres: added ${added.length} to src/data/album-genres.json: ${added.join(', ')}`);
 	}
+}
+
+// --- Release calendar ---
+// Every album in both exports (not only the picks) feeds the calendar's fit scores and buzz.
+{
+	const { updateCrateScores } = await import('./crate-calendar.mjs');
+	const all = [...albums, ...(aheadDir ? readAlbums(aheadDir) : [])];
+	console.log(`Calendar: ${updateCrateScores(all)} crate albums in src/data/crate-scores.json`);
 }
 
 // --- Draft post ---
