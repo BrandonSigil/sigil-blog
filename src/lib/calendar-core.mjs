@@ -62,7 +62,7 @@ function laneFromWiki(a) {
 
 // Archival, live and anniversary records: in the calendar, but never on the hot list and ranked
 // below new albums in "Out this month".
-const ARCHIVAL = /anniversary|deluxe|remaster|expanded|reissue|\bdemos?\b|demoed|\bsessions?\b|\blive\b|first studio recording|revealed|years \d{4}|\b(19|20)\d\d\s*[–-]\s*(19|20)\d\d\b/i;
+const ARCHIVAL = /anniversary|deluxe|remaster|expanded|reissue|\bdemos?\b|demoed|\bsessions?\b|\blive (?:at|from|in|on)\b|\(live\)|\blive album\b|[-–] live\b|first studio recording|revealed|years \d{4}|\b(19|20)\d\d\s*[–-]\s*(19|20)\d\d\b/i;
 // Not outlets: the crate lists these as where it found an album.
 const NOT_OUTLETS = /^(wikipedia|musicbrainz)$/i;
 const cleanOutlets = (list) => list.filter((o) => o && !NOT_OUTLETS.test(o) && !/\d{4}/.test(o) && !/^\d/.test(o));
