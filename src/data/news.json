@@ -1,0 +1,125 @@
+{
+  "_note": "Written by scripts/fetch-news.mjs. Add a one-line \"take\" to any story by hand; it is kept on later runs. Set \"hidden\": true to hide a story that matched the wrong artist (deleting it would let it come back while it is still in its feed); add the artist to \"ignore\" in news-sources.json if it keeps happening.",
+  "items": [
+    {
+      "url": "https://www.rollingstone.com/music/music-news/rosalia-praises-taylor-swift-master-songwriter-1235661869/",
+      "title": "Rosalía Calls Taylor Swift a ‘Master Songwriter,’ Reveals Her Favorite Swift Track",
+      "source": "Rolling Stone",
+      "date": "2026-11-20T22:35:32.000Z",
+      "artists": [
+        "Taylor Swift"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://www.nme.com/news/music/bst-hyde-park-2027-billie-eilish-london-tour-headline-tickets-3976586",
+      "title": "BST Hyde Park 2027: Billie Eilish announced as latest headliner",
+      "source": "NME",
+      "date": "2026-11-20T15:34:48.000Z",
+      "artists": [
+        "Billie Eilish"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://stereogum.com/2518836/tems-african-love-story/music/",
+      "title": "Tems – “African Love Story”",
+      "source": "Stereogum",
+      "date": "2026-11-20T15:04:51.000Z",
+      "artists": [
+        "Tems"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/5-new-albums-you-should-listen-to-now-atlas-sound-toro-y-moi-and-more/",
+      "title": "5 New Albums You Should Listen to Now: Atlas Sound, Toro y Moi, and More",
+      "source": "Pitchfork",
+      "date": "2026-11-20T14:53:41.000Z",
+      "artists": [
+        "Toro y Moi"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/phoebe-bridgers-covers-adrianne-lenkers-anything-for-the-holidays/",
+      "title": "Phoebe Bridgers Covers Adrianne Lenker’s “Anything” for the Holidays",
+      "source": "Pitchfork",
+      "date": "2026-11-19T17:13:14.000Z",
+      "artists": [
+        "Adrianne Lenker"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://stereogum.com/2518664/phoebe-bridgers-anything-adrianne-lenker-cover/music/",
+      "title": "Phoebe Bridgers – “Anything” (Adrianne Lenker Cover)",
+      "source": "Stereogum",
+      "date": "2026-11-19T15:32:10.000Z",
+      "artists": [
+        "Adrianne Lenker"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://stereogum.com/2518630/taylor-swift-returns-to-cmas-ella-langley-breaks-record-for-most-wins-in-one-night/news/",
+      "title": "Taylor Swift Returns To CMAs, Ella Langley Breaks Record For Most Wins In One Night",
+      "source": "Stereogum",
+      "date": "2026-11-19T14:26:50.000Z",
+      "artists": [
+        "Taylor Swift"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/watch-taylor-swift-bring-our-song-medley-to-2026-cma-awards/",
+      "title": "Watch Taylor Swift Bring “Our Song” Medley to 2026 CMA Awards",
+      "source": "Pitchfork",
+      "date": "2026-11-19T05:16:00.000Z",
+      "artists": [
+        "Taylor Swift"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/enroll-now-for-the-waxahatchee-songwriting-workshop/",
+      "title": "Waxahatchee Is Hosting a Songwriting Workshop",
+      "source": "Pitchfork",
+      "date": "2026-11-18T17:58:50.000Z",
+      "artists": [
+        "Waxahatchee"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/billie-eilish-harry-styles-and-sam-fender-headlining-glastonbury-2027/",
+      "title": "Billie Eilish, Harry Styles, and Sam Fender Headlining Glastonbury 2027",
+      "source": "Pitchfork",
+      "date": "2026-11-18T10:58:35.000Z",
+      "artists": [
+        "Billie Eilish"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/big-thief-plots-2027-us-tour/",
+      "title": "Big Thief Plot 2027 U.S. Tour",
+      "source": "Pitchfork",
+      "date": "2026-11-17T18:07:11.000Z",
+      "artists": [
+        "Big Thief"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://pitchfork.com/story/big-thief-death-cab-for-cutie-remi-wolf-to-headline-green-river-festival-2027/",
+      "title": "Big Thief, Death Cab for Cutie, Remi Wolf to Play Green River Fest 2027",
+      "source": "Pitchfork",
+      "date": "2026-11-17T17:15:08.000Z",
+      "artists": [
+        "Big Thief"
+      ],
+      "take": ""
+    }
+  ]
+}

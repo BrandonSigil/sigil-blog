@@ -119,6 +119,17 @@ scripts/
   near-empty pages; until then the index links straight to the album in its post
 - The "Browse" links (`src/components/HubNav.astro`) sit on the album index and every hub page
 
+### In the news (`/news`, home page, artist pages)
+- Headlines from other music sites about artists with a published pick or review. Each links out
+  in a new tab. Only the headline, link and source name are stored: never copy their images
+- `scripts/fetch-news.mjs` reads the feeds in `src/data/news-sources.json`, matches artist names
+  in headlines (same spelling and capitals) and writes `src/data/news.json`, keeping 60 days
+- `.github/workflows/news.yml` runs it daily and commits `news.json` when it changed, which
+  redeploys the site. Run by hand with `node scripts/fetch-news.mjs` (`--dry-run` to preview)
+- In `news.json`, a story's `take` is an optional one-line Sigil comment shown under the headline;
+  `"hidden": true` hides a wrong match. Both survive later runs. An artist name that keeps matching
+  the wrong stories goes in `ignore` in `news-sources.json`
+
 ### About (`/about`)
 - Who is behind the blog and what gets posted here
 

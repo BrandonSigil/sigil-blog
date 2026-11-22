@@ -1,0 +1,14 @@
+{
+  "_note": "Read by scripts/fetch-news.mjs. feeds: RSS feeds to scan. ignore: artist names that match the wrong stories (a common word, another band), never matched. keepDays: how long a story stays in news.json.",
+  "keepDays": 60,
+  "feeds": [
+    { "name": "Pitchfork", "url": "https://pitchfork.com/feed/feed-news/rss" },
+    { "name": "Stereogum", "url": "https://stereogum.com/feed/" },
+    { "name": "BrooklynVegan", "url": "https://www.brooklynvegan.com/feed/" },
+    { "name": "Consequence", "url": "https://consequence.net/category/music/feed/" },
+    { "name": "NME", "url": "https://www.nme.com/news/music/feed" },
+    { "name": "FACT", "url": "https://www.factmag.com/feed/" },
+    { "name": "Rolling Stone", "url": "https://www.rollingstone.com/music/music-news/feed/" }
+  ],
+  "ignore": []
+}

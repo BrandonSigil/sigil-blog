@@ -1,9 +1,11 @@
 ---
 // /artists/<artist>: an artist with two or more picks or reviews.
 import AlbumGrid from '../../components/AlbumGrid.astro';
+import NewsList from '../../components/NewsList.astro';
 import HubPage from '../../layouts/HubPage.astro';
 import { getAlbumPicks } from '../../lib/albums';
 import { type ArtistGroup, groupByArtist } from '../../lib/hubs';
+import { newsFor } from '../../lib/news';
 import { getPosts } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -18,6 +20,7 @@ const parts = [
 	a.picks.length && `${a.picks.length} pick${a.picks.length === 1 ? '' : 's'}`,
 	a.reviews.length && `${a.reviews.length} review${a.reviews.length === 1 ? '' : 's'}`,
 ].filter(Boolean);
+const news = await newsFor(a.slug);
 ---
 
 <HubPage
@@ -39,6 +42,15 @@ const parts = [
 			<ul>
 				{a.reviews.map((r) => <li><a href={`/blog/${r.id}`}>{r.data.title}</a></li>)}
 			</ul>
+		</section>
+	)}
+	{news.length > 0 && (
+		<section class="hub-section">
+			<div class="hub-section-head">
+				<h2>In the news</h2>
+				<a href="/news">All news →</a>
+			</div>
+			<NewsList stories={news} hideArtists />
 		</section>
 	)}
 </HubPage>

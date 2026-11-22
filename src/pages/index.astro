@@ -4,9 +4,11 @@ import BaseHead from '../components/BaseHead.astro';
 import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
+import NewsList from '../components/NewsList.astro';
 import Header from '../components/Header.astro';
 import ReleaseCalendar from '../components/ReleaseCalendar.astro';
 import UpcomingAlbums from '../components/UpcomingAlbums.astro';
+import { getNews } from '../lib/news';
 import { getPosts } from '../lib/posts';
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
 import heroLogo from '../assets/sigil-main.svg';
@@ -16,6 +18,7 @@ const allPosts = (await getPosts()).filter((post) => !post.data.draft);
 // The newest post is featured in the hero window; the list below picks up after it.
 const featured = allPosts[0];
 const recentPosts = allPosts.slice(1, 5);
+const news = (await getNews()).slice(0, 6);
 
 // The playlist from the newest New Music Friday post that has one.
 const PLAYLIST = /open\.spotify\.com\/embed\/playlist\/([A-Za-z0-9]+)/;
@@ -482,6 +485,10 @@ const structuredData = [
 				font-weight: 600;
 			}
 
+			.news-section {
+				margin-bottom: 4rem;
+			}
+
 			.featured-posts {
 				margin-bottom: 2rem;
 			}
@@ -629,6 +636,16 @@ const structuredData = [
 		<main>
 			<UpcomingAlbums />
 			<ReleaseCalendar />
+
+			{news.length > 0 && (
+				<section class="news-section">
+					<div class="section-header">
+						<h2>In the News</h2>
+						<a href="/news">All news →</a>
+					</div>
+					<NewsList stories={news} />
+				</section>
+			)}
 
 			<section>
 				<div class="section-header">
