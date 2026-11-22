@@ -20,12 +20,12 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 			<h2>{heading}</h2>
 		</div>
 		<div class="radar-header-actions">
-			<a href="/releases.ics" class="btn-ghost" download data-tick>↓ .ics Feed</a>
-			<a href="/calendar" class="radar-all-link" data-tick>All {allReleases.length} drops →</a>
+			<a href="/releases.ics" class="btn-ghost" download>↓ .ics Feed</a>
+			<a href="/calendar" class="radar-all-link">All {allReleases.length} drops →</a>
 		</div>
 	</div>
 
-	<div class="radar-ledger">
+	<div class="radar-ledger" data-glide-list>
 		{groups.map((group) => (
 			<div class="ledger-group">
 				<div class="ledger-date-col">
@@ -36,7 +36,7 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 					{group.items.map((item) => {
 						const links = buildSearchLinks(item.artist, item.title);
 						return (
-							<article class="ledger-row">
+							<article class="ledger-row" data-glide-row>
 								<div class="ledger-main">
 									<div class="ledger-title-line">
 										<strong>{item.artist}</strong>
@@ -98,8 +98,8 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 
 	.radar-ledger {
 		background: var(--paper-card);
-		border: 1px solid var(--rule-strong);
-		border-radius: 6px;
+		border-radius: 7px;
+		box-shadow: var(--shadow-card);
 		overflow: hidden;
 	}
 
@@ -116,7 +116,7 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 	.ledger-date-col {
 		padding: 0.9rem 1rem;
 		border-right: 1px solid var(--rule);
-		background: var(--green-tint);
+		background: rgba(62, 125, 60, 0.045);
 	}
 
 	.ledger-date {
@@ -130,6 +130,7 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 		letter-spacing: 0.1em;
 		color: var(--green);
 		white-space: nowrap;
+		font-variant-numeric: tabular-nums;
 	}
 
 	.ledger-items-col {
@@ -144,31 +145,10 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 		gap: 1rem;
 		padding: 0.8rem 1.15rem;
 		border-top: 1px solid var(--rule);
-		transition: background-color 50ms steps(2);
-	}
-
-	.ledger-row::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		width: 3px;
-		background: var(--green);
-		opacity: 0;
 	}
 
 	.ledger-row:first-child {
 		border-top: none;
-	}
-
-	.ledger-row:hover {
-		background-color: var(--green-tint);
-		background-image: var(--hatch-green);
-	}
-
-	.ledger-row:hover::before {
-		opacity: 1;
 	}
 
 	.ledger-main {

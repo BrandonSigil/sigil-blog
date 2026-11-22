@@ -48,22 +48,35 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 				max-width: 54ch;
 			}
 
-			/* Random spotlight drawer */
+			/* Random spotlight drawer — origin-aware scale(0.97) entrance */
+			@keyframes spotlightIn {
+				from {
+					opacity: 0;
+					transform: translateY(-4px) scale(0.97);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0) scale(1);
+				}
+			}
+
 			.random-spotlight {
 				display: none;
 				margin-bottom: 2rem;
 				padding: 1.35rem 1.5rem;
 				background: var(--green-tint);
-				border: 1.5px solid var(--green);
 				border-radius: var(--radius-md);
+				box-shadow: 0 0 0 1px var(--green), 0 8px 24px -8px rgba(36, 74, 35, 0.16);
 				align-items: center;
 				justify-content: space-between;
 				gap: 1.25rem;
 				flex-wrap: wrap;
+				transform-origin: top center;
 			}
 
 			.random-spotlight.is-open {
 				display: flex;
+				animation: spotlightIn 220ms var(--ease-out) both;
 			}
 
 			.random-copy {
@@ -109,24 +122,31 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 
 			.year-pill {
 				border: 1px solid var(--rule-strong);
-				background: var(--paper-card);
+				background: transparent;
 				color: var(--ink);
 				font-family: var(--font-mono);
-				font-size: 0.76rem;
+				font-size: 12px;
+				font-weight: 500;
 				padding: 0.44rem 0.9rem;
-				border-radius: 4px;
+				border-radius: 5px;
 				cursor: pointer;
-				transition: background-color 50ms steps(2), color 50ms steps(2), border-color 50ms steps(2);
+				font-variant-numeric: tabular-nums;
+				transition:
+					transform var(--dur-press) var(--ease-out),
+					color var(--dur-fast) var(--ease-out),
+					border-color var(--dur-fast) var(--ease-out),
+					background-color var(--dur-fast) var(--ease-out);
 			}
 
-			.year-pill:hover {
-				border-color: var(--green);
-				color: var(--green);
-				background-image: var(--hatch-green);
+			@media (hover: hover) and (pointer: fine) {
+				.year-pill:hover {
+					border-color: var(--green);
+					color: var(--green-dark);
+				}
 			}
 
 			.year-pill:active {
-				transform: translate(1px, 1px);
+				transform: scale(0.96);
 			}
 
 			.year-pill.is-active {
@@ -172,22 +192,26 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 
 			.record-card {
 				background: var(--paper-card);
-				border: 1px solid var(--rule-strong);
-				border-radius: 5px;
+				border-radius: 7px;
+				box-shadow: var(--shadow-card);
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				transition: border-color 60ms steps(2), box-shadow 60ms steps(2), transform 60ms steps(2);
+				transition:
+					transform var(--dur-base) var(--ease-out),
+					box-shadow var(--dur-base) var(--ease-out);
 			}
 
-			.record-card:hover {
-				border-color: var(--green);
-				box-shadow: 4px 4px 0 var(--green);
+			@media (hover: hover) and (pointer: fine) {
+				.record-card:hover {
+					box-shadow: var(--shadow-card-hover);
+					transition-duration: var(--dur-fast);
+				}
 			}
 
 			.record-card:active {
-				transform: translate(2px, 2px);
-				box-shadow: 2px 2px 0 var(--green);
+				transform: scale(0.985);
+				transition-duration: var(--dur-press);
 			}
 
 			.record-main-link {
@@ -205,37 +229,17 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 				background: var(--gray-lighter);
 			}
 
-			.record-cover::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background-image: url('/noise-sigil-white.png');
-				background-repeat: repeat;
-				opacity: 0;
-				mix-blend-mode: screen;
-				pointer-events: none;
-				transition: opacity 60ms steps(2);
-			}
-
-			.record-card:hover .record-cover::after {
-				opacity: 0.34;
-				animation: sigilGrain 0.3s steps(3) infinite;
-			}
-
 			.record-cover :global(img) {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: filter 70ms steps(2);
+				transition: transform 320ms var(--ease-out);
 			}
 
-			.record-card:hover .record-cover :global(img) {
-				filter: contrast(1.12);
-			}
-
-			.record-card:hover .record-actions {
-				background-color: var(--green-tint);
-				background-image: var(--hatch-green);
+			@media (hover: hover) and (pointer: fine) {
+				.record-card:hover .record-cover :global(img) {
+					transform: scale(1.025);
+				}
 			}
 
 			.record-date-chip {
@@ -372,7 +376,7 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 			</div>
 
 			<div class="crate-toolbar">
-				<div class="year-pills" role="tablist" aria-label="Filter crate by year">
+				<div class="year-pills" role="tablist" aria-label="Filter crate by year" data-glide-group>
 					<button type="button" class="year-pill is-active" data-year-filter="all">
 						All Years ({picks.length})
 					</button>

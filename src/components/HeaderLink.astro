@@ -24,24 +24,25 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 		font-size: 12.5px;
 		font-weight: 500;
 		letter-spacing: 0.04em;
-		border-radius: 3px;
+		border-radius: 5px;
 		white-space: nowrap;
-		transition: color 60ms steps(2), background-color 60ms steps(2);
+		transition:
+			color var(--dur-fast) var(--ease-out),
+			transform var(--dur-press) var(--ease-out);
 	}
 
-	a:hover {
-		color: var(--link-hover-color, var(--green));
-		background: var(--link-hover-bg, var(--green-tint));
-		background-image: var(--hatch-green);
+	@media (hover: hover) and (pointer: fine) {
+		a:hover {
+			color: var(--link-hover-color, var(--green-dark));
+		}
 	}
 
 	a:active {
-		transform: translateY(1px);
+		transform: scale(0.96);
 	}
 
 	a.active {
 		color: var(--link-active-color, var(--green));
-		font-weight: 500;
 	}
 
 	a.active::after {
@@ -50,7 +51,8 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 		left: 0.72rem;
 		right: 0.72rem;
 		bottom: 0.18rem;
-		height: 1px;
+		height: 1.5px;
+		border-radius: 1px;
 		background: currentColor;
 	}
 

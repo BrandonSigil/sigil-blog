@@ -41,7 +41,7 @@ const { compact = false } = Astro.props;
 					required
 					autocomplete="email"
 				/>
-				<button type="submit" data-tick>Subscribe →</button>
+				<button type="submit">Subscribe →</button>
 			</form>
 			<p class="dispatch-status" data-newsletter-status aria-live="polite"></p>
 		</div>
@@ -62,9 +62,10 @@ const { compact = false } = Astro.props;
 <style>
 	.dispatch-window {
 		background: var(--paper-card);
-		border: 1px solid var(--green);
-		border-radius: 6px;
-		box-shadow: 5px 5px 0 var(--green-shadow);
+		border-radius: 7px;
+		box-shadow:
+			0 0 0 1px var(--green),
+			0 6px 20px -6px rgba(36, 74, 35, 0.14);
 		overflow: hidden;
 	}
 
@@ -158,26 +159,30 @@ const { compact = false } = Astro.props;
 		border: 1px solid var(--green-dark);
 		background: var(--green);
 		color: #ffffff;
-		box-shadow: 3px 3px 0 var(--green-shadow);
+		box-shadow: 0 1px 2px rgba(28, 62, 28, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.16);
 		font-family: var(--font-mono);
 		font-weight: 500;
 		font-size: 12px;
-		letter-spacing: 0.05em;
+		letter-spacing: 0.04em;
 		padding: 0.6rem 1.05rem;
 		border-radius: 5px;
 		cursor: pointer;
 		white-space: nowrap;
-		transition: transform 60ms steps(2), box-shadow 60ms steps(2), background-color 60ms steps(2);
+		transition:
+			transform var(--dur-press) var(--ease-out),
+			box-shadow var(--dur-fast) var(--ease-out),
+			background-color var(--dur-fast) var(--ease-out);
 	}
 
-	.dispatch-form button:hover {
-		background: var(--green-dark);
-		box-shadow: 3px 3px 0 var(--green);
+	@media (hover: hover) and (pointer: fine) {
+		.dispatch-form button:hover {
+			background: var(--green-dark);
+			box-shadow: 0 4px 12px -2px rgba(36, 74, 35, 0.28);
+		}
 	}
 
 	.dispatch-form button:active {
-		transform: translate(2px, 2px);
-		box-shadow: 1px 1px 0 var(--green);
+		transform: scale(0.97);
 	}
 
 	.dispatch-status {
@@ -244,11 +249,19 @@ const { compact = false } = Astro.props;
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
 			const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+			const btn = form.querySelector<HTMLButtonElement>('button[type="submit"]');
 			const status = form.parentElement?.querySelector<HTMLElement>('[data-newsletter-status]');
 			if (!input || !status) return;
 			const email = input.value.trim();
 			if (!email) return;
-			status.textContent = `Noted (${email}) — newsletter delivery is launching soon. Grab the RSS feed below in the meantime.`;
+			if (btn) {
+				const prev = btn.textContent;
+				btn.textContent = '✓ Noted';
+				setTimeout(() => {
+					btn.textContent = prev;
+				}, 2400);
+			}
+			status.textContent = `Saved (${email}) — newsletter delivery is launching soon. RSS & .ics are live below.`;
 			input.value = '';
 		});
 	});

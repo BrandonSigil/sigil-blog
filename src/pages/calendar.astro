@@ -63,24 +63,31 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 
 			.lane-pill {
 				border: 1px solid var(--rule-strong);
-				background: var(--paper-card);
+				background: transparent;
 				color: var(--ink);
 				font-family: var(--font-mono);
 				font-size: 11.5px;
+				font-weight: 500;
 				padding: 0.4rem 0.85rem;
-				border-radius: 4px;
+				border-radius: 5px;
 				cursor: pointer;
-				transition: background-color 50ms steps(2), color 50ms steps(2), border-color 50ms steps(2);
+				font-variant-numeric: tabular-nums;
+				transition:
+					transform var(--dur-press) var(--ease-out),
+					color var(--dur-fast) var(--ease-out),
+					border-color var(--dur-fast) var(--ease-out),
+					background-color var(--dur-fast) var(--ease-out);
 			}
 
-			.lane-pill:hover {
-				border-color: var(--green);
-				color: var(--green);
-				background-image: var(--hatch-green);
+			@media (hover: hover) and (pointer: fine) {
+				.lane-pill:hover {
+					border-color: var(--green);
+					color: var(--green-dark);
+				}
 			}
 
 			.lane-pill:active {
-				transform: translate(1px, 1px);
+				transform: scale(0.96);
 			}
 
 			.lane-pill.is-active {
@@ -91,8 +98,8 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 
 			.calendar-ledger {
 				background: var(--paper-card);
-				border: 1px solid var(--rule-strong);
-				border-radius: 6px;
+				border-radius: 7px;
+				box-shadow: var(--shadow-card);
 				overflow: hidden;
 			}
 
@@ -146,31 +153,10 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				justify-content: space-between;
 				align-items: center;
 				gap: 1.25rem;
-				transition: background-color 50ms steps(2);
-			}
-
-			.release-row::before {
-				content: '';
-				position: absolute;
-				left: 0;
-				top: 0;
-				bottom: 0;
-				width: 3px;
-				background: var(--green);
-				opacity: 0;
 			}
 
 			.release-row:first-child {
 				border-top: none;
-			}
-
-			.release-row:hover {
-				background-color: var(--green-tint);
-				background-image: var(--hatch-green);
-			}
-
-			.release-row:hover::before {
-				opacity: 1;
 			}
 
 			.release-info {
@@ -285,7 +271,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				</div>
 			</section>
 
-			<div class="lane-bar" role="tablist" aria-label="Filter releases by lane">
+			<div class="lane-bar" role="tablist" aria-label="Filter releases by lane" data-glide-group>
 				<button type="button" class="lane-pill is-active" data-lane-filter="all">
 					All lanes ({releases.length})
 				</button>
@@ -296,7 +282,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				))}
 			</div>
 
-			<div class="calendar-ledger">
+			<div class="calendar-ledger" data-glide-list>
 				{grouped.map((group) => (
 					<section class="release-day-group" data-day-group style="margin-bottom:0;">
 						<div class="day-col">
@@ -311,7 +297,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 							{group.items.map((item) => {
 								const links = buildSearchLinks(item.artist, item.title);
 								return (
-									<article class="release-row" data-release-row data-lane={item.lane}>
+									<article class="release-row" data-release-row data-glide-row data-lane={item.lane}>
 										<div class="release-info">
 											<div class="release-title-line">
 												<strong>{item.artist}</strong>

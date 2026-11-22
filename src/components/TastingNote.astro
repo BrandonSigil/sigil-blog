@@ -26,29 +26,24 @@ const { note, compact = false, tilt = false } = Astro.props;
 	.hype-note {
 		background: var(--paper-card);
 		border: 1px solid var(--green);
-		border-radius: 4px;
-		box-shadow: 3px 3px 0 var(--green-shadow);
+		border-radius: 5px;
+		box-shadow: 0 2px 6px -1px rgba(36, 74, 35, 0.08), 3px 3px 0 rgba(62, 125, 60, 0.2);
 		margin: 0.9rem 0 1.25rem;
 		overflow: hidden;
-		transition: box-shadow 60ms steps(2), transform 60ms steps(2);
+		transition:
+			transform var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out);
 	}
 
 	.hype-note.tilt {
-		transform: rotate(-0.4deg);
+		transform: rotate(-0.35deg);
 	}
 
-	.hype-note:hover {
-		box-shadow: 4px 4px 0 var(--green);
-	}
-
-	.hype-note:hover .hype-note-bar {
-		background-image: url('/noise-sigil-white.png');
-		background-blend-mode: soft-light;
-		animation: sigilGrain 0.35s steps(3) infinite;
-	}
-
-	.hype-note:hover .hype-note-dots {
-		animation: sigilBlink 0.55s steps(2) infinite;
+	@media (hover: hover) and (pointer: fine) {
+		.hype-note.tilt:hover {
+			transform: rotate(0deg);
+			box-shadow: 0 4px 12px -2px rgba(36, 74, 35, 0.12), 4px 4px 0 rgba(62, 125, 60, 0.26);
+		}
 	}
 
 	.hype-note-bar {

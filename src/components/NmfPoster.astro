@@ -92,8 +92,10 @@ const styleVariant = variant ?? pickVariant(slug);
 		height: 100%;
 		object-fit: cover;
 		object-position: 68% center;
-		filter: contrast(1.08) saturate(1.1);
-		transition: filter 80ms steps(2);
+		filter: contrast(1.06) saturate(1.08);
+		transition:
+			transform 320ms var(--ease-out),
+			filter 220ms var(--ease-out);
 	}
 
 	/* Classic: iconic dark left fade + bold warm-cream stacked type */
@@ -192,33 +194,24 @@ const styleVariant = variant ?? pickVariant(slug);
 		);
 	}
 
-	/* Shared analog film grain — animates in stepped frames on parent hover */
+	/* Subtle static analog paper grain (never flickers) */
 	.poster-grain {
 		position: absolute;
 		inset: 0;
 		z-index: 4;
 		background-image: url('/noise-sigil-white.png');
 		background-repeat: repeat;
-		opacity: 0.24;
+		opacity: 0.22;
 		mix-blend-mode: screen;
 		pointer-events: none;
-		transition: opacity 70ms steps(2);
 	}
 
-	:global(a:hover) .poster-grain,
-	:global(.post-card:hover) .poster-grain {
-		opacity: 0.36;
-		animation: sigilGrain 0.32s steps(4) infinite;
-	}
-
-	:global(a:hover) .poster-art-wrap :global(img),
-	:global(.post-card:hover) .poster-art-wrap :global(img) {
-		filter: contrast(1.2) saturate(1.04);
-	}
-
-	:global(a:hover) .poster-words,
-	:global(.post-card:hover) .poster-words {
-		animation: sigilRisoShift 0.26s steps(2) infinite;
+	@media (hover: hover) and (pointer: fine) {
+		:global(a:hover) .poster-art-wrap :global(img),
+		:global(.post-card:hover) .poster-art-wrap :global(img) {
+			transform: scale(1.025);
+			filter: contrast(1.1) saturate(1.12);
+		}
 	}
 
 	/* No image fallback (e.g. Quiet Weeks) */

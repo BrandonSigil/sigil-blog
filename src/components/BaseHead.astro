@@ -101,37 +101,85 @@ const jsonLd = structuredData
 <!-- Analytics -->
 <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="a76fb39b-72b5-4044-9cb3-452e8a4f49d1"></script>
 
-<!-- Subtle 3-frame hardware tick micro-effect for [data-tick] mono labels -->
+<!-- Fluid interruptible shared-element highlights (nav pills & ledger rows) -->
 <script is:inline>
 	document.addEventListener('DOMContentLoaded', () => {
-		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-		const GLYPHS = '.:/+=-_';
-		document.querySelectorAll('[data-tick]').forEach((el) => {
-			const original = el.textContent || '';
-			let timer = null;
-			const run = () => {
-				if (timer) clearInterval(timer);
-				let frame = 0;
-				const total = 4;
-				timer = setInterval(() => {
-					frame++;
-					if (frame >= total) {
-						clearInterval(timer);
-						timer = null;
-						el.textContent = original;
-						return;
-					}
-					el.textContent = original
-						.split('')
-						.map((ch, idx) => {
-							if (ch === ' ' || ch === '→' || ch === '↗' || ch === '↓' || ch === '↻') return ch;
-							return (idx + frame) % 3 === 0 ? GLYPHS[(idx + frame * 2) % GLYPHS.length] : ch;
-						})
-						.join('');
-				}, 34);
+		const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+		if (!finePointer) return;
+
+		// 1. Sliding pill highlight for horizontal nav & filter groups
+		document.querySelectorAll('[data-glide-group]').forEach((group) => {
+			const pill = document.createElement('span');
+			pill.className = 'glide-pill';
+			pill.setAttribute('aria-hidden', 'true');
+			group.prepend(pill);
+
+			let hasMoved = false;
+			const moveTo = (el) => {
+				const gr = group.getBoundingClientRect();
+				const r = el.getBoundingClientRect();
+				const x = r.left - gr.left + group.scrollLeft;
+				const y = r.top - gr.top + group.scrollTop;
+				if (!hasMoved) {
+					pill.style.transition = 'opacity 150ms cubic-bezier(0.23, 1, 0.32, 1)';
+				} else {
+					pill.style.transition = '';
+				}
+				pill.style.width = `${r.width}px`;
+				pill.style.height = `${r.height}px`;
+				pill.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+				pill.style.opacity = '1';
+				requestAnimationFrame(() => {
+					hasMoved = true;
+				});
 			};
-			el.addEventListener('mouseenter', run);
-			el.addEventListener('focus', run);
+
+			group.querySelectorAll('a, button').forEach((item) => {
+				item.addEventListener('mouseenter', () => moveTo(item));
+				item.addEventListener('focus', () => moveTo(item));
+			});
+
+			group.addEventListener('mouseleave', () => {
+				pill.style.opacity = '0';
+				hasMoved = false;
+			});
+		});
+
+		// 2. Sliding row backdrop for stacked release ledgers
+		document.querySelectorAll('[data-glide-list]').forEach((list) => {
+			const bg = document.createElement('span');
+			bg.className = 'glide-row-bg';
+			bg.setAttribute('aria-hidden', 'true');
+			list.prepend(bg);
+
+			let hasMoved = false;
+			const moveToRow = (row) => {
+				const lr = list.getBoundingClientRect();
+				const r = row.getBoundingClientRect();
+				const x = r.left - lr.left;
+				const y = r.top - lr.top;
+				if (!hasMoved) {
+					bg.style.transition = 'opacity 150ms cubic-bezier(0.23, 1, 0.32, 1)';
+				} else {
+					bg.style.transition = '';
+				}
+				bg.style.width = `${r.width}px`;
+				bg.style.height = `${r.height}px`;
+				bg.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+				bg.style.opacity = '1';
+				requestAnimationFrame(() => {
+					hasMoved = true;
+				});
+			};
+
+			list.querySelectorAll('[data-glide-row]').forEach((row) => {
+				row.addEventListener('mouseenter', () => moveToRow(row));
+			});
+
+			list.addEventListener('mouseleave', () => {
+				bg.style.opacity = '0';
+				hasMoved = false;
+			});
 		});
 	});
 </script>

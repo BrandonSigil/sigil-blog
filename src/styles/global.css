@@ -1,7 +1,9 @@
 /*
-  Sigil — Technical Hardware-Meets-Software Typography & Design System
-  Warm paper (#f7f6f1), botanical green (#3e7d3c), crisp ink (#141413)
+  Sigil — Technical Hardware-Meets-Software Design System
+  Warm paper (#f7f6f1), botanical green (#3e7d3c), dark-forest ink (#182618)
   Three voices: Space Grotesk + IBM Plex Sans + IBM Plex Mono
+  Interaction craft: custom ease-out curves, interruptible transitions, tactile :active scale,
+  tabular numerals, balanced headlines, and GPU-only motion.
 */
 
 :root {
@@ -9,8 +11,8 @@
 	--green-light: #4a9447;
 	--green-dark: #2c5b2b;
 	--green-deep: #244a23;
-	--green-tint: rgba(62, 125, 60, 0.08);
-	--green-tint-strong: rgba(62, 125, 60, 0.14);
+	--green-tint: rgba(62, 125, 60, 0.075);
+	--green-tint-strong: rgba(62, 125, 60, 0.13);
 
 	--white: #ffffff;
 	--black: #182618;
@@ -24,17 +26,25 @@
 	--cream: #f7f6f1;
 	--paper: #f7f6f1;
 	--paper-card: #fcfbf8;
-	--rule: rgba(62, 125, 60, 0.2);
-	--rule-strong: rgba(62, 125, 60, 0.42);
-	--rule-green: rgba(62, 125, 60, 0.55);
-	--green-shadow: rgba(44, 91, 43, 0.24);
-	--hatch-green: repeating-linear-gradient(
-		-45deg,
-		rgba(62, 125, 60, 0.09) 0 1px,
-		transparent 1px 6px
-	);
-	--dither-green: radial-gradient(rgba(62, 125, 60, 0.22) 1px, transparent 1px);
-	--ease-mech: steps(2, end);
+	--rule: rgba(62, 125, 60, 0.18);
+	--rule-strong: rgba(62, 125, 60, 0.36);
+	--rule-green: rgba(62, 125, 60, 0.5);
+
+	/* Layered transparent green shadows (no flat black blocks) */
+	--shadow-ring: 0 0 0 1px rgba(62, 125, 60, 0.24);
+	--shadow-card: 0 1px 2px rgba(28, 62, 28, 0.04), 0 0 0 1px rgba(62, 125, 60, 0.22);
+	--shadow-card-hover:
+		0 0 0 1px rgba(62, 125, 60, 0.65),
+		0 4px 12px -2px rgba(36, 74, 35, 0.1),
+		0 12px 24px -8px rgba(36, 74, 35, 0.08);
+	--green-shadow: rgba(44, 91, 43, 0.22);
+
+	/* 2026 Design Engineering Easing & Timing Tokens */
+	--ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+	--ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+	--dur-press: 110ms;
+	--dur-fast: 150ms;
+	--dur-base: 220ms;
 
 	--font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	--font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -77,7 +87,7 @@ body:not(.has-hero) main {
 	padding-top: 6.5rem;
 }
 
-/* Display & Section Headings — Space Grotesk */
+/* Display & Section Headings — Space Grotesk, optically balanced */
 h1,
 h2,
 h3,
@@ -86,6 +96,7 @@ h5,
 h6 {
 	font-family: var(--font-display);
 	margin: 0 0 0.5rem 0;
+	text-wrap: balance;
 }
 
 h1 {
@@ -135,7 +146,11 @@ b {
 a {
 	color: var(--green);
 	text-decoration: none;
-	transition: color 70ms steps(2), background-color 70ms steps(2), border-color 70ms steps(2);
+	transition:
+		color var(--dur-fast) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out),
+		opacity var(--dur-fast) var(--ease-out);
 }
 
 a:hover {
@@ -144,6 +159,7 @@ a:hover {
 
 p {
 	margin: 0 0 1.35em 0;
+	text-wrap: pretty;
 }
 
 .lead {
@@ -224,7 +240,7 @@ hr {
 	margin: 2.5rem 0;
 }
 
-/* Metadata, Eyebrows & Micro-Labels — IBM Plex Mono */
+/* Metadata, Eyebrows & Tabular Numerals — IBM Plex Mono */
 .kicker {
 	display: inline-flex;
 	align-items: center;
@@ -235,6 +251,7 @@ hr {
 	text-transform: uppercase;
 	letter-spacing: 0.13em;
 	color: var(--green);
+	font-variant-numeric: tabular-nums;
 }
 
 .mono-meta {
@@ -243,9 +260,10 @@ hr {
 	font-weight: 400;
 	color: var(--gray);
 	letter-spacing: 0.04em;
+	font-variant-numeric: tabular-nums;
 }
 
-/* Buttons — crisp hardware keycap detent, no floaty bubbles */
+/* Buttons — tactile scale(0.97) press feedback + clean ease-out */
 .btn {
 	display: inline-flex;
 	align-items: center;
@@ -256,37 +274,48 @@ hr {
 	color: var(--white);
 	border: 1px solid var(--green-dark);
 	border-radius: var(--radius-sm);
-	box-shadow: 3px 3px 0 var(--green-shadow);
+	box-shadow: 0 1px 2px rgba(28, 62, 28, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.16);
 	font-family: var(--font-mono);
 	font-weight: 500;
 	font-size: 13px;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.03em;
 	cursor: pointer;
-	transition: background-color 60ms steps(2), color 60ms steps(2), box-shadow 60ms steps(2), transform 60ms steps(2);
 	text-decoration: none;
+	transition:
+		transform var(--dur-press) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out),
+		box-shadow var(--dur-fast) var(--ease-out),
+		color var(--dur-fast) var(--ease-out);
 }
 
-.btn:hover {
-	background: var(--green-dark);
-	border-color: var(--green-deep);
-	color: var(--white);
-	box-shadow: 3px 3px 0 var(--green);
+@media (hover: hover) and (pointer: fine) {
+	.btn:hover {
+		background: var(--green-dark);
+		border-color: var(--green-deep);
+		color: var(--white);
+		box-shadow: 0 4px 12px -2px rgba(36, 74, 35, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.16);
+	}
 }
 
 .btn:active {
-	transform: translate(2px, 2px);
-	box-shadow: 1px 1px 0 var(--green);
+	transform: scale(0.97);
 }
 
 .btn-outline {
 	background: var(--paper-card);
 	color: var(--green);
-	border-color: var(--green);
+	border-color: var(--rule-green);
+	box-shadow: 0 1px 2px rgba(28, 62, 28, 0.04);
 }
 
-.btn-outline:hover {
-	background: var(--green);
-	color: var(--white);
+@media (hover: hover) and (pointer: fine) {
+	.btn-outline:hover {
+		background: var(--green-tint);
+		border-color: var(--green);
+		color: var(--green-dark);
+		box-shadow: 0 2px 8px -2px rgba(36, 74, 35, 0.12);
+	}
 }
 
 .btn-ghost {
@@ -297,7 +326,7 @@ hr {
 	background: transparent;
 	color: var(--ink);
 	border: 1px solid var(--rule-strong);
-	border-radius: 4px;
+	border-radius: 5px;
 	font-family: var(--font-mono);
 	font-size: 11px;
 	font-weight: 500;
@@ -305,69 +334,84 @@ hr {
 	letter-spacing: 0.1em;
 	text-decoration: none;
 	cursor: pointer;
-	transition: background-color 60ms steps(2), color 60ms steps(2), border-color 60ms steps(2);
+	transition:
+		transform var(--dur-press) var(--ease-out),
+		background-color var(--dur-fast) var(--ease-out),
+		color var(--dur-fast) var(--ease-out),
+		border-color var(--dur-fast) var(--ease-out);
 }
 
-.btn-ghost:hover {
-	border-color: var(--green);
-	color: #f7f6f1;
-	background: var(--green);
+@media (hover: hover) and (pointer: fine) {
+	.btn-ghost:hover {
+		border-color: var(--green);
+		color: var(--green-dark);
+		background: var(--green-tint);
+	}
 }
 
 .btn-ghost:active {
-	transform: translate(1px, 1px);
+	transform: scale(0.97);
 }
 
-/* Gritty analog motion keyframes (stepped, non-bubbly) */
-@keyframes sigilGrain {
-	0% {
-		background-position: 0 0;
-	}
-	25% {
-		background-position: -32px 18px;
-	}
-	50% {
-		background-position: 24px -26px;
-	}
-	75% {
-		background-position: -14px -12px;
-	}
-	100% {
-		background-position: 18px 22px;
-	}
+/* Focus visibility — crisp accessible green ring */
+:focus-visible {
+	outline: 2px solid var(--green);
+	outline-offset: 2px;
 }
 
-@keyframes sigilBlink {
-	0%,
-	49% {
-		opacity: 1;
-	}
-	50%,
-	100% {
-		opacity: 0.25;
-	}
+/* Shared-element sliding hover pill (GPU transform) */
+[data-glide-group] {
+	position: relative;
 }
 
-@keyframes sigilRisoShift {
-	0% {
-		text-shadow: 1.5px 0 0 rgba(145, 224, 140, 0.55), -1px 0 0 rgba(20, 55, 20, 0.55);
-	}
-	50% {
-		text-shadow: -1.5px 0.5px 0 rgba(145, 224, 140, 0.45), 1px -0.5px 0 rgba(20, 55, 20, 0.5);
-	}
-	100% {
-		text-shadow: 1px 0 0 rgba(145, 224, 140, 0.55), -1px 0 0 rgba(20, 55, 20, 0.55);
-	}
+[data-glide-group] > .glide-pill {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-radius: 5px;
+	background: var(--glide-bg, var(--green-tint));
+	pointer-events: none;
+	opacity: 0;
+	z-index: 0;
+	transform-origin: left center;
+	transition:
+		transform var(--dur-base) var(--ease-out),
+		width var(--dur-base) var(--ease-out),
+		height var(--dur-base) var(--ease-out),
+		opacity var(--dur-fast) var(--ease-out);
+	will-change: transform, width, opacity;
 }
 
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-	}
+[data-glide-group] > :not(.glide-pill) {
+	position: relative;
+	z-index: 1;
+}
+
+/* Shared-element sliding list row highlight (Linear / Rauno pattern) */
+[data-glide-list] {
+	position: relative;
+}
+
+[data-glide-list] > .glide-row-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--green-tint);
+	box-shadow: inset 2px 0 0 var(--green);
+	pointer-events: none;
+	opacity: 0;
+	z-index: 0;
+	transition:
+		transform 180ms var(--ease-out),
+		width 180ms var(--ease-out),
+		height 180ms var(--ease-out),
+		opacity var(--dur-fast) var(--ease-out);
+	will-change: transform, width, height, opacity;
+}
+
+[data-glide-list] > :not(.glide-row-bg) {
+	position: relative;
+	z-index: 1;
 }
 
 /* Generous Swiss breathing room between sections */
@@ -396,6 +440,21 @@ section {
 /* Utility visibility */
 .is-hidden {
 	display: none !important;
+}
+
+/* Reduced motion: preserve fades, disable transforms & animations */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 /* Screen reader only */

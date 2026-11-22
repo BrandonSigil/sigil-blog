@@ -121,7 +121,7 @@ const searchBlob = [
 						{readMin} min
 					</span>
 				</div>
-				<span class="card-read-cta" data-tick>Open →</span>
+				<span class="card-read-cta">Open <span class="cta-arrow" aria-hidden="true">→</span></span>
 			</div>
 		</div>
 	</a>
@@ -130,20 +130,24 @@ const searchBlob = [
 <style>
 	.post-card {
 		background: var(--paper-card);
-		border: 1px solid var(--rule-strong);
-		border-radius: 5px;
+		border-radius: 7px;
+		box-shadow: var(--shadow-card);
 		overflow: hidden;
-		transition: border-color 60ms steps(2), box-shadow 60ms steps(2), transform 60ms steps(2);
+		transition:
+			transform var(--dur-base) var(--ease-out),
+			box-shadow var(--dur-base) var(--ease-out);
 	}
 
-	.post-card:hover {
-		border-color: var(--green);
-		box-shadow: 4px 4px 0 var(--green);
+	@media (hover: hover) and (pointer: fine) {
+		.post-card:hover {
+			box-shadow: var(--shadow-card-hover);
+			transition-duration: var(--dur-fast);
+		}
 	}
 
 	.post-card:active {
-		transform: translate(2px, 2px);
-		box-shadow: 2px 2px 0 var(--green);
+		transform: scale(0.988);
+		transition-duration: var(--dur-press);
 	}
 
 	.card-link {
@@ -156,17 +160,21 @@ const searchBlob = [
 
 	/* Lead editorial card — tight, balanced, zero dead space */
 	.variant-lead {
-		border: 1.5px solid var(--green);
-		box-shadow: 6px 6px 0 var(--green-shadow);
+		box-shadow:
+			0 0 0 1.5px var(--green),
+			0 6px 20px -6px rgba(36, 74, 35, 0.14);
 	}
 
-	.variant-lead:hover {
-		box-shadow: 6px 6px 0 var(--green);
+	@media (hover: hover) and (pointer: fine) {
+		.variant-lead:hover {
+			box-shadow:
+				0 0 0 1.5px var(--green),
+				0 14px 32px -8px rgba(36, 74, 35, 0.2);
+		}
 	}
 
 	.variant-lead:active {
-		transform: translate(2px, 2px);
-		box-shadow: 3px 3px 0 var(--green);
+		transform: scale(0.992);
 	}
 
 	.variant-lead .card-link {
@@ -254,16 +262,13 @@ const searchBlob = [
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
-		transition: filter 70ms steps(2);
+		transition: transform 320ms var(--ease-out);
 	}
 
-	.post-card:hover .card-media > :global(img) {
-		filter: contrast(1.12);
-	}
-
-	.post-card:hover .card-footer {
-		background: var(--green-tint);
-		background-image: var(--hatch-green);
+	@media (hover: hover) and (pointer: fine) {
+		.post-card:hover .card-media > :global(img) {
+			transform: scale(1.025);
+		}
 	}
 
 	.media-fallback {
@@ -408,18 +413,29 @@ const searchBlob = [
 	}
 
 	.card-read-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.25rem;
 		font-family: var(--font-mono);
-		font-size: 0.74rem;
+		font-size: 12px;
 		font-weight: 500;
-		color: var(--ink);
-		padding: 0.12rem 0.38rem;
-		border-radius: 3px;
-		transition: background-color 60ms steps(2), color 60ms steps(2);
+		color: var(--green);
+		transition: color var(--dur-fast) var(--ease-out);
 	}
 
-	.post-card:hover .card-read-cta {
-		background: var(--green);
-		color: #f7f6f1;
+	.cta-arrow {
+		display: inline-block;
+		transition: transform var(--dur-base) var(--ease-out);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.post-card:hover .card-read-cta {
+			color: var(--green-dark);
+		}
+
+		.post-card:hover .cta-arrow {
+			transform: translateX(3px);
+		}
 	}
 
 	@media (max-width: 880px) {

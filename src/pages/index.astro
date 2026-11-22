@@ -155,28 +155,30 @@ const structuredData = [
 				text-decoration: none;
 				background: var(--d-paper);
 				border: 2px solid var(--d-ink);
-				border-radius: 0 6px 6px 6px;
-				box-shadow: 10px 10px 0 rgba(22, 60, 22, 0.45);
+				border-radius: 0 7px 7px 7px;
+				box-shadow:
+					8px 8px 0 rgba(22, 60, 22, 0.36),
+					0 20px 40px -14px rgba(10, 32, 12, 0.35);
 				font-family: var(--font-mono);
-				transition: box-shadow 70ms steps(2), transform 70ms steps(2);
+				transition:
+					transform var(--dur-base) var(--ease-out),
+					box-shadow var(--dur-base) var(--ease-out);
 			}
 
-			.desk-window:hover,
-			.desk-window:focus-visible {
-				box-shadow: 12px 12px 0 rgba(18, 52, 18, 0.56);
+			@media (hover: hover) and (pointer: fine) {
+				.desk-window:hover,
+				.desk-window:focus-visible {
+					transform: translateY(-2px);
+					box-shadow:
+						10px 10px 0 rgba(18, 52, 18, 0.44),
+						0 28px 48px -14px rgba(10, 32, 12, 0.42);
+					transition-duration: var(--dur-fast);
+				}
 			}
 
 			.desk-window:active {
-				transform: translate(3px, 3px);
-				box-shadow: 6px 6px 0 rgba(18, 52, 18, 0.5);
-			}
-
-			.desk-window:hover .desk-stripes {
-				background: repeating-linear-gradient(to bottom, var(--green) 0 1px, transparent 1px 3px);
-			}
-
-			.desk-window:hover .desk-box {
-				background: var(--green);
+				transform: scale(0.992);
+				transition-duration: var(--dur-press);
 			}
 
 			.desk-window:focus-visible {
@@ -249,8 +251,10 @@ const structuredData = [
 				object-fit: cover;
 			}
 
-			.desk-window:hover .desk-art :global(.poster-art-wrap img) {
-				filter: contrast(1.18) saturate(1.04);
+			@media (hover: hover) and (pointer: fine) {
+				.desk-window:hover .desk-art :global(.poster-art-wrap img) {
+					transform: scale(1.025);
+				}
 			}
 
 			.desk-copy {
@@ -403,8 +407,10 @@ const structuredData = [
 				overflow: hidden;
 				background: var(--d-paper);
 				border: 1.5px solid var(--d-ink);
-				box-shadow: 2px 2px 0 rgba(12, 28, 16, 0.42);
-				transition: transform 90ms steps(2), box-shadow 90ms steps(2);
+				box-shadow: 0 2px 6px rgba(12, 28, 16, 0.28);
+				transition:
+					transform 240ms var(--ease-out),
+					box-shadow 220ms var(--ease-out);
 			}
 
 			.img-stack-card :global(img) {
@@ -415,31 +421,35 @@ const structuredData = [
 
 			.img-stack-card.layer-2 {
 				transform: translate(-6px, -4px) rotate(-8deg);
+				transition-delay: 40ms;
 				z-index: 1;
 			}
 
 			.img-stack-card.layer-1 {
 				transform: translate(6px, -2px) rotate(7deg);
+				transition-delay: 20ms;
 				z-index: 2;
 			}
 
 			.img-stack-card.layer-0 {
 				transform: translate(0, 2px) rotate(-1deg);
 				z-index: 3;
-				box-shadow: 3px 3px 0 rgba(12, 28, 16, 0.48);
+				box-shadow: 0 4px 10px rgba(12, 28, 16, 0.34);
 			}
 
-			.desk-file:hover .img-stack-card.layer-2 {
-				transform: translate(-10px, -7px) rotate(-13deg);
-			}
+			@media (hover: hover) and (pointer: fine) {
+				.desk-file:hover .img-stack-card.layer-2 {
+					transform: translate(-11px, -7px) rotate(-13deg);
+				}
 
-			.desk-file:hover .img-stack-card.layer-1 {
-				transform: translate(10px, -5px) rotate(11deg);
-			}
+				.desk-file:hover .img-stack-card.layer-1 {
+					transform: translate(11px, -5px) rotate(11deg);
+				}
 
-			.desk-file:hover .img-stack-card.layer-0 {
-				transform: translate(0, -1px) rotate(0deg);
-				box-shadow: 4px 5px 0 rgba(12, 28, 16, 0.5);
+				.desk-file:hover .img-stack-card.layer-0 {
+					transform: translate(0, -1px) rotate(0deg);
+					box-shadow: 0 8px 18px rgba(12, 28, 16, 0.38);
+				}
 			}
 
 			/* Desktop folder icon with album sleeves peeking out from inside */
@@ -482,7 +492,7 @@ const structuredData = [
 				overflow: hidden;
 				border: 1.5px solid var(--d-ink);
 				background: #ffffff;
-				transition: transform 90ms steps(2);
+				transition: transform 240ms var(--ease-out);
 			}
 
 			.folder-peek :global(img) {
@@ -495,6 +505,7 @@ const structuredData = [
 				left: 5px;
 				top: 6px;
 				transform: rotate(-9deg);
+				transition-delay: 0ms;
 				z-index: 2;
 			}
 
@@ -502,6 +513,7 @@ const structuredData = [
 				left: 16px;
 				top: 2px;
 				transform: rotate(2deg);
+				transition-delay: 25ms;
 				z-index: 3;
 			}
 
@@ -509,19 +521,22 @@ const structuredData = [
 				right: 5px;
 				top: 7px;
 				transform: rotate(10deg);
+				transition-delay: 50ms;
 				z-index: 2;
 			}
 
-			.desk-file:hover .folder-peek.p0 {
-				transform: translate(-3px, -6px) rotate(-13deg);
-			}
+			@media (hover: hover) and (pointer: fine) {
+				.desk-file:hover .folder-peek.p0 {
+					transform: translate(-3px, -7px) rotate(-13deg);
+				}
 
-			.desk-file:hover .folder-peek.p1 {
-				transform: translate(0, -8px) rotate(0deg);
-			}
+				.desk-file:hover .folder-peek.p1 {
+					transform: translate(0, -9px) rotate(0deg);
+				}
 
-			.desk-file:hover .folder-peek.p2 {
-				transform: translate(3px, -6px) rotate(14deg);
+				.desk-file:hover .folder-peek.p2 {
+					transform: translate(3px, -7px) rotate(14deg);
+				}
 			}
 
 			.folder-front {
@@ -551,22 +566,25 @@ const structuredData = [
 				background: var(--d-paper);
 				border: 1.5px solid var(--d-ink);
 				border-radius: 5px;
-				box-shadow: 3px 3px 0 rgba(12, 28, 16, 0.44);
+				box-shadow: 0 4px 10px rgba(12, 28, 16, 0.3);
 				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				transition: transform 70ms steps(2), box-shadow 70ms steps(2);
+				transition:
+					transform var(--dur-base) var(--ease-out),
+					box-shadow var(--dur-base) var(--ease-out);
 			}
 
-			.desk-file:hover .cal-tile-icon {
-				box-shadow: 5px 5px 0 rgba(12, 28, 16, 0.5);
+			@media (hover: hover) and (pointer: fine) {
+				.desk-file:hover .cal-tile-icon {
+					transform: translateY(-2px);
+					box-shadow: 0 8px 18px rgba(12, 28, 16, 0.36);
+				}
 			}
 
-			.desk-file:active .cal-tile-icon,
-			.desk-file:active .img-stack,
-			.desk-file:active .folder-stack,
-			.desk-file:active .desk-file-svg {
-				transform: translate(2px, 2px);
+			.desk-file:active .desk-icon-stage {
+				transform: scale(0.94);
+				transition: transform var(--dur-press) var(--ease-out);
 			}
 
 			.cal-tile-head {
@@ -609,8 +627,8 @@ const structuredData = [
 			}
 
 			.desk-file-name {
-				padding: 0.12rem 0.4rem;
-				border-radius: 3px;
+				padding: 0.14rem 0.44rem;
+				border-radius: 4px;
 				font-family: var(--font-mono);
 				font-size: 11px;
 				font-weight: 500;
@@ -620,14 +638,17 @@ const structuredData = [
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				overflow: hidden;
+				transition:
+					background-color var(--dur-fast) var(--ease-out),
+					color var(--dur-fast) var(--ease-out);
 			}
 
-			.desk-file:hover .desk-file-name,
-			.desk-file:focus-visible .desk-file-name {
-				background: var(--d-ink);
-				color: var(--d-paper);
-				outline: 1px dashed rgba(247, 246, 241, 0.75);
-				outline-offset: 1px;
+			@media (hover: hover) and (pointer: fine) {
+				.desk-file:hover .desk-file-name,
+				.desk-file:focus-visible .desk-file-name {
+					background: var(--d-ink);
+					color: var(--d-paper);
+				}
 			}
 
 			/* Main Editorial Sections — Crisp 1px Hairlines & Swiss Breathing Room */
@@ -670,20 +691,24 @@ const structuredData = [
 				text-decoration: none;
 				color: inherit;
 				background: var(--paper-card);
-				border: 1px solid var(--rule-strong);
-				border-radius: 5px;
+				border-radius: 7px;
+				box-shadow: var(--shadow-card);
 				overflow: hidden;
-				transition: border-color 60ms steps(2), box-shadow 60ms steps(2), transform 60ms steps(2);
+				transition:
+					transform var(--dur-base) var(--ease-out),
+					box-shadow var(--dur-base) var(--ease-out);
 			}
 
-			.crate-tile:hover {
-				border-color: var(--green);
-				box-shadow: 4px 4px 0 var(--green);
+			@media (hover: hover) and (pointer: fine) {
+				.crate-tile:hover {
+					box-shadow: var(--shadow-card-hover);
+					transition-duration: var(--dur-fast);
+				}
 			}
 
 			.crate-tile:active {
-				transform: translate(2px, 2px);
-				box-shadow: 2px 2px 0 var(--green);
+				transform: scale(0.985);
+				transition-duration: var(--dur-press);
 			}
 
 			.crate-sleeve {
@@ -694,41 +719,22 @@ const structuredData = [
 				background: var(--gray-lighter);
 			}
 
-			.crate-sleeve::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				background-image: url('/noise-sigil-white.png');
-				background-repeat: repeat;
-				opacity: 0;
-				mix-blend-mode: screen;
-				pointer-events: none;
-				transition: opacity 60ms steps(2);
-			}
-
-			.crate-tile:hover .crate-sleeve::after {
-				opacity: 0.34;
-				animation: sigilGrain 0.3s steps(3) infinite;
-			}
-
 			.crate-sleeve :global(img) {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
-				transition: filter 70ms steps(2);
+				transition: transform 320ms var(--ease-out);
 			}
 
-			.crate-tile:hover .crate-sleeve :global(img) {
-				filter: contrast(1.12);
-			}
+			@media (hover: hover) and (pointer: fine) {
+				.crate-tile:hover .crate-sleeve :global(img) {
+					transform: scale(1.025);
+				}
 
-			.crate-tile:hover .crate-num-chip {
-				background: var(--green);
-				color: #f7f6f1;
-			}
-
-			.crate-tile:hover .crate-info {
-				background-image: var(--hatch-green);
+				.crate-tile:hover .crate-num-chip {
+					background: var(--green);
+					color: #f7f6f1;
+				}
 			}
 
 			.crate-num-chip {
@@ -883,7 +889,7 @@ const structuredData = [
 								<h1 class="desk-title">{featured.data.title}</h1>
 								<p class="desk-desc">{featured.data.description}</p>
 								<div class="desk-footer-row">
-									<span class="desk-open" data-tick>Open →</span>
+									<span class="desk-open">Open →</span>
 									{featuredPicks.length > 0 && (
 										<div class="desk-mini-covers" aria-hidden="true">
 											{featuredPicks.map(
@@ -988,7 +994,7 @@ const structuredData = [
 							<span class="kicker">Spinning now · {formatShortDate(latestNmf.data.pubDate)}</span>
 							<h2>Inside this week’s crate</h2>
 						</div>
-						<a href="/crate" class="section-head-link" data-tick>Dig all {allCratePicks.length} picks →</a>
+						<a href="/crate" class="section-head-link">Dig all {allCratePicks.length} picks →</a>
 					</div>
 					<div class="crate-shelf">
 						{latestPicks.map((pick) => (
@@ -1016,7 +1022,7 @@ const structuredData = [
 						<span class="kicker">Music Desk</span>
 						<h2>Recent crates & lists</h2>
 					</div>
-					<a href="/blog" class="section-head-link" data-tick>All {posts.length} issues →</a>
+					<a href="/blog" class="section-head-link">All {posts.length} issues →</a>
 				</div>
 				<div class="desk-grid">
 					{recentGridPosts.map((post) => (
