@@ -194,7 +194,7 @@ if (picks.length > 0) {
 {
 	const { updateCrateScores } = await import('./crate-calendar.mjs');
 	const all = [...albums, ...(aheadDir ? readAlbums(aheadDir) : [])];
-	console.log(`Calendar: ${updateCrateScores(all)} crate albums in src/data/crate-scores.json`);
+	console.log(`Calendar: ${await updateCrateScores(all)} crate albums in src/data/crate-scores.json`);
 }
 
 // --- Draft post ---

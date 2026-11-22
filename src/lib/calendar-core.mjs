@@ -162,7 +162,7 @@ export function buildCalendar({ wiki = [], crate = [], press = {}, history }) {
 			}
 
 			return {
-				id: looseKey(a.artist, a.title).replace('|', '-'),
+				id: looseKey(a.artist, a.title).replace('|', '-').slice(0, 120), // also the cover's file name
 				artist: a.artist,
 				title: a.title,
 				releaseDate: a.releaseDate,

@@ -41,6 +41,8 @@ const releaseCovers = import.meta.glob<ImageMetadata>('/src/assets/releases/*.{j
 	eager: true,
 	import: 'default',
 });
+// Covers saved by the calendar scripts (crate covers, then Deezer/iTunes lookups), by album id.
+const calendarCovers = import.meta.glob<ImageMetadata>('/src/assets/calendar/*.jpg', { eager: true, import: 'default' });
 
 let cache: Promise<CalendarAlbum[]> | undefined;
 
@@ -73,7 +75,7 @@ export function getCalendar(): Promise<CalendarAlbum[]> {
 			const [y, m, d] = a.releaseDate.split('-').map(Number);
 			return {
 				...a,
-				cover: covers.get(looseKey(a.artist, a.title)),
+				cover: covers.get(looseKey(a.artist, a.title)) ?? calendarCovers[`/src/assets/calendar/${a.id}.jpg`],
 				listen: `https://open.spotify.com/search/${encodeURIComponent(`${a.artist} ${a.title}`)}`,
 				dateLabel: new Date(y, m - 1, d || 1).toLocaleDateString('en-US', d ? { month: 'short', day: 'numeric' } : { month: 'short' }),
 			};

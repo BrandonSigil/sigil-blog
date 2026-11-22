@@ -140,6 +140,11 @@ scripts/
   archival records or soundtracks). From the 25th it drafts next month's; pass `YYYY-MM` to draft
   any month. It refreshes the draft daily until the intro or any take is edited, then never again.
   Write the takes and delete `draft: true` to publish
+- Covers: `src/assets/calendar/<id>.jpg`, small thumbnails. Crate albums use the crate's own cover
+  (saved by `crate-calendar.mjs`); every other album is looked up on Deezer, then iTunes, by
+  `fetch-releases.mjs` (120 lookups a run, this month and next first; `--covers all` for no cap).
+  `src/data/calendar-covers.json` records each result: a miss is retried after a week, and covers
+  of albums that leave the calendar are deleted. Code in `scripts/lib/covers.mjs`
 - `.github/workflows/releases.yml` runs the fetch and the draft daily and commits when they changed
 
 ### In the news (`/news`, home page, artist pages)

@@ -1,5 +1,5 @@
-# Once a day: refresh the release calendar from Wikipedia and the news feeds
-# (scripts/fetch-releases.mjs), then draft or refresh next month's "hot releases" post from the
+# Once a day: refresh the release calendar from Wikipedia and the news feeds, and look up covers
+# for new albums (scripts/fetch-releases.mjs), then draft or refresh next month's "hot releases" post from the
 # 25th on (scripts/draft-hot-releases.mjs; drafts never show on the site). Commits only when
 # something changed; the push to main makes Vercel rebuild the site.
 name: Fetch releases
@@ -28,7 +28,7 @@ jobs:
       - run: node scripts/draft-hot-releases.mjs
       - name: Commit if changed
         run: |
-          git add src/data/calendar-wiki.json src/data/calendar-press.json src/content/blog/hot-releases-*.md
+          git add -A src/data/calendar-wiki.json src/data/calendar-press.json src/data/calendar-covers.json src/assets/calendar src/content/blog/hot-releases-*.md
           if git diff --cached --quiet; then
             echo "Nothing changed."
             exit 0

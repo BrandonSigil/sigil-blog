@@ -8,13 +8,19 @@
 //    calendar artist, and keeps them in src/data/calendar-press.json (60 days). The number of
 //    headlines is part of an album's buzz, which picks the monthly "hot releases" list.
 //
-//   node scripts/fetch-releases.mjs            fetch and write both files
-//   node scripts/fetch-releases.mjs --dry-run  print counts, write nothing
+// 3. Covers: looks up a cover for each album that has none yet (Deezer, then iTunes), this month
+//    and next first, at most 120 lookups a run (see scripts/lib/covers.mjs), and removes covers
+//    of albums that have left the calendar.
 //
-// Only facts (dates, names, labels) and headline counts are kept: no text or images.
+//   node scripts/fetch-releases.mjs              fetch and write everything
+//   node scripts/fetch-releases.mjs --covers 500  allow more cover lookups this run ("all" for no cap)
+//   node scripts/fetch-releases.mjs --dry-run    print counts, write nothing, look up no covers
+//
+// Kept: facts (dates, names, labels), headline counts and small cover thumbnails. No article text.
 
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { coverId, lookupCovers, pruneCovers, readCache, writeCache } from './lib/covers.mjs';
 
 const ROOT = new URL('..', import.meta.url).pathname;
 const WIKI_OUT = join(ROOT, 'src/data/calendar-wiki.json');
@@ -242,4 +248,27 @@ if (!dryRun) {
 	}
 	const sorted = Object.fromEntries(Object.entries(press).sort((a, b) => b[1].date.localeCompare(a[1].date) || a[0].localeCompare(b[0])));
 	writeFileSync(PRESS_OUT, JSON.stringify({ _note: 'Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.', stories: sorted }, null, '\t') + '\n');
+}
+
+// --- Covers ------------------------------------------------------------------------------
+if (!dryRun) {
+	const at = process.argv.indexOf('--covers');
+	const raw = at > -1 ? process.argv[at + 1] : '120';
+	const limit = raw === 'all' ? Infinity : Number(raw) || 120;
+	const cache = readCache();
+	const all = [...albums, ...crate.filter((c) => c.releaseDate.slice(0, 7) >= from)];
+	const keep = new Set(all.map((a) => coverId(a.artist, a.title)));
+	const removed = pruneCovers(keep, cache);
+	// This month and next first, then later months, then last month.
+	const thisMonth = now.toISOString().slice(0, 7);
+	const nextMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1)).toISOString().slice(0, 7);
+	const order = (a) => {
+		const m = a.releaseDate.slice(0, 7);
+		return m < thisMonth ? 2 : m <= nextMonth ? 0 : 1;
+	};
+	const queue = [...all].sort((a, b) => order(a) - order(b) || a.releaseDate.localeCompare(b.releaseDate));
+	const { found, missed } = await lookupCovers(queue, cache, { limit, log: (m) => console.warn(m) });
+	writeCache(cache);
+	const have = Object.values(cache).filter((c) => c.status === 'found').length;
+	console.log(`Covers: ${found} found, ${missed} not found yet, ${removed} removed; ${have} of ${keep.size} albums have one.`);
 }

@@ -1,0 +1,3319 @@
+{
+	"_note": "Written by the calendar scripts: where each cover came from, or when it was last looked for.",
+	"albums": {
+		"-autosmile": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"1dads-everylittlefire": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"200stabwounds-lowestform": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"2chainzandstatikselektah-playazonlyliveonce": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"2hollis-pirouette": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"2ndgrade-girlsandboys": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"69eyes-acustica": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"9thwonder-zionxii": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"academic-imnotcryingyouare": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"aesoprockandblockhead-troublemountain": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"againstthecurrent-tilldeathandback": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ahawkandahacksaw-volume8": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"alanahenderson-fine": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"alanismorissette-goodweatherforimmaculateconception": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"alanvega-liveatmaxskansascity": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"albumleaf-abodyofvoices": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"alexisonfire-bleedit": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"amarofreitas-featfoonese": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"amble-loveandallitswares": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"amiraelfeky-itwasonlyadream": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"amonamarth-allfatherawakens": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"anatolemuster-anatolemusterlive": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"anberlin-currency": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"andersonpaakandcordae-heavyisthecrown": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"andyburrows-mapoftheworld": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"andygrammer-bigstupidheart": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"andystott-lateloop": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"angele-instinct": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"angelusapatrida-reckoning": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"annamcclellan-southofdodge": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"annameredith-darling": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"antoniobreskey-awildinhabitation": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"anygivensin-untilwedisappear": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"archive-notinmyname": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"archonangel-beyondthegrave": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"arlomckinley-untitled": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"artdecco-scheelesgreen": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"asia-indigo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"asilaydying-asilaydying": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"ateez-goldenhourpart6": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"atmosphere-goodbyemakeparty": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"avalanches-nobadmemories": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"averycochrane-vengeancethroughmyomnipresence": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"babylasagna-endtheparty": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"badbrains-areyoureadythefirststudiorecordinginnerearmarch1979": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"badwaitress-inthehollow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"basht-pooradvice": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bassvictim-peacewar": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bby-2": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"beabadoobee-bananas4cats": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"beansontoast-greatunravelling": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"beckyhill-rebecca": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bellx1-goodbones": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bellygangkushington-gooddopesellitself": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"benvaughnanddeertick-magneticeastthedeerticksessions": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bernietaupin-seahasnomercy": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bestex-goodgirl": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bibioanddorianconcept-answers": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bicep-slug": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"bigmoon-forever": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"billmackayandmichaelzerang-scarlethour": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"bittersweet-one": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bjork-bjorkorkestralwiththehamrahlichoir": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"blackhaine-saintsinthewethouse": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"blancowhite-greenislanddays": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"blindchannel-painstream": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"blindillusion-stageflightliveattheuctheatre": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"blondie-highnoon": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"blossoms-songsfromtheweddingcake": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bluandsinopsis-onemorestory": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"bludetiger-nybaby": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"blueaeroplanes-talesfromthesilverlounge": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"bluebendy-onedaythiswillallbelore": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"bobdylan-rollingthunderrevuethe1976liverecordings": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"bobweir-bluemountain10thanniversarydeluxeedition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"bodega-allinsideaquarium": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bodyandcelgenesis-wholewideworld": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bodywash-laughingatnoise": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"bokassa-anomalies": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"bommirandaandlali-bailaromorir": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"boniver-22amillion10thanniversaryedition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"bonnydoon-forevergreen": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"boysnoize-7llvsion": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brakence-marrow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brandyclark-bird": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"breakkaway-itallfeelsthesamefromafar": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"briankennedy-howcanikeepfromsinging": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brokeback-coldermilder": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brothersosborne-watertown": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brucedickinson-psychogod": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"bruiserwolfandconductorwilliams-dealerwins": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bryanadams-howsitgoin": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"brymir-whatweleavebehind": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"bulletformyvalentine-socialapocalypse": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"buoys-concretecowboy": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"butcherbabies-nightbloom": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"cagetheelephant-dyinginreverse": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"calla-defacto": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"cameronwinter-liveatcarnegiehall": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"carissaswierd-somewherefurtherthanfaraway": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"carnifex-morethanmisery": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"carolinerose-gentlingthehorseatthewaltwhitmanmall": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"caspian-caspian": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chanmina-legend": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"charlotteadigeryandbolispupul-mainlandmadinina": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"charlottecardin-midnightmonamour": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"chaseandstatus-genericeverything": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chastitybelt-allmyfriends": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chats-halfcut": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"cherrybomb-pursuitofpleasure": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chloeqisha-fantasize": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chloeslater-riotyouth": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chrisgantry-wortheverynail": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"church-lacuna": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"chvrches-allthekingsmen": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"cindys-lovecentury": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"clairecronin-bruise": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"clairerousay-onholding": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"clairerousayandzanderraymond-somethinggood": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"clapyourhandssayyeah-burned": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"claramann-wishbone": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"claud-meandthemusic": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"cliffrichard-onlynumberones": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"clinic-wildinthestreets": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"cloudnothings-whatkindofhelldidyousurvive": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"clutch-wastedlands": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"codyjinksandthetonedeafhippies-andagain": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"coileray-multi": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"comebackkid-chosenhell": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"cometiscoming-explodinginslowmotionthecompletechannelthespiritsrecordings": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"computerwife-bornfromawish": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"contrarian-escapingdepravity": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"conwaythemachine-otis": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"cultofluna-intheshadowofyourshadow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"currentjoys-rosebud": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"currents-ourfateslieintandem": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"cycomiko-mypersonalrevolution": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"daddyyankee-lapostal": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"daine-inendlessaweandagony": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dancroll-winningstreak": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"danielleponder-everythinghaschanged": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dansmithandralphpelleymounter-misfitstogether": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dansultan-littlemiracles": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"darkesthour-sufferdivine": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"datsuns-moonstruckman": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"davehill-dirtyfootlane": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"davidarchuleta-warmmeup": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"davidkushner-devotion": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"davidsylvian-distancebetweenthekillerandthekilling": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dawnrichard-creoleculture": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"deadpoetsociety-monarch": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"deadsouth-silenceplease": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"deathfromabove1979-privatelives": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"deathvalleygirls-welcometoearth": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"deerhoof-divineschism": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"delines-killingofamotelmaid": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"dermothenry-badthrowgoodcatch": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"desperatejournalist-gildingthelily": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"destroyboys-foiegras": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"devintownsend-harmonicdharma": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dexterandthemoonrocks-friendsthatidontlike": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"deyyess-wellimightjustdie": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"diamante-supernova": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"diamondrio-americaworks": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"diiv-zirp": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dirtyhoney-catchmybutterfly": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"disfear-lastnail": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"distant-intodespair": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"djangodjango-doveland": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"djheartstring-sentimentalultra": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"doireannnighlacain-antairseachthethreshold": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"domflemons-makingamericanmusicthesmithsoniansessions": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"dominicfike-howtoquitsmoking": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"donothing-friendworld": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dontoliver-nitrous": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"doro-wildatheart": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dovecameron-finalgirl": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"down-volumev": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"draggedunder-socialbatterylow": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dragonforce-dragonforce": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dragonland-prophecies": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dropkickmurphys-20thcenturypaddythesongsofshanemacgowan": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"dummy-doyoulovethecolorofthesky": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dustinkensrue-thatspiritofchristmas": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dustinlynch-cleanslate": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"dutchuncles-polygonhotel": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"dynazty-darkarts": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"ecco2k-echo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"editors-surfaceechoandsound": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"edpalermobigband-itsanedpalermochristmasgodblessuseveryone": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"eels-cookiehappened": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"eidola-willtopower": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"eivr-tungl": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"elderbrook-heartonawire": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"eleine-watertasteofblood": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"elizarose-arcadiapleasuredome": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ellahooper-overnightsuccess": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"eltonjohn-rockofthewesties50thanniversaryedition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"endofgreen-ashesandgold": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"enslaved-mi": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"entheos-emptyontheinside": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"enuffznuff-liveatthewhiskyagogo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"erasure-radioradio": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"erichilton-easyunderground": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"erickthearchitect-afterburner": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"ericslick-bouncehouse": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"escapethefate-lastgoodbye": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"esmeemerson-itsalljustnoise": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"everythingbutthegirl-bluereservoir": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"everythingeverything-poisonpop": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"exre-saveas": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"extol-auraofdecay": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"extreme-parisrising": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"factoryfloor-onetrip": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"fall-postscript": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fatdog-cancelmeimtired": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fatimaalqadiri-3twi": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"fearfactory-roboticist": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"feet-gungho": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"fennelily-winwin": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fine-jazzdreams": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fionnregan-berlinberlin": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"firewind-godsmythsandtitans": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"fishnarc-uncle": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"flaminglips-teardropthrobs": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"floorjansen-hytress": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"florenceandthemachine-everybodyscreamtourlive": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"florrie-magicforawhile": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"flowerface-killthemuse": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"flowerkings-hope": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"flyanakinandrealbadman-badblade": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"fola-9": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"font-americanbullyxl": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fontainesdc-dopaminechamber": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"forbidden-forbidden": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"forrestfrank-jesusgeneration": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"foyvance-if": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"friendlyfires-digdeeper": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"fuckedup-yearoftherooster": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fuel-pendulum": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"fujiyaandmiyagi-newshinyobject": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gabriellacilmi-purelove": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gabriels-bloodonmyhands": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"gangofyouths-companero": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"gavinadcock-dayihangitup": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gayance-roaming": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gdp-crossoffmatthew": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"geologist-sirens": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"georgefitzgerald-limaromeo": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"gettheshot-crucifixiondepiction": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ghostemane-amfm": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ghostkid-followthewhiterabbit": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"gilbertosullivan-ontherecord": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"girishandthechronicles-disintegrate": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"girlultrawithchromeo-rrromeo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"glasvegas-airyfairy": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"gothminister-wearealldemons": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gracecarter-whensaturnreturns": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gracieabrams-daughterfromhelldeluxe": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"grandslam-slam": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gravedigger-facesofpain": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"graveyard-fever": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gregfreeman-allsetthebone": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gretavanfleet-palaceforthepeople": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"grettaray-heartsong": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"greydelisle-dontturnaround": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"guccimane-againstallodds": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"guidedbyvoices-speculationandgossip": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"gunghaol-eadarbasisbruadaran": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"gusdapperton-4dearlife": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"gwarandjohnbrennanandthebigfeet-gwarandthelastdriveinstein": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"haai-digitise": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"haidenhenderson-bleach": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"hamishhawk-intriguertenderness": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"hanabie-umami": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"harakiriforthesky-relivingthetraumaliveattheaterakzent": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"hatebreed-fatalparadox": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"hatesphere-guillotine": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"heathen-lifetimeinhell": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"heaveninherarms-endofpurification": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"heavensedge-philadelphia": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"helenadeland-eternityshrugs": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"hilaryduff-holidaythings": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"hmltd-fangs": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"horsegiirl-hardcorehealing": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"hotchip-alongwayfromkansas": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"hypno5e-tramenoire": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ianhawgoodandjasonvanwyk-surroundings": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"iceninekills-averyviciouschristmas": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ider-lookinggorgeousexpectingeverything": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"imminence-axismundi": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"imperialteen-alloveryou": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"indigosparke-thereisalightonthehorizonline": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"infantannihilator-somnialplungeintocyclicebullition": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"inferum-adversity": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"insomnium-netherworlds": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"inspiralcarpets-burnlikethesun": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"interrupters-battlescars": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"ironsavior-deathbringer": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"isakdanielson-loveisak": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"jackharlow-sweetactionii": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jacquesgreene-jg": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"jaguarjonze-beastmaster": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"jakebugg-alamo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jamesblunt-airplanemode": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jamesbrandonlewis-callingantonin": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jamesmarriott-warningsigns": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"jamiet-ghosts100daysofmorning": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jazzy-peaceandpatience": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jeanmicheljarre-oxygene50thanniversaryedition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"jeshi-headrush": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jessejostark-muse": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jesswilliamson-amilesouthofheaven": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jezwilliams-lifeofmeandyou": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"jimjarmuschandjozefvanwissem-boccadilupo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jimjarmuschandjozefvanwissem-mouthofthewolf": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"joehendry-beyondbelief": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"joestrummer-joestrummer003the101ersyears19741976": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"johannawarren-froginthebellyofasnake": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"johnlegend-muse": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"johnnymarr-ageofeverything": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"johnspillane-allroundtheisland": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"jonahkagen-eternityofanything": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jonahyano-spin": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"jonbryant-harbour": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"jonnygreenwoodanddudutassa-jalsa": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"jordanrakei-asafeplacetobewild": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"joshuaredman-ifeveryouwouldleaveusweplayforrollins": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"joycewrice-machiko": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"jscienideandmorlockkoplus-switchbladeballet": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"juliannabarwickandmarylattimore-thresholdoriginalmotionpicturescore": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"julienbaker-thisworldorthenext": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"juniorboys-gore": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"kaceymusgraves-middleofnowherevol2texmextapes": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"kaitlinbutts-hellohonkytonk": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kaitlynaureliasmith-ruinitsnotjustmusic": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kaliavandeveranddaveharrington-evergreen": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kalimalone-burningsong": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kameronmarlowe-kameronmarlowe": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"katenash-cailin": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"katiegregsonmacleod-albatross": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kavustorabi-octoberbyname": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"keatonhenson-versions": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"kendallstreetcompany-yodelingastroman": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kerryking-endofallgods": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"kidbookie-cheaperthantherapyii": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kidrock-halfway2jesus": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kimdeal-liveatthebarbican": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"king810-lagrandemortorsilenceofgod": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"kingfishr-weightofthefeather": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kinggizzardandthelizardwizard-entropy": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"kingsofleon-omybeloved": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kittie-oraclexxv": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"kmichelle-jesusandwhiskey": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"knifeplay-whatistruth": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"kodaline-wewereonlyyoung": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"krill-secretlanguage": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"krisbowers-stepssoundtrackfromthenetflixfilm": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"kristinhersh-downersonblackstone": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"kylegordon-kylegordoniseverywhere": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"laelneale-askillersdo": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"lakestreetdive-whataboutflamingos": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"lambchop-demoed": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"lambrinigirls-norefunds": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"landoftalk-lasts": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lanternsonthelake-theresabirdinmyribcage": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"laroux-oldflames": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lauracortese-luckywater": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"leeaaron-revamp": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"leebrice-sunriser": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lefttosuffer-unwelcomeguest": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"lemonheads-townesville": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"lennykaye-riotonoxfordstreet": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"leviathan-dietothis": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"liars-abanonplasticbagbans": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"liffeylightorchestra-analivia": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lilbaby-fresh": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lindaronstadtandannsavoy-adieufalseheart": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"lisa-pressplay": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lisaleblanc-patchwork": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"littleangels-bigbadandbackep": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"littlegrandad-speaksoftlyson": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"liveskull-whatcouldgowrong": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"locash-chrisandpreston": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"logic1000-confirmation": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"loidis-fromthetoolkitoflovers": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lordsofacid-mundobizarro": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lorenzosenni-allages": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"losbitchos-losbitchosandfriendsvol1": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"loveisnoise-spacebetweenhappinessandheartache": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"luckydaye-aloud": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"lucy-citizensarrest": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"luisaalmaguer-sinlazaro": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"lydialoveless-accolades": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"madrasalach-gorta": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"malloryknox-afterglow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mamalarky-hover": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"manchanmagan-slinasamhaiochtathewayofimagination": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"manicstreetpreachers-holybiblelive": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"manwithamission-circus": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"margocilker-littlewhitecross": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"marguerite-guerir": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"marikahackman-falsedogs": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"marinaherlop-djadja": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"marsvolta-lucrosuciounfinishedbusiness": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"martingarrix-marty": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"masonhill-worldsowonderful": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"masterpeace-ifidontloveyouwhowill": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mattcarmichael-heldinthedark": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"matthewbarber-findthetime": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"mattlang-aintthatbad": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"maxrichter-whilethefloodrages": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"meisemones-howl": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"memoriam-endgame": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"mentalcruelty-echoesofaforlornland": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"meshellndegeocello-synonym": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mez-electricfuturegangster": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"miajoy-starechoheavydove": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"michaelkiwanuka-fudge": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"midnight-satanicattacklive": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mikiberenyitrio-spoilthebusyflames": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"ministry-hatetogotakeoutordelivery": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mirandalambert-crisco": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mission-songsforkithandkin": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"missmayi-noplaceforme": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"modeselektor-mdslktr": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"mogwai-happytears": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"mollieelizabeth-peoplepleaser": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mollyhatchet-losthorizon": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"molotovs-welcometourbia": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"mondocozmo-sweetforever": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"montellfish-nest": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mopitney-outskirtsoftown": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"morphine-cocoon": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mortenharket-humangrace": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"mosesboyd-songsforsinners": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"muireannbradley-blackwoodpew": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mxpx-livinginthechaos": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"myamehmi-m1": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"mylenefarmer-egregore": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"mysticprophecy-inmetal": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"nakedraygun-liveatriotfest": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nao-autumn": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nasty-trauma": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nataliebergman-ikilledanorthamericansongbird": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nathanfake-caldera": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nctwish-ispy": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nealmorseandtheresonance-riveroflight": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"nelson-amazing": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nerosdayatdisneyland-grandreopening": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nettspend-virginiacreeper": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nickelback-everythingunderthesun": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nieveella-howlongwillittake": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nightingales-tinselandtrifle": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"nightwish-greatest30yearsonearth": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"nikiandthedove-beautyandterror": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"nimino-keepmeawake": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"noahfinnce-wonky": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"nogaerez-duckseason": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"northlane-anemoia": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"numbertwelvelookslikeyou-howlsfromtheholographicheart": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"odette-blink": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"offset-gmfu": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ofvirtue-deathofthealtar": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ohsleeper-backtothewild": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"oklouandrob-inwaves": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"oliviatremorcontrol-sameplace": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"onestepcloser-zero": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"or-musicforemptystadiums": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"orbital-other": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"orchestrabaobab-madeinsenegal": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ordenogan-lordsofthegrave": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"osooso-anexchangeofinformation": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"otta-astra": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"ovrkast-striking": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"pabllovittar-lostinlust": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"paerish-rita": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"palayeroyale-amsterdamage": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"palehound-yousinglikeyourejoking": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"palomafaith-infullcolour": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"panchiko-chimera": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"pandabear-pbbandlive25atpowerstation": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"paradox-proceedwithcaution": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"parkwaydrive-homeliveatthesydneyoperahouse": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"particlekidanddaniellanois-oceanfloor": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"partydozen-21bumsalute": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"passenger-wildlove": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"paulweller-intheshadowofthesunpaulwellerandbandliveandverydirect": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"peelingflesh-peelingflesh": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"petergabriel-oi": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"petshopboys-amanfromthefuture": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"pineapplethief-farandwide": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"pins-ifimalivenowtheniwasdead": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"pitbull-pitcoin": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"planningtorock-gentlethem": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"polyphia-benotafraid": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"pomme-laforteresse": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"prettylights-atripthrutimefantastic": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"primalfear-shadowriders": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"priyaragu-madras": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"prong-prong": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"pulledapartbyhorses-dopaminehits": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"purplediscomachine-cosmotropia": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"purplepilgrims-giventothenight": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"quadeca-life1": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"quavo-qromelife": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"queenofjeans-hardsweet": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"queensofthestoneage-perfecth": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"rachelchinouriri-ithinkispoketoosoon": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ralphiechoo-charmain": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"rammstein-liveinmexicocity": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"randytravis-sameoldway": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"rem-blacksessionsrevealed": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"rem-reveal25thanniversaryedition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"rema-emortalboy": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"remembermonday-canwepressrewind": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"remiwolf-mud": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"resasaffapark-kendra": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"resolve-spreadmyashesintospace": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"rexorangecounty-dreamfatigue": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"richardskeltonandlawrenceenglish-noon": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"richardthompson-hippiesthugsandheroes": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"rickwakeman-returntotheredplanet": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ripmagic-123": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"robertcray-alloveragain": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"robertgrace-myfathersson": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"robincarolan-werwulf": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"rocketship-hurtfeelings": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"royalblood-deadcompany": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"rubens-grouptherapy": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"runnner-lovesongsfromthehottestsummeronrecord": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"rwake-builtfromstardustthereturnofmagikliveinlittlerockar": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ryanadams-animal": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"ryanhemsworth-numbskull": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ryleywalker-darkeningtheglass": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"sadurn-underworld": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"samamidon-willingbrotherknowing": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"sambarber-outlier": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"sampathegreat-nuzamrock": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sashaalexsloan-andthecrowdgoesmild": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"satchvaiband-seaofemotion": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"saxon-godsofthunder": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"saynow-saywhatyousee": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sebadoh-harmacy30thanniversaryexpandededition": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"selfesteem-acomplicatedwomanlivefrombrixtonacademy": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"selfishthings-receptivity": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"senmorimoto-timeisonyourside": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sennen-newquiet": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"serenity-melancholia": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"serpentwithfeet-sentinel": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"sevenkingdoms-sonosola": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"seventhwonder-vii": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"sexweek-earsasanorganoftouch": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"shabazzpalaces-itsastylesport": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sharonshannon-home": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"shedseven-shedseven": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"sheherazaad-khudgarzi": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"shenandoah-ifthataintcountry": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sherylcrow-pickyouup": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"shewantsrevenge-loved": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"shitandshine-0aariot": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"shygirl-swallow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"silentplanet-infinitesleep": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"silvertomb-interpretationofnightmares": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"simpleminds-sacrosanct": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"sinkane-hesgone": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"siouxsieandthebanshees-downsideup": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"skepta-forkandknife": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"slashfeaturingmyleskennedyandtheconspirators-flyingblind": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"slayyyter-worstmaninamerica": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"sleeper-endoftheworld": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"smush-illalwayswish": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"snohaalegra-legendarylove": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"snottynoserezkids-daddyshome": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"snuts-joyinshortmoments": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"soak-decembers": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"sophiastel-greatestalbumofalltime": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"soulglo-naimgongraballat": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"soulwun-kaleidoscope": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sourwidows-sigil": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"spanishlovesongs-futurenausea": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"spikefuck-evidence": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sponge-recuerdatumuerte": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"spookschool-likeaheartbeat": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"staind-spacebetweenthedarknessandthelight": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"standatlantic-godbreath": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"starcrawler-kickme": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"stefchura-dancingaloneontheconcrete": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"stephenwilsonjr-impressinofahumanchildrenofthecrnerman": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"stevehackett-throughaseaofflames": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"stevenwilson-requiemforavillage": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"stpanther-eastsidelovestory": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"strawberryguy-givemeadream": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"strawmanarmy-truenorth": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sufjanstevens-worstchristmasever": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sugababes-sugababes": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"suicidesilence-graceless": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"sum41andderyckwhibley-diamondsofthenightvol1": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"susannesundfr-revelationsofdivinelove": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"swanseasound-preposttruth": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"taeyeon-unspecial": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"takethat-dreamers": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"tallestmanonearth-justbeyondendlessmountain": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tashsultana-sonicalchemy": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"teddyswims-ugly": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"teenagefanclub-donotdaretodream": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"temperance-arcani": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tesseract-arconeobscura": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"thao-showme": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"thencomessilence-requiemballroom": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"therrealm-seasonofbloodshed": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"theyareguttingabodyofwater-koolfaithloosiesii": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"thisisthekit-ghostcoat": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"thrown-unwanted": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"thundermother-mothersofthunder": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"thycatafalque-xiiisargaerdo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"timmytrumpet-revelations": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"timreaper-worldsend": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"tinaarena-wayoftheworld": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tindersticks-dogroses": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"tinietempah-nightsnotdead": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"toddsnider-mysecondrodeo": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tokiohotel-encore": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tommylefroy-precariat": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tomorrowxtogether-perfectstorm": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"tonyiommi-fromthedark": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"toroymoi-unusua": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"tothegrave-liberationfront": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tovestyrke-ithoughtthisstorywasntaboutme": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"trampledbyturtles-gooddogs": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"trentemller-trentemller": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"trivium-crowninthegrave": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"trollfest-trollywood": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"troyesivan-shesthebest": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tungsten-ashes": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"tusks-doiseeyouthere": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"tvpriest-cartoons": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"twang-bringyourself": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"twinatlantic-separationfromtheanimals": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"twintemple-doomedlovers": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"twistedteens-holycrosstigers": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"u2-carnavaldeluz": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"udo-voodooranger": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"ulrikaspacek-fieldtotheleft": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"vacations-pursuitofanything": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"valley-doyouneedtobeentertained": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"vanishingtwin-archives": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"variousartists-grandtheftautovithealbum": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"victoriamonet-frequencyoflove": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"vivii-ithoughtiwouldbesomewhereelsebynow": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"vybzkartel-sun": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"wagewar-landfall": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"wallsofjericho-systemerrorhumanity": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"warhaus-donkey": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"warpaint-artifact": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"wavves-cherrysoda": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"waydynamic-massiveshoe": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"waylonjennings-diamonds": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"westsidegunn-heelmatic": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"whiplash-roar": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"whitmerthomas-greenroomblues": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"why-ohgollyyeslord": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"williambasinski-passingthecupofsorrows": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"willicarlisle-universalbubba": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"williejhealey-lucky": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"windwaker-smileyoureoncamera": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"winonaoak-bloom": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"wishy-naturespill": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"wolf-hourofthewolf": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"wolvesatthegate-borderland": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"wolvesinthethroneroom-estuary": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"woodbrothers-rollinon": {
+			"status": "found",
+			"source": "crate",
+			"tried": "2026-11-22"
+		},
+		"worldnews-inpurgatory": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"wynonnajudd-hardtruth": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"xiaojun-heysomebody": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"xo-needtoknow": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"yello-timelab": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"yngwiemalmsteen-hellorhighwater": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"yoasobi-yoasobi5thanniversarydomelive2024chogenjitsuattokyodome": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
+		"yoodooright-buildandrestbytheshepherdslight": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"yungmiami-watchdis": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"zebra-zebrav": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ziggyalberts-twinflames": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"zsela-party": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		}
+	}
+}

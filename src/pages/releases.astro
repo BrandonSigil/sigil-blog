@@ -1,6 +1,7 @@
 ---
 // /releases: the full release calendar, every known album from last month on, month by month.
 // Rows are in date order; "My taste" reorders each month by fit score in the browser.
+import { Image } from 'astro:assets';
 import HubPage from '../layouts/HubPage.astro';
 import { currentMonths, getCalendar, monthId, monthName } from '../lib/calendar';
 
@@ -49,6 +50,9 @@ const earlier = all.filter((m) => m.month < thisMonth);
 					<li data-order={i} data-rank={a.rank} data-buzz={a.buzz}>
 						<a class="cal-row" href={a.listen} target="_blank" rel="noopener">
 							<time class="cal-date" datetime={a.releaseDate}>{a.hasDay ? a.dateLabel : 'TBA'}</time>
+							<span class="cal-thumb" aria-hidden="true">
+								{a.cover ? <Image src={a.cover} alt="" width={88} height={88} loading="lazy" /> : a.artist.trim().charAt(0).toUpperCase()}
+							</span>
 							<span class:list={['cal-score', { estimated: a.estimated }]} title={a.estimated ? 'Estimated fit' : 'Crate fit score'}>
 								{a.estimated ? `~${a.score}` : a.score}
 							</span>
@@ -81,6 +85,9 @@ const earlier = all.filter((m) => m.month < thisMonth);
 					<li data-order={i} data-rank={a.rank} data-buzz={a.buzz}>
 						<a class="cal-row" href={a.listen} target="_blank" rel="noopener">
 							<time class="cal-date" datetime={a.releaseDate}>{a.hasDay ? a.dateLabel : 'TBA'}</time>
+							<span class="cal-thumb" aria-hidden="true">
+								{a.cover ? <Image src={a.cover} alt="" width={88} height={88} loading="lazy" /> : a.artist.trim().charAt(0).toUpperCase()}
+							</span>
 							<span class:list={['cal-score', { estimated: a.estimated }]} title={a.estimated ? 'Estimated fit' : 'Crate fit score'}>
 								{a.estimated ? `~${a.score}` : a.score}
 							</span>
@@ -165,7 +172,7 @@ const earlier = all.filter((m) => m.month < thisMonth);
 	}
 	.cal-row {
 		display: grid;
-		grid-template-columns: 3.4rem 2.6rem minmax(0, 1fr) auto;
+		grid-template-columns: 3.4rem 44px 2.6rem minmax(0, 1fr) auto;
 		align-items: center;
 		gap: 0.9rem;
 		padding: 0.55rem 0;
@@ -183,6 +190,26 @@ const earlier = all.filter((m) => m.month < thisMonth);
 		font-weight: 600;
 		text-transform: uppercase;
 		color: var(--green);
+	}
+	.cal-thumb {
+		width: 44px;
+		height: 44px;
+		border: 2px solid var(--green);
+		border-radius: 6px;
+		overflow: hidden;
+		display: grid;
+		place-items: center;
+		background: #417039;
+		color: #f6f5ef;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		line-height: 1;
+	}
+	.cal-thumb :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 	.cal-score {
 		display: inline-block;
@@ -255,11 +282,19 @@ const earlier = all.filter((m) => m.month < thisMonth);
 	}
 	@media (max-width: 640px) {
 		.cal-row {
-			grid-template-columns: 3rem 2.4rem minmax(0, 1fr);
+			grid-template-columns: 2.8rem 44px minmax(0, 1fr) auto;
 			gap: 0.6rem;
 		}
-		.cal-meta {
+		.cal-row .cal-score {
+			grid-column: 4;
+			grid-row: 1;
+		}
+		.cal-text {
 			grid-column: 3;
+			grid-row: 1;
+		}
+		.cal-meta {
+			grid-column: 3 / 5;
 			justify-content: flex-start;
 		}
 		.cal-meta:empty {
