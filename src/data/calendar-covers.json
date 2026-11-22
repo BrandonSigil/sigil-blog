@@ -197,6 +197,11 @@
 			"source": "deezer",
 			"tried": "2026-11-22"
 		},
+		"atlassound-thanatos": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
 		"atmosphere-goodbyemakeparty": {
 			"status": "found",
 			"source": "crate",
@@ -1337,6 +1342,11 @@
 			"status": "missing",
 			"tried": "2026-11-22"
 		},
+		"hanszimmer-hanszimmerlivethenextlevel": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-22"
+		},
 		"harakiriforthesky-relivingthetraumaliveattheaterakzent": {
 			"status": "missing",
 			"tried": "2026-11-22"
@@ -1411,6 +1421,10 @@
 		"imminence-axismundi": {
 			"status": "found",
 			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"impendingdoom-atthethroneofgod": {
+			"status": "missing",
 			"tried": "2026-11-22"
 		},
 		"imperialteen-alloveryou": {
@@ -1742,6 +1756,10 @@
 			"status": "missing",
 			"tried": "2026-11-22"
 		},
+		"kulashaker-kreinkarnate": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
 		"kylegordon-kylegordoniseverywhere": {
 			"status": "found",
 			"source": "deezer",
@@ -1782,6 +1800,11 @@
 			"tried": "2026-11-22"
 		},
 		"lauracortese-luckywater": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"ledbyher-midwinter": {
 			"status": "found",
 			"source": "deezer",
 			"tried": "2026-11-22"
@@ -1969,6 +1992,11 @@
 		"martingarrix-marty": {
 			"status": "found",
 			"source": "itunes",
+			"tried": "2026-11-22"
+		},
+		"marvinsapp-restoration": {
+			"status": "found",
+			"source": "deezer",
 			"tried": "2026-11-22"
 		},
 		"masonhill-worldsowonderful": {
@@ -2735,6 +2763,10 @@
 			"source": "deezer",
 			"tried": "2026-11-22"
 		},
+		"simonlaffy-encoda": {
+			"status": "missing",
+			"tried": "2026-11-22"
+		},
 		"simpleminds-sacrosanct": {
 			"status": "found",
 			"source": "itunes",
@@ -2947,6 +2979,11 @@
 		"thao-showme": {
 			"status": "found",
 			"source": "deezer",
+			"tried": "2026-11-22"
+		},
+		"the-ensouledtourliveatthesydneyoperahouse": {
+			"status": "found",
+			"source": "itunes",
 			"tried": "2026-11-22"
 		},
 		"thencomessilence-requiemballroom": {
