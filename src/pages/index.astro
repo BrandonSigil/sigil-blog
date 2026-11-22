@@ -4,13 +4,13 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import NewsList from '../components/NewsList.astro';
+// import NewsList from '../components/NewsList.astro';
 import NewsletterStrip from '../components/NewsletterStrip.astro';
 import NmfPoster from '../components/NmfPoster.astro';
 import PostCard from '../components/PostCard.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
 import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from '../consts';
-import { getNews } from '../lib/news';
+// import { getNews } from '../lib/news';
 import {
 	categoryLabel,
 	estimateReadTime,
@@ -48,7 +48,7 @@ const crateFolderThumbs = allCratePicks
 const upcoming = await getUpcomingReleases();
 const nextDrop = upcoming[0];
 const nextDropParts = nextDrop ? formatAbbrevDate(nextDrop.releaseDate).split(' ') : ['Dec.', '4'];
-const latestNews = (await getNews()).slice(0, 6);
+// const latestNews = (await getNews()).slice(0, 6);
 
 const desktopItems = desktopPosts.map((post) => {
 	const covers = getPostCoverMosaic(post).slice(0, 3);
@@ -1104,6 +1104,7 @@ const structuredData = [
 				</div>
 			</section>
 
+			{/* In the news — paused for now
 			{latestNews.length > 0 && (
 				<section aria-label="In the news">
 					<div class="section-head">
@@ -1116,6 +1117,7 @@ const structuredData = [
 					<NewsList stories={latestNews} />
 				</section>
 			)}
+			*/}
 
 			<UpcomingStrip maxGroups={4} />
 

@@ -28,9 +28,9 @@ const is = (href: string) => (current === href ? 'page' : undefined);
 		{genres.map((g) => <a href={g.href} aria-current={is(g.href)}>{g.name}</a>)}
 	</div>
 	<div class="hub-row" data-glide-group>
-		<span class="hub-label">More</span>
+		<span class="hub-label">Artist</span>
 		<a href="/artists" aria-current={is('/artists')}>Artists A–Z</a>
-		<a href="/news" aria-current={is('/news')}>In the news</a>
+		{/* <a href="/news" aria-current={is('/news')}>In the news</a> */}
 	</div>
 </nav>
 
