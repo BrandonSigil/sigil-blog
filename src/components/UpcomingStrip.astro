@@ -42,9 +42,11 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 										<strong>{item.artist}</strong>
 										<span class="ledger-dash">—</span>
 										<span class="ledger-album">{item.title}</span>
-										{item.label && <span class="ledger-label">{item.label}</span>}
+										<span class="ledger-label">
+											{item.type}
+											{item.label ? ` · ${item.label}` : ''}
+										</span>
 									</div>
-									<p class="ledger-why">{item.why}</p>
 								</div>
 
 								<div class="ledger-right">
@@ -143,7 +145,7 @@ const groups = groupUpcomingByDate(allReleases).slice(0, maxGroups);
 		align-items: center;
 		justify-content: space-between;
 		gap: 1rem;
-		padding: 0.8rem 1.15rem;
+		padding: 0.65rem 1.15rem;
 		border-top: 1px solid var(--rule);
 	}
 

@@ -35,10 +35,10 @@ export const GET: APIRoute = () => {
 		const slug = `${r.artist}-${r.title}`.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 48);
 		const summary = `${r.artist} — ${r.title}${r.type && r.type !== 'LP' ? ` (${r.type})` : ''}`;
 		const desc = [
-			r.why,
+			r.type ? `Format: ${r.type}` : '',
 			r.label ? `Label: ${r.label}` : '',
-			`Lane: ${r.lane}`,
-			'More at https://sigil.studio/calendar',
+			`Genre: ${r.lane}`,
+			'https://sigil.studio/calendar',
 		]
 			.filter(Boolean)
 			.join('\n');

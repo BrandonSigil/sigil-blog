@@ -147,7 +147,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 
 			.release-row {
 				position: relative;
-				padding: 0.95rem 1.25rem;
+				padding: 0.72rem 1.25rem;
 				border-top: 1px solid var(--rule);
 				display: flex;
 				justify-content: space-between;
@@ -308,7 +308,6 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 													{item.label ? ` · ${item.label}` : ''}
 												</span>
 											</div>
-											<p class="release-why">{item.why}</p>
 										</div>
 										<div class="release-right">
 											<span class="release-lane-tag">{item.lane}</span>
