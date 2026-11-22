@@ -23,7 +23,7 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 			.crate-hero {
 				padding-bottom: 2rem;
 				margin-bottom: 2rem;
-				border-bottom: 2px solid var(--green);
+				border-bottom: 1px solid var(--ink);
 			}
 
 			.crate-hero-top {
@@ -35,15 +35,17 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 			}
 
 			.crate-hero h1 {
-				margin: 0.3rem 0 0.5rem;
+				margin: 0.35rem 0 0.65rem;
 			}
 
 			.crate-hero p {
 				margin: 0;
-				font-family: var(--font-serif);
-				font-size: 1.2rem;
+				font-family: var(--font-sans);
+				font-size: 20px;
+				letter-spacing: -0.01em;
+				line-height: 1.5;
 				color: var(--ink-soft);
-				max-width: 56ch;
+				max-width: 54ch;
 			}
 
 			/* Random spotlight drawer */
@@ -78,8 +80,8 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 			}
 
 			.random-copy em {
-				font-family: var(--font-serif);
-				font-size: 1.05rem;
+				font-family: var(--font-sans);
+				font-size: 16px;
 				color: var(--ink-soft);
 			}
 
@@ -245,10 +247,10 @@ const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 
 			.record-note {
 				margin: 0;
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				font-style: italic;
-				font-size: 0.88rem;
-				line-height: 1.42;
+				font-size: 14px;
+				line-height: 1.48;
 				color: var(--ink-soft);
 				display: -webkit-box;
 				-webkit-line-clamp: 3;

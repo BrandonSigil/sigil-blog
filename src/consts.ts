@@ -2,7 +2,7 @@
 
 export const SITE_TITLE = 'Sigil';
 export const SITE_DESCRIPTION =
-	'Sigil — human-curated music discovery, weekly New Music Friday crates, album reviews, and release radar from Tacoma, WA.';
+	'Sigil — weekly New Music Friday crates, album reviews, and a release calendar out of Tacoma, WA.';
 export const SITE_AUTHOR = 'Brandon Wirth';
 export const SITE_STUDIO = 'Sigil Studios';
 export const SITE_LOCATION = 'Tacoma, WA';

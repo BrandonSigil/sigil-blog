@@ -5,6 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
+import ListenIcons from '../components/ListenIcons.astro';
 import NewsletterStrip from '../components/NewsletterStrip.astro';
 import PostCard from '../components/PostCard.astro';
 import SpotifyFacade from '../components/SpotifyFacade.astro';
@@ -13,7 +14,7 @@ import { SITE_AUTHOR, SITE_STUDIO, SITE_TITLE } from '../consts';
 import {
 	categoryLabel,
 	estimateReadTime,
-	formatReleaseDate,
+	formatAbbrevDate,
 	getPublishedPosts,
 	getUpcomingReleases,
 	inferCategory,
@@ -121,7 +122,7 @@ const structuredData =
 				max-width: 1120px;
 				margin: 0 auto 2.5rem;
 				padding-bottom: 2rem;
-				border-bottom: 1.5px solid var(--green);
+				border-bottom: 1px solid var(--ink);
 			}
 
 			.post-header-grid {
@@ -162,18 +163,19 @@ const structuredData =
 
 			.post-title {
 				font-size: clamp(2.25rem, 5.2vw, 4rem);
-				line-height: 1.04;
+				line-height: 0.95;
 				margin: 0 0 1rem;
 				color: var(--ink);
-				letter-spacing: -0.03em;
+				letter-spacing: -0.04em;
 			}
 
 			.post-description {
-				font-family: var(--font-serif);
-				font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+				font-family: var(--font-sans);
+				font-size: 20px;
+				letter-spacing: -0.01em;
 				line-height: 1.5;
 				color: var(--ink-soft);
-				max-width: 64ch;
+				max-width: 60ch;
 				margin: 0 0 1.25rem;
 			}
 
@@ -382,11 +384,11 @@ const structuredData =
 			}
 
 			.album-subnote {
-				font-family: var(--font-serif);
+				font-family: var(--font-sans);
 				font-style: italic;
 				color: var(--gray);
 				margin: 0 0 1rem;
-				font-size: 1.05rem;
+				font-size: 15px;
 			}
 
 			.album-body p {
@@ -730,36 +732,13 @@ const structuredData =
 										)}
 									</div>
 									<div class="album-listen-bar">
-										<a
-											href={entry.spotifyUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="listen-pill"
-											data-umami-event="listen-spotify"
-											data-umami-event-album={`${entry.artist} - ${entry.album}`}
-										>
-											Spotify ↗
-										</a>
-										<a
-											href={entry.bandcampUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="listen-pill"
-											data-umami-event="listen-bandcamp"
-											data-umami-event-album={`${entry.artist} - ${entry.album}`}
-										>
-											Bandcamp ↗
-										</a>
-										<a
-											href={entry.appleMusicUrl}
-											target="_blank"
-											rel="noopener noreferrer"
-											class="listen-pill"
-											data-umami-event="listen-apple"
-											data-umami-event-album={`${entry.artist} - ${entry.album}`}
-										>
-											Apple ↗
-										</a>
+										<ListenIcons
+											spotifyUrl={entry.spotifyUrl}
+											youtubeUrl={entry.youtubeUrl}
+											bandcampUrl={entry.bandcampUrl}
+											appleMusicUrl={entry.appleMusicUrl}
+											labelPrefix={`${entry.artist} — ${entry.album}`}
+										/>
 									</div>
 								</div>
 
@@ -826,7 +805,7 @@ const structuredData =
 							<div class="nmf-next-up-grid">
 								{nextUpReleases.map((r) => (
 									<div class="next-up-item">
-										<span class="next-up-date">{formatReleaseDate(r.releaseDate)}</span>
+										<span class="next-up-date">{formatAbbrevDate(r.releaseDate)}</span>
 										<strong>{r.title}</strong>
 										<span>{r.artist}</span>
 									</div>

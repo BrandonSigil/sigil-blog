@@ -31,13 +31,13 @@ const activeCategories = [...categoryCounts.entries()];
 	<head>
 		<BaseHead
 			title={`Music Desk | ${SITE_TITLE}`}
-			description="New Music Friday crates, album reviews, year-end lists, and human-curated music discovery from Sigil."
+			description="New Music Friday crates, album reviews, and year-end lists from Sigil."
 		/>
 		<style>
 			.desk-hero {
 				padding-bottom: 2rem;
 				margin-bottom: 2.25rem;
-				border-bottom: 2px solid var(--green);
+				border-bottom: 1px solid var(--ink);
 			}
 
 			.desk-hero-grid {
@@ -49,15 +49,17 @@ const activeCategories = [...categoryCounts.entries()];
 			}
 
 			.desk-hero h1 {
-				margin: 0.3rem 0 0.5rem;
+				margin: 0.35rem 0 0.65rem;
 			}
 
 			.desk-hero p {
 				margin: 0;
-				font-family: var(--font-serif);
-				font-size: 1.2rem;
+				font-family: var(--font-sans);
+				font-size: 20px;
+				letter-spacing: -0.01em;
+				line-height: 1.5;
 				color: var(--ink-soft);
-				max-width: 56ch;
+				max-width: 54ch;
 			}
 
 			.desk-stats {

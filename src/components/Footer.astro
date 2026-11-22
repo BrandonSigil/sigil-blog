@@ -12,9 +12,7 @@ const today = new Date();
 				<img src={logoSrc.src} alt={SITE_TITLE} />
 			</a>
 			<p class="footer-colophon">
-				Human-curated music discovery, weekly New Music Friday crates, and album reviews out of {SITE_LOCATION}.
-				Custom tooling helps track every Friday’s drops; every pick, tasting note, and review is listened to and written
-				by hand.
+				Weekly New Music Friday crates, album reviews, and a live release calendar out of {SITE_LOCATION}.
 			</p>
 		</div>
 
@@ -43,14 +41,14 @@ const today = new Date();
 
 	<div class="footer-bottom">
 		<p>&copy; {today.getFullYear()} {SITE_STUDIO.toUpperCase()}. All rights reserved.</p>
-		<p class="footer-note">No AI-written opinions · Handcrafted in {SITE_LOCATION}</p>
+		<p class="footer-note">{SITE_LOCATION}</p>
 	</div>
 </footer>
 
 <style>
 	footer {
-		border-top: 2px solid var(--green);
-		margin-top: 5rem;
+		border-top: 1px solid var(--ink);
+		margin-top: 5.5rem;
 		padding: 3.5rem 1.5rem 2rem;
 		background: var(--paper-card);
 	}
@@ -77,18 +75,18 @@ const today = new Date();
 
 	.footer-colophon {
 		margin: 0;
-		font-size: 0.94rem;
+		font-size: 15px;
 		line-height: 1.6;
 		color: var(--ink-soft);
-		max-width: 44ch;
+		max-width: 40ch;
 	}
 
 	.footer-col h4 {
 		font-family: var(--font-mono);
-		font-size: 0.74rem;
-		font-weight: 600;
+		font-size: 11px;
+		font-weight: 500;
 		text-transform: uppercase;
-		letter-spacing: 0.12em;
+		letter-spacing: 0.13em;
 		color: var(--green);
 		margin: 0 0 1rem;
 	}
@@ -99,7 +97,7 @@ const today = new Date();
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 0.55rem;
+		gap: 0.5rem;
 	}
 
 	.footer-col li {
@@ -108,8 +106,8 @@ const today = new Date();
 
 	.footer-col a {
 		color: var(--ink);
-		font-size: 0.95rem;
-		font-weight: 500;
+		font-size: 15px;
+		font-weight: 400;
 	}
 
 	.footer-col a:hover {
@@ -127,8 +125,9 @@ const today = new Date();
 		flex-wrap: wrap;
 		gap: 0.75rem;
 		font-family: var(--font-mono);
-		font-size: 0.76rem;
+		font-size: 11.5px;
 		color: var(--gray);
+		letter-spacing: 0.04em;
 	}
 
 	.footer-bottom p {

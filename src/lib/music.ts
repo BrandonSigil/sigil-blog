@@ -17,6 +17,7 @@ export interface NmfAlbumEntry {
 	subtitleNote?: string;
 	paragraphs: string[];
 	spotifyUrl: string;
+	youtubeUrl: string;
 	bandcampUrl: string;
 	appleMusicUrl: string;
 }
@@ -113,14 +114,16 @@ export async function getPublishedPosts(): Promise<CollectionEntry<'blog'>[]> {
 export function buildSearchLinks(artist: string, album: string, directUrl?: string) {
 	const query = encodeURIComponent(`${artist} ${album}`.trim());
 	const spotifySearch = `https://open.spotify.com/search/${query}`;
+	const youtubeSearch = `https://www.youtube.com/results?search_query=${query}`;
 	const bandcampSearch = `https://bandcamp.com/search?q=${query}`;
 	const appleSearch = `https://music.apple.com/us/search?term=${query}`;
 
 	const spotifyUrl = directUrl && directUrl.includes('spotify.com') ? directUrl : spotifySearch;
+	const youtubeUrl = directUrl && directUrl.includes('youtube.com') ? directUrl : youtubeSearch;
 	const bandcampUrl = directUrl && directUrl.includes('bandcamp.com') ? directUrl : bandcampSearch;
 	const appleMusicUrl = directUrl && directUrl.includes('apple.com') ? directUrl : appleSearch;
 
-	return { spotifyUrl, bandcampUrl, appleMusicUrl };
+	return { spotifyUrl, youtubeUrl, bandcampUrl, appleMusicUrl };
 }
 
 function resolveAsset(relPath?: string): { image?: ImageMetadata; imagePath?: string } {
@@ -370,8 +373,23 @@ export function groupUpcomingByDate(releases: UpcomingRelease[]) {
 	return [...map.entries()].map(([date, items]) => ({
 		date,
 		formattedDate: formatReleaseDate(date),
+		abbrevDate: formatAbbrevDate(date),
 		items: items.sort((a, b) => b.score - a.score),
 	}));
+}
+
+const ABBREV_MONTHS = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
+
+export function formatAbbrevDate(iso: string): string {
+	const parts = iso.split('-').map(Number);
+	if (parts.length === 3) {
+		const month = ABBREV_MONTHS[parts[1] - 1] ?? '';
+		return `${month} ${parts[2]}`;
+	}
+	if (parts.length === 2) {
+		return ABBREV_MONTHS[parts[1] - 1] ?? iso;
+	}
+	return iso;
 }
 
 export function formatReleaseDate(iso: string): string {

@@ -18,10 +18,10 @@ const { compact = false } = Astro.props;
 
 	<div class="dw-body">
 		<div class="dispatch-copy">
-			<span class="kicker">Weekly Note · Zero Spam</span>
-			<h3>{compact ? 'Get Friday’s crate in your inbox.' : 'Great records, zero algorithmic noise.'}</h3>
+			<span class="kicker">Weekly Dispatch</span>
+			<h3>{compact ? 'Friday’s crate, by email.' : 'The weekly crate, in your inbox.'}</h3>
 			<p>
-				One short, human-written note every Friday with the best new albums, tasting notes, and upcoming drops.
+				One short note every Friday with the best new albums, tasting notes, and upcoming drops worth bookmarking.
 			</p>
 		</div>
 
@@ -62,9 +62,9 @@ const { compact = false } = Astro.props;
 <style>
 	.dispatch-window {
 		background: var(--paper-card);
-		border: 2px solid var(--ink);
+		border: 1px solid var(--ink);
 		border-radius: 6px;
-		box-shadow: 7px 7px 0 var(--green);
+		box-shadow: 5px 5px 0 var(--green);
 		overflow: hidden;
 	}
 
@@ -72,30 +72,30 @@ const { compact = false } = Astro.props;
 		display: flex;
 		align-items: center;
 		gap: 0.6rem;
-		height: 2rem;
+		height: 1.9rem;
 		padding: 0 0.65rem;
-		border-bottom: 2px solid var(--ink);
+		border-bottom: 1px solid var(--ink);
 		background: var(--paper);
 		font-family: var(--font-mono);
 	}
 
 	.dw-box {
-		width: 0.72rem;
-		height: 0.72rem;
-		border: 1.5px solid var(--ink);
+		width: 0.68rem;
+		height: 0.68rem;
+		border: 1px solid var(--ink);
 		background: var(--paper-card);
 		flex: none;
 	}
 
 	.dw-stripes {
 		flex: 1;
-		height: 0.72rem;
+		height: 0.68rem;
 		background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 4px);
 	}
 
 	.dw-title {
-		font-size: 0.74rem;
-		font-weight: 600;
+		font-size: 11px;
+		font-weight: 500;
 		color: var(--ink);
 		white-space: nowrap;
 	}
@@ -115,16 +115,18 @@ const { compact = false } = Astro.props;
 	.dispatch-copy h3 {
 		font-family: var(--font-display);
 		color: var(--ink);
-		font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+		font-size: clamp(1.35rem, 2.3vw, 1.75rem);
+		font-weight: 600;
+		letter-spacing: -0.025em;
 		margin: 0.35rem 0 0.4rem;
-		line-height: 1.12;
+		line-height: 1.08;
 	}
 
 	.dispatch-copy p {
 		margin: 0;
 		color: var(--ink-soft);
-		font-size: 0.94rem;
-		line-height: 1.5;
+		font-size: 15px;
+		line-height: 1.55;
 		max-width: 44ch;
 	}
 
@@ -136,13 +138,13 @@ const { compact = false } = Astro.props;
 	.dispatch-form input {
 		flex: 1;
 		min-width: 0;
-		border: 1.5px solid var(--ink);
+		border: 1px solid var(--ink);
 		border-radius: 5px;
 		background: var(--paper);
 		color: var(--ink);
-		padding: 0.62rem 0.85rem;
+		padding: 0.6rem 0.85rem;
 		font-family: var(--font-sans);
-		font-size: 0.94rem;
+		font-size: 15px;
 		outline: none;
 	}
 
@@ -152,14 +154,15 @@ const { compact = false } = Astro.props;
 	}
 
 	.dispatch-form button {
-		border: 1.5px solid var(--ink);
+		border: 1px solid var(--ink);
 		background: var(--green);
 		color: #ffffff;
 		box-shadow: 3px 3px 0 var(--ink);
 		font-family: var(--font-mono);
-		font-weight: 600;
-		font-size: 0.82rem;
-		padding: 0.62rem 1.1rem;
+		font-weight: 500;
+		font-size: 12px;
+		letter-spacing: 0.05em;
+		padding: 0.6rem 1.05rem;
 		border-radius: 5px;
 		cursor: pointer;
 		white-space: nowrap;
@@ -176,7 +179,7 @@ const { compact = false } = Astro.props;
 		margin: 0.45rem 0 0;
 		min-height: 1.1em;
 		font-family: var(--font-mono);
-		font-size: 0.74rem;
+		font-size: 11.5px;
 		color: var(--green);
 	}
 
@@ -187,10 +190,10 @@ const { compact = false } = Astro.props;
 		flex-wrap: wrap;
 		gap: 0.5rem 1rem;
 		padding: 0.45rem 0.85rem;
-		border-top: 1.5px solid var(--ink);
+		border-top: 1px solid var(--rule-strong);
 		background: var(--paper);
 		font-family: var(--font-mono);
-		font-size: 0.72rem;
+		font-size: 11px;
 		color: var(--gray);
 	}
 
@@ -240,7 +243,7 @@ const { compact = false } = Astro.props;
 			if (!input || !status) return;
 			const email = input.value.trim();
 			if (!email) return;
-			status.textContent = `Noted (${email}) — newsletter delivery is launching soon. Grab the RSS feed below in the meantime!`;
+			status.textContent = `Noted (${email}) — newsletter delivery is launching soon. Grab the RSS feed below in the meantime.`;
 			input.value = '';
 		});
 	});
