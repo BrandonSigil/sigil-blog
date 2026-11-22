@@ -1,0 +1,96 @@
+---
+interface Props {
+	note: string;
+	compact?: boolean;
+	tilt?: boolean;
+}
+
+const { note, compact = false, tilt = false } = Astro.props;
+---
+
+<div class:list={['hype-note', { compact, tilt }]}>
+	<div class="hype-note-bar">
+		<span class="hype-note-kicker">
+			<svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+				<circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.4" />
+				<circle cx="6" cy="6" r="1.6" fill="currentColor" />
+			</svg>
+			Tasting Notes
+		</span>
+		<span class="hype-note-dots" aria-hidden="true">•••</span>
+	</div>
+	<p class="hype-note-quote">“{note}”</p>
+</div>
+
+<style>
+	.hype-note {
+		background: var(--paper-card);
+		border: 1.5px solid var(--ink);
+		border-radius: 4px;
+		box-shadow: 4px 4px 0 var(--green);
+		margin: 0.9rem 0 1.25rem;
+		overflow: hidden;
+		transition: transform 0.18s ease, box-shadow 0.18s ease;
+	}
+
+	.hype-note.tilt {
+		transform: rotate(-0.55deg);
+	}
+
+	.hype-note.tilt:hover {
+		transform: rotate(0deg) translate(-1px, -1px);
+		box-shadow: 5px 5px 0 var(--green);
+	}
+
+	.hype-note-bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.28rem 0.75rem;
+		background: var(--ink);
+		color: #f7f6f1;
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		font-weight: 600;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.hype-note-kicker {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: #b7e2b5;
+	}
+
+	.hype-note-dots {
+		opacity: 0.55;
+		letter-spacing: 0.15em;
+	}
+
+	.hype-note-quote {
+		margin: 0;
+		padding: 0.85rem 1rem 0.9rem;
+		font-family: var(--font-serif);
+		font-style: italic;
+		font-size: 1.18rem;
+		line-height: 1.4;
+		color: var(--ink);
+	}
+
+	.hype-note.compact {
+		margin: 0.6rem 0 0;
+		box-shadow: 3px 3px 0 var(--green);
+	}
+
+	.hype-note.compact .hype-note-bar {
+		padding: 0.2rem 0.6rem;
+		font-size: 0.6rem;
+	}
+
+	.hype-note.compact .hype-note-quote {
+		padding: 0.55rem 0.7rem 0.65rem;
+		font-size: 0.96rem;
+		line-height: 1.38;
+	}
+</style>

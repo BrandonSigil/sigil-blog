@@ -1,0 +1,299 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import logoSrc from '../assets/sigil-main.svg';
+
+interface Props {
+	image?: ImageMetadata;
+	title?: string;
+	slug: string;
+	dateLabel?: string;
+	kickerLines?: [string, string, string];
+	size?: 'hero' | 'card';
+	/** Optional explicit variant; otherwise chosen deterministically from slug */
+	variant?: 'classic' | 'riso' | 'split' | 'chrome';
+}
+
+const {
+	image,
+	title = 'New Music Friday',
+	slug,
+	dateLabel,
+	kickerLines = ['NEW', 'MUSIC', 'FRIDAY'],
+	size = 'card',
+	variant,
+} = Astro.props;
+
+// Deterministic style per issue so every Friday has its own zine personality
+function pickVariant(seed: string): 'classic' | 'riso' | 'split' | 'chrome' {
+	if (seed === 'nmf-may-8') return 'classic';
+	const list: Array<'classic' | 'riso' | 'split' | 'chrome'> = ['classic', 'riso', 'split', 'chrome'];
+	let hash = 0;
+	for (let i = 0; i < seed.length; i++) {
+		hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+	}
+	return list[hash % list.length];
+}
+
+const styleVariant = variant ?? pickVariant(slug);
+---
+
+<div class:list={['nmf-poster', `is-${styleVariant}`, `size-${size}`, { 'no-image': !image }]}>
+	{image && (
+		<div class="poster-art-wrap">
+			<Image
+				src={image}
+				alt={title}
+				width={size === 'hero' ? 960 : 640}
+				height={size === 'hero' ? 600 : 400}
+				loading={size === 'hero' ? 'eager' : 'lazy'}
+			/>
+		</div>
+	)}
+
+	<div class="poster-scrim" aria-hidden="true"></div>
+	<div class="poster-grain" aria-hidden="true"></div>
+	{styleVariant === 'riso' && <div class="poster-halftone" aria-hidden="true"></div>}
+
+	<div class="poster-overlay">
+		<div class="poster-words" aria-hidden="true">
+			{kickerLines.map((word) => (
+				<span>{word}</span>
+			))}
+		</div>
+
+		<div class="poster-bottom-meta">
+			{dateLabel && <span class="poster-cat">{dateLabel}</span>}
+			<span class="poster-stamp">
+				<img src={logoSrc.src} alt="" width="64" height="22" />
+			</span>
+		</div>
+	</div>
+</div>
+
+<style>
+	.nmf-poster {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		min-height: 100%;
+		background: #0f110f;
+		overflow: hidden;
+		user-select: none;
+		isolation: isolate;
+	}
+
+	.poster-art-wrap {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+	}
+
+	.poster-art-wrap :global(img) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 68% center;
+		filter: contrast(1.08) saturate(1.12);
+		transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+	}
+
+	/* Classic: iconic dark left fade + bold warm-cream stacked type */
+	.is-classic .poster-art-wrap {
+		left: 24%;
+	}
+
+	.is-classic .poster-art-wrap :global(img) {
+		object-position: center;
+	}
+
+	.is-classic .poster-scrim {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background: linear-gradient(
+			95deg,
+			#0d0f0d 0%,
+			#0d0f0d 24%,
+			rgba(13, 15, 13, 0.86) 44%,
+			rgba(13, 15, 13, 0.22) 72%,
+			rgba(13, 15, 13, 0.08) 100%
+		);
+	}
+
+	/* Risograph: tactile forest-green ink duotone tint + halftone screen */
+	.is-riso {
+		background: #173018;
+	}
+
+	.is-riso .poster-art-wrap :global(img) {
+		filter: contrast(1.16) saturate(0.82);
+		mix-blend-mode: luminosity;
+		opacity: 0.78;
+	}
+
+	.is-riso .poster-scrim {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background:
+			linear-gradient(105deg, rgba(20, 48, 22, 0.94) 0%, rgba(28, 66, 30, 0.68) 54%, rgba(62, 125, 60, 0.25) 100%);
+	}
+
+	.poster-halftone {
+		position: absolute;
+		inset: 0;
+		z-index: 3;
+		background-image: radial-gradient(rgba(247, 246, 241, 0.16) 1px, transparent 1px);
+		background-size: 6px 6px;
+		pointer-events: none;
+	}
+
+	/* Split: sharp zine vertical cut — cream/ink type spine + crisp full-bleed sleeve */
+	.is-split {
+		background: #14261a;
+	}
+
+	.is-split .poster-art-wrap {
+		left: 44%;
+	}
+
+	.is-split .poster-art-wrap :global(img) {
+		object-position: center;
+		filter: contrast(1.06) saturate(1.08);
+	}
+
+	.is-split .poster-scrim {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background: linear-gradient(
+			90deg,
+			#14261a 0%,
+			#14261a 44%,
+			rgba(20, 38, 26, 0.18) 44.2%,
+			rgba(20, 38, 26, 0.28) 100%
+		);
+	}
+
+	/* Chrome: moody full-bleed darkroom sleeve with crisp gradient vignette */
+	.is-chrome .poster-art-wrap :global(img) {
+		object-position: center;
+		filter: contrast(1.12) saturate(1.05) brightness(0.86);
+	}
+
+	.is-chrome .poster-scrim {
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background: linear-gradient(
+			115deg,
+			rgba(14, 17, 14, 0.9) 0%,
+			rgba(14, 17, 14, 0.56) 46%,
+			rgba(14, 17, 14, 0.18) 100%
+		);
+	}
+
+	/* Shared analog film grain */
+	.poster-grain {
+		position: absolute;
+		inset: 0;
+		z-index: 4;
+		background-image: url('/noise-sigil-white.png');
+		background-repeat: repeat;
+		opacity: 0.24;
+		mix-blend-mode: screen;
+		pointer-events: none;
+	}
+
+	/* No image fallback (e.g. Quiet Weeks) */
+	.nmf-poster.no-image {
+		background: linear-gradient(135deg, #1b3a1c 0%, #2e602e 65%, #3e7d3c 100%);
+	}
+
+	/* Typography & Stamp Overlay */
+	.poster-overlay {
+		position: relative;
+		z-index: 5;
+		width: 100%;
+		height: 100%;
+		padding: 1.15rem 1.25rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.size-hero .poster-overlay {
+		padding: 1.5rem 1.65rem;
+	}
+
+	.poster-words {
+		display: flex;
+		flex-direction: column;
+		margin: auto 0;
+		font-family: var(--font-display);
+		font-weight: 700;
+		text-transform: uppercase;
+		color: #eeece2;
+		letter-spacing: -0.045em;
+		line-height: 0.86;
+		text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+	}
+
+	.size-hero .poster-words {
+		font-size: clamp(2.4rem, 4.4vw, 3.85rem);
+	}
+
+	.size-card .poster-words {
+		font-size: clamp(1.65rem, 2.3vw, 2.35rem);
+	}
+
+	.is-split.size-card .poster-words {
+		font-size: clamp(1.45rem, 2vw, 2.05rem);
+	}
+
+	.poster-bottom-meta {
+		display: flex;
+		align-items: flex-end;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.poster-cat {
+		font-family: var(--font-mono);
+		font-size: 0.65rem;
+		font-weight: 500;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: rgba(247, 246, 241, 0.78);
+		background: rgba(15, 18, 15, 0.58);
+		padding: 0.16rem 0.42rem;
+		border-radius: 3px;
+		backdrop-filter: blur(4px);
+	}
+
+	.poster-stamp {
+		margin-left: auto;
+		display: inline-flex;
+		align-items: center;
+		padding: 0.22rem 0.42rem;
+		border: 1.5px solid rgba(247, 246, 241, 0.9);
+		background: rgba(15, 18, 15, 0.52);
+		backdrop-filter: blur(4px);
+	}
+
+	.poster-stamp img {
+		height: 15px;
+		width: auto;
+		filter: brightness(0) invert(1);
+	}
+
+	.size-hero .poster-stamp {
+		padding: 0.28rem 0.52rem;
+		border-width: 2px;
+	}
+
+	.size-hero .poster-stamp img {
+		height: 20px;
+	}
+</style>

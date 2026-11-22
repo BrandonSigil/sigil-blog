@@ -2,23 +2,40 @@
 import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import NewsletterStrip from '../components/NewsletterStrip.astro';
+import NmfPoster from '../components/NmfPoster.astro';
 import PostCard from '../components/PostCard.astro';
 import UpcomingStrip from '../components/UpcomingStrip.astro';
-import heroLogo from '../assets/sigil-main.svg';
-import { SIGIL_PLAYLIST_URL, SITE_AUTHOR, SITE_DESCRIPTION, SITE_STUDIO, SITE_TITLE } from '../consts';
-import { getAllCratePicks, getPublishedPosts, inferCategory, parseNmfPost } from '../lib/music';
+import { SITE_AUTHOR, SITE_DESCRIPTION, SITE_STUDIO, SITE_TITLE } from '../consts';
+import {
+	categoryLabel,
+	estimateReadTime,
+	formatShortDate,
+	getAllCratePicks,
+	getPublishedPosts,
+	getSpotlightCover,
+	getUpcomingReleases,
+	inferCategory,
+	parseNmfPost,
+} from '../lib/music';
 
 const posts = await getPublishedPosts();
-const leadPost = posts[0];
-const recentPosts = posts.slice(1, 7);
+const featured = posts[0];
+const desktopPosts = posts.slice(1, 4);
+const recentGridPosts = posts.slice(1, 7);
+
+const featuredCat = featured ? inferCategory(featured) : 'nmf';
+const featuredParsed = featured && featuredCat === 'nmf' ? parseNmfPost(featured) : null;
+const featuredSpotlight = featured ? getSpotlightCover(featured) : undefined;
+const featuredPicks = featuredParsed?.albums.slice(0, 4) ?? [];
 
 const latestNmf = posts.find((p) => inferCategory(p) === 'nmf');
 const latestPicks = latestNmf ? parseNmfPost(latestNmf).albums.slice(0, 4) : [];
 
 const allCratePicks = await getAllCratePicks();
-const uniqueArtists = new Set(allCratePicks.map((p) => p.artist.toLowerCase())).size;
+const upcomingCount = getUpcomingReleases().length;
 
 const siteUrl = Astro.site?.href ?? 'https://sigil.studio';
 const structuredData = [
@@ -48,32 +65,44 @@ const structuredData = [
 <!doctype html>
 <html lang="en">
 	<head>
-		<style is:inline>html, body { background-color: #2f6130; }</style>
-		<BaseHead title={`${SITE_TITLE} — Music News, Reviews & Weekly Crates`} description={SITE_DESCRIPTION} structuredData={structuredData} />
+		<style is:inline>html, body { background-color: #396e3a; }</style>
+		<BaseHead
+			title={`${SITE_TITLE} — Music News, Reviews & Weekly Crates`}
+			description={SITE_DESCRIPTION}
+			structuredData={structuredData}
+		/>
 		<style>
 			body {
 				background: var(--bg);
 			}
 
-			/* Editorial Masthead Hero */
+			/* Tactile Green Desktop Hero (instant on load — no forced scroll trap) */
 			.hero {
 				position: relative;
-				min-height: 500px;
-				height: 62vh;
-				max-height: 640px;
 				width: 100%;
-				background-color: #2f6130;
+				min-height: min(86svh, 760px);
+				background-color: #396e3a;
+				display: grid;
+				place-items: center;
+				padding: 6.25rem 1.5rem 3.25rem;
 				overflow: hidden;
-				display: flex;
-				align-items: flex-end;
 			}
 
 			.hero-scene {
 				position: absolute;
 				inset: 0;
-				width: 100%;
-				height: 100%;
-				background: radial-gradient(circle at 25% 20%, #4d8849 0%, #2d5d2d 55%, #1f4320 100%);
+				background: radial-gradient(circle at 50% 42%, #4a8249 0%, #396e3a 58%, #2c592e 100%);
+			}
+
+			/* Subtle pixel-crosshatch Sigil backdrop + tactile film grain */
+			.hero::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				z-index: 4;
+				background-image: radial-gradient(rgba(182, 232, 178, 0.14) 1px, transparent 1px);
+				background-size: 16px 16px;
+				pointer-events: none;
 			}
 
 			.hero::after {
@@ -83,161 +112,308 @@ const structuredData = [
 				z-index: 5;
 				background-image: url('/noise-sigil-white.png');
 				background-repeat: repeat;
-				opacity: 0.25;
+				opacity: 0.28;
 				pointer-events: none;
 				mix-blend-mode: screen;
 			}
 
-			.hero::before {
-				content: '';
-				position: absolute;
-				inset: 0;
-				z-index: 6;
-				background: linear-gradient(180deg, rgba(20, 42, 21, 0.25) 0%, rgba(20, 42, 21, 0.1) 45%, rgba(18, 38, 19, 0.62) 100%);
-				pointer-events: none;
-			}
-
-			.hero-inner {
+			/* Classic Mac OS System 7 Desktop Window */
+			.desk {
+				--d-ink: #14261a;
+				--d-paper: #f7f6f1;
 				position: relative;
 				z-index: 10;
+				width: min(100%, 980px);
+			}
+
+			.desk-window {
+				position: relative;
+				display: block;
 				width: 100%;
-				max-width: 1200px;
-				margin: 0 auto;
-				padding: 6rem 1.5rem 2.75rem;
+				color: var(--d-ink);
+				text-decoration: none;
+				background: var(--d-paper);
+				border: 2px solid var(--d-ink);
+				border-radius: 0 6px 6px 6px;
+				box-shadow: 10px 10px 0 rgba(12, 28, 16, 0.44);
+				font-family: var(--font-mono);
+				transition: box-shadow 0.18s ease, translate 0.18s ease;
+			}
+
+			.desk-window:hover,
+			.desk-window:focus-visible {
+				translate: -3px -3px;
+				box-shadow: 14px 14px 0 rgba(12, 28, 16, 0.44);
+			}
+
+			.desk-window:focus-visible {
+				outline: 3px solid #ffffff;
+				outline-offset: 4px;
+			}
+
+			.desk-tab {
+				position: absolute;
+				left: -2px;
+				bottom: 100%;
+				padding: 0.28rem 1.05rem 0.18rem 0.78rem;
+				background: var(--d-paper);
+				border: 2px solid var(--d-ink);
+				border-bottom: none;
+				border-radius: 6px 14px 0 0;
+				font-size: 0.68rem;
+				font-weight: 700;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				line-height: 1.4;
+			}
+
+			.desk-titlebar {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				height: 2.05rem;
+				padding: 0 0.6rem;
+				border-bottom: 2px solid var(--d-ink);
+			}
+
+			.desk-box {
+				flex: none;
+				width: 0.78rem;
+				height: 0.78rem;
+				border: 2px solid var(--d-ink);
+				background: var(--d-paper);
+			}
+
+			.desk-stripes {
+				flex: 1;
+				height: 0.78rem;
+				background: repeating-linear-gradient(to bottom, var(--d-ink) 0 1px, transparent 1px 4px);
+			}
+
+			.desk-name {
+				flex: none;
+				font-size: 0.76rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				white-space: nowrap;
+			}
+
+			.desk-body {
+				display: grid;
+				grid-template-columns: minmax(0, 1.42fr) minmax(0, 1fr);
+			}
+
+			.desk-art {
+				border-right: 2px solid var(--d-ink);
+				aspect-ratio: 16 / 10;
+				overflow: hidden;
+				background: #0f110f;
+			}
+
+			.desk-art > :global(img) {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.desk-window:hover .desk-art :global(.poster-art-wrap img) {
+				transform: scale(1.03);
+			}
+
+			.desk-copy {
 				display: flex;
 				flex-direction: column;
-				gap: 1.35rem;
+				justify-content: center;
+				gap: 0.6rem;
+				padding: clamp(1.1rem, 2.2vw, 1.65rem);
+				min-width: 0;
 			}
 
-			.hero-top-row {
+			.desk-kicker {
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.11em;
+				text-transform: uppercase;
+				color: var(--green);
+			}
+
+			.desk-title {
+				margin: 0;
+				font-family: var(--font-display);
+				font-size: clamp(1.45rem, 2.6vw, 2.05rem);
+				line-height: 1.08;
+				letter-spacing: -0.025em;
+				color: var(--d-ink);
+			}
+
+			.desk-desc {
+				margin: 0;
+				font-family: var(--font-sans);
+				font-size: 0.94rem;
+				line-height: 1.5;
+				color: #3c4a40;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				overflow: hidden;
+			}
+
+			.desk-footer-row {
 				display: flex;
-				align-items: flex-end;
+				align-items: center;
 				justify-content: space-between;
-				gap: 2rem;
-				flex-wrap: wrap;
+				gap: 0.75rem;
+				margin-top: 0.4rem;
 			}
 
-			.hero-logo {
-				width: clamp(200px, 28vw, 340px);
-				height: auto;
-				filter: brightness(0) invert(1);
+			.desk-open {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.35rem;
+				padding: 0.42rem 0.9rem;
+				border: 2px solid var(--d-ink);
+				border-radius: 5px;
+				background: var(--d-paper);
+				box-shadow: 3px 3px 0 var(--d-ink);
+				font-size: 0.78rem;
+				font-weight: 700;
+				letter-spacing: 0.03em;
+				transition: background 0.14s ease, color 0.14s ease;
 			}
 
-			.hero-tagline {
-				margin: 0.75rem 0 0;
-				color: rgba(247, 246, 241, 0.92);
-				font-family: var(--font-serif);
-				font-size: clamp(1.1rem, 1.8vw, 1.38rem);
-				line-height: 1.4;
-				max-width: 46ch;
+			.desk-window:hover .desk-open {
+				background: var(--d-ink);
+				color: var(--d-paper);
 			}
 
-			.hero-actions {
+			.desk-mini-covers {
 				display: flex;
-				flex-wrap: wrap;
-				gap: 0.65rem;
 				align-items: center;
 			}
 
-			.hero-btn-primary {
-				display: inline-flex;
+			.desk-mini-covers :global(img) {
+				width: 28px;
+				height: 28px;
+				border-radius: 3px;
+				object-fit: cover;
+				border: 1.5px solid var(--d-ink);
+				margin-left: -6px;
+			}
+
+			.desk-mini-covers :global(img:first-child) {
+				margin-left: 0;
+			}
+
+			.desk-status {
+				display: flex;
+				justify-content: space-between;
+				gap: 1rem;
+				padding: 0.32rem 0.75rem;
+				border-top: 2px solid var(--d-ink);
+				font-size: 0.69rem;
+				letter-spacing: 0.03em;
+				color: #3c4a40;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+
+			.desk-status span:last-child {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			/* Desktop File & Folder Icons Dock */
+			.desk-files {
+				display: flex;
+				justify-content: center;
+				flex-wrap: wrap;
+				gap: clamp(0.85rem, 2.8vw, 2.25rem);
+				list-style: none;
+				margin: 2rem 0 0;
+				padding: 0;
+			}
+
+			.desk-files li {
+				flex: 0 1 8.5rem;
+				min-width: 0;
+				margin: 0;
+			}
+
+			.desk-file {
+				display: flex;
+				flex-direction: column;
 				align-items: center;
 				gap: 0.45rem;
-				padding: 0.72rem 1.25rem;
-				background: #f7f6f1;
-				color: #1f4320;
-				font-family: var(--font-display);
-				font-weight: 700;
-				font-size: 0.94rem;
-				border-radius: var(--radius-sm);
+				color: #ffffff;
 				text-decoration: none;
-				transition: background 0.18s ease, transform 0.18s ease;
 			}
 
-			.hero-btn-primary:hover {
-				background: #ffffff;
-				color: #142f15;
-				transform: translateY(-1px);
+			.desk-file-icon {
+				width: 2.75rem;
+				height: auto;
+				overflow: visible;
+				filter: drop-shadow(3px 3px 0 rgba(12, 28, 16, 0.44));
+				transition: translate 0.14s ease, filter 0.14s ease;
 			}
 
-			.hero-btn-secondary {
-				display: inline-flex;
-				align-items: center;
-				gap: 0.4rem;
-				padding: 0.7rem 1.1rem;
-				background: rgba(247, 246, 241, 0.12);
-				color: #f7f6f1;
-				border: 1px solid rgba(247, 246, 241, 0.32);
-				font-family: var(--font-display);
+			.desk-file:hover .desk-file-icon,
+			.desk-file:focus-visible .desk-file-icon {
+				translate: -2px -2px;
+				filter: drop-shadow(5px 5px 0 rgba(12, 28, 16, 0.48));
+			}
+
+			.desk-file-name {
+				padding: 0.12rem 0.42rem;
+				border-radius: 4px;
+				font-family: var(--font-sans);
+				font-size: 0.77rem;
 				font-weight: 600;
-				font-size: 0.9rem;
-				border-radius: var(--radius-sm);
-				text-decoration: none;
-				backdrop-filter: blur(6px);
-				transition: background 0.18s ease, border-color 0.18s ease;
+				line-height: 1.28;
+				text-align: center;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				overflow: hidden;
 			}
 
-			.hero-btn-secondary:hover {
-				background: rgba(247, 246, 241, 0.22);
-				border-color: rgba(247, 246, 241, 0.6);
-				color: #ffffff;
+			.desk-file:hover .desk-file-name,
+			.desk-file:focus-visible .desk-file-name {
+				background: var(--d-ink);
+				color: var(--d-paper);
 			}
 
-			.hero-ticker {
-				display: flex;
-				flex-wrap: wrap;
-				gap: 0.65rem 1.5rem;
-				padding-top: 1.1rem;
-				border-top: 1px solid rgba(247, 246, 241, 0.22);
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
-				color: rgba(247, 246, 241, 0.82);
-				letter-spacing: 0.04em;
+			/* Tight, Zero-Waste Below-the-Fold Editorial Sections */
+			main {
+				padding-top: 3rem;
 			}
 
-			.hero-ticker strong {
-				color: #ffffff;
-				font-weight: 600;
-			}
-
-			.hero-ticker a {
-				color: #cde9ca;
-				text-decoration: underline;
-				text-underline-offset: 3px;
-			}
-
-			.hero-ticker a:hover {
-				color: #ffffff;
-			}
-
-			/* Main Editorial Sections */
 			.section-head {
 				display: flex;
 				justify-content: space-between;
 				align-items: flex-end;
 				gap: 1rem;
 				flex-wrap: wrap;
-				margin-bottom: 1.65rem;
-				padding-bottom: 1rem;
-				border-bottom: 1.5px solid var(--green);
+				margin-bottom: 1.35rem;
+				padding-bottom: 0.85rem;
+				border-bottom: 2px solid var(--ink);
 			}
 
 			.section-head h2 {
-				margin: 0.25rem 0 0;
+				margin: 0.2rem 0 0;
 			}
 
 			.section-head-link {
 				font-family: var(--font-mono);
-				font-size: 0.8rem;
+				font-size: 0.78rem;
 				font-weight: 600;
 				color: var(--green);
 			}
 
-			/* This Week's Crate shelf */
+			/* Inside This Week's Crate — crisp, tactile, zero dead whitespace */
 			.crate-shelf {
 				display: grid;
 				grid-template-columns: repeat(4, minmax(0, 1fr));
-				gap: 1.25rem;
+				gap: 1.15rem;
 			}
 
 			.crate-tile {
@@ -246,21 +422,22 @@ const structuredData = [
 				text-decoration: none;
 				color: inherit;
 				background: var(--paper-card);
-				border: 1px solid var(--rule);
-				border-radius: var(--radius-md);
+				border: 1.5px solid var(--ink);
+				border-radius: 6px;
 				overflow: hidden;
-				transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+				transition: transform 0.16s ease, box-shadow 0.16s ease;
 			}
 
 			.crate-tile:hover {
-				transform: translateY(-3px);
-				border-color: var(--green);
-				box-shadow: 0 10px 24px rgba(20, 20, 19, 0.06);
+				transform: translate(-2px, -2px);
+				box-shadow: 5px 5px 0 var(--green);
 			}
 
 			.crate-sleeve {
+				position: relative;
 				aspect-ratio: 1 / 1;
 				overflow: hidden;
+				border-bottom: 1.5px solid var(--ink);
 				background: var(--gray-lighter);
 			}
 
@@ -275,8 +452,22 @@ const structuredData = [
 				transform: scale(1.04);
 			}
 
+			.crate-num-chip {
+				position: absolute;
+				top: 0.5rem;
+				left: 0.5rem;
+				background: var(--paper);
+				color: var(--ink);
+				border: 1.5px solid var(--ink);
+				font-family: var(--font-mono);
+				font-size: 0.66rem;
+				font-weight: 700;
+				padding: 0.1rem 0.38rem;
+				border-radius: 3px;
+			}
+
 			.crate-info {
-				padding: 0.95rem 1rem 1.05rem;
+				padding: 0.85rem 0.95rem 0.95rem;
 				display: flex;
 				flex-direction: column;
 				flex: 1;
@@ -284,37 +475,39 @@ const structuredData = [
 
 			.crate-artist {
 				font-family: var(--font-mono);
-				font-size: 0.7rem;
+				font-size: 0.68rem;
 				font-weight: 600;
 				text-transform: uppercase;
 				letter-spacing: 0.08em;
 				color: var(--green);
-				margin-bottom: 0.2rem;
+				margin-bottom: 0.15rem;
 			}
 
 			.crate-album {
 				font-family: var(--font-display);
-				font-size: 1.06rem;
+				font-size: 1.04rem;
 				font-weight: 700;
-				line-height: 1.2;
+				line-height: 1.18;
 				color: var(--ink);
-				margin: 0 0 0.5rem;
+				margin: 0 0 0.55rem;
 			}
 
 			.crate-tasting {
-				margin: 0;
+				margin: auto 0 0;
+				padding-top: 0.55rem;
+				border-top: 1px dashed var(--rule-strong);
 				font-family: var(--font-serif);
 				font-style: italic;
-				font-size: 0.9rem;
-				line-height: 1.42;
-				color: var(--ink-soft);
+				font-size: 0.94rem;
+				line-height: 1.38;
+				color: var(--ink);
 			}
 
-			/* Recent Desk Grid */
+			/* Recent Issues 3-Column Poster Grid */
 			.desk-grid {
 				display: grid;
 				grid-template-columns: repeat(3, minmax(0, 1fr));
-				gap: 1.35rem;
+				gap: 1.25rem;
 			}
 
 			@media (max-width: 960px) {
@@ -327,17 +520,31 @@ const structuredData = [
 				}
 			}
 
-			@media (max-width: 640px) {
+			@media (max-width: 820px) {
 				.hero {
-					height: auto;
-					min-height: 440px;
-					max-height: none;
+					min-height: auto;
+					padding: 5.5rem 1rem 2.5rem;
 				}
 
-				.hero-inner {
-					padding: 5.5rem 1rem 2rem;
+				.desk-window {
+					box-shadow: 6px 6px 0 rgba(12, 28, 16, 0.42);
 				}
 
+				.desk-body {
+					grid-template-columns: 1fr;
+				}
+
+				.desk-art {
+					border-right: none;
+					border-bottom: 2px solid var(--d-ink);
+				}
+
+				.desk-files li {
+					flex: 0 1 6.5rem;
+				}
+			}
+
+			@media (max-width: 600px) {
 				.crate-shelf,
 				.desk-grid {
 					grid-template-columns: 1fr;
@@ -350,63 +557,148 @@ const structuredData = [
 
 		<section class="hero">
 			<div class="hero-scene" data-us-project="iIayA4bIeBzePlqd5Bab"></div>
-			<div class="hero-inner">
-				<div class="hero-top-row">
-					<div>
-						<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
-						<p class="hero-tagline">
-							Human-curated music discovery, weekly New Music Friday crates, and album reviews out of Tacoma, WA.
-						</p>
-					</div>
-					<div class="hero-actions">
-						{leadPost && (
-							<a href={`/blog/${leadPost.id}`} class="hero-btn-primary">
-								Read Latest Issue →
-							</a>
-						)}
-						<a href="/crate" class="hero-btn-secondary">Dig the Crate</a>
-						<a href="/calendar" class="hero-btn-secondary">Release Radar</a>
-					</div>
-				</div>
 
-				<div class="hero-ticker">
-					<span><strong>{posts.length}</strong> published issues</span>
-					<span><strong>{allCratePicks.length}</strong> albums picked</span>
-					<span><strong>{uniqueArtists}</strong> artists featured</span>
-					<a href={SIGIL_PLAYLIST_URL} target="_blank" rel="noopener noreferrer">Listen on Spotify ↗</a>
+			{featured && (
+				<div class="desk">
+					<a class="desk-window" href={`/blog/${featured.id}`}>
+						<span class="desk-tab">Featured</span>
+						<div class="desk-titlebar" aria-hidden="true">
+							<span class="desk-box"></span>
+							<span class="desk-stripes"></span>
+							<span class="desk-name">{categoryLabel(featured)}</span>
+							<span class="desk-stripes"></span>
+						</div>
+
+						<div class="desk-body">
+							<div class="desk-art">
+								{featuredCat === 'nmf' ? (
+									<NmfPoster
+										image={featuredSpotlight}
+										title={featured.data.title}
+										slug={featured.id}
+										dateLabel={formatShortDate(featured.data.pubDate)}
+										size="hero"
+									/>
+								) : featured.data.heroImage ? (
+									<Image src={featured.data.heroImage} alt={featured.data.title} width={960} loading="eager" />
+								) : null}
+							</div>
+
+							<div class="desk-copy">
+								<span class="desk-kicker">
+									{categoryLabel(featured)} · <FormattedDate date={featured.data.pubDate} />
+								</span>
+								<h1 class="desk-title">{featured.data.title}</h1>
+								<p class="desk-desc">{featured.data.description}</p>
+								<div class="desk-footer-row">
+									<span class="desk-open">Open →</span>
+									{featuredPicks.length > 0 && (
+										<div class="desk-mini-covers" aria-hidden="true">
+											{featuredPicks.map(
+												(p) => p.image && <Image src={p.image} alt="" width={56} height={56} />,
+											)}
+										</div>
+									)}
+								</div>
+							</div>
+						</div>
+
+						<div class="desk-status" aria-hidden="true">
+							<span>
+								{featuredPicks.length > 0 ? `${featuredPicks.length} albums · ` : ''}
+								{estimateReadTime(featured.body)} min read
+							</span>
+							<span>Sigil HD / Music / {featured.id}</span>
+						</div>
+					</a>
+
+					<ul class="desk-files" aria-label="Quick desktop links">
+						{desktopPosts.map((post) => (
+							<li>
+								<a class="desk-file" href={`/blog/${post.id}`}>
+									<svg class="desk-file-icon" viewBox="0 0 44 54" aria-hidden="true">
+										<path
+											d="M2 2h27l13 13v37H2z"
+											fill="var(--d-paper)"
+											stroke="var(--d-ink)"
+											stroke-width="2"
+											stroke-linejoin="round"
+										/>
+										<path d="M29 2v13h13" fill="none" stroke="var(--d-ink)" stroke-width="2" stroke-linejoin="round" />
+										<path d="M17.5 40V27l10-2.5V37" fill="none" stroke="var(--d-ink)" stroke-width="2" />
+										<path d="M17.5 27l10-2.5" fill="none" stroke="var(--d-ink)" stroke-width="4" />
+										<circle cx="14.8" cy="40" r="3" fill="var(--d-ink)" />
+										<circle cx="24.8" cy="37" r="3" fill="var(--d-ink)" />
+									</svg>
+									<span class="desk-file-name">{post.data.title}</span>
+								</a>
+							</li>
+						))}
+
+						<li>
+							<a class="desk-file" href="/crate">
+								<svg class="desk-file-icon" viewBox="0 0 54 46" aria-hidden="true">
+									<path
+										d="M2 10V4h16l5 6h29v34H2z"
+										fill="var(--d-paper)"
+										stroke="var(--d-ink)"
+										stroke-width="2"
+										stroke-linejoin="round"
+									/>
+									<path d="M2 15h50" stroke="var(--d-ink)" stroke-width="2" />
+									<circle cx="27" cy="29" r="8" fill="none" stroke="var(--d-ink)" stroke-width="2" />
+									<circle cx="27" cy="29" r="2.2" fill="var(--d-ink)" />
+								</svg>
+								<span class="desk-file-name">The Crate ({allCratePicks.length})</span>
+							</a>
+						</li>
+
+						<li>
+							<a class="desk-file" href="/calendar">
+								<svg class="desk-file-icon" viewBox="0 0 48 48" aria-hidden="true">
+									<rect
+										x="3"
+										y="7"
+										width="42"
+										height="38"
+										rx="3"
+										fill="var(--d-paper)"
+										stroke="var(--d-ink)"
+										stroke-width="2"
+									/>
+									<path d="M3 17h42" stroke="var(--d-ink)" stroke-width="2" />
+									<path d="M14 3v8M34 3v8" stroke="var(--d-ink)" stroke-width="2.5" stroke-linecap="round" />
+									<rect x="11" y="23" width="6" height="6" fill="var(--d-ink)" />
+									<rect x="21" y="23" width="6" height="6" fill="#3e7d3c" />
+									<rect x="31" y="23" width="6" height="6" fill="var(--d-ink)" />
+									<rect x="11" y="33" width="6" height="6" fill="var(--d-ink)" />
+									<rect x="21" y="33" width="6" height="6" fill="var(--d-ink)" />
+								</svg>
+								<span class="desk-file-name">Release Radar ({upcomingCount})</span>
+							</a>
+						</li>
+					</ul>
 				</div>
-			</div>
+			)}
 		</section>
 
 		<main>
-			{leadPost && (
-				<section aria-label="Featured issue">
-					<div class="section-head">
-						<div>
-							<span class="kicker">Latest Issue</span>
-							<h2>From the Top of the Stack</h2>
-						</div>
-						<a href="/blog" class="section-head-link">All issues →</a>
-					</div>
-					<PostCard post={leadPost} variant="lead" />
-				</section>
-			)}
-
 			{latestNmf && latestPicks.length > 0 && (
 				<section aria-label="Latest Friday crate picks">
 					<div class="section-head">
 						<div>
-							<span class="kicker">Spinning Now</span>
-							<h2>Inside the Latest Crate</h2>
+							<span class="kicker">Spinning Now · {formatShortDate(latestNmf.data.pubDate)}</span>
+							<h2>Inside This Week’s Crate</h2>
 						</div>
-						<a href="/crate" class="section-head-link">Browse all {allCratePicks.length} picks →</a>
+						<a href="/crate" class="section-head-link">Dig all {allCratePicks.length} picks →</a>
 					</div>
 					<div class="crate-shelf">
 						{latestPicks.map((pick) => (
 							<a href={`/blog/${latestNmf.id}#pick-${pick.index}`} class="crate-tile">
 								<div class="crate-sleeve">
+									<span class="crate-num-chip">{String(pick.index).padStart(2, '0')}</span>
 									{pick.image && (
-										<Image src={pick.image} alt={`${pick.artist} — ${pick.album}`} width={400} height={400} />
+										<Image src={pick.image} alt={`${pick.artist} — ${pick.album}`} width={380} height={380} />
 									)}
 								</div>
 								<div class="crate-info">
@@ -426,16 +718,16 @@ const structuredData = [
 						<span class="kicker">Music Desk</span>
 						<h2>Recent Crates & Lists</h2>
 					</div>
-					<a href="/blog" class="section-head-link">View full archive →</a>
+					<a href="/blog" class="section-head-link">All {posts.length} issues →</a>
 				</div>
 				<div class="desk-grid">
-					{recentPosts.map((post) => (
+					{recentGridPosts.map((post) => (
 						<PostCard post={post} variant="grid" />
 					))}
 				</div>
 			</section>
 
-			<UpcomingStrip limit={6} />
+			<UpcomingStrip limit={8} />
 
 			<section aria-label="Newsletter subscription">
 				<NewsletterStrip />

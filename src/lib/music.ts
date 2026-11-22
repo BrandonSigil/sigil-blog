@@ -412,3 +412,13 @@ export function getPostCoverMosaic(post: CollectionEntry<'blog'>): ImageMetadata
 		.filter((img): img is ImageMetadata => Boolean(img))
 		.slice(0, 4);
 }
+
+/** Pick a punchy spotlight cover for live NMF posters (no baked-in text JPG needed). */
+export function getSpotlightCover(post: CollectionEntry<'blog'>): ImageMetadata | undefined {
+	if (inferCategory(post) !== 'nmf') return post.data.heroImage;
+	const covers = getPostCoverMosaic(post);
+	if (covers.length === 0) return undefined;
+	// For May 8th, highlight Basement's iconic thermal cat artwork (index 1)
+	if (post.id === 'nmf-may-8' && covers[1]) return covers[1];
+	return covers[0];
+}

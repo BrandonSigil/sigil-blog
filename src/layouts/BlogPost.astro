@@ -8,6 +8,7 @@ import Header from '../components/Header.astro';
 import NewsletterStrip from '../components/NewsletterStrip.astro';
 import PostCard from '../components/PostCard.astro';
 import SpotifyFacade from '../components/SpotifyFacade.astro';
+import TastingNote from '../components/TastingNote.astro';
 import { SITE_AUTHOR, SITE_STUDIO, SITE_TITLE } from '../consts';
 import {
 	categoryLabel,
@@ -301,11 +302,11 @@ const structuredData =
 			.album-sleeve {
 				position: relative;
 				aspect-ratio: 1 / 1;
-				border-radius: var(--radius-md);
+				border-radius: 6px;
 				overflow: hidden;
 				background: var(--gray-lighter);
-				border: 1px solid var(--rule);
-				box-shadow: 0 10px 26px rgba(20, 20, 19, 0.08);
+				border: 1.5px solid var(--ink);
+				box-shadow: 6px 6px 0 rgba(20, 38, 26, 0.14);
 			}
 
 			.album-sleeve :global(img) {
@@ -776,12 +777,7 @@ const structuredData =
 
 									{entry.subtitleNote && <p class="album-subnote">{entry.subtitleNote}</p>}
 
-									{entry.tastingNote && (
-										<div class="tasting-note">
-											<span class="tasting-note-label">Tasting Notes</span>
-											<p class="tasting-note-text">{entry.tastingNote}</p>
-										</div>
-									)}
+									{entry.tastingNote && <TastingNote note={entry.tastingNote} tilt={true} />}
 
 									<div class="prose album-body">
 										{entry.paragraphs.map((p) => (
