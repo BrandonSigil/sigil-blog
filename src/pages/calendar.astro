@@ -132,13 +132,7 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 				letter-spacing: 0.08em;
 				color: var(--green);
 				line-height: 1.2;
-				margin: 0 0 0.2rem;
-			}
-
-			.day-count {
-				font-family: var(--font-mono);
-				font-size: 11px;
-				color: var(--gray);
+				margin: 0;
 			}
 
 			.day-items {
@@ -288,9 +282,6 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 						<div class="day-col">
 							<div class="day-sticky">
 								<h2 class="day-date">{group.abbrevDate}</h2>
-								<span class="day-count" data-day-count>
-									{group.items.length} {group.items.length === 1 ? 'drop' : 'drops'}
-								</span>
 							</div>
 						</div>
 						<div class="day-items">
@@ -355,10 +346,6 @@ const lanes = [...new Set(releases.map((r) => r.lane))].sort();
 						});
 						group.classList.toggle('is-hidden', visible === 0);
 						group.hidden = visible === 0;
-						const counter = group.querySelector<HTMLElement>('[data-day-count]');
-						if (counter) {
-							counter.textContent = `${visible} ${visible === 1 ? 'drop' : 'drops'}`;
-						}
 					});
 				});
 			});
