@@ -15,6 +15,7 @@
 //   src/data/releases.json        every pick and every flagged album with its release date; the
 //                                 homepage's "Out this month" and "Anticipated" lists read this
 //   src/assets/releases/*.jpg     their covers
+//   src/data/album-genres.json    each new pick's crate lane, as its genre on the album hubs
 // and with --draft, if that week's post does not exist yet:
 //   src/content/blog/nmf-<friday>.md   a draft New Music Friday post with the picks laid out
 //   src/assets/nmf-<friday>/*.jpg      covers for the post
@@ -161,6 +162,31 @@ const upcoming = {
 mkdirSync(join(root, 'src/data'), { recursive: true });
 writeFileSync(join(root, 'src/data/upcoming.json'), JSON.stringify(upcoming, null, '\t') + '\n');
 console.log(`Upcoming albums: ${picks.length} picks for ${friday} written to src/data/upcoming.json`);
+
+// --- Genres for the album hubs ---
+// Each pick's crate lane becomes its genre in src/data/album-genres.json, keyed by the same
+// "Artist - Album" heading the post uses. Albums already in the file keep the genre they have,
+// so hand edits survive, and "Reissues & archives" is a crate grouping, not a genre.
+if (picks.length > 0) {
+	const genresPath = join(root, 'src/data/album-genres.json');
+	const genres = existsSync(genresPath) ? JSON.parse(readFileSync(genresPath, 'utf8')) : { albums: {} };
+	const norm = (k) => k.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/\s+/g, ' ').trim();
+	const known = new Set(Object.keys(genres.albums).map(norm));
+	const added = [];
+	for (const a of picks) {
+		const heading = `${a.artist} - ${a.title}`;
+		if (!a.lane || a.lane === 'Reissues & archives' || known.has(norm(heading))) continue;
+		genres.albums[heading] = a.lane;
+		added.push(`${heading} (${a.lane})`);
+	}
+	if (added.length > 0) {
+		genres.albums = Object.fromEntries(
+			Object.entries(genres.albums).sort(([x], [y]) => x.toLowerCase().localeCompare(y.toLowerCase())),
+		);
+		writeFileSync(genresPath, JSON.stringify(genres, null, '\t') + '\n');
+		console.log(`Genres: added ${added.length} to src/data/album-genres.json: ${added.join(', ')}`);
+	}
+}
 
 // --- Draft post ---
 if (wantDraft) {

@@ -1,0 +1,44 @@
+---
+// /artists/<artist>: an artist with two or more picks or reviews.
+import AlbumGrid from '../../components/AlbumGrid.astro';
+import HubPage from '../../layouts/HubPage.astro';
+import { getAlbumPicks } from '../../lib/albums';
+import { type ArtistGroup, groupByArtist } from '../../lib/hubs';
+import { getPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+	const reviews = (await getPosts()).filter((p) => p.data.projectName === 'Album Review');
+	return groupByArtist(await getAlbumPicks(), reviews)
+		.filter((a) => a.href)
+		.map((a) => ({ params: { artist: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props as { a: ArtistGroup };
+const parts = [
+	a.picks.length && `${a.picks.length} pick${a.picks.length === 1 ? '' : 's'}`,
+	a.reviews.length && `${a.reviews.length} review${a.reviews.length === 1 ? '' : 's'}`,
+].filter(Boolean);
+---
+
+<HubPage
+	title={a.name}
+	kicker='<a href="/artists">Artists A–Z</a>'
+	description={`${a.name} on Sigil: ${parts.join(' and ')}.`}
+	count={parts.join(' · ')}
+	current="/artists"
+>
+	{a.picks.length > 0 && (
+		<section class="hub-section">
+			<div class="hub-section-head"><h2>On New Music Friday</h2></div>
+			<AlbumGrid picks={a.picks} />
+		</section>
+	)}
+	{a.reviews.length > 0 && (
+		<section class="hub-section">
+			<div class="hub-section-head"><h2>Reviews</h2></div>
+			<ul>
+				{a.reviews.map((r) => <li><a href={`/blog/${r.id}`}>{r.data.title}</a></li>)}
+			</ul>
+		</section>
+	)}
+</HubPage>

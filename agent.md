@@ -92,6 +92,18 @@ scripts/
 - Both are built from the posts. Nothing to maintain by hand
 - The album index reads every pick out of the New Music Friday posts (format below)
 
+### Album hubs (`/albums/<year>`, `/albums/<year>/<month>`, `/genres`, `/artists`)
+- Built from the same picks as the album index, so they grow with every published post
+- `/albums/2024` lists that year month by month; `/albums/2024/may` is one month plus its posts
+- `/genres/<genre>`: genres are listed in `src/lib/genres.ts`, and each pick's genre lives in
+  `src/data/album-genres.json`, keyed by its "Artist - Album" heading. `scripts/publish-crate.mjs`
+  adds new picks from their crate lane; existing entries are never overwritten, so fix any by hand.
+  A pick missing from the file simply doesn't appear under a genre
+- `/artists`: A–Z of everyone picked or reviewed. An artist gets their own page
+  (`/artists/<name>`) only once they have two or more picks or reviews, so there are no
+  near-empty pages; until then the index links straight to the album in its post
+- The "Browse" links (`src/components/HubNav.astro`) sit on the album index and every hub page
+
 ### About (`/about`)
 - Who is behind the blog and what gets posted here
 
