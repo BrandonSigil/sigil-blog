@@ -1,0 +1,66 @@
+{
+	"friday": "2026-11-20",
+	"publishedAt": "2026-11-22T04:24:06.824Z",
+	"albums": [
+		{
+			"id": "lael-neale-as-killers-do",
+			"artist": "Lael Neale",
+			"title": "As Killers Do",
+			"releaseDate": "2026-11-20",
+			"genre": "Indie & folk",
+			"type": "LP",
+			"label": "Consensual Sound",
+			"favorite": false,
+			"cover": "lael-neale-as-killers-do.jpg",
+			"listen": "https://open.spotify.com/search/Lael%20Neale%20As%20Killers%20Do"
+		},
+		{
+			"id": "toro-y-moi-unusua",
+			"artist": "Toro y Moi",
+			"title": "Unusua",
+			"releaseDate": "2026-11-20",
+			"genre": "Indie & folk",
+			"type": "LP",
+			"label": null,
+			"favorite": false,
+			"cover": "toro-y-moi-unusua.jpg",
+			"listen": "https://open.spotify.com/search/Toro%20y%20Moi%20Unusua"
+		},
+		{
+			"id": "gabriels-blood-on-my-hands",
+			"artist": "Gabriels",
+			"title": "Blood On My Hands",
+			"releaseDate": "2026-11-20",
+			"genre": "Soul & funk",
+			"type": "EP",
+			"label": null,
+			"favorite": false,
+			"cover": null,
+			"listen": "https://open.spotify.com/search/Gabriels%20Blood%20On%20My%20Hands"
+		},
+		{
+			"id": "joshua-redman-if-ever-you-would-leave-us-we-play-for-rollins",
+			"artist": "Joshua Redman",
+			"title": "If Ever You Would Leave Us (We Play for Rollins)",
+			"releaseDate": "2026-11-20",
+			"genre": "Jazz & ambient",
+			"type": "LP",
+			"label": "Blue Note",
+			"favorite": false,
+			"cover": null,
+			"listen": "https://open.spotify.com/search/Joshua%20Redman%20If%20Ever%20You%20Would%20Leave%20Us%20(We%20Play%20for%20Rollins)"
+		},
+		{
+			"id": "lambchop-demoed",
+			"artist": "Lambchop",
+			"title": "Demoed",
+			"releaseDate": "2026-11-20",
+			"genre": "Country & roots",
+			"type": "EP",
+			"label": null,
+			"favorite": false,
+			"cover": "lambchop-demoed.jpg",
+			"listen": "https://open.spotify.com/search/Lambchop%20Demoed"
+		}
+	]
+}

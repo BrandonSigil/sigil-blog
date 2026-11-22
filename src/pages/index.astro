@@ -1,16 +1,28 @@
 ---
-import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import FeaturedCard from '../components/FeaturedCard.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR, SITE_STUDIO } from '../consts';
+import ReleaseCalendar from '../components/ReleaseCalendar.astro';
+import UpcomingAlbums from '../components/UpcomingAlbums.astro';
+import { getPosts } from '../lib/posts';
+import { SITE_DESCRIPTION, SITE_TITLE, SITE_AUTHOR } from '../consts';
 import heroLogo from '../assets/sigil-main.svg';
-import LogoMarquee from '../components/LogoMarquee.astro';
 
-const recentPosts = (await getCollection('blog'))
-	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-	.slice(0, 4);
+// The homepage only ever shows published posts, so it looks the same locally as it does live.
+const allPosts = (await getPosts()).filter((post) => !post.data.draft);
+// The newest post is featured in the hero window; the list below picks up after it.
+const featured = allPosts[0];
+const recentPosts = allPosts.slice(1, 5);
+
+// The playlist from the newest New Music Friday post that has one.
+const PLAYLIST = /open\.spotify\.com\/embed\/playlist\/([A-Za-z0-9]+)/;
+const playlistPost = allPosts.find(
+	(post) => post.data.projectName === 'New Music Friday' && PLAYLIST.test(post.body ?? ''),
+);
+const playlistId = playlistPost?.body?.match(PLAYLIST)?.[1];
 
 const siteUrl = Astro.site?.href ?? 'https://sigil.studio';
 const structuredData = [
@@ -20,29 +32,14 @@ const structuredData = [
 		name: SITE_TITLE,
 		url: siteUrl,
 		description: SITE_DESCRIPTION,
-		publisher: {
-			'@type': 'Organization',
-			name: SITE_STUDIO,
-			url: siteUrl,
-		},
 	},
 	{
 		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		name: SITE_STUDIO,
-		url: siteUrl,
+		'@type': 'Blog',
+		name: `${SITE_TITLE} Music Blog`,
+		url: new URL('/blog', siteUrl).href,
 		description: SITE_DESCRIPTION,
-		areaServed: 'US',
-		address: {
-			'@type': 'PostalAddress',
-			addressLocality: 'Tacoma',
-			addressRegion: 'WA',
-			addressCountry: 'US',
-		},
-		founder: [
-			{ '@type': 'Person', name: 'Alex Wirth' },
-			{ '@type': 'Person', name: SITE_AUTHOR },
-		],
+		author: { '@type': 'Person', name: SITE_AUTHOR },
 	},
 ];
 ---
@@ -51,18 +48,54 @@ const structuredData = [
 <html lang="en">
 	<head>
 		<style is:inline>html, body { background-color: #396e3a; }</style>
+		<script is:inline>
+			// Scroll intro: on unless the visitor prefers reduced motion. Set before first paint.
+			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				document.documentElement.classList.add('hero-intro');
+			}
+		</script>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} structuredData={structuredData} />
 		<style>
+			/*
+			  Hero. Without the scroll intro (no JS, or reduced motion) it is one static screen:
+			  logo in the nav, featured window resting on the scene. With `html.hero-intro` it becomes
+			  a tall section with a pinned stage, and the script below drives the logo and window.
+			*/
 			.hero {
 				position: relative;
-				height: 100vh;
 				width: 100%;
 				margin-top: 0;
 				background-color: #2f7039;
 			}
 
+			:global(html.hero-intro) .hero {
+				height: 240vh;
+			}
+
+			.hero-stage {
+				position: relative;
+				height: 100vh;
+				height: 100svh;
+				width: 100%;
+				overflow: hidden;
+				display: grid;
+				place-items: center;
+				padding: 5.5rem 1.5rem 2.5rem;
+			}
+
+			:global(html.hero-intro) .hero-stage {
+				position: sticky;
+				top: 0;
+			}
+
+			.hero-scene {
+				position: absolute;
+				inset: 0;
+				background-color: #4f7040;
+			}
+
 			/* Noise layer between scene and logo */
-			.hero::after {
+			.hero-stage::after {
 				content: '';
 				position: absolute;
 				inset: 0;
@@ -75,16 +108,361 @@ const structuredData = [
 				mix-blend-mode: screen;
 			}
 
-			.hero-logo {
+			/* The big logo that travels to the nav. Only exists during the scroll intro. */
+			.hero-logo-wrap {
 				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				z-index: 10;
+				inset: 0;
+				z-index: 12;
+				display: none;
+				place-items: center;
+				pointer-events: none;
+			}
+
+			:global(html.hero-intro) .hero-logo-wrap {
+				display: grid;
+			}
+
+			.hero-logo {
 				width: clamp(280px, 40vw, 520px);
 				height: auto;
 				filter: brightness(0) invert(1);
-				pointer-events: none;
+				transform-origin: 0 0;
+				will-change: transform;
+			}
+
+			/* Until the big logo lands, the nav logo keeps its space but stays invisible. */
+			:global(html.hero-intro:not(.logo-docked) header .logo img) {
+				opacity: 0;
+			}
+
+			:global(html.logo-docked) .hero-logo-wrap {
+				visibility: hidden;
+			}
+
+			/* Featured post, dressed as an old desktop window with a folder tab */
+			/* The "desktop": featured window with a row of file icons under it */
+			.desk {
+				--ink: #14261a;
+				--paper: #f7f6f1;
+				width: min(100%, 980px);
+			}
+
+			.desk-window {
+				position: relative;
+				z-index: 10;
+				display: block;
+				width: 100%;
+				color: var(--ink);
+				text-decoration: none;
+				background: var(--paper);
+				border: 2px solid var(--ink);
+				border-radius: 0 6px 6px 6px;
+				box-shadow: 10px 10px 0 rgba(12, 28, 16, 0.45);
+				font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+				transform-origin: 50% 100%;
+				transition: box-shadow 0.2s ease, translate 0.2s ease;
+			}
+
+			:global(html.hero-intro) .desk-window {
+				/* Parked below the screen until the script takes over. */
+				transform: translateY(110vh);
+				will-change: transform;
+			}
+
+			.desk-window:hover,
+			.desk-window:focus-visible {
+				translate: -3px -3px;
+				box-shadow: 14px 14px 0 rgba(12, 28, 16, 0.45);
+			}
+
+			.desk-window:focus-visible {
+				outline: 3px solid white;
+				outline-offset: 4px;
+			}
+
+			.desk-tab {
+				position: absolute;
+				left: -2px;
+				bottom: 100%;
+				padding: 0.3rem 1.1rem 0.2rem 0.8rem;
+				background: var(--paper);
+				border: 2px solid var(--ink);
+				border-bottom: none;
+				border-radius: 6px 14px 0 0;
+				font-size: 0.7rem;
+				font-weight: 700;
+				letter-spacing: 0.14em;
+				text-transform: uppercase;
+				line-height: 1.4;
+			}
+
+			.desk-titlebar {
+				display: flex;
+				align-items: center;
+				gap: 0.6rem;
+				height: 2.1rem;
+				padding: 0 0.6rem;
+				border-bottom: 2px solid var(--ink);
+			}
+
+			.desk-box {
+				flex: none;
+				width: 0.8rem;
+				height: 0.8rem;
+				border: 2px solid var(--ink);
+				background: var(--paper);
+			}
+
+			.desk-stripes {
+				flex: 1;
+				height: 0.8rem;
+				background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, transparent 1px 4px);
+			}
+
+			.desk-name {
+				flex: none;
+				font-size: 0.78rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				white-space: nowrap;
+			}
+
+			.desk-body {
+				display: grid;
+				grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+			}
+
+			.desk-body.no-art {
+				grid-template-columns: 1fr;
+			}
+
+			.desk-art {
+				border-right: 2px solid var(--ink);
+				background: var(--gray-lighter);
+				/* aspect-ratio comes from the image itself (inline), so the art is never cropped */
+				overflow: hidden;
+			}
+
+			.desk-art :global(img) {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.desk-copy {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				gap: 0.6rem;
+				padding: clamp(1rem, 2.2vw, 1.6rem);
+				min-width: 0;
+			}
+
+			.desk-kicker {
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				color: var(--green);
+			}
+
+			.desk-title {
+				margin: 0;
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: clamp(1.4rem, 2.6vw, 2rem);
+				line-height: 1.1;
+				letter-spacing: -0.02em;
+				color: var(--ink);
+			}
+
+			.desk-desc {
+				margin: 0;
+				font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 0.98rem;
+				line-height: 1.5;
+				color: #3c4a40;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 3;
+				line-clamp: 3;
+				overflow: hidden;
+			}
+
+			.desk-open {
+				align-self: flex-start;
+				margin-top: 0.35rem;
+				padding: 0.4rem 0.9rem;
+				border: 2px solid var(--ink);
+				border-radius: 6px;
+				background: var(--paper);
+				box-shadow: 3px 3px 0 var(--ink);
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.04em;
+				transition: background 0.15s ease, color 0.15s ease;
+			}
+
+			.desk-window:hover .desk-open,
+			.desk-window:focus-visible .desk-open {
+				background: var(--ink);
+				color: var(--paper);
+			}
+
+			.desk-status {
+				display: flex;
+				justify-content: space-between;
+				gap: 1rem;
+				padding: 0.3rem 0.7rem;
+				border-top: 2px solid var(--ink);
+				font-size: 0.7rem;
+				letter-spacing: 0.04em;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+
+			.desk-status span:last-child {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			/* Other recent posts, as files sitting on the desktop */
+			.desk-files {
+				position: relative;
+				z-index: 10;
+				display: flex;
+				justify-content: center;
+				gap: clamp(0.5rem, 3vw, 2.5rem);
+				list-style: none;
+				margin: 1.75rem 0 0;
+				padding: 0;
+			}
+
+			.desk-files li {
+				flex: 0 1 9.5rem;
+				min-width: 0;
+			}
+
+			:global(html.hero-intro) .desk-files li {
+				/* Hidden until the script brings them in after the window. */
+				opacity: 0;
+				will-change: transform, opacity;
+			}
+
+			.desk-file {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.45rem;
+				color: white;
+				text-decoration: none;
+			}
+
+			.desk-file-icon {
+				width: 2.75rem;
+				height: auto;
+				overflow: visible;
+				filter: drop-shadow(3px 3px 0 rgba(12, 28, 16, 0.45));
+				transition: translate 0.15s ease, filter 0.15s ease;
+			}
+
+			.desk-file:hover .desk-file-icon,
+			.desk-file:focus-visible .desk-file-icon {
+				translate: -2px -2px;
+				filter: drop-shadow(5px 5px 0 rgba(12, 28, 16, 0.45));
+			}
+
+			.desk-file-name {
+				padding: 0.1rem 0.4rem;
+				border-radius: 4px;
+				font-family: 'Google Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 0.78rem;
+				font-weight: 600;
+				line-height: 1.3;
+				text-align: center;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				line-clamp: 2;
+				overflow: hidden;
+			}
+
+			/* Selected-icon look */
+			.desk-file:hover .desk-file-name,
+			.desk-file:focus-visible .desk-file-name {
+				background: var(--ink);
+				color: var(--paper);
+			}
+
+			.desk-file:focus-visible {
+				outline: 2px solid white;
+				outline-offset: 4px;
+				border-radius: 4px;
+			}
+
+			@media (max-height: 600px) {
+				.desk-files {
+					display: none;
+				}
+			}
+
+			@media (max-width: 820px) {
+				.hero-stage {
+					padding: 5.5rem 1rem 2rem;
+				}
+
+				.desk-window {
+					box-shadow: 6px 6px 0 rgba(12, 28, 16, 0.45);
+				}
+
+				.desk-body {
+					grid-template-columns: 1fr;
+				}
+
+				.desk-art {
+					border-right: none;
+					border-bottom: 2px solid var(--ink);
+					max-height: 30svh;
+					width: 100%;
+				}
+
+				.desk-desc {
+					font-size: 0.92rem;
+				}
+			}
+
+			@media (max-width: 820px) {
+				.desk-files {
+					margin-top: 1.25rem;
+				}
+
+				/* Three across on a phone */
+				.desk-files li:nth-child(n + 4) {
+					display: none;
+				}
+
+				.desk-file-name {
+					font-size: 0.72rem;
+					padding: 0.1rem 0.2rem;
+				}
+			}
+
+			@media (max-height: 720px) and (max-width: 820px) {
+				.desk-files {
+					display: none;
+				}
+			}
+
+			@media (max-height: 620px) and (max-width: 820px) {
+				.desk-art {
+					display: none;
+				}
+			}
+
+			/* The script re-seats the scroll position itself when the intro ends. */
+			:global(html),
+			:global(body) {
+				overflow-anchor: none;
 			}
 
 			.section-header {
@@ -106,6 +484,44 @@ const structuredData = [
 
 			.featured-posts {
 				margin-bottom: 2rem;
+			}
+
+			.playlist {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+				gap: 2rem 3rem;
+				align-items: center;
+				margin: 3.5rem 0;
+			}
+
+			.playlist-kicker {
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: var(--green);
+			}
+
+			.playlist h2 {
+				margin: 0.4rem 0 1rem;
+			}
+
+			.playlist-copy a {
+				font-weight: 600;
+			}
+
+			.playlist iframe {
+				display: block;
+				width: 100%;
+				height: 352px;
+				border: 0;
+				border-radius: 12px;
+			}
+
+			@media (max-width: 820px) {
+				.playlist {
+					grid-template-columns: 1fr;
+				}
 			}
 
 			.about-section {
@@ -134,13 +550,86 @@ const structuredData = [
 	<body>
 		<Header transparent={true} />
 
-		<section class="hero">
-			<div data-us-project="iIayA4bIeBzePlqd5Bab" style="width: 100%; height: 100vh; background-color: #4f7040;"></div>
-			<img src={heroLogo.src} alt={SITE_TITLE} class="hero-logo" />
-			<LogoMarquee />
+		<section class="hero" data-hero>
+			<div class="hero-stage" data-hero-stage>
+				<div class="hero-scene" data-us-project="iIayA4bIeBzePlqd5Bab"></div>
+				<div class="hero-logo-wrap" aria-hidden="true">
+					<img
+						src={heroLogo.src}
+						alt=""
+						width={heroLogo.width}
+						height={heroLogo.height}
+						class="hero-logo"
+						data-hero-logo
+					/>
+				</div>
+				{featured && (
+					<div class="desk">
+						<a class="desk-window" href={`/blog/${featured.id}`} data-hero-window>
+							<span class="desk-tab">Featured</span>
+							<div class="desk-titlebar" aria-hidden="true">
+								<span class="desk-box"></span>
+								<span class="desk-stripes"></span>
+								<span class="desk-name">{featured.data.projectName ?? 'Latest post'}</span>
+								<span class="desk-stripes"></span>
+							</div>
+							<div class:list={['desk-body', { 'no-art': !featured.data.heroImage }]}>
+								{featured.data.heroImage && (
+									<div
+										class="desk-art"
+										style={`aspect-ratio: ${featured.data.heroImage.width} / ${featured.data.heroImage.height}`}
+									>
+										<Image src={featured.data.heroImage} alt="" width={1200} loading="eager" />
+									</div>
+								)}
+								<div class="desk-copy">
+									<span class="desk-kicker">
+										{featured.data.projectName ?? 'Latest post'} · <FormattedDate date={featured.data.pubDate} />
+									</span>
+									<h2 class="desk-title">{featured.data.title}</h2>
+									<p class="desk-desc">{featured.data.description}</p>
+									<span class="desk-open">Open →</span>
+								</div>
+							</div>
+							<div class="desk-status" aria-hidden="true">
+								<span>1 item</span>
+								<span>Sigil HD / Music / {featured.id}</span>
+							</div>
+						</a>
+						{recentPosts.length > 0 && (
+							<ul class="desk-files" aria-label="More recent posts">
+								{recentPosts.map((post) => (
+									<li data-hero-file>
+										<a class="desk-file" href={`/blog/${post.id}`}>
+											<svg class="desk-file-icon" viewBox="0 0 44 54" aria-hidden="true">
+												<path
+													d="M2 2h27l13 13v37H2z"
+													fill="var(--paper)"
+													stroke="var(--ink)"
+													stroke-width="2"
+													stroke-linejoin="round"
+												/>
+												<path d="M29 2v13h13" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round" />
+												<path d="M17.5 40V27l10-2.5V37" fill="none" stroke="var(--ink)" stroke-width="2" />
+												<path d="M17.5 27l10-2.5" fill="none" stroke="var(--ink)" stroke-width="4" />
+												<circle cx="14.8" cy="40" r="3" fill="var(--ink)" />
+												<circle cx="24.8" cy="37" r="3" fill="var(--ink)" />
+											</svg>
+											<span class="desk-file-name">{post.data.title}</span>
+										</a>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+				)}
+			</div>
 		</section>
 
 		<main>
+			<UpcomingAlbums />
+			<ReleaseCalendar />
+
 			<section>
 				<div class="section-header">
 					<h2>Music News & Reviews</h2>
@@ -161,18 +650,168 @@ const structuredData = [
 				</div>
 			</section>
 
+			{
+				playlistPost && playlistId && (
+					<section class="playlist">
+						<div class="playlist-copy">
+							<span class="playlist-kicker">Latest playlist</span>
+							<h2>{playlistPost.data.title}</h2>
+							<a href={`/blog/${playlistPost.id}`}>Read the post →</a>
+						</div>
+						<iframe
+							title={`Spotify playlist: ${playlistPost.data.title}`}
+							src={`https://open.spotify.com/embed/playlist/${playlistId}?utm_source=generator&theme=0`}
+							loading="lazy"
+							allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+						/>
+					</section>
+				)
+			}
+
 			<section class="about-section">
 				<h2>About Me</h2>
 				<p>
-					I'm {SITE_AUTHOR}, a software developer with a passion for clean design and great music.
-					This site is where I share my thoughts on albums, artists, and the creative process.
+					I'm {SITE_AUTHOR}, and this site is where I share my thoughts on albums, artists, and the new
+					music that comes out each week.
 				</p>
 				<p>
-					When I'm not coding, you'll find me digging through record stores or discovering new sounds.
+					When I'm not writing, you'll find me digging through record stores or discovering new sounds.
 				</p>
 			</section>
 		</main>
 		<Footer />
+
+		<script>
+			// Scroll intro for the hero. While it runs, the hero is a tall section with a pinned stage,
+			// and the furthest point scrolled so far drives everything: the big logo shrinks into the nav
+			// logo's spot, the featured window rises into place, then the file icons pop in under it.
+			// It only ever plays forward. Once it has finished and scrolling pauses, the hero collapses
+			// back to a single ordinary screen with everything in its final place.
+			const root = document.documentElement;
+			const hero = document.querySelector<HTMLElement>('[data-hero]');
+			const stage = document.querySelector<HTMLElement>('[data-hero-stage]');
+			const logo = document.querySelector<HTMLImageElement>('[data-hero-logo]');
+			const navLogo = document.querySelector<HTMLImageElement>('header .logo img');
+			const win = document.querySelector<HTMLElement>('[data-hero-window]');
+			const files = [...document.querySelectorAll<HTMLElement>('[data-hero-file]')];
+
+			if (root.classList.contains('hero-intro') && hero && stage && logo && navLogo) {
+				// Timeline, as portions of the pinned scroll distance.
+				const LOGO_END = 0.7; // logo has landed in the nav
+				const WINDOW_START = 0.08;
+				const WINDOW_END = 0.78; // window has settled
+				const FILES_START = 0.5; // first file starts to appear
+				const FILES_STAGGER = 0.04; // delay between files
+				const FILES_SPAN = 0.28; // how long each file takes
+				const END = 0.9; // everything is in place; the rest is a short hold
+				const IDLE_MS = 160; // pause in scrolling before the hero collapses
+
+				const clamp = (n: number) => Math.min(1, Math.max(0, n));
+				const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+				const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+				let peak = 0; // furthest progress reached, 0 to 1
+				let docked = false;
+				let complete = false;
+				let dx = 0;
+				let dy = 0;
+				let scale = 1;
+				let rise = 0;
+				let ticking = false;
+				let idleTimer: ReturnType<typeof setTimeout> | undefined;
+
+				const pinDistance = () => hero.offsetHeight - stage.offsetHeight;
+
+				const measure = () => {
+					// Where the big logo sits at rest, and where the nav logo is. The stage is pinned to
+					// the top-left of the viewport, so stage coordinates match viewport coordinates.
+					const target = navLogo.getBoundingClientRect();
+					const width = logo.offsetWidth || 1;
+					dx = target.left - logo.offsetLeft;
+					dy = target.top - logo.offsetTop;
+					scale = target.width / width;
+					// How far below its resting spot the window starts: just past the bottom edge.
+					rise = win ? stage.offsetHeight - win.offsetTop + 60 : 0;
+				};
+
+				const render = () => {
+					ticking = false;
+					const distance = pinDistance();
+					const p = distance > 0 ? clamp(-hero.getBoundingClientRect().top / distance) : 1;
+					peak = Math.max(peak, p);
+
+					if (!docked) {
+						const t = easeInOut(clamp(peak / LOGO_END));
+						logo.style.transform = `translate(${dx * t}px, ${dy * t}px) scale(${1 + (scale - 1) * t})`;
+						if (t >= 1) {
+							// Landed: hand over to the real nav logo.
+							docked = true;
+							root.classList.add('logo-docked');
+						}
+					}
+
+					if (win) {
+						const t = easeOut(clamp((peak - WINDOW_START) / (WINDOW_END - WINDOW_START)));
+						win.style.transform = `translateY(${rise * (1 - t)}px) rotate(${5 * (1 - t)}deg)`;
+					}
+
+					files.forEach((file, i) => {
+						const t = easeOut(clamp((peak - FILES_START - i * FILES_STAGGER) / FILES_SPAN));
+						file.style.opacity = String(t);
+						file.style.transform = `translateY(${28 * (1 - t)}px) scale(${0.85 + 0.15 * t})`;
+					});
+
+					if (!complete && peak >= END) {
+						complete = true;
+						waitForIdle();
+					}
+				};
+
+				// The intro is over: drop the tall pinned section for a normal one-screen hero. The page
+				// gets shorter by the pin distance, so move the scroll position by however much of that
+				// distance had been scrolled. What is on screen does not change.
+				const settle = () => {
+					const scrolledIntoHero = Math.max(0, window.scrollY - hero.offsetTop);
+					const shift = Math.min(pinDistance(), scrolledIntoHero);
+
+					window.removeEventListener('scroll', onScroll);
+					window.removeEventListener('resize', refresh);
+					window.removeEventListener('load', refresh);
+
+					root.classList.remove('hero-intro', 'logo-docked');
+					logo.style.transform = '';
+					if (win) win.style.transform = '';
+					files.forEach((file) => {
+						file.style.opacity = '';
+						file.style.transform = '';
+					});
+
+					window.scrollTo({ top: window.scrollY - shift, behavior: 'instant' });
+				};
+
+				const waitForIdle = () => {
+					clearTimeout(idleTimer);
+					idleTimer = setTimeout(settle, IDLE_MS);
+				};
+
+				const onScroll = () => {
+					if (complete) waitForIdle();
+					if (ticking) return;
+					ticking = true;
+					requestAnimationFrame(render);
+				};
+
+				const refresh = () => {
+					measure();
+					render();
+				};
+
+				refresh();
+				window.addEventListener('scroll', onScroll, { passive: true });
+				window.addEventListener('resize', refresh);
+				window.addEventListener('load', refresh);
+			}
+		</script>
 
 		<script is:inline>!function(){var u=window.UnicornStudio;if(u&&u.init){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){u.init()})}else{u.init()}}else{window.UnicornStudio={isInitialized:!1};var i=document.createElement("script");i.src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.11/dist/unicornStudio.umd.js",i.onload=function(){if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",function(){UnicornStudio.init()})}else{UnicornStudio.init()}},(document.head||document.body).appendChild(i)}}();</script>
 	</body>

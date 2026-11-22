@@ -1,0 +1,227 @@
+---
+// "Upcoming albums": the approved and favorited picks from the latest published week of the
+// Sigil NMF Crate. The data file is written by scripts/publish-crate.mjs.
+// The heading keeps itself current in the browser: before release day it reads "Upcoming albums",
+// from release day it reads "Out now", and two weeks after release the block hides itself.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import upcoming from '../data/upcoming.json';
+
+const covers = import.meta.glob<ImageMetadata>('/src/assets/upcoming/*.{jpg,jpeg,png,webp}', {
+	eager: true,
+	import: 'default',
+});
+
+const { friday, albums } = upcoming;
+const [y, m, d] = friday.split('-').map(Number);
+const dateLabel = new Date(y, m - 1, d).toLocaleDateString('en-US', {
+	weekday: 'long',
+	month: 'long',
+	day: 'numeric',
+});
+---
+
+{
+	albums.length > 0 && (
+		<section class="upcoming" data-upcoming data-friday={friday} data-date-label={dateLabel}>
+			<div class="upcoming-header">
+				<h2 data-upcoming-title>Upcoming albums</h2>
+				<p data-upcoming-sub>Out {dateLabel}</p>
+			</div>
+			<ul class="upcoming-grid">
+				{albums.map((album) => {
+					const cover = album.cover ? covers[`/src/assets/upcoming/${album.cover}`] : undefined;
+					const meta = [album.genre, album.type].filter(Boolean).join(' · ');
+					const Tag = album.listen ? 'a' : 'div';
+					const linkProps = album.listen ? { href: album.listen, target: '_blank', rel: 'noopener' } : {};
+					return (
+						<li>
+							<Tag class="upcoming-album" {...linkProps}>
+								<div class="upcoming-sleeve">
+									{cover ? (
+										<Image src={cover} alt={`${album.title} by ${album.artist}`} width={300} height={300} />
+									) : (
+										<div class="upcoming-poster" aria-hidden="true">
+											<strong>{album.artist}</strong>
+											<span>{album.title}</span>
+										</div>
+									)}
+									{album.favorite && <span class="upcoming-fav">★ Favorite</span>}
+								</div>
+								<span class="upcoming-artist">{album.artist}</span>
+								<span class="upcoming-title">{album.title}</span>
+								{meta && <span class="upcoming-meta">{meta}</span>}
+							</Tag>
+						</li>
+					);
+				})}
+			</ul>
+		</section>
+	)
+}
+
+<style>
+	.upcoming {
+		margin-bottom: 3.5rem;
+	}
+
+	.upcoming[hidden] {
+		display: none;
+	}
+
+	.upcoming-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		flex-wrap: wrap;
+		gap: 0.5rem 1rem;
+		margin-bottom: 1.5rem;
+		padding-bottom: 1rem;
+		border-bottom: 2px solid var(--green);
+	}
+
+	.upcoming-header h2 {
+		margin: 0;
+	}
+
+	.upcoming-header p {
+		margin: 0;
+		font-weight: 600;
+		color: var(--gray);
+	}
+
+	.upcoming-grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+		gap: 1.5rem 1.25rem;
+	}
+
+	.upcoming-album {
+		display: flex;
+		flex-direction: column;
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.upcoming-sleeve {
+		position: relative;
+		aspect-ratio: 1;
+		margin-bottom: 0.7rem;
+		border: 2px solid var(--green);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--gray-lighter);
+		transition: translate 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	a.upcoming-album:hover .upcoming-sleeve,
+	a.upcoming-album:focus-visible .upcoming-sleeve {
+		translate: -3px -3px;
+		box-shadow: 6px 6px 0 var(--green);
+	}
+
+	.upcoming-sleeve :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Stand-in sleeve for albums the crate has no cover for */
+	.upcoming-poster {
+		width: 100%;
+		height: 100%;
+		padding: 0.9rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		gap: 0.3rem;
+		background: #417039;
+		color: #f6f5ef;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		overflow: hidden;
+	}
+
+	.upcoming-poster strong {
+		font-size: 1.25rem;
+		line-height: 1;
+		letter-spacing: -0.03em;
+		overflow-wrap: anywhere;
+	}
+
+	.upcoming-poster span {
+		font-size: 0.8rem;
+		line-height: 1.2;
+		opacity: 0.85;
+		overflow-wrap: anywhere;
+	}
+
+	.upcoming-fav {
+		position: absolute;
+		top: 0.5rem;
+		left: 0.5rem;
+		padding: 0.15rem 0.5rem;
+		border-radius: 999px;
+		background: var(--cream);
+		color: var(--green-dark);
+		font-size: 0.7rem;
+		font-weight: 700;
+	}
+
+	.upcoming-artist {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+	}
+
+	.upcoming-title {
+		font-size: 0.95rem;
+		line-height: 1.3;
+		color: var(--gray);
+	}
+
+	.upcoming-meta {
+		margin-top: 0.3rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--green);
+	}
+
+	@media (max-width: 480px) {
+		.upcoming-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>
+
+<script>
+	// Keep the heading honest without a rebuild.
+	const DAY = 86400000;
+	const HIDE_AFTER_DAYS = 14;
+
+	document.querySelectorAll<HTMLElement>('[data-upcoming]').forEach((block) => {
+		const [y, m, d] = (block.dataset.friday ?? '').split('-').map(Number);
+		if (!y) return;
+		const release = new Date(y, m - 1, d);
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		const daysSince = Math.round((today.getTime() - release.getTime()) / DAY);
+
+		if (daysSince >= HIDE_AFTER_DAYS) {
+			block.hidden = true;
+			return;
+		}
+		if (daysSince >= 0) {
+			const title = block.querySelector('[data-upcoming-title]');
+			const sub = block.querySelector('[data-upcoming-sub]');
+			if (title) title.textContent = 'Out now';
+			if (sub) sub.textContent = block.dataset.dateLabel ?? '';
+		}
+	});
+</script>

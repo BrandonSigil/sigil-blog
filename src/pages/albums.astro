@@ -1,0 +1,242 @@
+---
+// Every album recommended in a New Music Friday post, pulled from the posts themselves.
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+import { getAlbumPicks } from '../lib/albums';
+
+const picks = await getAlbumPicks();
+const description = `All ${picks.length} albums we've recommended on New Music Friday, each linked to its write-up.`;
+const year = (date: Date) => date.getFullYear();
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Album index | ${SITE_TITLE}`} description={description} />
+		<style>
+			.page-header {
+				margin-bottom: 2rem;
+				padding-bottom: 1.5rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.page-header h1 {
+				margin: 0;
+			}
+
+			.tools {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 0.75rem 1rem;
+				margin-top: 1.5rem;
+			}
+
+			.tools input {
+				flex: 1 1 16rem;
+				max-width: 26rem;
+				padding: 0.55rem 0.8rem;
+				border: 2px solid var(--green);
+				border-radius: 6px;
+				background: var(--white);
+				color: var(--black);
+				font: inherit;
+				font-size: 1rem;
+			}
+
+			.tools input:focus-visible {
+				outline: 2px solid var(--green-dark);
+				outline-offset: 2px;
+			}
+
+			.sort {
+				display: flex;
+				border: 2px solid var(--green);
+				border-radius: 6px;
+				overflow: hidden;
+			}
+
+			.sort button {
+				padding: 0.4rem 0.9rem;
+				border: none;
+				background: transparent;
+				color: var(--green);
+				font: inherit;
+				font-size: 0.9rem;
+				font-weight: 600;
+				cursor: pointer;
+			}
+
+			.sort button[aria-pressed='true'] {
+				background: var(--green);
+				color: var(--cream);
+			}
+
+			.count {
+				margin: 0;
+				font-size: 0.9rem;
+				color: var(--gray);
+			}
+
+			.album-grid {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+				gap: 2rem 1.25rem;
+			}
+
+			.album-grid li[hidden] {
+				display: none;
+			}
+
+			.album {
+				display: flex;
+				flex-direction: column;
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.album-sleeve {
+				aspect-ratio: 1;
+				margin-bottom: 0.7rem;
+				border: 2px solid var(--green);
+				border-radius: 8px;
+				overflow: hidden;
+				background: var(--gray-lighter);
+				transition: translate 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.album:hover .album-sleeve,
+			.album:focus-visible .album-sleeve {
+				translate: -3px -3px;
+				box-shadow: 6px 6px 0 var(--green);
+			}
+
+			.album-sleeve :global(img) {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.album-artist {
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-weight: 700;
+				line-height: 1.2;
+				letter-spacing: -0.01em;
+			}
+
+			.album-title {
+				font-size: 0.95rem;
+				line-height: 1.3;
+				color: var(--gray);
+			}
+
+			.album-year {
+				margin-top: 0.3rem;
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--green);
+			}
+
+			.empty {
+				color: var(--gray);
+			}
+
+			@media (max-width: 480px) {
+				.album-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>Album index</h1>
+				<div class="tools">
+					<input type="search" placeholder="Artist or album" aria-label="Filter albums" data-album-filter />
+					<div class="sort" role="group" aria-label="Sort albums">
+						<button type="button" data-sort="date" aria-pressed="true">Newest</button>
+						<button type="button" data-sort="artist" aria-pressed="false">Artist A–Z</button>
+					</div>
+					<p class="count" data-album-count aria-live="polite">{picks.length} albums</p>
+				</div>
+			</header>
+
+			<ul class="album-grid" data-album-grid>
+				{picks.map((pick, i) => (
+					<li
+						data-order={i}
+						data-artist={pick.artist.replace(/^the\s+/i, '').toLowerCase()}
+						data-text={`${pick.artist} ${pick.album}`.toLowerCase()}
+					>
+						<a class="album" href={pick.href}>
+							<div class="album-sleeve">
+								{pick.cover && (
+									<Image
+										src={pick.cover}
+										alt={`${pick.album} by ${pick.artist}`}
+										width={340}
+										height={340}
+										loading={i < 12 ? 'eager' : 'lazy'}
+									/>
+								)}
+							</div>
+							<span class="album-artist">{pick.artist}</span>
+							<span class="album-title">{pick.album}</span>
+							<span class="album-year">{year(pick.pubDate)}</span>
+						</a>
+					</li>
+				))}
+			</ul>
+			<p class="empty" data-album-empty hidden>No matches.</p>
+		</main>
+		<Footer />
+
+		<script>
+			const grid = document.querySelector<HTMLElement>('[data-album-grid]');
+			const filter = document.querySelector<HTMLInputElement>('[data-album-filter]');
+			const count = document.querySelector<HTMLElement>('[data-album-count]');
+			const empty = document.querySelector<HTMLElement>('[data-album-empty]');
+			const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+
+			if (grid) {
+				const items = [...grid.children] as HTMLElement[];
+
+				filter?.addEventListener('input', () => {
+					const words = filter.value.toLowerCase().split(/\s+/).filter(Boolean);
+					let shown = 0;
+					for (const item of items) {
+						const match = words.every((w) => (item.dataset.text ?? '').includes(w));
+						item.hidden = !match;
+						if (match) shown++;
+					}
+					if (count) count.textContent = `${shown} ${shown === 1 ? 'album' : 'albums'}`;
+					if (empty) empty.hidden = shown > 0;
+				});
+
+				buttons.forEach((button) => {
+					button.addEventListener('click', () => {
+						const byArtist = button.dataset.sort === 'artist';
+						const sorted = [...items].sort((a, b) =>
+							byArtist
+								? (a.dataset.artist ?? '').localeCompare(b.dataset.artist ?? '')
+								: Number(a.dataset.order) - Number(b.dataset.order),
+						);
+						grid.append(...sorted);
+						buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+					});
+				});
+			}
+		</script>
+	</body>
+</html>

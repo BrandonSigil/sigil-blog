@@ -13,9 +13,11 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			// Drafts show in `yarn dev` only; they are left out of the built site.
+			draft: z.boolean().default(false),
 			// Music blog fields
 			projectName: z.string().optional(), // Album name or general project name
-			artist: z.string().optional(), // Artist or agency
+			artist: z.string().optional(), // Artist
 			genre: z.string().optional(),
 			releaseDate: z.string().optional(),
 			rating: z.number().min(1).max(10).optional(),

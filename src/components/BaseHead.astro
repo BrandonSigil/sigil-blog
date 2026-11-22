@@ -5,7 +5,7 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import { getImage } from 'astro:assets';
 import FallbackImage from '../assets/about/sigil-couple.jpg';
-import { SITE_STUDIO, SITE_TITLE } from '../consts';
+import { SITE_TITLE } from '../consts';
 
 interface Props {
 	title: string;
@@ -51,9 +51,13 @@ const jsonLd = structuredData
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<!-- Fonts: Google Sans for body text (Space Grotesk for headings is declared in global.css) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap"
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -66,7 +70,7 @@ const jsonLd = structuredData
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />
 <meta property="og:url" content={Astro.url} />
-<meta property="og:site_name" content={SITE_STUDIO} />
+<meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={ogDescription} />
 <meta property="og:image" content={new URL(ogImage.src, Astro.url)} />

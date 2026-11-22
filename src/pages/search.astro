@@ -1,0 +1,213 @@
+---
+// Site search. The index (posts and album picks) is built into the page, so there is no
+// server or third-party service behind it.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+import { getAlbumPicks } from '../lib/albums';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+const picks = await getAlbumPicks();
+
+// t: title, s: small line above it, d: description, u: link
+const index = [
+	...posts.map((post) => ({
+		t: post.data.artist ? `${post.data.artist} - ${post.data.title}` : post.data.title,
+		s: post.data.projectName ?? 'Post',
+		d: post.data.description,
+		u: `/blog/${post.id}`,
+	})),
+	...picks.map((pick) => ({
+		t: `${pick.artist} - ${pick.album}`,
+		s: `Album pick · ${pick.postTitle}`,
+		d: pick.tastingNotes ?? '',
+		u: pick.href,
+	})),
+];
+// "<" is escaped so nothing in a title can close the script tag.
+const indexJson = JSON.stringify(index).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Search | ${SITE_TITLE}`} description="Search every post and album pick on Sigil." />
+		<style>
+			.page-header {
+				margin-bottom: 2rem;
+			}
+
+			.page-header h1 {
+				margin: 0 0 1rem;
+			}
+
+			.search-input {
+				width: 100%;
+				max-width: 40rem;
+				padding: 0.8rem 1rem;
+				border: 2px solid var(--green);
+				border-radius: 6px;
+				background: var(--white);
+				color: var(--black);
+				font: inherit;
+				font-size: 1.15rem;
+			}
+
+			.search-input:focus-visible {
+				outline: 2px solid var(--green-dark);
+				outline-offset: 2px;
+			}
+
+			.status:empty {
+				display: none;
+			}
+
+			.status {
+				margin: 1rem 0 0;
+				font-size: 0.9rem;
+				color: var(--gray);
+			}
+
+			.results {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				max-width: 46rem;
+			}
+
+			.results :global(li) {
+				border-bottom: 2px solid var(--green);
+			}
+
+			.results :global(li:first-child) {
+				border-top: 2px solid var(--green);
+			}
+
+			.results :global(a) {
+				display: block;
+				padding: 1.1rem 0;
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.results :global(.result-kind) {
+				display: block;
+				font-size: 0.75rem;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--gray);
+			}
+
+			.results :global(.result-title) {
+				display: block;
+				margin: 0.15rem 0;
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 1.35rem;
+				font-weight: 700;
+				line-height: 1.2;
+				letter-spacing: -0.02em;
+				color: var(--black);
+			}
+
+			.results :global(a:hover .result-title) {
+				color: var(--green-dark);
+			}
+
+			.results :global(.result-desc) {
+				display: block;
+				font-size: 0.95rem;
+				color: var(--gray);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>Search</h1>
+				<input
+					class="search-input"
+					type="search"
+					placeholder="Artist, album, post"
+					aria-label="Search the site"
+					autocomplete="off"
+					data-search-input
+				/>
+				<p class="status" data-search-status aria-live="polite"></p>
+			</header>
+			<ul class="results" data-search-results></ul>
+		</main>
+		<Footer />
+
+		<script type="application/json" id="search-index" set:html={indexJson} />
+		<script>
+			interface Entry {
+				t: string;
+				s: string;
+				d: string;
+				u: string;
+			}
+
+			const MAX_RESULTS = 40;
+			const entries: Entry[] = JSON.parse(document.getElementById('search-index')?.textContent ?? '[]');
+			const haystacks = entries.map((e) => `${e.t} ${e.s} ${e.d}`.toLowerCase());
+			const input = document.querySelector<HTMLInputElement>('[data-search-input]');
+			const status = document.querySelector<HTMLElement>('[data-search-status]');
+			const list = document.querySelector<HTMLElement>('[data-search-results]');
+
+			const span = (className: string, text: string) => {
+				const el = document.createElement('span');
+				el.className = className;
+				el.textContent = text;
+				return el;
+			};
+
+			const run = () => {
+				if (!input || !list || !status) return;
+				const words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+				list.replaceChildren();
+				if (words.length === 0) {
+					status.textContent = '';
+					return;
+				}
+
+				// Every word has to appear somewhere in the entry. Title matches come first.
+				const matches = entries
+					.map((entry, i) => ({ entry, i }))
+					.filter(({ i }) => words.every((w) => haystacks[i].includes(w)))
+					.sort((a, b) => {
+						const inTitle = (e: Entry) => (words.every((w) => e.t.toLowerCase().includes(w)) ? 0 : 1);
+						return inTitle(a.entry) - inTitle(b.entry) || a.i - b.i;
+					});
+
+				status.textContent =
+					matches.length === 0
+						? 'Nothing found.'
+						: `${matches.length} ${matches.length === 1 ? 'result' : 'results'}` +
+							(matches.length > MAX_RESULTS ? `, showing the first ${MAX_RESULTS}` : '');
+
+				for (const { entry } of matches.slice(0, MAX_RESULTS)) {
+					const link = document.createElement('a');
+					link.href = entry.u;
+					link.append(span('result-kind', entry.s), span('result-title', entry.t));
+					if (entry.d) link.append(span('result-desc', entry.d));
+					const item = document.createElement('li');
+					item.append(link);
+					list.append(item);
+				}
+			};
+
+			if (input) {
+				// Support links like /search?q=geese
+				const q = new URLSearchParams(location.search).get('q');
+				if (q) input.value = q;
+				input.addEventListener('input', run);
+				run();
+				input.focus();
+			}
+		</script>
+	</body>
+</html>

@@ -3,6 +3,11 @@ import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 import logoSrc from '../assets/sigil-main.svg';
 import  SpeedInsights  from "@vercel/speed-insights/astro"
+import { getLiveSections } from '../lib/posts';
+
+// One link per section that has posts, then About. A section with nothing published yet
+// stays out of the nav until its first post goes live.
+const sections = await getLiveSections();
 
 interface Props {
 	transparent?: boolean;
@@ -15,11 +20,17 @@ const { transparent = false } = Astro.props;
 	<SpeedInsights />
 	<nav>
 		<a href="/" class="logo">
-			<img src={logoSrc.src} alt={SITE_TITLE} />
+			<img src={logoSrc.src} alt={SITE_TITLE} width={logoSrc.width} height={logoSrc.height} />
 		</a>
 		<div class="nav-links">
+			{sections.map((section) => <HeaderLink href={`/${section.slug}`}>{section.label}</HeaderLink>)}
 			<HeaderLink href="/about">About</HeaderLink>
-			<HeaderLink href="/blog">Music</HeaderLink>
+			<a href="/search" class="nav-search" aria-label="Search">
+				<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true">
+					<circle cx="11" cy="11" r="6.5" />
+					<path d="M16 16l4.5 4.5" />
+				</svg>
+			</a>
 		</div>
 	</nav>
 </header>
@@ -84,7 +95,22 @@ const { transparent = false } = Astro.props;
 
 	.nav-links {
 		display: flex;
+		align-items: center;
 		gap: 0.5rem;
+	}
+
+	.nav-search {
+		display: grid;
+		place-items: center;
+		width: 2.25rem;
+		height: 2.25rem;
+		border-radius: 4px;
+		color: var(--link-color, var(--green));
+		transition: color 0.4s ease, background 0.4s ease;
+	}
+
+	.nav-search:hover {
+		background: var(--link-hover-bg, var(--gray-lighter));
 	}
 
 	@media (max-width: 768px) {
@@ -97,7 +123,24 @@ const { transparent = false } = Astro.props;
 		}
 
 		.nav-links {
-			gap: 0.25rem;
+			gap: 0;
+		}
+
+		.nav-links :global(a) {
+			padding: 0.4rem 0.5rem;
+			font-size: 0.92rem;
+		}
+
+		.nav-search {
+			width: 2rem;
+			height: 2rem;
+		}
+	}
+
+	/* Narrow phones: the links need the room, and search is also in the footer */
+	@media (max-width: 420px) {
+		.nav-search {
+			display: none;
 		}
 	}
 </style>
@@ -110,7 +153,8 @@ const { transparent = false } = Astro.props;
 		document.body.classList.add('has-hero');
 
 		const update = () => {
-			header.classList.toggle('transparent', hero.getBoundingClientRect().bottom > 0);
+			// Stay see-through only while the hero is still behind the nav bar itself.
+			header.classList.toggle('transparent', hero.getBoundingClientRect().bottom > header.offsetHeight / 2);
 		};
 
 		window.addEventListener('scroll', update, { passive: true });

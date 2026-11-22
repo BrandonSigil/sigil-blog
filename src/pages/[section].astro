@@ -1,0 +1,93 @@
+---
+// /new-music and /lists: every post in that section, newest first.
+// (/reviews has its own page with a cover grid.)
+import BaseHead from '../components/BaseHead.astro';
+import FeaturedCard from '../components/FeaturedCard.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import UpcomingAlbums from '../components/UpcomingAlbums.astro';
+import { SITE_TITLE } from '../consts';
+import { getPosts, postsInSection } from '../lib/posts';
+import { SECTIONS, type Section } from '../lib/sections';
+
+export function getStaticPaths() {
+	return SECTIONS.filter((s) => s.slug !== 'reviews').map((section) => ({
+		params: { section: section.slug },
+		props: { section },
+	}));
+}
+
+interface Props {
+	section: Section;
+}
+
+const { section } = Astro.props;
+const posts = postsInSection(await getPosts(), section);
+const isNewMusic = section.slug === 'new-music';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${section.title} | ${SITE_TITLE}`} description={section.blurb} />
+		<style>
+			.page-header {
+				margin-bottom: 2.5rem;
+			}
+
+			.page-header h1 {
+				margin: 0 0 0.5rem;
+			}
+
+			.page-header a {
+				font-size: 1.1rem;
+				font-weight: 600;
+			}
+
+			.archive-title {
+				margin-bottom: 1.5rem;
+			}
+
+			.empty {
+				padding: 2.5rem;
+				border: 2px dashed var(--green);
+				border-radius: 8px;
+				color: var(--gray);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>{section.title}</h1>
+				{isNewMusic && <a href="/albums">Album index →</a>}
+			</header>
+
+			{isNewMusic && <UpcomingAlbums />}
+			{isNewMusic && posts.length > 0 && <h2 class="archive-title">Every Friday so far</h2>}
+
+			{
+				posts.length > 0 ? (
+					<div class="posts-list">
+						{posts.map((post, index) => (
+							<FeaturedCard
+								title={post.data.title}
+								subtitle={post.data.artist}
+								description={post.data.description}
+								href={`/blog/${post.id}`}
+								image={post.data.heroImage}
+								imageAlt={post.data.title}
+								reverse={index % 2 === 1}
+								badge={post.data.draft ? 'Draft' : undefined}
+							/>
+						))}
+					</div>
+				) : (
+					<p class="empty">Nothing here yet.</p>
+				)
+			}
+		</main>
+		<Footer />
+	</body>
+</html>
