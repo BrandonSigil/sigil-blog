@@ -11,13 +11,15 @@ interface Props {
 	imageAlt?: string;
 	tags?: string[];
 	reverse?: boolean;
+	badge?: string; // small label above the title, e.g. "Draft"
 }
 
-const { title, subtitle, description, href, image, imageAlt = '', tags = [], reverse = false } = Astro.props;
+const { title, subtitle, description, href, image, imageAlt = '', tags = [], reverse = false, badge } = Astro.props;
 ---
 
 <a href={href} class:list={['featured-card', { reverse }]}>
 	<div class="featured-card-content">
+		{badge && <span class="featured-card-badge">{badge}</span>}
 		{subtitle && <span class="featured-card-subtitle">{subtitle}</span>}
 		<h3 class="featured-card-title">{title}</h3>
 		{description && <p class="featured-card-description">{description}</p>}
@@ -93,6 +95,19 @@ const { title, subtitle, description, href, image, imageAlt = '', tags = [], rev
 		flex-direction: column;
 		justify-content: center;
 		padding: 1rem 0;
+	}
+
+	.featured-card-badge {
+		align-self: flex-start;
+		margin-bottom: 0.6rem;
+		padding: 0.15rem 0.6rem;
+		border: 2px dashed var(--green);
+		border-radius: 999px;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--green);
 	}
 
 	.featured-card-subtitle {

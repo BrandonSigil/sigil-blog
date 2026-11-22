@@ -1,0 +1,241 @@
+---
+// Album reviews as a grid of covers with scores. Sortable by date or rating.
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+import { getPosts, postsInSection } from '../lib/posts';
+import { SECTIONS } from '../lib/sections';
+
+const section = SECTIONS.find((s) => s.slug === 'reviews')!;
+const reviews = postsInSection(await getPosts(), section);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${section.title} | ${SITE_TITLE}`} description={section.blurb} />
+		<style>
+			.page-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				flex-wrap: wrap;
+				gap: 1rem 2rem;
+				margin-bottom: 2rem;
+				padding-bottom: 1.5rem;
+				border-bottom: 2px solid var(--green);
+			}
+
+			.page-header h1 {
+				margin: 0;
+			}
+
+			.sort {
+				display: flex;
+				border: 2px solid var(--green);
+				border-radius: 6px;
+				overflow: hidden;
+			}
+
+			.sort button {
+				padding: 0.4rem 0.9rem;
+				border: none;
+				background: transparent;
+				color: var(--green);
+				font: inherit;
+				font-size: 0.9rem;
+				font-weight: 600;
+				cursor: pointer;
+			}
+
+			.sort button[aria-pressed='true'] {
+				background: var(--green);
+				color: var(--cream);
+			}
+
+			.review-grid {
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+				gap: 2.5rem 2rem;
+			}
+
+			.review {
+				display: flex;
+				flex-direction: column;
+				color: inherit;
+				text-decoration: none;
+			}
+
+			.review-art {
+				position: relative;
+				aspect-ratio: 2 / 1;
+				margin-bottom: 1rem;
+				border: 2px solid var(--green);
+				border-radius: 8px;
+				overflow: hidden;
+				background: var(--gray-lighter);
+				transition: translate 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.review:hover .review-art,
+			.review:focus-visible .review-art {
+				translate: -3px -3px;
+				box-shadow: 6px 6px 0 var(--green);
+			}
+
+			.review-art :global(img) {
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.review-score {
+				position: absolute;
+				right: 0.6rem;
+				bottom: 0.6rem;
+				min-width: 3rem;
+				padding: 0.3rem 0.5rem;
+				border: 2px solid var(--green);
+				border-radius: 6px;
+				background: var(--cream);
+				color: var(--green);
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 1.6rem;
+				font-weight: 700;
+				line-height: 1;
+				letter-spacing: -0.03em;
+				text-align: center;
+			}
+
+			.review-score small {
+				font-size: 0.8rem;
+				letter-spacing: 0;
+				opacity: 0.7;
+			}
+
+			.review-draft {
+				position: absolute;
+				top: 0.6rem;
+				left: 0.6rem;
+				padding: 0.15rem 0.6rem;
+				border-radius: 999px;
+				background: var(--cream);
+				color: var(--green);
+				font-size: 0.72rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			.review-artist {
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.06em;
+				text-transform: uppercase;
+				color: var(--gray);
+			}
+
+			.review-title {
+				margin: 0.15rem 0 0.3rem;
+				font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 1.6rem;
+				font-weight: 700;
+				line-height: 1.15;
+				letter-spacing: -0.02em;
+				color: var(--black);
+				transition: color 0.2s ease;
+			}
+
+			.review:hover .review-title {
+				color: var(--green-dark);
+			}
+
+			.review-meta {
+				font-size: 0.9rem;
+				color: var(--gray);
+			}
+
+			.empty {
+				padding: 2.5rem;
+				border: 2px dashed var(--green);
+				border-radius: 8px;
+				color: var(--gray);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				<h1>{section.title}</h1>
+				{
+					reviews.length > 1 && (
+						<div class="sort" role="group" aria-label="Sort reviews">
+							<button type="button" data-sort="date" aria-pressed="true">Newest</button>
+							<button type="button" data-sort="rating" aria-pressed="false">Top rated</button>
+						</div>
+					)
+				}
+			</header>
+
+			{
+				reviews.length > 0 ? (
+					<ul class="review-grid" data-review-grid>
+						{reviews.map((post) => (
+							<li data-date={post.data.pubDate.valueOf()} data-rating={post.data.rating ?? 0}>
+								<a class="review" href={`/blog/${post.id}`}>
+									<div class="review-art">
+										{post.data.heroImage && (
+											<Image src={post.data.heroImage} alt="" width={720} height={360} />
+										)}
+										{post.data.draft && <span class="review-draft">Draft</span>}
+										{post.data.rating && (
+											<span class="review-score" aria-label={`Rated ${post.data.rating} out of 10`}>
+												{post.data.rating}
+												<small>/10</small>
+											</span>
+										)}
+									</div>
+									{post.data.artist && <span class="review-artist">{post.data.artist}</span>}
+									<h2 class="review-title">{post.data.title}</h2>
+									<span class="review-meta">
+										{[post.data.genre, post.data.releaseDate].filter(Boolean).join(' · ')}
+									</span>
+								</a>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p class="empty">Nothing here yet.</p>
+				)
+			}
+		</main>
+		<Footer />
+
+		<script>
+			const grid = document.querySelector<HTMLElement>('[data-review-grid]');
+			const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+
+			buttons.forEach((button) => {
+				button.addEventListener('click', () => {
+					if (!grid) return;
+					const key = button.dataset.sort === 'rating' ? 'rating' : 'date';
+					const items = [...grid.children] as HTMLElement[];
+					// Highest first; ties keep the newest on top.
+					items.sort(
+						(a, b) =>
+							Number(b.dataset[key]) - Number(a.dataset[key]) || Number(b.dataset.date) - Number(a.dataset.date),
+					);
+					grid.append(...items);
+					buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
+				});
+			});
+		</script>
+	</body>
+</html>

@@ -1,20 +1,42 @@
 ---
-import { type CollectionEntry, getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { getPosts, postsInSection, type Post } from '../../lib/posts';
+import { sectionForProject } from '../../lib/sections';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.id },
-		props: post,
-	}));
+	// getStaticPaths runs on its own, so the helper has to live inside it.
+	const link = (post: Post) => ({
+		title: post.data.artist ? `${post.data.artist} - ${post.data.title}` : post.data.title,
+		href: `/blog/${post.id}`,
+		pubDate: post.data.pubDate,
+	});
+	const posts = await getPosts();
+	return posts.map((post) => {
+		// Neighbours come from the post's own section, so a review leads to reviews and so on.
+		const section = sectionForProject(post.data.projectName);
+		const siblings = section ? postsInSection(posts, section) : posts;
+		const i = siblings.indexOf(post);
+		const newer = siblings[i - 1];
+		const older = siblings[i + 1];
+		const more = siblings.filter((p) => p !== post && p !== newer && p !== older).slice(0, 3);
+		return {
+			params: { slug: post.id },
+			props: {
+				post,
+				section,
+				newer: newer && link(newer),
+				older: older && link(older),
+				more: more.map(link),
+			},
+		};
+	});
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
+const { post, section, newer, older, more } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BlogPost {...post.data}>
+<BlogPost {...post.data} section={section} newer={newer} older={older} more={more}>
 	<Content />
 </BlogPost>

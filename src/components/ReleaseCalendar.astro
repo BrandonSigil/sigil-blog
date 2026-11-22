@@ -1,0 +1,212 @@
+---
+// "Out this month" and "Anticipated": two dated lists built from src/data/releases.json, which
+// scripts/publish-crate.mjs keeps up to date from the Sigil NMF Crate.
+// Every album is rendered into both lists and the script below shows each one where today's date
+// puts it, so an anticipated album moves to "Out this month" on its release day with no rebuild.
+// Albums in the current "Upcoming albums" grid stay out of both lists while that grid is showing.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import releases from '../data/releases.json';
+import upcoming from '../data/upcoming.json';
+
+const covers = import.meta.glob<ImageMetadata>('/src/assets/releases/*.{jpg,jpeg,png,webp}', {
+	eager: true,
+	import: 'default',
+});
+
+const inGrid = new Set(upcoming.albums.map((a) => a.id));
+const albums = releases.albums.map((album) => {
+	const [y, m, d] = album.releaseDate.split('-').map(Number);
+	return {
+		...album,
+		// "Dec 5", or just "Dec" when only the month is known.
+		label: new Date(y, m - 1, d || 1).toLocaleDateString(
+			'en-US',
+			d ? { month: 'short', day: 'numeric' } : { month: 'short' },
+		),
+		image: album.cover ? covers[`/src/assets/releases/${album.cover}`] : undefined,
+		grid: inGrid.has(album.id),
+	};
+});
+
+const lists = [
+	{ key: 'out', title: 'Out this month' },
+	{ key: 'ahead', title: 'Anticipated' },
+];
+---
+
+{
+	albums.length > 0 && (
+		<section class="calendar" data-calendar data-grid-friday={upcoming.friday} hidden>
+			{lists.map((list) => (
+				<div class="calendar-col" data-calendar-col={list.key} hidden>
+					<h2>{list.title}</h2>
+					<ol class="calendar-list">
+						{albums.map((album) => {
+							const Tag = album.listen ? 'a' : 'div';
+							const linkProps = album.listen ? { href: album.listen, target: '_blank', rel: 'noopener' } : {};
+							return (
+								<li data-date={album.releaseDate} data-grid={album.grid ? '' : undefined} hidden>
+									<Tag class="calendar-row" {...linkProps}>
+										<time class="calendar-date" datetime={album.releaseDate}>
+											{album.label}
+										</time>
+										<span class="calendar-thumb" aria-hidden="true">
+											{album.image ? (
+												<Image src={album.image} alt="" width={96} height={96} />
+											) : (
+												album.artist.trim().charAt(0).toUpperCase()
+											)}
+										</span>
+										<span class="calendar-text">
+											<strong>{album.artist}</strong>
+											<span>{album.title}</span>
+										</span>
+									</Tag>
+								</li>
+							);
+						})}
+					</ol>
+				</div>
+			))}
+		</section>
+	)
+}
+
+<style>
+	.calendar {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+		gap: 2.5rem 3rem;
+		margin-bottom: 3.5rem;
+	}
+
+	.calendar[hidden],
+	.calendar-col[hidden],
+	.calendar-list li[hidden] {
+		display: none;
+	}
+
+	.calendar-col h2 {
+		margin: 0 0 0.4rem;
+		padding-bottom: 1rem;
+		border-bottom: 2px solid var(--green);
+	}
+
+	.calendar-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.calendar-row {
+		display: grid;
+		grid-template-columns: 3.6rem 44px minmax(0, 1fr);
+		align-items: center;
+		gap: 0.9rem;
+		padding: 0.6rem 0;
+		border-bottom: 1px solid color-mix(in srgb, var(--green) 30%, transparent);
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.calendar-date {
+		font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+		font-size: 0.8rem;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		color: var(--green);
+	}
+
+	.calendar-thumb {
+		width: 44px;
+		height: 44px;
+		border: 2px solid var(--green);
+		border-radius: 6px;
+		overflow: hidden;
+		/* With no cover, a green tile with the artist's initial, like the stand-in sleeves in the grid. */
+		display: grid;
+		place-items: center;
+		background: #417039;
+		color: #f6f5ef;
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		font-size: 1.1rem;
+		line-height: 1;
+	}
+
+	.calendar-thumb :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.calendar-text {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		line-height: 1.3;
+	}
+
+	.calendar-text strong {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		letter-spacing: -0.01em;
+		transition: color 0.2s ease;
+	}
+
+	.calendar-text span {
+		font-size: 0.92rem;
+		color: var(--gray);
+	}
+
+	.calendar-text strong,
+	.calendar-text span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	a.calendar-row:hover strong {
+		color: var(--green-dark);
+	}
+</style>
+
+<script>
+	// Decide, from today's date, which list each album belongs in.
+	const DAY = 86400000;
+	const GRID_DAYS = 14; // how long the "Upcoming albums" grid shows a week (see UpcomingAlbums.astro)
+	const calendar = document.querySelector<HTMLElement>('[data-calendar]');
+
+	if (calendar) {
+		const now = new Date();
+		const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+		const [gy, gm, gd] = (calendar.dataset.gridFriday ?? '').split('-').map(Number);
+		const gridShowing = gy ? (today.getTime() - new Date(gy, gm - 1, gd).getTime()) / DAY < GRID_DAYS : false;
+
+		const bucketFor = (item: HTMLElement) => {
+			if (gridShowing && item.dataset.grid !== undefined) return null;
+			const [y, m, d] = (item.dataset.date ?? '').split('-').map(Number);
+			if (!y || !m) return null;
+			// With only a month known, the album counts as still to come until that month is over.
+			const release = d ? new Date(y, m - 1, d) : new Date(y, m, 0);
+			if (release > today) return 'ahead';
+			return d && y === today.getFullYear() && m === today.getMonth() + 1 ? 'out' : null;
+		};
+
+		let any = false;
+		calendar.querySelectorAll<HTMLElement>('[data-calendar-col]').forEach((col) => {
+			let shown = 0;
+			col.querySelectorAll<HTMLElement>('li').forEach((item) => {
+				const show = bucketFor(item) === col.dataset.calendarCol;
+				item.hidden = !show;
+				if (show) shown++;
+			});
+			col.hidden = shown === 0;
+			if (shown) any = true;
+		});
+		calendar.hidden = !any;
+	}
+</script>
