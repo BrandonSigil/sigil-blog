@@ -16,6 +16,7 @@ export interface AlbumPick {
 	artist: string;
 	album: string;
 	cover?: ImageMetadata;
+	coverPath?: string; // the cover's file path from the project root, for build-time image work
 	tastingNotes?: string;
 	href: string; // link to the album's spot in its post
 	postTitle: string;
@@ -57,6 +58,7 @@ export async function getAlbumPicks(): Promise<AlbumPick[]> {
 				artist: text.slice(0, split).trim(),
 				album: text.slice(split + 3).trim(),
 				cover: covers[coverKey],
+				coverPath: covers[coverKey] ? coverKey.slice(1) : undefined,
 				tastingNotes: tasting?.[1].trim(),
 				href: `/blog/${post.id}${slug ? `#${slug}` : ''}`,
 				postTitle: post.data.title,

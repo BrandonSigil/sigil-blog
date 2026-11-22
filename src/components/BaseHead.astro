@@ -15,6 +15,9 @@ interface Props {
 	publishedTime?: Date;
 	modifiedTime?: Date;
 	structuredData?: Record<string, unknown> | Record<string, unknown>[];
+	/** A ready-made social image path (e.g. a generated PNG); overrides `image`. */
+	ogImageUrl?: string;
+	noindex?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -27,9 +30,11 @@ const {
 	publishedTime,
 	modifiedTime,
 	structuredData,
+	ogImageUrl,
+	noindex = false,
 } = Astro.props;
 
-const ogImage = await getImage({ src: image, width: 1200, height: 630, format: 'jpeg' });
+const ogImageSrc = ogImageUrl ?? (await getImage({ src: image, width: 1200, height: 630, format: 'jpeg' })).src;
 const ogDescription = description.length > 155 ? description.slice(0, 152) + '...' : description;
 const jsonLd = structuredData
 	? Array.isArray(structuredData)
@@ -59,6 +64,8 @@ const jsonLd = structuredData
 	href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&display=swap"
 />
 
+{noindex && <meta name="robots" content="noindex" />}
+
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
@@ -73,7 +80,7 @@ const jsonLd = structuredData
 <meta property="og:site_name" content={SITE_TITLE} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={ogDescription} />
-<meta property="og:image" content={new URL(ogImage.src, Astro.url)} />
+<meta property="og:image" content={new URL(ogImageSrc, Astro.url)} />
 {type === 'article' && publishedTime && (
 	<meta property="article:published_time" content={publishedTime.toISOString()} />
 )}
@@ -86,7 +93,7 @@ const jsonLd = structuredData
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={ogDescription} />
-<meta property="twitter:image" content={new URL(ogImage.src, Astro.url)} />
+<meta property="twitter:image" content={new URL(ogImageSrc, Astro.url)} />
 
 {jsonLd &&
 	jsonLd.map((data) => (
