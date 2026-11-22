@@ -1,206 +1,345 @@
 ---
-// Every album recommended in a New Music Friday post, pulled from the posts themselves.
 import { Image } from 'astro:assets';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
-import { getAlbumPicks } from '../lib/albums';
 import HubNav from '../components/HubNav.astro';
+import NewsletterStrip from '../components/NewsletterStrip.astro';
+import { SITE_TITLE } from '../consts';
+import { formatShortDate, getAllCratePicks } from '../lib/music';
 
-const picks = await getAlbumPicks();
-const description = `All ${picks.length} albums we've recommended on New Music Friday, each linked to its write-up.`;
-const year = (date: Date) => date.getFullYear();
+const picks = await getAllCratePicks();
+const years = [...new Set(picks.map((p) => p.year))].sort((a, b) => b - a);
+const uniqueArtists = new Set(picks.map((p) => p.artist.toLowerCase())).size;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Album index | ${SITE_TITLE}`} description={description} />
+		<BaseHead
+			title={`Album Index | ${SITE_TITLE}`}
+			description={`Every album picked on Sigil’s New Music Friday — ${picks.length} records across ${uniqueArtists} artists, searchable by artist, album, and tasting note.`}
+		/>
 		<style>
-			.page-header {
+			.index-hero {
+				padding-bottom: 1.85rem;
 				margin-bottom: 2rem;
-				padding-bottom: 1.75rem;
 				border-bottom: 1px solid var(--green);
 			}
 
-			.page-header h1 {
-				margin: 0.35rem 0 0;
+			.index-hero-top {
+				display: flex;
+				justify-content: space-between;
+				align-items: flex-end;
+				gap: 1.5rem;
+				flex-wrap: wrap;
 			}
 
-			.tools {
+			.index-hero h1 {
+				margin: 0.35rem 0 0.65rem;
+			}
+
+			.index-hero p {
+				margin: 0;
+				font-family: var(--font-sans);
+				font-size: 20px;
+				letter-spacing: -0.01em;
+				line-height: 1.5;
+				color: var(--ink-soft);
+				max-width: 54ch;
+			}
+
+			/* Random spotlight drawer — origin-aware scale(0.97) entrance */
+			@keyframes spotlightIn {
+				from {
+					opacity: 0;
+					transform: translateY(-4px) scale(0.97);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0) scale(1);
+				}
+			}
+
+			.random-spotlight {
+				display: none;
+				margin-bottom: 2rem;
+				padding: 1.35rem 1.5rem;
+				background: var(--green-tint);
+				border-radius: var(--radius-md);
+				box-shadow: 0 0 0 1px var(--green), 0 8px 24px -8px rgba(36, 74, 35, 0.16);
+				align-items: center;
+				justify-content: space-between;
+				gap: 1.25rem;
+				flex-wrap: wrap;
+				transform-origin: top center;
+			}
+
+			.random-spotlight.is-open {
+				display: flex;
+				animation: spotlightIn 220ms var(--ease-out) both;
+			}
+
+			.random-copy {
+				display: flex;
+				flex-direction: column;
+				gap: 0.25rem;
+				max-width: 64ch;
+			}
+
+			.random-copy strong {
+				font-family: var(--font-display);
+				font-size: 1.35rem;
+				color: var(--ink);
+			}
+
+			.random-copy em {
+				font-family: var(--font-sans);
+				font-size: 16px;
+				color: var(--ink-soft);
+			}
+
+			.random-actions {
+				display: flex;
+				gap: 0.6rem;
+				flex-wrap: wrap;
+			}
+
+			/* Toolbar */
+			.index-toolbar {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.5rem;
+			}
+
+			.year-pills {
 				display: flex;
 				flex-wrap: wrap;
-				align-items: center;
-				gap: 0.75rem 1rem;
-				margin-top: 1.35rem;
+				gap: 0.45rem;
 			}
 
-			.tools input {
-				flex: 1 1 16rem;
-				max-width: 24rem;
-				padding: 0.52rem 0.85rem;
+			.year-pill {
 				border: 1px solid var(--rule-strong);
-				border-radius: 6px;
+				background: transparent;
+				color: var(--ink);
+				font-family: var(--font-mono);
+				font-size: 12px;
+				font-weight: 500;
+				padding: 0.42rem 0.88rem;
+				border-radius: 5px;
+				cursor: pointer;
+				font-variant-numeric: tabular-nums;
+				transition:
+					transform var(--dur-press) var(--ease-out),
+					color var(--dur-fast) var(--ease-out),
+					border-color var(--dur-fast) var(--ease-out),
+					background-color var(--dur-fast) var(--ease-out);
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.year-pill:hover {
+					border-color: var(--green);
+					color: var(--green-dark);
+				}
+			}
+
+			.year-pill:active {
+				transform: scale(0.96);
+			}
+
+			.year-pill.is-active {
+				background: var(--green);
+				border-color: var(--green);
+				color: var(--white);
+			}
+
+			.index-search {
+				min-width: 240px;
+				flex: 0 1 320px;
+			}
+
+			.index-search input {
+				width: 100%;
+				padding: 0.52rem 0.9rem;
+				border: 1px solid var(--rule-strong);
+				border-radius: 999px;
 				background: var(--paper-card);
 				color: var(--ink);
 				font-family: var(--font-sans);
-				font-size: 15px;
-				box-shadow: var(--shadow-card);
+				font-size: 0.9rem;
+				outline: none;
 				transition:
 					border-color var(--dur-fast) var(--ease-out),
 					box-shadow var(--dur-fast) var(--ease-out);
 			}
 
-			.tools input:focus-visible {
-				outline: none;
+			.index-search input:focus {
 				border-color: var(--green);
-				box-shadow: 0 0 0 3px rgba(62, 125, 60, 0.16);
+				box-shadow: 0 0 0 3px rgba(62, 125, 60, 0.14);
 			}
 
-			.sort {
-				display: inline-flex;
-				gap: 0.2rem;
-				padding: 0.2rem;
-				border: 1px solid var(--rule-strong);
-				border-radius: 6px;
-				background: var(--paper-card);
-			}
-
-			.sort button {
-				padding: 0.34rem 0.75rem;
-				border: none;
-				border-radius: 4px;
-				background: transparent;
-				color: var(--ink-soft);
-				font-family: var(--font-mono);
-				font-size: 11.5px;
-				font-weight: 500;
-				cursor: pointer;
-				transition:
-					transform var(--dur-press) var(--ease-out),
-					color var(--dur-fast) var(--ease-out),
-					background-color var(--dur-fast) var(--ease-out);
-			}
-
-			.sort button:active {
-				transform: scale(0.96);
-			}
-
-			.sort button[aria-pressed='true'] {
-				background: var(--green);
-				color: var(--white);
-			}
-
-			.count {
-				margin: 0;
+			.index-count {
 				font-family: var(--font-mono);
 				font-size: 12px;
 				color: var(--gray);
+				margin-bottom: 1.15rem;
 				font-variant-numeric: tabular-nums;
 			}
 
-			.album-grid {
-				list-style: none;
-				margin: 0;
-				padding: 0;
+			/* Album Grid */
+			.index-grid {
 				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-				gap: 1.85rem 1.25rem;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 1.35rem;
 			}
 
-			.album-grid li[hidden] {
-				display: none;
-			}
-
-			.album {
+			.record-card {
+				background: var(--paper-card);
+				border-radius: 7px;
+				box-shadow: var(--shadow-card);
+				overflow: hidden;
 				display: flex;
 				flex-direction: column;
-				color: inherit;
-				text-decoration: none;
-				transition: transform var(--dur-press) var(--ease-out);
-			}
-
-			.album:active {
-				transform: scale(0.985);
-			}
-
-			.album-sleeve {
-				aspect-ratio: 1;
-				margin-bottom: 0.7rem;
-				border-radius: 7px;
-				overflow: hidden;
-				background: var(--gray-lighter);
-				box-shadow: var(--shadow-card);
 				transition:
 					transform var(--dur-base) var(--ease-out),
 					box-shadow var(--dur-base) var(--ease-out);
 			}
 
 			@media (hover: hover) and (pointer: fine) {
-				.album:hover .album-sleeve,
-				.album:focus-visible .album-sleeve {
-					transform: translateY(-2px);
+				.record-card:hover {
 					box-shadow: var(--shadow-card-hover);
 					transition-duration: var(--dur-fast);
 				}
 
-				.album:hover .album-sleeve :global(img) {
+				.record-card:hover .record-cover :global(img) {
 					transform: scale(1.03);
 					transition-duration: var(--dur-fast);
 				}
 			}
 
-			.album-sleeve :global(img) {
-				display: block;
+			.record-card:active {
+				transform: scale(0.985);
+				transition-duration: var(--dur-press);
+			}
+
+			.record-main-link {
+				color: inherit;
+				text-decoration: none;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.record-cover {
+				position: relative;
+				aspect-ratio: 1 / 1;
+				overflow: hidden;
+				background: var(--gray-lighter);
+			}
+
+			.record-cover :global(img) {
 				width: 100%;
 				height: 100%;
 				object-fit: cover;
+				display: block;
 				transition: transform var(--dur-base) var(--ease-out);
 			}
 
-			.album-artist {
+			.record-date-chip {
+				position: absolute;
+				bottom: 0.55rem;
+				left: 0.55rem;
+				background: rgba(36, 74, 35, 0.86);
+				backdrop-filter: blur(4px);
+				color: #f7f6f1;
+				font-family: var(--font-mono);
+				font-size: 0.66rem;
+				padding: 0.2rem 0.48rem;
+				border-radius: 4px;
+			}
+
+			.record-body {
+				padding: 0.9rem 1rem 0.85rem;
+				display: flex;
+				flex-direction: column;
+				flex: 1;
+			}
+
+			.record-artist {
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+				font-weight: 500;
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+				color: var(--green);
+				margin-bottom: 0.2rem;
+			}
+
+			.record-album {
 				font-family: var(--font-display);
-				font-weight: 600;
-				font-size: 1rem;
+				font-size: 1.05rem;
 				line-height: 1.2;
-				letter-spacing: -0.02em;
 				color: var(--ink);
-				transition: color var(--dur-fast) var(--ease-out);
+				margin: 0 0 0.45rem;
 			}
 
-			@media (hover: hover) and (pointer: fine) {
-				.album:hover .album-artist {
-					color: var(--green);
-				}
-			}
-
-			.album-title {
+			.record-note {
+				margin: 0;
+				font-family: var(--font-sans);
+				font-style: italic;
 				font-size: 14px;
-				line-height: 1.35;
+				line-height: 1.48;
+				color: var(--ink-soft);
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+
+			.record-actions {
+				padding: 0.65rem 1rem 0.8rem;
+				border-top: 1px solid var(--rule);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 0.5rem;
+				font-family: var(--font-mono);
+				font-size: 0.7rem;
+			}
+
+			.record-actions a {
 				color: var(--ink-soft);
 			}
 
-			.album-year {
-				margin-top: 0.3rem;
-				font-family: var(--font-mono);
-				font-size: 11px;
-				font-weight: 500;
-				letter-spacing: 0.08em;
-				text-transform: uppercase;
+			.record-actions a:hover {
 				color: var(--green);
-				font-variant-numeric: tabular-nums;
+				text-decoration: underline;
 			}
 
-			.empty {
-				color: var(--gray);
-				font-family: var(--font-mono);
-				font-size: 13px;
+			@media (max-width: 1024px) {
+				.index-grid {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
 			}
 
-			@media (max-width: 480px) {
-				.album-grid {
+			@media (max-width: 720px) {
+				.index-grid {
 					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 0.9rem;
+				}
+
+				.index-search {
+					width: 100%;
+					flex: 1 1 100%;
+				}
+			}
+
+			@media (max-width: 460px) {
+				.index-grid {
+					grid-template-columns: 1fr;
 				}
 			}
 		</style>
@@ -208,85 +347,164 @@ const year = (date: Date) => date.getFullYear();
 	<body>
 		<Header />
 		<main>
-			<header class="page-header">
-				<span class="kicker">Archive Index</span>
-				<h1>Album index</h1>
-				<div class="tools">
-					<input type="search" placeholder="Artist or album" aria-label="Filter albums" data-album-filter />
-					<div class="sort" role="group" aria-label="Sort albums">
-						<button type="button" data-sort="date" aria-pressed="true">Newest</button>
-						<button type="button" data-sort="artist" aria-pressed="false">Artist A–Z</button>
+			<section class="index-hero">
+				<div class="index-hero-top">
+					<div>
+						<span class="kicker">Every Sigil Pick</span>
+						<h1>Album Index</h1>
+						<p>
+							{picks.length} records across {uniqueArtists} artists, indexed from every New Music Friday issue.
+						</p>
 					</div>
-					<p class="count" data-album-count aria-live="polite">{picks.length} albums</p>
+					<button type="button" class="btn" data-spin-random>
+						↻ Pull a random record
+					</button>
 				</div>
 				<HubNav current="/albums" />
-			</header>
+			</section>
 
-			<ul class="album-grid" data-album-grid>
-				{picks.map((pick, i) => (
-					<li
-						data-order={i}
-						data-artist={pick.artist.replace(/^the\s+/i, '').toLowerCase()}
-						data-text={`${pick.artist} ${pick.album}`.toLowerCase()}
-					>
-						<a class="album" href={pick.href}>
-							<div class="album-sleeve">
-								{pick.cover && (
-									<Image
-										src={pick.cover}
-										alt={`${pick.album} by ${pick.artist}`}
-										width={340}
-										height={340}
-										loading={i < 12 ? 'eager' : 'lazy'}
-									/>
-								)}
+			<div class="random-spotlight" data-random-box aria-live="polite">
+				<div class="random-copy">
+					<span class="kicker">Pulled from the Index</span>
+					<strong data-random-title></strong>
+					<em data-random-note></em>
+				</div>
+				<div class="random-actions">
+					<a href="#" class="btn" data-random-read>Read Issue →</a>
+					<a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline" data-random-spotify>
+						Spotify ↗
+					</a>
+				</div>
+			</div>
+
+			<div class="index-toolbar">
+				<div class="year-pills" role="tablist" aria-label="Filter records by year" data-glide-group>
+					<button type="button" class="year-pill is-active" data-year-filter="all">
+						All Years ({picks.length})
+					</button>
+					{years.map((y) => (
+						<button type="button" class="year-pill" data-year-filter={String(y)}>
+							{y} ({picks.filter((p) => p.year === y).length})
+						</button>
+					))}
+				</div>
+
+				<div class="index-search">
+					<label for="index-search-input" class="sr-only">Search album index</label>
+					<input
+						id="index-search-input"
+						type="search"
+						placeholder="Filter by artist, album, or tasting note…"
+						data-index-search
+					/>
+				</div>
+			</div>
+
+			<div class="index-count" data-index-count>Showing {picks.length} records</div>
+
+			<div class="index-grid">
+				{picks.map((pick) => {
+					const pickNum = pick.id.split('-').pop();
+					const reviewHref = `/blog/${pick.postId}#pick-${pickNum}`;
+					return (
+						<article
+							class="record-card"
+							data-record-card
+							data-year={String(pick.year)}
+							data-artist={pick.artist}
+							data-album={pick.album}
+							data-note={pick.tastingNote ?? pick.blurbExcerpt}
+							data-href={reviewHref}
+							data-spotify={pick.spotifyUrl}
+							data-search={`${pick.artist} ${pick.album} ${pick.tastingNote ?? ''} ${pick.blurbExcerpt}`.toLowerCase()}
+						>
+							<a href={reviewHref} class="record-main-link">
+								<div class="record-cover">
+									{pick.image ? (
+										<Image src={pick.image} alt={`${pick.artist} — ${pick.album}`} width={380} height={380} />
+									) : (
+										<div style="width:100%;height:100%;background:var(--gray-lighter);" />
+									)}
+									<span class="record-date-chip">{formatShortDate(pick.date)}</span>
+								</div>
+								<div class="record-body">
+									<span class="record-artist">{pick.artist}</span>
+									<h2 class="record-album">{pick.album}</h2>
+									<p class="record-note">
+										{pick.tastingNote ? `“${pick.tastingNote}”` : pick.blurbExcerpt}
+									</p>
+								</div>
+							</a>
+							<div class="record-actions">
+								<a href={reviewHref}>Read →</a>
+								<div style="display:flex;gap:0.65rem;">
+									<a href={pick.spotifyUrl} target="_blank" rel="noopener noreferrer">Spotify ↗</a>
+									<a href={pick.bandcampUrl} target="_blank" rel="noopener noreferrer">Bandcamp ↗</a>
+								</div>
 							</div>
-							<span class="album-artist">{pick.artist}</span>
-							<span class="album-title">{pick.album}</span>
-							<span class="album-year">{year(pick.pubDate)}</span>
-						</a>
-					</li>
-				))}
-			</ul>
-			<p class="empty" data-album-empty hidden>No matches.</p>
+						</article>
+					);
+				})}
+			</div>
+
+			<section style="margin-top: 4rem;">
+				<NewsletterStrip compact={true} />
+			</section>
 		</main>
 		<Footer />
 
 		<script>
-			const grid = document.querySelector<HTMLElement>('[data-album-grid]');
-			const filter = document.querySelector<HTMLInputElement>('[data-album-filter]');
-			const count = document.querySelector<HTMLElement>('[data-album-count]');
-			const empty = document.querySelector<HTMLElement>('[data-album-empty]');
-			const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-sort]')];
+			const yearButtons = document.querySelectorAll<HTMLButtonElement>('[data-year-filter]');
+			const searchInput = document.querySelector<HTMLInputElement>('[data-index-search]');
+			const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-record-card]'));
+			const countEl = document.querySelector<HTMLElement>('[data-index-count]');
+			const spinBtn = document.querySelector<HTMLButtonElement>('[data-spin-random]');
+			const randomBox = document.querySelector<HTMLElement>('[data-random-box]');
+			const randomTitle = document.querySelector<HTMLElement>('[data-random-title]');
+			const randomNote = document.querySelector<HTMLElement>('[data-random-note]');
+			const randomRead = document.querySelector<HTMLAnchorElement>('[data-random-read]');
+			const randomSpotify = document.querySelector<HTMLAnchorElement>('[data-random-spotify]');
 
-			if (grid) {
-				const items = [...grid.children] as HTMLElement[];
+			let activeYear = 'all';
 
-				filter?.addEventListener('input', () => {
-					const words = filter.value.toLowerCase().split(/\s+/).filter(Boolean);
-					let shown = 0;
-					for (const item of items) {
-						const match = words.every((w) => (item.dataset.text ?? '').includes(w));
-						item.hidden = !match;
-						if (match) shown++;
-					}
-					if (count) count.textContent = `${shown} ${shown === 1 ? 'album' : 'albums'}`;
-					if (empty) empty.hidden = shown > 0;
+			function filterIndex() {
+				const q = (searchInput?.value ?? '').trim().toLowerCase();
+				let shown = 0;
+				cards.forEach((card) => {
+					const matchesYear = activeYear === 'all' || card.dataset.year === activeYear;
+					const matchesQuery = !q || (card.dataset.search ?? '').includes(q);
+					const show = matchesYear && matchesQuery;
+					card.classList.toggle('is-hidden', !show);
+					card.hidden = !show;
+					if (show) shown++;
 				});
-
-				buttons.forEach((button) => {
-					button.addEventListener('click', () => {
-						const byArtist = button.dataset.sort === 'artist';
-						const sorted = [...items].sort((a, b) =>
-							byArtist
-								? (a.dataset.artist ?? '').localeCompare(b.dataset.artist ?? '')
-								: Number(a.dataset.order) - Number(b.dataset.order),
-						);
-						grid.append(...sorted);
-						buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
-					});
-				});
+				if (countEl) {
+					countEl.textContent = `Showing ${shown} ${shown === 1 ? 'record' : 'records'}`;
+				}
 			}
+
+			yearButtons.forEach((btn) => {
+				btn.addEventListener('click', () => {
+					yearButtons.forEach((b) => b.classList.remove('is-active'));
+					btn.classList.add('is-active');
+					activeYear = btn.dataset.yearFilter ?? 'all';
+					filterIndex();
+				});
+			});
+
+			searchInput?.addEventListener('input', filterIndex);
+
+			spinBtn?.addEventListener('click', () => {
+				const visible = cards.filter((c) => !c.classList.contains('is-hidden'));
+				const pool = visible.length > 0 ? visible : cards;
+				if (pool.length === 0) return;
+				const pick = pool[Math.floor(Math.random() * pool.length)];
+				if (randomTitle) randomTitle.textContent = `${pick.dataset.artist} — ${pick.dataset.album}`;
+				if (randomNote) randomNote.textContent = pick.dataset.note ? `“${pick.dataset.note}”` : '';
+				if (randomRead) randomRead.href = pick.dataset.href ?? '/blog';
+				if (randomSpotify) randomSpotify.href = pick.dataset.spotify ?? 'https://open.spotify.com';
+				randomBox?.classList.add('is-open');
+			});
 		</script>
 	</body>
 </html>

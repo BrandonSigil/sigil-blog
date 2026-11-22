@@ -20,7 +20,6 @@ const is = (href: string) => (current === href ? 'page' : undefined);
 		<span class="hub-label">Year</span>
 		<a href="/albums" aria-current={is('/albums')}>All</a>
 		{years.map((y) => <a href={y.href} aria-current={is(y.href)}>{y.year}</a>)}
-		<a href="/crate" aria-current={is('/crate')}>The Crate</a>
 		<a href="/calendar" aria-current={is('/calendar')}>Release Calendar</a>
 	</div>
 	<div class="hub-row" data-glide-group>

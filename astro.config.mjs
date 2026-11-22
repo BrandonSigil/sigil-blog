@@ -11,5 +11,6 @@ export default defineConfig({
 	integrations: [mdx(), sitemap()],
 	redirects: {
 		'/releases': '/calendar',
+		'/crate': '/albums',
 	},
 });

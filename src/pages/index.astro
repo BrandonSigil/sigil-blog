@@ -89,7 +89,7 @@ const structuredData = [
 	<head>
 		<style is:inline>html, body { background-color: #396e3a; }</style>
 		<BaseHead
-			title={`${SITE_TITLE} — Music News, Reviews & Weekly Crates`}
+			title={`${SITE_TITLE} — New Music Friday, Album Reviews & Release Calendar`}
 			description={SITE_DESCRIPTION}
 			structuredData={structuredData}
 		/>
@@ -1016,7 +1016,7 @@ const structuredData = [
 						))}
 
 						<li>
-							<a class="desk-file" href="/crate">
+							<a class="desk-file" href="/albums">
 								<div class="desk-icon-stage" aria-hidden="true">
 									<div class="folder-stack">
 										<div class="folder-back"></div>
@@ -1025,10 +1025,10 @@ const structuredData = [
 												<Image src={img} alt="" width={64} height={64} />
 											</div>
 										))}
-										<div class="folder-front">CRATE</div>
+										<div class="folder-front">INDEX</div>
 									</div>
 								</div>
-								<span class="desk-file-name">The Crate ({allCratePicks.length})</span>
+								<span class="desk-file-name">Album Index ({allCratePicks.length})</span>
 							</a>
 						</li>
 
@@ -1050,15 +1050,15 @@ const structuredData = [
 
 		<main>
 			{latestNmf && latestPicks.length > 0 && (
-				<section aria-label="Latest Friday crate picks">
+				<section aria-label="Latest Friday picks">
 					<div class="section-head">
 						<div>
 							<span class="kicker">Spinning now · {formatShortDate(latestNmf.data.pubDate)}</span>
-							<h2>Inside this week’s crate</h2>
+							<h2>This week’s picks</h2>
 						</div>
 						<div class="section-head-actions">
 							{isCrateCarousel && (
-								<div class="carousel-controls" aria-label="Scroll crate picks">
+								<div class="carousel-controls" aria-label="Scroll weekly picks">
 									<button type="button" class="carousel-btn" data-crate-prev aria-label="Previous album" disabled>
 										←
 									</button>
@@ -1067,7 +1067,7 @@ const structuredData = [
 									</button>
 								</div>
 							)}
-							<a href="/crate" class="section-head-link">Dig all {allCratePicks.length} picks →</a>
+							<a href="/albums" class="section-head-link">All {allCratePicks.length} records →</a>
 						</div>
 					</div>
 					<div class:list={['crate-shelf', { 'is-carousel': isCrateCarousel }]} data-crate-track>
@@ -1092,8 +1092,8 @@ const structuredData = [
 			<section aria-label="Recent music posts">
 				<div class="section-head">
 					<div>
-						<span class="kicker">Music Desk</span>
-						<h2>Recent crates & lists</h2>
+						<span class="kicker">Issues</span>
+						<h2>Recent issues & lists</h2>
 					</div>
 					<a href="/blog" class="section-head-link">All {posts.length} issues →</a>
 				</div>
