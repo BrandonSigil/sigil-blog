@@ -1,0 +1,105 @@
+---
+// A grid of album picks for the hub pages, in the same style as the album index.
+import { Image } from 'astro:assets';
+import type { AlbumPick } from '../lib/albums';
+import { MONTHS } from '../lib/hubs';
+
+interface Props {
+	picks: AlbumPick[];
+	/** What the small line under each album shows. */
+	detail?: 'date' | 'genre' | 'none';
+	eager?: number;
+}
+
+const { picks, detail = 'date', eager = 8 } = Astro.props;
+const label = (p: AlbumPick) =>
+	detail === 'date'
+		? `${MONTHS[p.pubDate.getMonth()].slice(0, 3)} ${p.pubDate.getDate()}, ${p.pubDate.getFullYear()}`
+		: detail === 'genre'
+			? (p.genre?.name ?? '')
+			: '';
+---
+
+<ul class="album-grid">
+	{picks.map((pick, i) => (
+		<li>
+			<a class="album" href={pick.href}>
+				<div class="album-sleeve">
+					{pick.cover && (
+						<Image
+							src={pick.cover}
+							alt={`${pick.album} by ${pick.artist}`}
+							width={340}
+							height={340}
+							loading={i < eager ? 'eager' : 'lazy'}
+						/>
+					)}
+				</div>
+				<span class="album-artist">{pick.artist}</span>
+				<span class="album-title">{pick.album}</span>
+				{label(pick) && <span class="album-detail">{label(pick)}</span>}
+			</a>
+		</li>
+	))}
+</ul>
+
+<style>
+	.album-grid {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+		gap: 2rem 1.25rem;
+	}
+	.album {
+		display: flex;
+		flex-direction: column;
+		color: inherit;
+		text-decoration: none;
+	}
+	.album-sleeve {
+		aspect-ratio: 1;
+		margin-bottom: 0.7rem;
+		border: 2px solid var(--green);
+		border-radius: 8px;
+		overflow: hidden;
+		background: var(--gray-lighter);
+		transition: translate 0.2s ease, box-shadow 0.2s ease;
+	}
+	.album:hover .album-sleeve,
+	.album:focus-visible .album-sleeve {
+		translate: -3px -3px;
+		box-shadow: 6px 6px 0 var(--green);
+	}
+	.album-sleeve :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+	.album-artist {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+	}
+	.album-title {
+		font-size: 0.95rem;
+		line-height: 1.3;
+		color: var(--gray);
+	}
+	.album-detail {
+		margin-top: 0.3rem;
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--green);
+	}
+	@media (max-width: 480px) {
+		.album-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+</style>

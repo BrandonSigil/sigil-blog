@@ -1,0 +1,32 @@
+---
+// /albums/<year>: every pick from that year, month by month.
+import AlbumGrid from '../../../components/AlbumGrid.astro';
+import HubPage from '../../../layouts/HubPage.astro';
+import { getAlbumPicks } from '../../../lib/albums';
+import { groupByYear, type YearGroup } from '../../../lib/hubs';
+
+export async function getStaticPaths() {
+	return groupByYear(await getAlbumPicks()).map((y) => ({ params: { year: String(y.year) }, props: { y } }));
+}
+
+const { y } = Astro.props as { y: YearGroup };
+const albums = (n: number) => `${n} album${n === 1 ? '' : 's'}`;
+---
+
+<HubPage
+	title={`${y.year}`}
+	kicker='<a href="/albums">Album index</a>'
+	description={`All ${albums(y.picks.length)} picked on New Music Friday in ${y.year}, month by month.`}
+	count={`${albums(y.picks.length)} picked on New Music Friday`}
+	current={y.href}
+>
+	{y.months.map((m) => (
+		<section class="hub-section">
+			<div class="hub-section-head">
+				<h2><a href={m.href}>{m.name}</a></h2>
+				<span class="hub-muted">{albums(m.picks.length)}</span>
+			</div>
+			<AlbumGrid picks={m.picks} detail="genre" />
+		</section>
+	))}
+</HubPage>

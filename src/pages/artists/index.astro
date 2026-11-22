@@ -1,0 +1,109 @@
+---
+// /artists: every artist picked or reviewed, A–Z. Artists with two or more entries get their own
+// page; the rest link straight to the album in its post.
+import HubPage from '../../layouts/HubPage.astro';
+import { getAlbumPicks } from '../../lib/albums';
+import { groupByArtist, letterOf } from '../../lib/hubs';
+import { getPosts } from '../../lib/posts';
+
+const reviews = (await getPosts()).filter((p) => p.data.projectName === 'Album Review');
+const artists = groupByArtist(await getAlbumPicks(), reviews);
+const letters = [...new Set(artists.map(letterOf))];
+---
+
+<HubPage
+	title="Artists A–Z"
+	kicker='<a href="/albums">Album index</a>'
+	description={`All ${artists.length} artists picked or reviewed on Sigil, A to Z.`}
+	count={`${artists.length} artists`}
+	current="/artists"
+>
+	<nav class="letters" aria-label="Jump to letter">
+		{letters.map((l) => <a href={`#letter-${l}`}>{l}</a>)}
+	</nav>
+
+	{letters.map((l) => (
+		<section class="letter" id={`letter-${l}`}>
+			<h2>{l}</h2>
+			<ul>
+				{artists.filter((a) => letterOf(a) === l).map((a) => (
+					<li>
+						{a.href ? <a class="name" href={a.href}>{a.name}</a> : <span class="name">{a.name}</span>}
+						<span class="works">
+							{a.picks.map((p) => <a href={p.href}>{p.album}</a>)}
+							{a.reviews.map((r) => <a href={`/blog/${r.id}`}>{r.data.title} (review)</a>)}
+						</span>
+					</li>
+				))}
+			</ul>
+		</section>
+	))}
+</HubPage>
+
+<style>
+	.letters {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.35rem;
+		margin-bottom: 2rem;
+	}
+	.letters a {
+		min-width: 2rem;
+		padding: 0.2rem 0.4rem;
+		text-align: center;
+		border: 2px solid var(--green);
+		border-radius: 6px;
+		font-weight: 700;
+		text-decoration: none;
+	}
+	.letters a:hover {
+		background: var(--green);
+		color: var(--cream);
+	}
+	.letter {
+		display: grid;
+		grid-template-columns: 3rem 1fr;
+		gap: 1rem;
+		padding: 1rem 0;
+		border-top: 1px solid var(--gray-light);
+		scroll-margin-top: 5rem;
+	}
+	.letter h2 {
+		margin: 0;
+		font-size: 1.75rem;
+	}
+	.letter ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: 0.6rem;
+	}
+	.letter li {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.25rem 0.75rem;
+	}
+	.name {
+		font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-weight: 700;
+		font-size: 1.05rem;
+		color: var(--black);
+	}
+	a.name {
+		color: var(--green);
+	}
+	.works {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		font-size: 0.95rem;
+	}
+	.works a {
+		color: var(--gray);
+	}
+	.works a:hover {
+		color: var(--green);
+	}
+</style>

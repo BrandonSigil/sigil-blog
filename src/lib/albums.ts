@@ -1,5 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import { render } from 'astro:content';
+import { type Genre, genreFor } from './genres';
 import { getPosts } from './posts';
 
 // Every album recommended in a New Music Friday post, read straight from the post body.
@@ -17,6 +18,7 @@ export interface AlbumPick {
 	album: string;
 	cover?: ImageMetadata;
 	coverPath?: string; // the cover's file path from the project root, for build-time image work
+	genre?: Genre; // from src/data/album-genres.json
 	tastingNotes?: string;
 	href: string; // link to the album's spot in its post
 	postTitle: string;
@@ -54,9 +56,12 @@ export async function getAlbumPicks(): Promise<AlbumPick[]> {
 			const slug = headings.find((h) => h.depth === 2 && h.text.trim() === text)?.slug;
 			const coverKey = '/src/assets/' + src.replace(/^(\.\.\/)+assets\//, '');
 
+			const artist = text.slice(0, split).trim();
+			const album = text.slice(split + 3).trim();
 			picks.push({
-				artist: text.slice(0, split).trim(),
-				album: text.slice(split + 3).trim(),
+				artist,
+				album,
+				genre: genreFor(artist, album),
 				cover: covers[coverKey],
 				coverPath: covers[coverKey] ? coverKey.slice(1) : undefined,
 				tastingNotes: tasting?.[1].trim(),

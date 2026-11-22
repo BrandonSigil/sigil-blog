@@ -6,6 +6,7 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_TITLE } from '../consts';
 import { getAlbumPicks } from '../lib/albums';
+import HubNav from '../components/HubNav.astro';
 
 const picks = await getAlbumPicks();
 const description = `All ${picks.length} albums we've recommended on New Music Friday, each linked to its write-up.`;
@@ -170,6 +171,7 @@ const year = (date: Date) => date.getFullYear();
 					</div>
 					<p class="count" data-album-count aria-live="polite">{picks.length} albums</p>
 				</div>
+				<HubNav current="/albums" />
 			</header>
 
 			<ul class="album-grid" data-album-grid>

@@ -1,0 +1,87 @@
+---
+// Shell for the album hub pages (/albums/<year>, /albums/<year>/<month>, /genres, /artists):
+// the page header, the shared "Browse" links, then the page's own content.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import HubNav from '../components/HubNav.astro';
+import { SITE_TITLE } from '../consts';
+
+interface Props {
+	title: string; // the <h1>
+	kicker?: string; // small label above it
+	description: string;
+	count?: string; // e.g. "12 albums"
+	current?: string; // href for the Browse links
+}
+
+const { title, kicker, description, count, current } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`${title} | ${SITE_TITLE}`} description={description} />
+		<style>
+			.page-header {
+				margin-bottom: 2.5rem;
+				padding-bottom: 1.5rem;
+				border-bottom: 2px solid var(--green);
+			}
+			.kicker {
+				font-size: 0.8rem;
+				font-weight: 700;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: var(--gray);
+			}
+			.kicker a {
+				color: inherit;
+			}
+			.page-header h1 {
+				margin: 0.25rem 0 0;
+			}
+			.count {
+				margin: 0.5rem 0 0;
+				font-size: 0.95rem;
+				color: var(--gray);
+			}
+			:global(.hub-section) {
+				margin-bottom: 3.5rem;
+			}
+			:global(.hub-section-head) {
+				display: flex;
+				justify-content: space-between;
+				align-items: baseline;
+				gap: 1rem;
+				flex-wrap: wrap;
+				margin-bottom: 1.25rem;
+			}
+			:global(.hub-section-head h2) {
+				margin: 0;
+				font-size: clamp(1.5rem, 3.5vw, 2rem);
+			}
+			:global(.hub-section-head a) {
+				font-size: 0.9rem;
+				font-weight: 600;
+			}
+			:global(.hub-muted) {
+				color: var(--gray);
+				font-size: 0.95rem;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<header class="page-header">
+				{kicker && <div class="kicker" set:html={kicker} />}
+				<h1>{title}</h1>
+				{count && <p class="count">{count}</p>}
+				<HubNav current={current} />
+			</header>
+			<slot />
+		</main>
+		<Footer />
+	</body>
+</html>
