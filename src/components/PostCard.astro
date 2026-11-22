@@ -96,7 +96,6 @@ const searchBlob = [
 				<ul class="lead-tracklist" aria-label="Albums in this issue">
 					{albums.slice(0, 4).map((a) => (
 						<li>
-							<span class="tl-num">{String(a.index).padStart(2, '0')}</span>
 							<strong>{a.artist}</strong>
 							<span class="tl-sep">—</span>
 							<span>{a.album}</span>
