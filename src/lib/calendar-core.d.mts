@@ -1,5 +1,5 @@
 // Types for calendar-core.mjs (plain JS so Node scripts can import it too).
-export const LANES: string[];
+export const LANES: string[]; // lane names, from lanes.mjs
 export function looseKey(artist: string, title: string): string;
 export function buildCalendar(input: {
 	wiki?: unknown[];

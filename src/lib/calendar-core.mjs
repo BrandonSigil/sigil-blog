@@ -15,27 +15,21 @@
 //   buzz    how widely it is covered: outlets cited on Wikipedia + outlets that put it in the
 //           crate + twice the headlines naming the artist around its release
 
-export const LANES = ['Indie & folk', 'Rock', 'Soul & funk', 'Hip-hop', 'Jazz & ambient', 'Electronic', 'Pop', 'Country & roots'];
+import { GENRE_WORDS, LANES as LANE_LIST, REISSUES, currentLane } from './lanes.mjs';
 
-const GENRE_WORDS = [
-	['Hip-hop', /hip[- ]?hop|\brap\b|trap|drill|grime/i],
-	['Soul & funk', /r&b|rhythm and blues|soul|funk|gospel/i],
-	['Jazz & ambient', /jazz|ambient|classical|new age|instrumental|score/i],
-	['Electronic', /electronic|house|techno|\bedm\b|dance|idm|drum and bass|dubstep|trance/i],
-	['Country & roots', /country|americana|bluegrass|roots|western/i],
-	['Indie & folk', /indie|folk|singer-songwriter|dream pop|lo-fi|chamber/i],
-	['Rock', /metal|rock|punk|hardcore|grunge|\bemo\b|shoegaze|noise|core\b/i],
-	['Pop', /pop/i],
-];
+export const LANES = LANE_LIST.map((l) => l.name);
 
 // Outlets that mostly cover one kind of music, as a genre hint when Wikipedia has no genre.
 const OUTLET_LANES = [
+	['Worship', /ccm magazine|jesus freak hideout|new release today|worship leader|gospel/i],
 	['Rock', /blabbermouth|lambgoat|kerrang|metal|revolver|loudwire|louder|decibel|classic rock|distorted sound|ghost cult|brave words|theprp|new noise|punknews|dead press/i],
 	['Hip-hop', /hotnewhiphop|\bxxl\b|the source|complex|hiphopdx|allhiphop|rap radar|okayplayer|hip ?hop/i],
 	['Country & roots', /country|americana|whiskey riff|holler|bluegrass|cmt\b|no depression/i],
-	['Electronic', /mixmag|resident advisor|dj mag|dancing astronaut|edm|magnetic mag|xlr8r|attack mag/i],
-	['Jazz & ambient', /jazz|downbeat|jazzwise|a closer listen/i],
-	['Soul & funk', /soultracks|rated r&b|rap-up/i],
+	['Electronic & dance', /mixmag|resident advisor|dj mag|dancing astronaut|edm|magnetic mag|xlr8r|attack mag/i],
+	['Jazz', /jazz|downbeat/i],
+	['Ambient & classical', /a closer listen|gramophone|bachtrack|textura/i],
+	['R&B & neo-soul', /rated r&b|rap-up/i],
+	['Soul & funk', /soultracks/i],
 ];
 const INDIE_OUTLETS = /pitchfork|stereogum|brooklyn ?vegan|line of best fit|under the radar|paste|\bdork\b|\bdiy\b|clash|gorilla vs|exclaim|bandcamp|npr|the fader|consequence|indie is not a genre|no ripcord|uproxx|the quietus|beats per minute|aquarium drunkard|post-trash/i;
 
@@ -77,7 +71,12 @@ export function buildCalendar({ wiki = [], crate = [], press = {}, history }) {
 		const i = k.indexOf(' - ');
 		return i > -1 ? looseKey(k.slice(0, i), k.slice(i + 3)) : k;
 	}));
-	const maxLane = Math.max(1, ...Object.values(history.laneCounts));
+	const laneCounts = {};
+	for (const [lane, n] of Object.entries(history.laneCounts)) {
+		const now = currentLane(lane);
+		if (now) laneCounts[now] = (laneCounts[now] ?? 0) + n;
+	}
+	const maxLane = Math.max(1, ...Object.values(laneCounts));
 
 	// Merge: Wikipedia rows first, then the crate fills in or adds.
 	const byKey = new Map();
@@ -112,9 +111,11 @@ export function buildCalendar({ wiki = [], crate = [], press = {}, history }) {
 		};
 		// The crate knows the exact Friday; Wikipedia sometimes only the month.
 		if (!day(merged.releaseDate) && day(c.releaseDate)) merged.releaseDate = c.releaseDate;
-		if (c.lane && c.lane !== 'Reissues & archives') merged.lane = c.lane;
+		// Crate rows from before the lane split still say "Jazz & ambient" or "Electronic"; the
+		// crate's note on the album picks which new lane they belong in.
+		if (c.lane && c.lane !== REISSUES) merged.lane = currentLane(c.lane, `${c.why ?? ''} ${c.title}`);
 		merged.type = c.type ?? merged.type ?? null;
-		merged.reissue = !!c.reissue || c.lane === 'Reissues & archives';
+		merged.reissue = !!c.reissue || c.lane === REISSUES;
 		merged.crateScore = c.score;
 		merged.why = c.why ?? '';
 		merged.decision = c.decision ?? null;
@@ -154,7 +155,7 @@ export function buildCalendar({ wiki = [], crate = [], press = {}, history }) {
 			if (typeof score !== 'number') {
 				estimated = true;
 				// Estimates stay below the crate's strong scores: the crate actually looked at the record.
-				const laneShare = a.lane ? (history.laneCounts[a.lane] ?? 0) / maxLane : 0.15;
+				const laneShare = a.lane ? (laneCounts[a.lane] ?? 0) / maxLane : 0.15;
 				score = 40 + Math.round(25 * laneShare);
 				if (onSigil) score += 12;
 				if (a.outlets.some((o) => INDIE_OUTLETS.test(o))) score += 5;

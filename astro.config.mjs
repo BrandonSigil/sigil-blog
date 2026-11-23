@@ -12,5 +12,8 @@ export default defineConfig({
 	redirects: {
 		'/releases': '/calendar',
 		'/crate': '/albums',
+		// Genre hubs renamed when the crate's lanes split (2026-11-23).
+		'/genres/jazz-ambient': '/genres/jazz',
+		'/genres/electronic': '/genres/electronic-dance',
 	},
 });

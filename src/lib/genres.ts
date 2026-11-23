@@ -1,23 +1,15 @@
 // The genres the album hubs group picks by. Each pick's genre lives in src/data/album-genres.json.
-// The names match the Sigil NMF Crate's lanes, so scripts/publish-crate.mjs can copy a new pick's
-// lane straight in. The crate has no "Rock" or "Electronic" lane yet; those are set by hand.
+// The names are the Sigil NMF Crate's lanes (src/lib/lanes.mjs), so scripts/publish-crate.mjs can
+// copy a new pick's lane straight in. Old names from before the 2026-11-23 split still resolve.
 import data from '../data/album-genres.json';
+import { LANES, currentLane } from './lanes.mjs';
 
 export interface Genre {
 	name: string;
 	slug: string;
 }
 
-export const GENRES: Genre[] = [
-	{ name: 'Indie & folk', slug: 'indie-folk' },
-	{ name: 'Rock', slug: 'rock' },
-	{ name: 'Soul & funk', slug: 'soul-funk' },
-	{ name: 'Hip-hop', slug: 'hip-hop' },
-	{ name: 'Jazz & ambient', slug: 'jazz-ambient' },
-	{ name: 'Electronic', slug: 'electronic' },
-	{ name: 'Pop', slug: 'pop' },
-	{ name: 'Country & roots', slug: 'country-roots' },
-];
+export const GENRES: Genre[] = LANES;
 
 /** Matching key that ignores case, curly quotes and extra spaces. */
 export function albumKey(artist: string, album: string): string {
@@ -36,6 +28,6 @@ for (const [heading, genre] of Object.entries(data.albums as Record<string, stri
 }
 
 export function genreFor(artist: string, album: string): Genre | undefined {
-	const name = byKey.get(albumKey(artist, album));
+	const name = currentLane(byKey.get(albumKey(artist, album)));
 	return GENRES.find((g) => g.name === name);
 }
