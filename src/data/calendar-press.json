@@ -1,6 +1,70 @@
 {
 	"_note": "Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.",
 	"stories": {
+		"https://consequence.net/2026/11/don-toliver-concert-manchester-evacuated-unknown-substance/": {
+			"date": "2026-11-23",
+			"source": "Consequence",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://pitchfork.com/story/don-toliver-concert-evacuated-after-airborne-substance-released-into-crowd/": {
+			"date": "2026-11-23",
+			"source": "Pitchfork",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://stereogum.com/2518477/premature-evaluation-atlas-sound-thanatos/reviews/premature-evaluation/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Atlas Sound"
+			]
+		},
+		"https://stereogum.com/2519772/don-tolivers-manchester-show-evacuated-after-suspected-tear-gas-incident/news/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://stereogum.com/2520257/fontaines-d-c-dedicate-i-love-you-to-liam-gallagher-after-he-dissed-them-singer-responds/news/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Fontaines D.C."
+			]
+		},
+		"https://stereogum.com/2520293/craig-wedren-anna-waronker-announce-yellowjackets-final-season-soundtrack-hear-feed-someone/music/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Craig Wedren",
+				"Anna Waronker"
+			]
+		},
+		"https://stereogum.com/2520410/slayyyter-charli-xcx-added-as-final-snl-musical-guests-of-2026/news/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Slayyyter"
+			]
+		},
+		"https://www.nme.com/news/music/manchester-co-op-live-arena-evacuated-with-more-than-50-hurt-after-unknown-substance-was-released-at-don-toliver-show-as-police-declare-major-incident-3976684": {
+			"date": "2026-11-23",
+			"source": "NME",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://www.nme.com/news/music/watch-fontaines-d-c-dedicate-i-love-you-to-liam-gallagher-in-manchester-after-he-said-they-dont-have-any-tunes-3976699": {
+			"date": "2026-11-23",
+			"source": "NME",
+			"artists": [
+				"Fontaines D.C."
+			]
+		},
 		"https://www.nme.com/news/music/r-e-m-s-michael-stipe-shares-timeline-for-debut-solo-album-release-and-plans-for-the-future-i-already-have-ideas-about-what-i-want-to-do-next-3976636": {
 			"date": "2026-11-21",
 			"source": "NME",

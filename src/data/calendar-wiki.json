@@ -2785,6 +2785,16 @@
 			]
 		},
 		{
+			"artist": "Impending Doom",
+			"title": "At the Throne of God",
+			"releaseDate": "2026-11-06",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Chaoszine"
+			]
+		},
+		{
 			"artist": "Jack Harlow",
 			"title": "Sweet Action II",
 			"releaseDate": "2026-11-06",
@@ -4954,6 +4964,16 @@
 			]
 		},
 		{
+			"artist": "Craig Wedren and Anna Waronker",
+			"title": "Blood Hive 4",
+			"releaseDate": "2027-01-23",
+			"genre": "",
+			"label": "Lakeshore",
+			"outlets": [
+				"Film Music Reporter"
+			]
+		},
+		{
 			"artist": "Amble",
 			"title": "Love and All Its Wares",
 			"releaseDate": "2027-01-29",
@@ -5281,16 +5301,6 @@
 			"label": "Nettwerk",
 			"outlets": [
 				"The Line of Best Fit"
-			]
-		},
-		{
-			"artist": "Impending Doom",
-			"title": "At the Throne of God",
-			"releaseDate": "2027-02-05",
-			"genre": "",
-			"label": "",
-			"outlets": [
-				"Chaoszine"
 			]
 		},
 		{
