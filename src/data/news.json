@@ -2,6 +2,26 @@
   "_note": "Written by scripts/fetch-news.mjs. Add a one-line \"take\" to any story by hand; it is kept on later runs. Set \"hidden\": true to hide a story that matched the wrong artist (deleting it would let it come back while it is still in its feed); add the artist to \"ignore\" in news-sources.json if it keeps happening.",
   "items": [
     {
+      "url": "https://www.rollingstone.com/music/music-news/courtney-love-tracy-marander-cancer-battle-1235662840/",
+      "title": "Courtney Love Praises Nirvana’s ‘Unsung Hero’ Tracy Marander Amid Cancer Battle",
+      "source": "Rolling Stone",
+      "date": "2026-11-23T20:52:09.000Z",
+      "artists": [
+        "Nirvana"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://www.nme.com/news/music/live-music-to-be-banned-from-rooftop-of-the-beatles-saville-row-london-fan-experience-3976748",
+      "title": "Live music to be banned from rooftop of The Beatles’ Saville Row London fan experience",
+      "source": "NME",
+      "date": "2026-11-23T14:43:57.000Z",
+      "artists": [
+        "The Beatles"
+      ],
+      "take": ""
+    },
+    {
       "url": "https://www.rollingstone.com/music/music-news/rosalia-praises-taylor-swift-master-songwriter-1235661869/",
       "title": "Rosalía Calls Taylor Swift a ‘Master Songwriter,’ Reveals Her Favorite Swift Track",
       "source": "Rolling Stone",
