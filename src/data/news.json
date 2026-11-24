@@ -2,6 +2,16 @@
   "_note": "Written by scripts/fetch-news.mjs. Add a one-line \"take\" to any story by hand; it is kept on later runs. Set \"hidden\": true to hide a story that matched the wrong artist (deleting it would let it come back while it is still in its feed); add the artist to \"ignore\" in news-sources.json if it keeps happening.",
   "items": [
     {
+      "url": "https://www.rollingstone.com/music/music-news/pearl-jam-seattle-airport-ice-arrests-1235663883/",
+      "title": "Pearl Jam Rage Against ‘Unconscionable’ ICE Arrests at Seattle Airport",
+      "source": "Rolling Stone",
+      "date": "2026-11-24T22:38:06.000Z",
+      "artists": [
+        "Pearl Jam"
+      ],
+      "take": ""
+    },
+    {
       "url": "https://www.rollingstone.com/music/music-news/courtney-love-tracy-marander-cancer-battle-1235662840/",
       "title": "Courtney Love Praises Nirvana’s ‘Unsung Hero’ Tracy Marander Amid Cancer Battle",
       "source": "Rolling Stone",
