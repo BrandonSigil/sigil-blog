@@ -1355,6 +1355,11 @@
 			"status": "missing",
 			"tried": "2026-11-22"
 		},
+		"haremscarem-risefromthewreckage": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-24"
+		},
 		"hatebreed-fatalparadox": {
 			"status": "found",
 			"source": "deezer",
@@ -2841,6 +2846,10 @@
 			"status": "found",
 			"source": "deezer",
 			"tried": "2026-11-22"
+		},
+		"soundwalkcollectiveandpattismith-correspondencesvoliii": {
+			"status": "missing",
+			"tried": "2026-11-24"
 		},
 		"sourwidows-sigil": {
 			"status": "found",

@@ -1,6 +1,69 @@
 {
 	"_note": "Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.",
 	"stories": {
+		"https://consequence.net/2026/11/lambrini-girls-dont-talk-to-me-until-ive-had-my-abortion/": {
+			"date": "2026-11-24",
+			"source": "Consequence",
+			"artists": [
+				"Lambrini Girls"
+			]
+		},
+		"https://stereogum.com/2520364/offset-on-gmfu-the-final-migos-album-and-the-cost-of-clout/columns/say-whats-real-the-month-in-rap/": {
+			"date": "2026-11-24",
+			"source": "Stereogum",
+			"artists": [
+				"Offset"
+			]
+		},
+		"https://stereogum.com/2521187/peter-gabriel-yes-it-will-go/music/": {
+			"date": "2026-11-24",
+			"source": "Stereogum",
+			"artists": [
+				"Peter Gabriel"
+			]
+		},
+		"https://stereogum.com/2521191/mia-joy-circle-feat-midwife/music/": {
+			"date": "2026-11-24",
+			"source": "Stereogum",
+			"artists": [
+				"Mia Joy"
+			]
+		},
+		"https://stereogum.com/2521215/lambrini-girls-dont-talk-to-me-until-ive-had-my-abortion/music/": {
+			"date": "2026-11-24",
+			"source": "Stereogum",
+			"artists": [
+				"Lambrini Girls"
+			]
+		},
+		"https://www.nme.com/news/music/don-toliver-postpones-london-fans-screaming-pain-mystery-substance-manchester-3976832": {
+			"date": "2026-11-24",
+			"source": "NME",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://www.nme.com/news/music/lambrini-girls-provocative-fundraiser-single-dont-talk-to-me-until-ive-had-my-abortion-3976844": {
+			"date": "2026-11-24",
+			"source": "NME",
+			"artists": [
+				"Lambrini Girls"
+			]
+		},
+		"https://www.nme.com/news/music/liam-gallagher-responds-fontaines-dc-i-love-you-manchester-dedication-3976852": {
+			"date": "2026-11-24",
+			"source": "NME",
+			"artists": [
+				"Fontaines D.C."
+			]
+		},
+		"https://www.nme.com/news/music/the-big-moon-interview-forever-illness-motherhood-brixton-academy-future-3976873": {
+			"date": "2026-11-24",
+			"source": "NME",
+			"artists": [
+				"The Big Moon"
+			]
+		},
 		"https://consequence.net/2026/11/don-toliver-concert-manchester-evacuated-unknown-substance/": {
 			"date": "2026-11-23",
 			"source": "Consequence",
@@ -42,6 +105,14 @@
 			"artists": [
 				"Craig Wedren",
 				"Anna Waronker"
+			]
+		},
+		"https://stereogum.com/2520300/soundwalk-collective-with-patti-smith-cry-of-the-lost/music/": {
+			"date": "2026-11-23",
+			"source": "Stereogum",
+			"artists": [
+				"Soundwalk Collective",
+				"Patti Smith"
 			]
 		},
 		"https://stereogum.com/2520410/slayyyter-charli-xcx-added-as-final-snl-musical-guests-of-2026/news/": {

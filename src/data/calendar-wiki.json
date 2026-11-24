@@ -4534,6 +4534,16 @@
 			]
 		},
 		{
+			"artist": "Soundwalk Collective and Patti Smith",
+			"title": "Correspondences Vol III",
+			"releaseDate": "2027-01-08",
+			"genre": "",
+			"label": "Bella Union",
+			"outlets": [
+				"The Line of Best Fit"
+			]
+		},
+		{
 			"artist": "U.D.O.",
 			"title": "Voodoo Ranger",
 			"releaseDate": "2027-01-08",
@@ -4548,7 +4558,7 @@
 			"title": "Good Bye Make Party",
 			"releaseDate": "2027-01-15",
 			"genre": "",
-			"label": "Rhymesayers Entertainment",
+			"label": "Rhymesayers",
 			"outlets": [
 				"Flood"
 			]
@@ -6261,6 +6271,16 @@
 			"label": "So Recordings",
 			"outlets": [
 				"God Is in the TV"
+			]
+		},
+		{
+			"artist": "Harem Scarem",
+			"title": "Rise from the Wreckage",
+			"releaseDate": "2027-04-02",
+			"genre": "",
+			"label": "Frontiers Music Srl",
+			"outlets": [
+				"Blabbermouth.net"
 			]
 		},
 		{
