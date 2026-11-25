@@ -2,10 +2,50 @@
   "_note": "Written by scripts/fetch-news.mjs. Add a one-line \"take\" to any story by hand; it is kept on later runs. Set \"hidden\": true to hide a story that matched the wrong artist (deleting it would let it come back while it is still in its feed); add the artist to \"ignore\" in news-sources.json if it keeps happening.",
   "items": [
     {
+      "url": "https://www.rollingstone.com/music/music-news/taylor-swift-ugg-memes-1235664209/",
+      "title": "Taylor Swift Uggs Story Sparks Hilarious Memes: ‘She Wears High Heels, I Wear Ugg Boots’",
+      "source": "Rolling Stone",
+      "date": "2026-11-25T21:03:54.000Z",
+      "artists": [
+        "Taylor Swift"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://stereogum.com/2521547/vince-staples-covers-a-geto-boys-classic-in-the-bbc-live-lounge/news/",
+      "title": "Vince Staples Covers A Geto Boys Classic In The BBC Live Lounge",
+      "source": "Stereogum",
+      "date": "2026-11-25T16:34:56.000Z",
+      "artists": [
+        "Vince Staples"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://www.nme.com/news/music/the-beatles-new-london-3-savile-row-plans-approved-by-council-with-truly-immersive-experience-planned-for-rooftop-3976908",
+      "title": "The Beatles’ new London 3 Savile Row plans approved by council – with “truly immersive experience” planned for rooftop",
+      "source": "NME",
+      "date": "2026-11-25T10:52:15.000Z",
+      "artists": [
+        "The Beatles"
+      ],
+      "take": ""
+    },
+    {
       "url": "https://www.rollingstone.com/music/music-news/pearl-jam-seattle-airport-ice-arrests-1235663883/",
       "title": "Pearl Jam Rage Against ‘Unconscionable’ ICE Arrests at Seattle Airport",
       "source": "Rolling Stone",
       "date": "2026-11-24T22:38:06.000Z",
+      "artists": [
+        "Pearl Jam"
+      ],
+      "take": ""
+    },
+    {
+      "url": "https://consequence.net/2026/11/pearl-jam-speak-out-ice/",
+      "title": "Pearl Jam Decry “Cold Cruelty” of ICE Detainment at Seattle Airport",
+      "source": "Consequence",
+      "date": "2026-11-24T21:15:11.000Z",
       "artists": [
         "Pearl Jam"
       ],
