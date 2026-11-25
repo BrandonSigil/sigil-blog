@@ -1,6 +1,48 @@
 {
 	"_note": "Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.",
 	"stories": {
+		"https://consequence.net/2026/11/patti-smith-npr-tiny-desk-concert-debut/": {
+			"date": "2026-11-25",
+			"source": "Consequence",
+			"artists": [
+				"Patti Smith"
+			]
+		},
+		"https://pitchfork.com/story/erykah-badu-does-breezy-salutes-elton-john-on-fallon/": {
+			"date": "2026-11-25",
+			"source": "Pitchfork",
+			"artists": [
+				"Elton John"
+			]
+		},
+		"https://stereogum.com/2521527/helena-deland-whole-life/music/": {
+			"date": "2026-11-25",
+			"source": "Stereogum",
+			"artists": [
+				"Helena Deland"
+			]
+		},
+		"https://stereogum.com/2521553/manchester-police-say-don-toliver-concert-gas-incident-may-be-linked-to-jewelry-thefts/news/": {
+			"date": "2026-11-25",
+			"source": "Stereogum",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://stereogum.com/2521558/anna-meredith-mink/music/": {
+			"date": "2026-11-25",
+			"source": "Stereogum",
+			"artists": [
+				"Anna Meredith"
+			]
+		},
+		"https://www.rollingstone.com/music/music-news/don-toliver-concert-evacuation-substance-investigation-1235664243/": {
+			"date": "2026-11-25",
+			"source": "Rolling Stone",
+			"artists": [
+				"Don Toliver"
+			]
+		},
 		"https://consequence.net/2026/11/lambrini-girls-dont-talk-to-me-until-ive-had-my-abortion/": {
 			"date": "2026-11-24",
 			"source": "Consequence",

@@ -1,5 +1,5 @@
 ---
-title: "The 4 hottest releases of December 2026"
+title: "The 5 hottest releases of December 2026"
 description: "The most talked-about new albums out in December 2026, and what to expect from each."
 pubDate: 2026-12-01
 draft: true
@@ -16,7 +16,25 @@ Write an intro here.
 
 **Out Dec 4** · Cactus Jack, Donnway & Co Records, Atlantic
 
-_Why it's buzzing: covered by Variety; 1 headline naming Don Toliver lately._
+_Why it's buzzing: covered by Variety; 8 headlines naming Don Toliver lately._
+
+Write your take here.
+
+## Soak - Decembers
+
+**Out Dec 4** · Indie & folk
+
+_Why it's buzzing: covered by Clash and Consequence; 1 headline naming Soak lately._
+
+<!-- Crate note: The Derry songwriter's warm, wry indie folk. -->
+
+Write your take here.
+
+## Slayyyter - Worst Man in America
+
+**Out Dec 4** · Records, Columbia
+
+_Why it's buzzing: covered by Variety; 1 headline naming Slayyyter lately._
 
 Write your take here.
 
@@ -27,16 +45,6 @@ Write your take here.
 _Why it's buzzing: covered by Hot Press and Consequence._
 
 <!-- Crate note: The LA quartet's moody, groove-heavy indie rock. La Luz and Crumb fans take note. -->
-
-Write your take here.
-
-## Soak - Decembers
-
-**Out Dec 4** · Indie & folk
-
-_Why it's buzzing: covered by Clash and Consequence._
-
-<!-- Crate note: The Derry songwriter's warm, wry indie folk. -->
 
 Write your take here.
 

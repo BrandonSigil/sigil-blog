@@ -158,6 +158,10 @@
 			"source": "deezer",
 			"tried": "2026-11-22"
 		},
+		"anuelaa-realhastalamuerte2": {
+			"status": "missing",
+			"tried": "2026-11-25"
+		},
 		"anygivensin-untilwedisappear": {
 			"status": "found",
 			"source": "deezer",
@@ -691,6 +695,11 @@
 			"status": "found",
 			"source": "deezer",
 			"tried": "2026-11-22"
+		},
+		"danielalalita-tactac": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-25"
 		},
 		"danielleponder-everythinghaschanged": {
 			"status": "found",
@@ -2923,6 +2932,11 @@
 			"source": "deezer",
 			"tried": "2026-11-22"
 		},
+		"straykids-suiatsu": {
+			"status": "found",
+			"source": "deezer",
+			"tried": "2026-11-25"
+		},
 		"sufjanstevens-worstchristmasever": {
 			"status": "found",
 			"source": "deezer",
@@ -3161,6 +3175,11 @@
 			"status": "found",
 			"source": "deezer",
 			"tried": "2026-11-22"
+		},
+		"ub40-unstoppable": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-25"
 		},
 		"udo-voodooranger": {
 			"status": "found",

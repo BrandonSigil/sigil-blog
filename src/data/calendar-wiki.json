@@ -3323,6 +3323,16 @@
 			]
 		},
 		{
+			"artist": "Daniela Lalita",
+			"title": "TAC TAC",
+			"releaseDate": "2026-11-13",
+			"genre": "Experimental electronic, avant-pop, art-pop",
+			"label": "The Orchard",
+			"outlets": [
+				"Fame Magazine"
+			]
+		},
+		{
 			"artist": "David Kushner",
 			"title": "Devotion",
 			"releaseDate": "2026-11-13",
@@ -3991,6 +4001,24 @@
 			"outlets": [
 				"JamBase"
 			]
+		},
+		{
+			"artist": "Stray Kids",
+			"title": "Suiatsu",
+			"releaseDate": "2026-11-25",
+			"genre": "",
+			"label": "Epic Japan",
+			"outlets": [
+				"Kstyle"
+			]
+		},
+		{
+			"artist": "Anuel AA",
+			"title": "Real hasta la muerte 2",
+			"releaseDate": "2026-11-26",
+			"genre": "Latin trap, reggaeton",
+			"label": "Real Hasta la Muerte",
+			"outlets": []
 		},
 		{
 			"artist": "Priya Ragu",
@@ -5254,6 +5282,46 @@
 			]
 		},
 		{
+			"artist": "One Step Closer",
+			"title": "Zero",
+			"releaseDate": "2027-02",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Tash Sultana",
+			"title": "Sonic Alchemy",
+			"releaseDate": "2027-02",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"The Note"
+			]
+		},
+		{
+			"artist": "Tim Reaper",
+			"title": "World's End",
+			"releaseDate": "2027-02",
+			"genre": "",
+			"label": "Hyperdub",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Zsela",
+			"title": "The Party",
+			"releaseDate": "2027-02",
+			"genre": "",
+			"label": "Nice Life",
+			"outlets": [
+				"Stereogum"
+			]
+		},
+		{
 			"artist": "A Hawk and a Hacksaw",
 			"title": "Volume 8",
 			"releaseDate": "2027-02-05",
@@ -5681,46 +5749,6 @@
 			"label": "Bella Union",
 			"outlets": [
 				"The Line of Best Fit"
-			]
-		},
-		{
-			"artist": "One Step Closer",
-			"title": "Zero",
-			"releaseDate": "2027-02-19",
-			"genre": "",
-			"label": "",
-			"outlets": [
-				"Kerrang!"
-			]
-		},
-		{
-			"artist": "Tash Sultana",
-			"title": "Sonic Alchemy",
-			"releaseDate": "2027-02-19",
-			"genre": "",
-			"label": "BMG",
-			"outlets": [
-				"The Note"
-			]
-		},
-		{
-			"artist": "Tim Reaper",
-			"title": "World's End",
-			"releaseDate": "2027-02-19",
-			"genre": "",
-			"label": "Hyperdub",
-			"outlets": [
-				"Pitchfork"
-			]
-		},
-		{
-			"artist": "Zsela",
-			"title": "The Party",
-			"releaseDate": "2027-02-19",
-			"genre": "",
-			"label": "Nice Life",
-			"outlets": [
-				"Stereogum"
 			]
 		},
 		{
@@ -6278,7 +6306,7 @@
 			"title": "Rise from the Wreckage",
 			"releaseDate": "2027-04-02",
 			"genre": "",
-			"label": "Frontiers Music Srl",
+			"label": "Frontiers Music",
 			"outlets": [
 				"Blabbermouth.net"
 			]
@@ -6382,6 +6410,14 @@
 			"outlets": [
 				"Blabbermouth.net"
 			]
+		},
+		{
+			"artist": "UB40",
+			"title": "Unstoppable",
+			"releaseDate": "2027-04-23",
+			"genre": "",
+			"label": "",
+			"outlets": []
 		},
 		{
 			"artist": "Foy Vance",
