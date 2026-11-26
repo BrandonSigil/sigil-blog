@@ -3324,7 +3324,7 @@
 		},
 		{
 			"artist": "Daniela Lalita",
-			"title": "TAC TAC",
+			"title": "Tac Tac",
 			"releaseDate": "2026-11-13",
 			"genre": "Experimental electronic, avant-pop, art-pop",
 			"label": "The Orchard",
@@ -4011,14 +4011,6 @@
 			"outlets": [
 				"Kstyle"
 			]
-		},
-		{
-			"artist": "Anuel AA",
-			"title": "Real hasta la muerte 2",
-			"releaseDate": "2026-11-26",
-			"genre": "Latin trap, reggaeton",
-			"label": "Real Hasta la Muerte",
-			"outlets": []
 		},
 		{
 			"artist": "Priya Ragu",
@@ -5282,46 +5274,6 @@
 			]
 		},
 		{
-			"artist": "One Step Closer",
-			"title": "Zero",
-			"releaseDate": "2027-02",
-			"genre": "",
-			"label": "",
-			"outlets": [
-				"Kerrang!"
-			]
-		},
-		{
-			"artist": "Tash Sultana",
-			"title": "Sonic Alchemy",
-			"releaseDate": "2027-02",
-			"genre": "",
-			"label": "BMG",
-			"outlets": [
-				"The Note"
-			]
-		},
-		{
-			"artist": "Tim Reaper",
-			"title": "World's End",
-			"releaseDate": "2027-02",
-			"genre": "",
-			"label": "Hyperdub",
-			"outlets": [
-				"Pitchfork"
-			]
-		},
-		{
-			"artist": "Zsela",
-			"title": "The Party",
-			"releaseDate": "2027-02",
-			"genre": "",
-			"label": "Nice Life",
-			"outlets": [
-				"Stereogum"
-			]
-		},
-		{
 			"artist": "A Hawk and a Hacksaw",
 			"title": "Volume 8",
 			"releaseDate": "2027-02-05",
@@ -5749,6 +5701,56 @@
 			"label": "Bella Union",
 			"outlets": [
 				"The Line of Best Fit"
+			]
+		},
+		{
+			"artist": "Noahfinnce",
+			"title": "Wonky",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Hopeless",
+			"outlets": [
+				"Rock Sound"
+			]
+		},
+		{
+			"artist": "One Step Closer",
+			"title": "Zero",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"Kerrang!"
+			]
+		},
+		{
+			"artist": "Tash Sultana",
+			"title": "Sonic Alchemy",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "BMG",
+			"outlets": [
+				"The Note"
+			]
+		},
+		{
+			"artist": "Tim Reaper",
+			"title": "World's End",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Hyperdub",
+			"outlets": [
+				"Pitchfork"
+			]
+		},
+		{
+			"artist": "Zsela",
+			"title": "The Party",
+			"releaseDate": "2027-02-19",
+			"genre": "",
+			"label": "Nice Life",
+			"outlets": [
+				"Stereogum"
 			]
 		},
 		{
@@ -6417,7 +6419,9 @@
 			"releaseDate": "2027-04-23",
 			"genre": "",
 			"label": "",
-			"outlets": []
+			"outlets": [
+				"XS Noise"
+			]
 		},
 		{
 			"artist": "Foy Vance",

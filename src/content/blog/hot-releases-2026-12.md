@@ -16,7 +16,7 @@ Write an intro here.
 
 **Out Dec 4** · Cactus Jack, Donnway & Co Records, Atlantic
 
-_Why it's buzzing: covered by Variety; 8 headlines naming Don Toliver lately._
+_Why it's buzzing: covered by Variety; 9 headlines naming Don Toliver lately._
 
 Write your take here.
 
