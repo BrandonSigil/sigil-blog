@@ -2,6 +2,16 @@
   "_note": "Written by scripts/fetch-news.mjs. Add a one-line \"take\" to any story by hand; it is kept on later runs. Set \"hidden\": true to hide a story that matched the wrong artist (deleting it would let it come back while it is still in its feed); add the artist to \"ignore\" in news-sources.json if it keeps happening.",
   "items": [
     {
+      "url": "https://www.nme.com/news/music/courtney-love-pays-tribute-to-kurt-cobains-ex-girlfriend-and-unsung-hero-of-nirvana-tracy-marander-as-she-battles-terminal-cancer-3977093",
+      "title": "Courtney Love pays tribute to Kurt Cobain’s ex-girlfriend and “unsung hero of Nirvana” Tracy Marander as she battles terminal cancer",
+      "source": "NME",
+      "date": "2026-11-27T11:08:12.000Z",
+      "artists": [
+        "Nirvana"
+      ],
+      "take": ""
+    },
+    {
       "url": "https://www.rollingstone.com/music/music-news/taylor-swift-ugg-memes-1235664209/",
       "title": "Taylor Swift Uggs Story Sparks Hilarious Memes: ‘She Wears High Heels, I Wear Ugg Boots’",
       "source": "Rolling Stone",
