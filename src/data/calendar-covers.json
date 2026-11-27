@@ -2265,6 +2265,11 @@
 			"source": "deezer",
 			"tried": "2026-11-22"
 		},
+		"noahkahan-livefromthegreatdivide": {
+			"status": "found",
+			"source": "itunes",
+			"tried": "2026-11-27"
+		},
 		"nogaerez-duckseason": {
 			"status": "found",
 			"source": "itunes",
@@ -2288,6 +2293,10 @@
 			"status": "found",
 			"source": "deezer",
 			"tried": "2026-11-22"
+		},
+		"offspring-justthepunkstuffliveatthestonepony": {
+			"status": "missing",
+			"tried": "2026-11-27"
 		},
 		"ofvirtue-deathofthealtar": {
 			"status": "found",

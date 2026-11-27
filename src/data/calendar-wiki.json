@@ -4434,6 +4434,16 @@
 			]
 		},
 		{
+			"artist": "Noah Kahan",
+			"title": "Live from The Great Divide",
+			"releaseDate": "2026-12-11",
+			"genre": "",
+			"label": "Mercury",
+			"outlets": [
+				"Billboard"
+			]
+		},
+		{
 			"artist": "Oklou and Rob",
 			"title": "In Waves",
 			"releaseDate": "2026-12-11",
@@ -5251,6 +5261,16 @@
 			"label": "",
 			"outlets": [
 				"Kerrang!"
+			]
+		},
+		{
+			"artist": "The Offspring",
+			"title": "Just the Punk Stuff – Live at the Stone Pony",
+			"releaseDate": "2027-01-29",
+			"genre": "",
+			"label": "",
+			"outlets": [
+				"New Noise Magazine"
 			]
 		},
 		{

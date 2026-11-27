@@ -1,6 +1,20 @@
 {
 	"_note": "Written by scripts/fetch-releases.mjs. Headlines naming calendar artists, for buzz.",
 	"stories": {
+		"https://pitchfork.com/story/pz-recruits-don-toliver-for-new-song-subliminals/": {
+			"date": "2026-11-27",
+			"source": "Pitchfork",
+			"artists": [
+				"Don Toliver"
+			]
+		},
+		"https://www.nme.com/news/music/watch-cage-the-elephants-stripped-back-cover-of-fontaines-d-c-and-rosalias-where-is-gone-3977128": {
+			"date": "2026-11-27",
+			"source": "NME",
+			"artists": [
+				"Fontaines D.C."
+			]
+		},
 		"https://www.nme.com/news/music/royal-blood-announce-2027-uk-outdoor-shows-rock-n-roll-circus-headline-slot-tickets-3977004": {
 			"date": "2026-11-26",
 			"source": "NME",
